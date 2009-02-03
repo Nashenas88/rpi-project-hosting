@@ -1,4 +1,4 @@
-#summary RPI Project Hosting Vision Statement by Dan Meretzky
+#summary *RPI Project Hosting Vision Statement by Dan Meretzky*
 
 Vision Statement
 
