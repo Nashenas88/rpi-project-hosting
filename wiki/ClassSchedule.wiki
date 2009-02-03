@@ -1,0 +1,41 @@
+=Software Design and Documentation=
+
+==John Sturman and Anita Kuchera==
+<a href="mailto:sdd@teaminstructor.com"> sdd@teaminstructor.com
+
+Mon, Thurs 4:00pm – 5:50pm CSCI-4440-02 (32067), -04 (32080) Lally 102<br>
+Mon, Thurs 6:00pm – 7:50pm CSCI-4440-05 (32187), -06 (32188) Lally 102
+
+===Schedule Spring 2009===
+
+This is a tentative schedule and will change. Refer to the version on WebCT for the most current schedule of deadlines and lectures.
+
+|| *Lecture* || *Lecture Topic* || *Due Dates and Administrivia* ||
+|| Monday Jan 12 || Review Course Syllabus <br> Pitch Projects || ||
+|| Thursday Jan 15 || Pitch Projects || Team Formation ||
+|| Thursday Jan 22 || Lockheed Martin Talk <br> Intro to Unified Process <br> Inception || ||
+|| Monday Jan 26 || Team Building (Archer Center) || ||
+|| Thursday Jan 29 || Use Cases I || Exam Distribution ||
+|| Monday Feb 2	|| Use Cases II || ||
+|| Thursday Feb 5 || Use Case and Domain Models <br> Presentations || Pattern Presentation Assignments <br> Inception deliverables in class review ||
+|| Monday Feb 9	|| Project Management || ||
+|| Thursday Feb 12 || Introduction to UML <br> Introduction to Design Patterns || Iteration 1 (Inception) ends <br> *Deadline*: Inception Deliverables ||
+|| Tuesday Feb 17 || Inception to Elaboration <br> Software Development Lifecycles || First Exam Review at Center for Communication Practices (suggested) ||
+|| Thursday Feb 19 || Other Requirements / Supplemental Specifications <br> System Sequence Diagrams <br> Patterns 1: Basic, Factory, Singleton, Bridge || ||
+|| Monday Feb 23 || UML – Class Diagrams <br> Patterns 2: Abstract Factory, Facade, Observer || ||
+|| Thursday Feb 26 || Construction and Testing <br> Patterns 3: Iterator, Visitor, Command || ||
+|| Monday Mar 2	|| Patterns 4:Memento, Proxy, Prototype	|| Iteration 2 (Elaboration) ends ||
+|| Thursday Mar 5 || Testing <br> Patterns 5: Composite, Chain of Responsibility, Flyweight || *Deadline*: Elaboration Deliverables ||
+|| Monday Mar 16 || Documentation <br> Patterns 6: State, Strategy, Template Method || Iteration 3 (Construction) ends (suggested) ||
+|| Thursday Mar 19 || Software Development Lifecycles <br> Patterns 7: MVC, Mediator || Second Exam Review at Center for Communication Practices (suggested) ||
+|| Monday Mar 23 || Agile Development || ||
+|| Thursday Mar 26 || AntiPatterns || ||
+|| Monday Mar 30 || Presentations (revisited) || Iteration 4 (Construction) ends (suggested) ||
+|| Thursday Apr 2 || Special Topics (TBA) || ||
+|| Monday Apr 6	|| Special Topics (TBA)	|| *Exam due* ||
+|| Thursday Apr 9 || Special Topics (TBA) || ||
+|| Monday Apr 13 || Transition || Iteration 5 (Construction) ends (suggested) ||
+|| Thursday Apr 16 || Post Mortems || *Deadline*: Construction Deliverables ||
+|| Monday Apr 20 || Project Presentations || ||
+|| Thursday Apr 23 || Project Presentations || ||
+|| Monday Apr 27 || Project Presentations || *Deadline*: Transition Phase <br> *All Deliverables are due* ||
