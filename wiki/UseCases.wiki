@@ -1,7 +1,7 @@
 =Login=
 
 *Description*
-  *Login gives submitting/moderating/administrative priveledges
+  * Login gives submitting/moderating/administrative priveledges
 
 *Actors*
   * Admin
@@ -16,7 +16,7 @@
   # click "login"
 
 *Postconditions*
-  * If User- Brought to home page with uploading enabled
+  * If User- Brought to home page with uploading enabled and comment updates
   * If Mod- Brought to home page with uploading and gatekeeper enabled
   * If Admin- Brought to Admin page
 ----
@@ -24,7 +24,7 @@
 =LogOut=
 
 *Description*
-  *Logout
+  * Logout
 
 *Actors*
   * Admin
@@ -89,6 +89,41 @@
 ----
 
 =UserComment=
-User
 
+*Description*
+  * Add comment to a hosted project
 
+*Actors*
+  * RPI user
+  * non-RPI user
+
+*Preconditions*
+  * Browsed to project page
+
+*Event Flow*
+  # Add comment text to box
+  # click "add comment"
+
+*Postcondition*
+  * Updated project page with comment
+----
+
+=Title=
+
+*Description*
+  * 
+
+*Actors*
+  * 
+  * 
+
+*Preconditions*
+  * 
+
+*Events Flow*
+  # 
+  # 
+
+*Postconditions*
+  * 
+----
