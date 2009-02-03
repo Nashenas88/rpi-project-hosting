@@ -1,0 +1,94 @@
+=Login=
+
+*Description*
+  *Login gives submitting/moderating/administrative priveledges
+
+*Actors*
+  * Admin
+  * Moderator
+  * RPI User
+
+*Preconditions*
+  * Browsed to website
+
+*Event Flow*
+  # Input RPI RCS ID and password
+  # click "login"
+
+*Postconditions*
+  * If User- Brought to home page with uploading enabled
+  * If Mod- Brought to home page with uploading and gatekeeper enabled
+  * If Admin- Brought to Admin page
+----
+
+=LogOut=
+
+*Description*
+  *Logout
+
+*Actors*
+  * Admin
+  * Moderator
+  * RPI User
+
+*Preconditions*
+  * Browsed to Login screen
+
+*Event Flow*
+  * click "logout"
+
+*Postconditions*
+  * display "logged out successfully"
+----
+
+=UserUp=
+
+*Description*
+  * Upload a finished project with a description
+
+*Actors*
+  * RPI User
+
+*Preconditions*
+  * Browsed to upload screen
+
+*Event Flows*
+  # click browse
+  # select file
+  # click upload
+  # display confimation of upload
+  # type in description of project and keywords
+  # click "upload"
+
+*Postconditions*
+  * display "gatekeeper will review content or 24h"
+----
+
+=UserSearchDown=
+
+*Description*
+  * User searches for and downloads a project
+
+*Actors*
+  * RPI User
+  * non-RPI User
+
+*Preconditions*
+  * Browsed to home page
+
+*Event Flow*
+  # Enter filters
+  # click "search"
+  # display results
+  # click on desired project
+  # display project's page
+  # click download
+
+*Postconditions*
+  * recieve file on computer
+----
+
+=UserComment=
+User
+
+
