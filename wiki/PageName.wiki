@@ -1,11 +1,6 @@
-#summary One-sentence summary of this page.
-
-= Introduction =
+#summary RPI Project Hosting Vision Statement by Dan Meretzky
 
 Vision Statement
-
-
-= Details =
 
 Our vision this semester is to create a server for hosting RPI projects.  Anyone in the world will be able to experience and enjoy innovative and interesting projects created at RPI.  This will give students and faculty the ability to upload their projects and get the appreciation and publicity that they deserve for their hard work.  Furthermore, these projects are made by RPI students and will be advertised to, and therefore used by, RPI students creating a stronger and self-propelling community.
 
