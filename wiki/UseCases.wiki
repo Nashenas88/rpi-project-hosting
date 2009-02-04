@@ -64,24 +64,40 @@
   * display "gatekeeper will review content or 24h"
 ----
 
-=UserSearchDown=
+=Search=
 
 *Description*
-  * User searches for and downloads a project
+  * Actor searches for user, project, etcetera
+
+*Actors*
+  * RPI user
+  * User
+  * Moderator
+
+*Preconditions*
+  * browsed to home page
+
+*Events Flow*
+  # apply filters
+  # click "Search"
+
+*Postconditions*
+  * Display search results
+----
+
+=UserDown=
+
+*Description*
+  * User downloads a project
 
 *Actors*
   * RPI User
   * non-RPI User
 
 *Preconditions*
-  * Browsed to home page
+  * Browsed to project page
 
 *Event Flow*
-  # Enter filters
-  # click "search"
-  # display results
-  # click on desired project
-  # display project's page
   # click download
 
 *Postconditions*
@@ -106,6 +122,114 @@
 
 *Postcondition*
   * Updated project page with comment
+----
+
+=24Hours=
+
+*Description*
+  * After 24 a submission is automatically added without a gatekeeper
+
+*Actors*
+  * Time
+
+*Preconditions*
+  * 24 hours passed for submission in queue
+
+*Events Flow*
+  # add sumission
+  # notify submitter of status
+
+*Postconditions*
+  * Submission now appears on website
+----
+
+=Gatekeeper=
+
+*Description*
+  * Moderator accepts or rejects submission
+
+*Actors*
+  * Moderator
+  * User
+
+*Preconditions*
+  * User submitted a project
+  * Moderator logs in
+  * Moderater browses to moderator page
+
+*Events Flow*
+  # Moderater reviews project and accepts or rejects
+    * if accepted add to database
+      * Auto-notify by email "accepted project x"
+    * if rejected then email text box for user for reasons of rejection
+      * type rejection
+      * click "send"
+
+*Postconditions*
+  * Show confimation screen that submit and notice successful
+----
+
+=Moderate=
+
+*Description*
+  * Moderator removes offending project in database
+
+*Actors*
+  * Moderator
+
+*Preconditions*
+  * Offending project found
+  * Moderator logged in
+  * browsed to project page
+
+*Events Flow*
+  # click Delete
+  # Auto-Notify User that they have violated rules
+
+*Postconditions*
+  * Display Success for deletion and notice
+----
+
+=ModeratorBan=
+
+*Description*
+  * Ban an offending user
+
+*Actors*
+  * Moderator
+  * RPI User
+
+*Preconditions*
+  * Moderator logged in
+  * browsed to user's page
+
+*Events Flow*
+  # Click "ban"
+  # Auto-Notify user of ban
+
+*Postconditions*
+  * Display success of ban and notice
+----
+
+=ModeratorUnBan=
+
+*Description*
+  * Moderator wants to remove ban from a RPI user
+
+*Actors*
+  * Moderator
+  * RPI User
+
+*Preconditions*
+  * Moderator log in
+  * browse to user page
+
+*Events Flow*
+  # click "Unban"
+  # Auto-notify user of unban
+
+*Postconditions*
+  * Display success of unban and notice
 ----
 
 =Title=
