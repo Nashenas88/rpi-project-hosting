@@ -252,6 +252,52 @@
   * Display user added as moderator succesfully
 ----
 
+
+=FlagComment=
+
+*Description*
+  * Flags a comment as inappropriate and sends an email to some moderator
+
+*Actors*
+  * user
+
+*Preconditions*
+  * logged in
+
+*Events Flow*
+  # Click Flag Comment
+  # Type Reason
+  # Click Button
+  # Sends Email
+
+*Postconditions*
+  * Some Moderators Receive email
+
+----
+
+
+=Remove Comment=
+
+*Description*
+  * Removes a comment
+
+*Actors*
+  * Moderator
+  * Administrator
+
+*Preconditions*
+  * Comment might have been flagged (not necesarry)
+
+*Events Flow*
+  # Click Remove Comment Button
+  # Click "Approve"
+  # Comment is Deleted
+
+*Postconditions*
+  * Comment no longer exists
+
+----
+
 =Title=
 
 *Description*
