@@ -298,6 +298,31 @@
 
 ----
 
+=Rate=
+
+*Description*
+  * Rates the current project
+
+*Actors*
+  * User
+  * Moderator
+  * Administrator
+
+*Preconditions*
+  * Has not rated previously
+
+*Events Flow*
+  # Click number of stars
+  # number of rates increased
+  # new average calculated
+  # new rating displayed with stars
+
+*Postconditions*
+  * updated number of rates
+  * updated rating
+
+----
+
 =Title=
 
 *Description*
