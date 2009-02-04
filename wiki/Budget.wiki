@@ -5,6 +5,8 @@
 ||Estimated Hours per Week||9h||
 ||Estimated Number of Weeks||13w||
 ||Cost For Laptops and Software||$2100||
+|| || ||
 ||Cost per Person||$9705||
 ||Number of Workers||4p||
+|| || ||
 ||Total Cost||$38420||
