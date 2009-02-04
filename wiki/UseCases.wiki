@@ -232,6 +232,26 @@
   * Display success of unban and notice
 ----
 
+=AdminAddModerator=
+
+*Description*
+  * Add moderator
+
+*Actors*
+  * Admin
+
+*Preconditions*
+  * Browsed to admin page
+
+*Events Flow*
+  # Click add moderator
+  # type in RPI user name
+  # click add
+
+*Postconditions*
+  * Display user added as moderator succesfully
+----
+
 =Title=
 
 *Description*
