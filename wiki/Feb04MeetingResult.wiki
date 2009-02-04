@@ -4,8 +4,11 @@
 New Assignment:
 
 Paul: Design basic UI
+
 Alex: Think about use cases. Learn more php, mysql, see WebSys link.
+
 Dan: Revise vision statement. Learn more php, mysql, see WebSys link.
+
 Jin: Design database, upload schedule
 
 
