@@ -4,11 +4,27 @@
 
 ==Admin==
 
-The highest level of user.  Adds and removes moderators. Has access to source code. 
+The highest level of user.  Adds and removes moderators. Has access to source code.
+
+==Comment==
+
+User generated feedback referencing specific projects.
 
 ==Moderator==
 
 The middle level of user.  Regulates projects and comments.
+
+==Projects==
+
+All files written and created by RPI hosted on RPH.
+
+==Rating==
+
+User generated number score between 0 and 5 grading specific projects.
+
+==RCSID==
+
+This is an identification given to all members of the RPI community.  It is used on RPH as a username, a user identification, and during user login.
 
 ==RPH==
 
