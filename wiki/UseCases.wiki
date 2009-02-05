@@ -56,10 +56,13 @@
 *Event Flows*
   # click browse
   # select file
+  # maybe select image of file for uploading
   # click upload
   # display confimation of upload
   # type in description of project and keywords
   # click "upload"
+    * if filesize greater than 10MB then throw error
+    * if file is corrupt then throw error
 
 *Postconditions*
   * display "gatekeeper will review content or 24h"
@@ -83,7 +86,7 @@
   # click "Search"
 
 *Postconditions*
-  * Display search results
+  * Display search results sorted by number of downloads
 ----
 
 =UserDown=
