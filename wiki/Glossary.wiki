@@ -2,6 +2,14 @@
 
 =Glossary=
 
+==Admin==
+
+The highest level of user.  Adds and removes moderators. Has access to source code. 
+
+==Moderator==
+
+The middle level of user.  Regulates projects and comments.
+
 ==RPH==
 
 RPI Project Hosting - project name
