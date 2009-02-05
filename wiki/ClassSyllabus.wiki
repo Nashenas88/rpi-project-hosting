@@ -1,0 +1,303 @@
+=Software Design and Documentation=
+
+===John Sturman and Anita Kuchera===
+
+sdd@teaminstructor.com 
+
+Mon, Thurs 4:00pm – 5:50pm CSCI-4440-02 (32067), -04 (32080) Lally 102
+Mon, Thurs 6:00pm – 7:50pm CSCI-4440-05 (32187), -06 (32188) Lally 102
+
+==Syllabus Spring 2009==
+
+*Introduction*
+
+This is a course about communication. The first step is for students to learn how to communicate a real-world problem and propose a feasible solution. The second step is to transform the real-world representation into diagrams and documentation that will allow your development team to clearly understand and coordinate on designing the solution. The third step is to implement the design and to verify through testing that you indeed solved the real-world problem through the proposed solution. 
+We will start by giving you the vocabulary and tools that are currently standard for object-oriented design. It will be up to each of you to use the tools and vocabulary to improve your own personal development practices as well as create a more effective team environment. 
+
+==Topics=
+
+  * Unified Process 
+  * Object Oriented Design Theory 
+  * Use Cases 
+  * Design Patterns 
+  * UML 
+  * Software Testing 
+  * Development Practices 
+  * Project Management
+
+==Texts==
+
+  # The Object-Oriented Thought Process (3rd Edition) (Developer's Library) by Matt Weisfeld ISBN: 0-672-33016-4
+  # Design Patterns: Elements of Reusable Object Oriented Software by Gamma, Helm, Johnson, and Vlissides. ISBN: 0-201-63361-2
+  # Head First Software Development (Brain-Friendly Guides) [ILLUSTRATED] (Paperback) by Dan Pilone (Author), Russ Miles (Author) ISBN: 0-596-52735-7 
+  # Head First Design Patterns by Elisabeth Freeman, Eric Freeman, Bert Bates, Kathy Sierra, ISBN: 0-596-00712-4
+  # Writing Effective Use Cases by Alistair Cockburn. ISBN: 0-201-70225-8
+  # UML 2.0 in a Nutshell by Dan Pilone, Neil Pitman, ISBN: 0-596-00795-7
+  # AntiPatterns: Anti-Patterns, Refactoring Software, Architectures, and Projects in Crisis. By Brown, Malveau, McCormick, and Mowbray. ISBN: 0-471-19713-0
+  # Effective Software Project Management by Robert K. Wysocki. ISBN: 0-7645-9636-5
+  # Agile Software Development: The Cooperative Game. By Alistair Cockburn. ISBN: 0-321-48275-1
+
+By purchasing the books using the above links a small portion of your regular purchase price benefits the Catskill Mountain Beekeepers Club.
+
+==Grading==
+
+There are two major parts to an individual’s final grade: personal and group. The personal portion of your grade will account for 42 % of your final grade with the group portion accounting for 58 %.
+
+There is no final exam in this course; the group project grade will be the final grade you receive. Enjoy finals week and study hard for your other courses, as SD&D will be over by then.
+
+This course will not be graded on a curve. The grade you earn is the grade you will receive. 
+
+There is no extra credit per-se in this course, as you can see the components of your grade come up to exactly 100%. Very low project grades can be improved through a team "fess up and fix" session. See below for details.
+ 
+|| Portion || Item || Percentage ||
+|| Group || Project Inception || 6.75% ||
+|| Group || Project Elaboration || 6.75% ||
+|| Group || Project Construction || 12.50% ||
+|| Group || Project Transition || 12.50% ||
+|| Group || Final Presentation || 12.50% ||
+|| Group || Best Practices || 7.00% ||
+|| Individual || Oral Pattern Presentation || 14.00% ||
+|| Individual || Take Home Exam || 14.00% ||
+|| Individual || Peer Evaluation || 14.00% ||
+|| Total || || 100.00% ||
+
+==Group (Project) Portion==
+
+With each phase deliverable each team is to include:
+
+*Project Status Report*
+
+This is a summary of the state of the project. It should include an updated list of issues encountered thus far. For each issue, include a brief summary of the issue, the person responsible for resolving it, and what measures they are to take. Also include any outstanding risks and the impact it can have on the project.
+
+*Contribution Summary*
+
+A listing of how each team member contributed to the specific deliverable. This is to account for each member taking an active role in each aspect of each deliverable.
+
+==Project Inception==
+
+*Vision Statement*
+
+The vision statement, also known as a project charter, should include an elevator summary of the project, a business case for the project (including a short analysis of the competition, market space, or similar commercial off the shelf software), a description of the project stakeholders, a list of the major features of the completed project, and a list of the major risks of the project.
+
+*Use Cases (20% complete)*
+
+A list of all Use Cases with at least 20% fully dressed, as discussed in class, and the texts. Fully dressed use cases include, at the minimum, name, ID, actors, brief description, pre- and post-conditions, as well as a full main sequence of events with numbered steps and system responses for each step. Additionally, include extensions and branching, if appropriate.
+
+*Glossary*
+
+A comprehensive list of the domain terms used within your project. Include informative, clear definitions of each term.
+
+*Project Schedule*
+
+A detailed schedule of the phases and iterations of your project. You must include iterations and dates for the development of each use case, as well as estimates of the time required to complete each item on the schedule. The schedule must show the specific dates each phase and iteration ends. Also include preliminary details and timing of the tasks included in completing your project.
+
+*Project Budget*
+
+Even though we can't pay you to complete your project, you need to develop a project budget which shows how much money you would need to develop your project if someone was paying you to do so. You should include the cost of any materials which you may need to purchase, such as software, hardware, or any other resources necessary for the project or team. You must also show your staffing costs (salary/paychecks). The budget must be presented in terms of US dollars, as that is the local currency. Attempt to make this as realistic as possible, although creativity leeway is provided.
+
+==Project Elaboration==
+
+*Domain Model Diagram*
+
+Create a diagram that identifies conceptual classes, associations, and attributes within your project domain. The diagram must use proper UML notation for a domain model diagram.
+ 
+*Supplemental Specification*
+
+Include a complete set of requirements for your project. Use the FURPS+ model to find any and all requirements for your project. The functional requirement list must include requirements drawn out of the use cases. All requirements must be numbered and have an assigned priority using a ranking system such as MoSCoW. 
+
+*System Sequence Diagrams (SSD)*
+
+Diagrams for the most important (or most complex) use cases in the project. Proper identification and naming of system events, as well as correct UML notation is required. Include at least two diagrams to get credit for this portion of the deliverable. 
+
+*Deployment Diagram*
+
+Provide a diagram that is representative of the hardware and software platform used to deploy your solution. Please include descriptions of all required hardware and software and justification for your choices. Proper UML notation is required.
+
+*Use Cases (80% complete)*
+
+80% of all known use cases must be written out in detail using the fully dressed format, as discussed in class. Update the complete list of use cases. Use the same guidelines as for Inception, elaborating on the use cases already provided and fully dressing the others.
+
+*Work Breakdown Structure/Updated schedule*
+
+A detailed list of the tasks associated with your project based upon the vision, scope, and use cases. The list of tasks should be as granular as possible so that the team can see clearly everything that needs to be accomplished in order to complete the project.
+
+==Project Construction==
+
+*Beta Release*
+
+A feature-complete beta release of your product. 80% of your functionality must be completed, matching the 80% use cases you developed in Elaboration. All "Must Have" requirements (or the equivalent) must be completed for Construction. Your preliminary test results will show proof of this. Your submission must include well-commented source code. You must provide a working executable or schedule a demo for the instructors in class. You can also provide a URL to a running server that is available outside the campus firewall. (Basically you must provide a way for the instructors/TAs to easily evaluate and review your working project.)
+
+*Interaction Diagrams*
+
+Interaction diagrams showing how a specific Use Case is realized within the beta version of the software. The diagrams must use correct UML notation. Provide at least two diagrams to receive credit for this portion of the deliverable. Diagrams can be either Sequence diagrams or Collaboration diagrams.
+
+*Static Class Diagram*
+
+A comprehensive static class diagram of the project's internal software structure. If necessary you can break this diagram up into parts to make it more readable. The diagram must be valid UML and accurately reflect the source code. 
+
+*Code Review*
+
+Each team is required to submit their code to a comprehensive review by another team and to perform a review on another team’s code.  The guidelines of this review will be covered in class. Each team should submit copies of both the performed review and the received review.
+
+*Testing Documents*
+
+Include three separate documents:
+  * Test Plan
+A statement of your group's testing strategy, quality goals, schedule, resources, and staff needed to accomplish your tests.
+  * Test Case Specification
+Detailed, step-by-step instructions your testers follow to complete each individual test. Every step and expected result should be included for each test.
+  * Preliminary Test Results and Form
+A specialized form for your testers to use to document the results of each of their test cases. You must also include results from preliminary tests using this form.
+
+==Project Transition ==
+
+*Final Release*
+
+A tested, final release version of your software. This version should be installable using a method that makes it easy for a new user to get started using your software. 
+
+*User Documentation*
+
+A complete user's guide which describes how to use your software. You may also include release notes or any other user documentation as necessary for your project. Acceptable forms of documentation include help systems, PDF files, web pages, and printed manuals. This should include installation instructions for your product.  If you develop something that requires a server-side component (website or otherwise), include detailed instructions for the installation and configuration of each necessary component. (Note: you are not required to document the installation of third party products, such as Apache. However, you are required to provide configuration details to make these components work with your system.)
+
+*Final Test Results*
+
+The final results of testing your software against the test documents you delivered during Construction. Include a statement indicating the readiness of the software for public consumption. This is a document which can be used by a stakeholder to determine if the final version of your software is ready for release (or not). 
+
+*Best Practices Evidence*
+
+Provide evidence of project team Best Practices. See Best Practices below. This portion of the Transition deliverable does not figure into the Transition grade, however without any evidence, we provide no credit.
+
+*Peer Reviews (individually by each team member)*
+
+Provide reviews for each person on your team based upon the metrics determined by the team at the beginning of the semester. See Peer Reviews below. This portion of the Transition deliverable does not figure into the Transition grade, however, if you do not submit a peer review for your teammates, you will not receive credit for this portion of your grade.
+
+*Final Presentation*
+
+At the end of the semester each project group will give a presentation to the class describing their project, its benefits, and the software design used to develop it. 
+
+*Best Practices*
+
+This portion of your grade is pass/fail; your group will either earn the credit or won't earn the credit. As such, we encourage you to use as many of these development practices as possible to ensure you will earn the grade.
+
+To get this grade you must implement items 1 (or 2), 3, and 4, as well as two (or more) others listed here. You must provide documented proof that you have done so. It has been our experience that development teams (both in this course and outside in professional settings) have a higher success rate when they make use of best practices, then when they don't. Evidence of these practices need to be submitted with your Transition phase deliverables to receive credit.
+
+1. *Project Website/WIKI*
+
+A project website which contains reference materials and documentation relating to the project. You need to use this site regularly as a central location for group members to share information and documents.
+
+2. *Project Management web sites*
+
+We recommend the use of websites such as Google Code (http://code.google.com/hosting/), CodePlex (http://www.codeplex.com/) or SourceForge (http://www.sourceforge.com) to manage your project. These sites generally encompass several of the functions we require as best practices. While they are very useful, they may not include everything your team may need. Feel free to mix and match as needed. If you use one of these sites as a best practice, you must implement the various features of the site to get credit. For example, using a Google Code site without taking advantage of the code repository does not count.
+
+3. *Code Repository*
+
+Using a code repository is worth the time and effort required to set it up and manage it. When working with more than one person, it is a very good idea to use a repository to hold and control any code being developed. The attributes of a good repository include always being available and requiring some form of authentication for security and user/usage tracking. The system usually maintains a record of all check-in and check-out activity and keeps a running record of changes made to any files. The system should have the ability to track back versions and perform code merging to synchronize versions of files. Repositories include Subversion and Git.
+
+4. *Documented Coding Standards*
+
+Documenting the coding standards used by your group can improve the quality of the software that you write by making it more consistent between developers. Coding standards should describe conventions used by the team such as where braces are positioned, naming conventions for classes, methods, variables, and documentation conventions. Many programming languages have several different published coding standards for that language. Your team may wish to adopt a published standard for the language of choice, rather than trying to develop your own. Upon the adoption of coding standards, all written code should be consistent with these standards 
+
+5. *Build Tools*
+
+Build tools such as make, autoconf, libtool, Ant (http://ant.apache.org/), NAnt, JAM, etc. are essential in large projects as they provide a repeatable means of converting the software from source code form to executable code. DOS batch files or UNIX shell scripts will not be accepted as build tools, as these tend to not work very well in professional settings. 
+
+6. *Unit Test Tools*
+
+Unit testing tools such as JUnit (for Java) or NUnit (for .Net) are very helpful to a project to perform automated testing which is quickly repeatable to verify software quality. 
+
+7. *Bug Tracking System*
+
+A bug tracking system such as Bugzilla can provide a central means for a project team to report on bugs found within the software, the status of the fixes for those bugs, and a general "to-do" list which is shared across all team members. Generally a bug tracking system is only useful for larger projects, but the instructors have found them to still be very useful in small projects. 
+
+8. *Design Patterns*
+
+Use one or more design patterns to enhance the effectiveness of your project. You may use any pattern discussed in class or any other documented pattern that you find. However, for patterns found outside of the class curriculum, instructor approval is required. You must document the design pattern(s) in your source code and provide an explanation of how and why you used the pattern(s).
+
+==Fess Up and Fix==
+
+Project teams may earn up to 20 additional points on a late submission or a very low grade on a deliverable by making a 15-minute presentation to the class describing:
+
+  * How the deliverable was flawed, or how late it was relative to the planned delivery date. 
+  * What events caused the flaw and/or late delivery. 
+  * What corrective actions the team is taking to make the materials correct again, and by when they will have corrections completed. 
+  * This completion date will form a new milestone for the team. (And it must be met to be eligible to get points back!) 
+  * What actions the team will take to prevent the late delivery and/or serious flaw from occurring in future project milestones. 
+
+Up to 20 points will be awarded back at the end of the semester if the presentation conveyed an understanding of the root cause of failure, a corrective course of action, corrected materials were submitted, and the corrective course of action plan is implemented well enough such that the remaining project milestones are met.
+
+Due to limited time constraints in the course, each project team is restricted to using this option only once in the semester and the failed deliverable must have originally received a grade of 69 or lower. To qualify for this credit, the entire team must make an appointment with the instructors to discuss the content and timing of the presentation. 
+
+==Individual Portion==
+
+*Oral Pattern Presentation*
+
+You are required to present a 10-minute in-class presentation on a design pattern assigned by the instructors. Your presentation must be presented to the entire class. Some form of visual supplements are required, however slides are not mandatory. All presentations must include examples of original source code complemented by UML and a description of best practices used. Also include the benefits/drawbacks to the pattern(s). 
+
+A small part of this grade will depend on how well you use available media. Please keep in mind that available media is anything you can use in class: overhead transparencies, paper handouts, computer-based slides, websites, etc. If you are offering external resources (such as a website) please be prepared to show it in class as part of your presentation.  All references must be cited in the proper form.
+
+Once you deliver your presentation, any materials you present must be placed on the WebCT site for the instructors and your peers to review. Details on WebCT submissions will be discussed in class. 
+
+==Take Home Exam==
+
+A single comprehensive exam will be provided near the beginning of the semester. This exam is to be completed by the due date. The exam is open book and open notes. You are allowed to use any printed (or electronic) resource at your disposal. However, since the exam is an assessment of individual performance you are not permitted to share your answers with any other students, or to assist any other students with their exam. Please keep in mind that any resources used must be referenced as per standard academic practice. You are required to have a review of your draft exam by the Center for Communication Practices (http://www.ccp.rpi.edu/online.html). A bonus of seven (7) points is awarded to each student that receives a second review of their exam.
+
+*Every student must pass the exam in order to pass the course.*
+
+==Peer Evaluation==
+
+At the start of the semester your project group will develop a set of metrics which the team members will use to evaluate each other's performance at the end of the semester. This evaluation of your performance and work ethic during the project will count for 14% of your individual grade. 
+
+Peer reviews are a very common way to evaluate employee performance in business; consequently the instructors take the peer evaluations very seriously. 
+The peer metrics you devise should be scored on a scale from 1 to 100 using four specific metrics. You must submit an evaluation of your teammates in order to receive credit for this portion of the course. 
+
+Tip: Groups should seek consultation with the instructors if during the semester at least one group members feels that they cannot honestly give another group member an evaluation grade of 80 or higher, based on the metrics established by the group. 
+
+==Group Project==
+
+This course focuses on object oriented software development, and therefore the group projects must be implemented in an object oriented programming language. With the number of mainstream OO languages available today, we don't require the implementation to be in any specific language. However, we ask that you receive approval from the instructors before beginning the implementation in any language which is not listed here:
+
+  * Smalltalk
+  * Java
+  * C# 
+  * C++ 
+  * Objective-C 
+  * Python 
+  * Perl 
+  * PHP (v5 or later) 
+  * VB.NET
+  * Ruby on Rails
+
+In all of these languages we require that you use the object oriented features of the language in order to receive credit for the project. Be forewarned that failure to do so can have significant penalties on the group grade.
+
+Selection of implementation technology must be documented in the project's artifacts. Please make sure you document and justify your technology selection(s). (For example, using PHP, a language which is primarily used to create dynamic websites, to build a remote controlled helicopter's software system might not be the best design decision.)
+
+All team members are required to contribute to all portions of the group's deliverables. It is not acceptable to have one team member do the UML and documentation, another provide the implementation in the selected language, another do the requirements analysis, etc. The group project is designed to give you the opportunity to experience some development team skills before graduation so you are prepared for the realities of modern software development.
+
+Project teams are required to select their own projects, design feature requirements, etc. Therefore it is permissible to use an extended project from another (concurrent) course for the group project in this course. Please get approval from the instructors prior to beginning however, to ensure that the project has enough scope to justify two grades for one project (a grade in this course and a grade in the concurrently running course). Extending a project you did for a previous course is also an option, but please seek instructor approval if you intend to reuse any source code or documentation from the prior class project.
+
+Project ideas can be obtained from the instructors if your project team is having a difficult time coming up with a project definition.
+
+Project teams will be assigned by the instructors at the start of the course. The project teams will be formed of 4 students from your section of SD&D, Some exceptions may be granted allowing a group to have 5 members.
+
+*All projects need to be approved by the instructors.*
+
+==Assignment Submissions and Other Communication==
+
+Given the size and amount of material the instructors receive over the course of the semester, we request that you adhere to the following guidelines. Group project grades and presentation grades may be penalized for blatant disregard of these guidelines.
+
+All group assignments are to be submitted via WebCT. If the submission requires multiple files, please zip them into a single file. If the deliverable is in a single file, just submit that file. Entitle your file with the name of your group, the name of the assignment, and the submission date. For example, the group WeRock should submit their Elaboration deliverables on February 2 by pushing the following file to the WebCT site: 
+WeRock-Elaboration-Feb02.zip or WeRock-Elaboration-Feb02.pdf.
+
+Any other communication with the instructors should be sent to sdd@teaminstructor.com . We welcome any and all communication with us through email.
+
+==Cheating==
+
+Simply put, DON'T CHEAT. If you are caught cheating on a test, you will receive a 0 for that test. Teams are expected to work independently of each other. If teams are caught cheating they will be referred to Dean of Students Office for disciplinary action. 
+
+==Late Submissions / Missed Project Milestones / Low Project Grades==
+
+Late submissions are not acceptable, and significant points will be deducted for each day they are late. Submissions must be received in WebCT by 11:59:59 pm on the day they are due, in the correct submission format(s). Failure to use the proper submission procedures will also result in point deductions.
+
+==Instructor Office Hours==
+
+Office hours can be made by appointment via email (sdd@teaminstructor.com) for immediately before or immediately after class. Other times may be arranged, subject to instructor schedules. Please keep in mind that both instructors are active professionals in the software industry, with demanding jobs and family lives. We are not always available to meet with project teams on short notice! We prefer to meet with the entire project team whenever possible, unless the topic(s) of discussion are entirely individual in nature.
