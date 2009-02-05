@@ -5,3 +5,9 @@
 Our vision this semester is to create a server for hosting RPI projects.  Anyone in the world will be able to experience and enjoy innovative and interesting projects created at RPI.  This will give students and faculty the ability to upload their projects and get the appreciation and publicity that they deserve for their hard work.  Furthermore, these projects are made by RPI students and will be advertised to, and therefore used by, RPI students creating a stronger, self-propelling community.
 
 Projects can only be uploaded by RPI students, however they can be seen and used by anyone.  Uploaded projects must pass a few standardized guidelines, then they can be searched, rated, and downloaded by users.
+
+Because no project like this exists for the RPI community currently, there is no direct competition, however, market share will be taken from similar, yet less sophisticated, servers for hosting projects such as the Game Development server for hosting games created by RPI students.
+
+RPH can later be transferred to be marketed towards other universities and communities.  All that is required is the necessary server size to handle a large, and continuously increasing, database of projects.
+
+Risks foreseen during and after this project include obtaining and maintaining a large enough server, and taking appropriate actions to protecting the professors and owners of the projects.
