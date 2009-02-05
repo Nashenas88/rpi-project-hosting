@@ -6,9 +6,37 @@
 
 The highest level of user.  Adds and removes moderators. Has access to source code.
 
+==Class==
+
+A project detail, given by the user, defining the RPI course during which the project was created.  Used as a search parameter.
+
 ==Comment==
 
 User generated feedback referencing specific projects.
+
+==Date==
+
+A timestamp given to all projects and comments describing when each project and comment was first added to the server.
+
+==Description==
+
+A summary, given by the user, detailing and marketing the project.  Used as a search parameter.
+
+==Download==
+
+The act of a user looking at or copying a project on their computer.
+
+==Flag==
+
+A switch marked by the user to signal offensive projects and comments to the moderators.
+
+==Login==
+
+The act of entering into the program with an RCSID and password.
+
+==Major==
+
+A project detail, given by the user, defining what field of study the project related to.  Used as a search parameter.
 
 ==Moderator==
 
@@ -20,12 +48,28 @@ All files written and created by RPI hosted on RPH.
 
 ==Rating==
 
-User generated number score between 0 and 5 grading specific projects.
+A number score between 0 and 5 grading specific projects representing an average of the community's scoring choices.
 
-==RCSID==
+==RCS ID==
 
-This is an identification given to all members of the RPI community.  It is used on RPH as a username, a user identification, and during user login.
+This is an identification given to all members of the RPI community.
 
 ==RPH==
 
 RPI Project Hosting - project name
+
+==Size==
+
+A number representing the amount of space the project takes up.  Used as a search parameter.
+
+==Title==
+
+A name, given by the user, for each project.  Used as a search parameter.
+
+==Upload==
+
+The act of an RPI user adding a project to the server.
+
+==User==
+
+Any person directly acting with the program.
