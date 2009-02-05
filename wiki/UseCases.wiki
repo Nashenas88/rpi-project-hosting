@@ -19,6 +19,7 @@
   * If User- Brought to home page with uploading enabled and comment updates
   * If Mod- Brought to home page with uploading and gatekeeper enabled
   * If Admin- Brought to Admin page
+  * If not recognized- Brought back to home page with error
 ----
 
 =LogOut=
@@ -32,7 +33,7 @@
   * RPI User
 
 *Preconditions*
-  * Browsed to Login screen
+  * Is logged in
 
 *Event Flow*
   * click "logout"
