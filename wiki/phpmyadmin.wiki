@@ -2,4 +2,8 @@
 
 If you are interest in it:
 
+file:
 http://www.phpmyadmin.net/home_page/index.php
+
+installation:
+http://www.wikihow.com/Install-phpMyAdmin-on-Your-Windows-PC
