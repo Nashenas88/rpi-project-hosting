@@ -1,0 +1,5 @@
+#summary I have found this helpful for browse, edit, and run sql statement on database.
+
+If you are interest in it:
+
+http://www.phpmyadmin.net/home_page/index.php
