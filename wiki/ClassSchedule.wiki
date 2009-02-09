@@ -1,3 +1,5 @@
+#summary The class schedule from WebCT, written by instructors
+
 =Software Design and Documentation=
 
 ==John Sturman and Anita Kuchera==
