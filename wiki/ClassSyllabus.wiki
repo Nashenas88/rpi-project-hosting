@@ -1,3 +1,5 @@
+#summary The syllabus written by the instructors
+
 =Software Design and Documentation=
 
 ===John Sturman and Anita Kuchera===
