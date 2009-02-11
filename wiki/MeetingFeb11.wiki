@@ -1,0 +1,29 @@
+#summary Summary of meeting on Feb 11
+
+= Introduction =
+
+Discuss
+*Inception Deliverable
+*Elaboration
+*Features to Implement by next week
+
+
+= Details =
+*Inception Deliverable
+**Everybody agree it is done.
+
+*Elaboration
+Jin: update schedule
+
+Dan: Model domain diagram
+
+Paul: System Sequence diagram
+
+Alex: Deployment diagram
+
+
+*Features to Implement by next week
+** login/logout - Alex & Paul
+** some of search feature + rate, create some data for developing test- Jin
+** Dan learn php, mysql, do ModerateBan?
+
