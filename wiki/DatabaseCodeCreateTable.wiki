@@ -53,7 +53,10 @@ CREATE TABLE ratings(
 		 Foreign Key (project_id) references projects(id)
         );
 
-
+DROP TABLE ratings;
+DROP TABLE comments;
+DROP TABLE projects;
+DROP TABLE users;		
 
 
 Here is code to drop tables, in order to drop users, other tables has to be droped, since they reference users.
