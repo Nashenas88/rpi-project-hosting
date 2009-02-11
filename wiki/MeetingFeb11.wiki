@@ -23,7 +23,6 @@ Alex: Deployment diagram
 
 
 *Features to Implement by next week
-** login/logout - Alex & Paul
-** some of search feature + rate, create some data for developing test- Jin
-** Dan learn php, mysql, do ModerateBan?
-
+  * login/logout - Alex & Paul
+  * some of search feature + rate, create some data for developing test- Jin
+  * Dan learn php, mysql, do ModerateBan?
