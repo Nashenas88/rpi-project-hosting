@@ -10,7 +10,7 @@ Create 4 table:
 CREATE TABLE users (
          rcsid VARCHAR(24) NOT NULL,
          password VARCHAR(24) NOT NULL,
-		 priviledge VARCHAR(20) NOT NULL,
+		 priviledge INT NOT NULL,
 		 
 		 Primary Key (rcsid)
        );
