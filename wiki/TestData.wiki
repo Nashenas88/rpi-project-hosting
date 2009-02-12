@@ -12,8 +12,11 @@ Following is data for testing.
 
 
 INSERT INTO users VALUES ('admin', '012345678', 0);
+
 INSERT INTO users VALUES ('moderator', '12345678', 1);
+
 INSERT INTO users VALUES ('user', '2345678', 2);
+
 INSERT INTO users VALUES ('user2', '34567890', 2);
 
 
@@ -47,6 +50,9 @@ VALUES ('user','Testing Comment 3 for project 3 from user',1,1);
 
 
 INSERT INTO ratings VALUES ('admin',5,1);
+
 INSERT INTO ratings VALUES ('moderator',4,2);
+
 INSERT INTO ratings VALUES ('user2',3,3);
+
 INSERT INTO ratings VALUES ('user',4,1);
