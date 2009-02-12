@@ -6,14 +6,20 @@
 In the syllabus, I just found we need 2 more items for the best practice:
 we have:
  project management sites, (google code)
+
  code repository, (google code)
+
  Documented coding standard.
 
+
 We need 2 more from following
- Build Tools 
- Unit Test Tools 
- Bug Tracking System 
- Design Patterns 
+ Build Tools ,
+
+ Unit Test Tools ,
+
+ Bug Tracking System ,
+
+ Design Patterns ,
 
 = Details =
 
