@@ -1,0 +1,29 @@
+#summary A detailed project schedule
+#labels Schedule,Phase-Support,Phase-Implementation,Phase-Requirements
+
+
+= Details =
+
+|| Meeting Date || Discussion || Important Due Date ||
+
+||02/11||Go over previous assigned work: Basic Database Design and Basic model/interface Design. Assign works of Elaboration:detailed schedule, model domain diagram,system sequence diagram,deployment diagram. New Implementation Work: login/logout,search,rate,design test data || 02/12 Iteration 1 ends Inception Deliverables ||
+
+||02/18||Go over previous assigned work, Elaboration:detailed schedule, model domain diagram,system sequence diagram,deployment diagram. Implementation: login/logout,search,rate,design test data. New Implementation Assignment(From UseCase): UserUp, Search, UserDown,UserComment,GateKeeper,Moderate,ModeratorBan,ModeratorUnBan,AdminAddModerator,FlagComment,RemoveComment. come up Best practice.|| ||
+
+||02/25||Go over previous assigned work: see implementation assignment and Elaboration assignment of last week. New Features/Implementation Assignment: Interface Design, any unfinished implementation. Elaboration: Correction  || 03/02 Iteration 2 ends ||
+
+||03/04||Go over previous assigned work: see implementation assignment and Elaboration assignment of last week. New Features/Implementation Assignment: Synchronize codes, more interface design. Check overall status. Elaboration:ready for submission|| 03/05 Elaboration Deliverables ||
+
+||03/11||Spring Break|| 03/16 Iteration 3 ends ||
+
+||03/18||Features/Implementation: go over all implementation, interface, etc.  Start project construction phase: Beta Release,Interaction Diagrams,Static Class Diagram, Code Review,Testing Documents. Find Users, servers, advertising. || ||
+
+||03/25||Go over Project Construction Phase assigned last week, discuss any problems, make corrections||03/30 Iteration 4 ends ||
+
+||04/01||Project Construction Phase: ready for submission. Start Transistion phase:Final Release, user Documentation, Final Test Results, Best Practices Evidence, peer reviews, final presenation.|| ||
+
+||04/08||Go over Project Transistion Phase, make correction, prepare for final presentation.|| 04/13 Iteration 5 ends||
+
+||04/15||Project Transistion Phase:Finish up. Extra week for any work that is not finish yet.|| 04/16 Construction Deliverables 04/20 Project Presenation starts||
+
+||04/22||Project Transistion Phase: ready for submission|| 04/27 Transition Phase Due||
