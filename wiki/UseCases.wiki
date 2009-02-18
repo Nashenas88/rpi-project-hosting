@@ -148,7 +148,7 @@
 *Postconditions*
   * Submission now appears on website
 ----
-
+=We killed this use case=
 =Gatekeeper=
 
 *Description*
@@ -175,7 +175,7 @@
   * Show confimation screen that submit and notice successful
 ----
 
-=Moderate=
+=ModeraterRemoveProject=
 
 *Description*
   * Moderator removes offending project in database
@@ -238,7 +238,7 @@
   * Display success of unban and notice
 ----
 
-=AdminAddModerator=
+=AdminChangePriveledge=
 
 *Description*
   * Add moderator
@@ -250,9 +250,9 @@
   * Browsed to admin page
 
 *Events Flow*
-  # Click add moderator
-  # type in RPI user name
-  # click add
+  # Choose user
+  # Choose pirveledge level
+  # click "update"
 
 *Postconditions*
   * Display user added as moderator succesfully
