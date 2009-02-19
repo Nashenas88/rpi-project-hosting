@@ -63,6 +63,6 @@ INSERT INTO ratings VALUES ('user',4,1);
 
 #create moderateusers
 
-INSERT INTO moderateusers VALUES ('banuser');
+INSERT INTO moderateusers(user_id) VALUES ('banuser');
 
-INSERT INTO moderateusers VALUES ('banuser2');
+INSERT INTO moderateusers(user_id) VALUES ('banuser2');
