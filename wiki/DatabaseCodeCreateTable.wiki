@@ -92,9 +92,9 @@ CREATE TABLE moderateusers(
 
                  date TIMESTAMP DEFAULT NOW(),
 
-                 Primary Key (user_id,date);
+                 Primary Key (user_id,date),
 
-                 Foreign Key (user_id) references users(rcsid),
+                 Foreign Key (user_id) references users(rcsid)
 
         );
 		
