@@ -3,23 +3,23 @@
 
 1.make classes:
   classes: 
-  *all_user: 
+  * all_user: 
    variables: RCSID
    functions: mainPage, download, comment, rate, flag, login, logout, search.
    
    Base on priority make classes:
-   *Moderator: 
+   * Moderator: 
     functions: banUser, unBanUser, removeCommand,removeProject
 
-   *Admin:
+   * Admin:
     functions: change privilege level
 
 
-  *non-rpi-user:
+  * non-rpi-user:
    download,search,mainPage
 
 
-  *Project:
+  * Project:
    variables:
    Title, Description, Size, Date, Project location (link, files), Downloads, Class,       
    uploader, major, school
