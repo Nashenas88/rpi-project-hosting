@@ -97,11 +97,7 @@ CREATE TABLE moderateusers(
                  Foreign Key (user_id) references users(rcsid),
 
         );
-
-DROP TABLE ratings;
-DROP TABLE comments;
-DROP TABLE projects;
-DROP TABLE users;		
+		
 
 
 Here is code to drop tables, in order to drop users, other tables has to be droped, since they reference users.
@@ -109,4 +105,5 @@ Here is code to drop tables, in order to drop users, other tables has to be drop
 DROP TABLE ratings;
 DROP TABLE comments;
 DROP TABLE projects;
-DROP TABLE users;		
+DROP TABLE moderateusers;
+DROP TABLE users;
