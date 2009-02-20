@@ -65,7 +65,7 @@ define("CAS_VERSION_2_0",'2.0');
  /**
   * Default path used when storing PGT's to file
   */
-define("CAS_PGT_STORAGE_FILE_DEFAULT_PATH",'/tmp');
+define("CAS_PGT_STORAGE_FILE_DEFAULT_PATH",'./CAS-1.0.1/tmp');
 /**
  * phpCAS::setPGTStorageFile()'s 2nd parameter to write plain text files
  */
@@ -176,7 +176,7 @@ define("PHPCAS_LANG_DEFAULT", PHPCAS_LANG_ENGLISH);
 /**
  * The default directory for the debug file under Unix.
  */
-define('DEFAULT_DEBUG_DIR','/tmp/');
+define('DEFAULT_DEBUG_DIR','./CAS-1.0.1/tmp/');
 
 /** @} */
 // ------------------------------------------------------------------------

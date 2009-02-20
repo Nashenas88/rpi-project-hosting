@@ -1,13 +1,14 @@
 <?php
-
-
-
 //
 
 // phpCAS simple client
 
 //
 
+/*******************************************
+Edit the CAS.php file to get rid of warnings. 
+Replace "/tmp" and "/tmp/" with a relative path like "./"
+*******************************************/
 
 
 // import phpCAS lib
@@ -62,19 +63,5 @@ $loggedIn = 1;
 session_register ("username");
 session_register ("loggedIn");
 header ("location:index.php");
-//session_start ();
-//require ("upper_header.php");
-//echo "Login";
-//require ("lower_header.php");
-//require ("menu.php");
-//echo "<h1>Successfull Authentication!</h1>";
-//echo "<p>the user's login is <b>";
-//echo phpCAS::getUser();
-//echo "</b>.</p>";
-//echo "<p>phpCAS version is <b>";
-//echo phpCAS::getVersion();
-//echo "</b>.</p>";
-//require ("footer.php");
-
 ?>
 
