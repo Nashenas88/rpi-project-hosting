@@ -18,7 +18,7 @@ function loggedIn ()
 <?php
 if (loggedIn () != 0)
 {
-  echo "\"logout.php\">Logout";
+  echo "\"login.php?logout\">Logout";
   echo "</a></td><td align=\"center\"><a href=\"upload.php\">Upload";
   echo "</a></td><td align=\"center\"><a href=\"projects.php\">Projects";
   echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";

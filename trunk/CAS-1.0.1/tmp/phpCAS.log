@@ -1,0 +1,774 @@
+C5AE .START ****************** [CAS.php:414]
+C5AE .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+C5AE .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+C5AE .|    <= ''
+C5AE .<= ''
+C5AE .=> phpCAS::setNoCasServerValidation() [login.php:30]
+C5AE .<= ''
+C5AE .=> phpCAS::forceAuthentication() [login.php:36]
+C5AE .|    => CASClient::forceAuthentication() [CAS.php:911]
+C5AE .|    |    => CASClient::isAuthenticated() [client.php:686]
+C5AE .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+C5AE .|    |    |    |    no user found [client.php:895]
+C5AE .|    |    |    <= false
+C5AE .|    |    |    no ticket found [client.php:825]
+C5AE .|    |    <= false
+C5AE .|    |    => CASClient::redirectToCas(false) [client.php:695]
+C5AE .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+C5AE .|    |    |    |    => CASClient::getURL() [client.php:331]
+C5AE .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+C5AE .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+C5AE .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+C5AE .|    |    |    exit()
+C5AE .|    |    |    -
+C5AE .|    |    -
+C5AE .|    -
+23EA .START ****************** [CAS.php:414]
+23EA .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+23EA .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+23EA .|    |    Session ID: ST393608avWT9I1jA1ioaluA1Ru
+23EA .|    |    => CASClient::getURL() [client.php:517]
+23EA .|    |    <= 'http://rph.myrpi.org/login.php'
+23EA .|    |    ST or PT 'ST-39360-8avWT9I1jA1ioaluA1Ru' found [client.php:594]
+23EA .|    <= ''
+23EA .<= ''
+23EA .=> phpCAS::setNoCasServerValidation() [login.php:30]
+23EA .<= ''
+23EA .=> phpCAS::forceAuthentication() [login.php:36]
+23EA .|    => CASClient::forceAuthentication() [CAS.php:911]
+23EA .|    |    => CASClient::isAuthenticated() [client.php:686]
+23EA .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+23EA .|    |    |    |    no user found [client.php:895]
+23EA .|    |    |    <= false
+23EA .|    |    |    PT `ST-39360-8avWT9I1jA1ioaluA1Ru' is present [client.php:812]
+23EA .|    |    |    => CASClient::validatePT('', NULL, NULL) [client.php:813]
+23EA .|    |    |    |    => CASClient::getURL() [client.php:396]
+23EA .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+23EA .|    |    |    |    => CASClient::readURL('https://login.rpi.edu:443/cas/proxyValidate?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php&ticket=ST-39360-8avWT9I1jA1ioaluA1Ru', '', NULL, NULL, NULL) [client.php:2081]
+23EA .|    |    |    |    <= true
+23EA .|    |    |    <= true
+23EA .|    |    |    PT `ST-39360-8avWT9I1jA1ioaluA1Ru' was validated [client.php:814]
+23EA .|    |    <= true
+23EA .|    |    no need to authenticate [client.php:688]
+23EA .|    <= true
+23EA .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+23EA .<= ''
+1A7E .START ****************** [CAS.php:414]
+1A7E .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+1A7E .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+1A7E .|    <= ''
+1A7E .<= ''
+1A7E .=> phpCAS::setNoCasServerValidation() [login.php:30]
+1A7E .<= ''
+1A7E .=> phpCAS::forceAuthentication() [login.php:36]
+1A7E .|    => CASClient::forceAuthentication() [CAS.php:911]
+1A7E .|    |    => CASClient::isAuthenticated() [client.php:686]
+1A7E .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+1A7E .|    |    |    |    no user found [client.php:895]
+1A7E .|    |    |    <= false
+1A7E .|    |    |    no ticket found [client.php:825]
+1A7E .|    |    <= false
+1A7E .|    |    => CASClient::redirectToCas(false) [client.php:695]
+1A7E .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+1A7E .|    |    |    |    => CASClient::getURL() [client.php:331]
+1A7E .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+1A7E .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+1A7E .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+1A7E .|    |    |    exit()
+1A7E .|    |    |    -
+1A7E .|    |    -
+1A7E .|    -
+1B7B .START ****************** [CAS.php:414]
+1B7B .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+1B7B .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+1B7B .|    |    Session ID: ST39361VQQm6bilJcP6ojTgdya1
+1B7B .|    |    => CASClient::getURL() [client.php:517]
+1B7B .|    |    <= 'http://rph.myrpi.org/login.php'
+1B7B .|    |    ST or PT 'ST-39361-VQQm6bilJcP6ojTgdya1' found [client.php:594]
+1B7B .|    <= ''
+1B7B .<= ''
+1B7B .=> phpCAS::setNoCasServerValidation() [login.php:30]
+1B7B .<= ''
+1B7B .=> phpCAS::forceAuthentication() [login.php:36]
+1B7B .|    => CASClient::forceAuthentication() [CAS.php:911]
+1B7B .|    |    => CASClient::isAuthenticated() [client.php:686]
+1B7B .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+1B7B .|    |    |    |    no user found [client.php:895]
+1B7B .|    |    |    <= false
+1B7B .|    |    |    PT `ST-39361-VQQm6bilJcP6ojTgdya1' is present [client.php:812]
+1B7B .|    |    |    => CASClient::validatePT('', NULL, NULL) [client.php:813]
+1B7B .|    |    |    |    => CASClient::getURL() [client.php:396]
+1B7B .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+1B7B .|    |    |    |    => CASClient::readURL('https://login.rpi.edu:443/cas/proxyValidate?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php&ticket=ST-39361-VQQm6bilJcP6ojTgdya1', '', NULL, NULL, NULL) [client.php:2081]
+1B7B .|    |    |    |    <= true
+1B7B .|    |    |    <= true
+1B7B .|    |    |    PT `ST-39361-VQQm6bilJcP6ojTgdya1' was validated [client.php:814]
+1B7B .|    |    <= true
+1B7B .|    |    no need to authenticate [client.php:688]
+1B7B .|    <= true
+1B7B .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+1B7B .<= ''
+7687 .START ****************** [CAS.php:414]
+7687 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+7687 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+7687 .|    <= ''
+7687 .<= ''
+7687 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+7687 .<= ''
+7687 .=> phpCAS::forceAuthentication() [login.php:36]
+7687 .|    => CASClient::forceAuthentication() [CAS.php:911]
+7687 .|    |    => CASClient::isAuthenticated() [client.php:686]
+7687 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+7687 .|    |    |    |    no user found [client.php:895]
+7687 .|    |    |    <= false
+7687 .|    |    |    no ticket found [client.php:825]
+7687 .|    |    <= false
+7687 .|    |    => CASClient::redirectToCas(false) [client.php:695]
+7687 .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+7687 .|    |    |    |    => CASClient::getURL() [client.php:331]
+7687 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+7687 .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+7687 .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+7687 .|    |    |    exit()
+7687 .|    |    |    -
+7687 .|    |    -
+7687 .|    -
+030E .START ****************** [CAS.php:414]
+030E .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+030E .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+030E .|    |    Session ID: ST39362b14DbSSfwaNORWG8IT1E
+030E .|    |    => CASClient::getURL() [client.php:517]
+030E .|    |    <= 'http://rph.myrpi.org/login.php'
+030E .|    |    ST or PT 'ST-39362-b14DbSSfwaNORWG8IT1E' found [client.php:594]
+030E .|    <= ''
+030E .<= ''
+030E .=> phpCAS::setNoCasServerValidation() [login.php:30]
+030E .<= ''
+030E .=> phpCAS::forceAuthentication() [login.php:36]
+030E .|    => CASClient::forceAuthentication() [CAS.php:911]
+030E .|    |    => CASClient::isAuthenticated() [client.php:686]
+030E .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+030E .|    |    |    |    no user found [client.php:895]
+030E .|    |    |    <= false
+030E .|    |    |    PT `ST-39362-b14DbSSfwaNORWG8IT1E' is present [client.php:812]
+030E .|    |    |    => CASClient::validatePT('', NULL, NULL) [client.php:813]
+030E .|    |    |    |    => CASClient::getURL() [client.php:396]
+030E .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+030E .|    |    |    |    => CASClient::readURL('https://login.rpi.edu:443/cas/proxyValidate?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php&ticket=ST-39362-b14DbSSfwaNORWG8IT1E', '', NULL, NULL, NULL) [client.php:2081]
+030E .|    |    |    |    <= true
+030E .|    |    |    <= true
+030E .|    |    |    PT `ST-39362-b14DbSSfwaNORWG8IT1E' was validated [client.php:814]
+030E .|    |    <= true
+030E .|    |    no need to authenticate [client.php:688]
+030E .|    <= true
+030E .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+030E .<= ''
+3CA4 .START ****************** [CAS.php:414]
+3CA4 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+3CA4 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+3CA4 .|    <= ''
+3CA4 .<= ''
+3CA4 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+3CA4 .<= ''
+3CA4 .=> phpCAS::forceAuthentication() [login.php:36]
+3CA4 .|    => CASClient::forceAuthentication() [CAS.php:911]
+3CA4 .|    |    => CASClient::isAuthenticated() [client.php:686]
+3CA4 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+3CA4 .|    |    |    |    no user found [client.php:895]
+3CA4 .|    |    |    <= false
+3CA4 .|    |    |    no ticket found [client.php:825]
+3CA4 .|    |    <= false
+3CA4 .|    |    => CASClient::redirectToCas(false) [client.php:695]
+3CA4 .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+3CA4 .|    |    |    |    => CASClient::getURL() [client.php:331]
+3CA4 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+3CA4 .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+3CA4 .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+3CA4 .|    |    |    exit()
+3CA4 .|    |    |    -
+3CA4 .|    |    -
+3CA4 .|    -
+93D3 .START ****************** [CAS.php:414]
+93D3 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+93D3 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+93D3 .|    |    Session ID: ST39363E439mmw3gPuXbbiuUP9r
+93D3 .|    |    => CASClient::getURL() [client.php:517]
+93D3 .|    |    <= 'http://rph.myrpi.org/login.php'
+93D3 .|    |    ST or PT 'ST-39363-E439mmw3gPuXbbiuUP9r' found [client.php:594]
+93D3 .|    <= ''
+93D3 .<= ''
+93D3 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+93D3 .<= ''
+93D3 .=> phpCAS::forceAuthentication() [login.php:36]
+93D3 .|    => CASClient::forceAuthentication() [CAS.php:911]
+93D3 .|    |    => CASClient::isAuthenticated() [client.php:686]
+93D3 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+93D3 .|    |    |    |    no user found [client.php:895]
+93D3 .|    |    |    <= false
+93D3 .|    |    |    PT `ST-39363-E439mmw3gPuXbbiuUP9r' is present [client.php:812]
+93D3 .|    |    |    => CASClient::validatePT('', NULL, NULL) [client.php:813]
+93D3 .|    |    |    |    => CASClient::getURL() [client.php:396]
+93D3 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+93D3 .|    |    |    |    => CASClient::readURL('https://login.rpi.edu:443/cas/proxyValidate?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php&ticket=ST-39363-E439mmw3gPuXbbiuUP9r', '', NULL, NULL, NULL) [client.php:2081]
+93D3 .|    |    |    |    <= true
+93D3 .|    |    |    <= true
+93D3 .|    |    |    PT `ST-39363-E439mmw3gPuXbbiuUP9r' was validated [client.php:814]
+93D3 .|    |    <= true
+93D3 .|    |    no need to authenticate [client.php:688]
+93D3 .|    <= true
+93D3 .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+93D3 .<= ''
+1E44 .START ****************** [CAS.php:414]
+1E44 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+1E44 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+1E44 .|    <= ''
+1E44 .<= ''
+1E44 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+1E44 .<= ''
+1E44 .=> phpCAS::forceAuthentication() [login.php:36]
+1E44 .|    => CASClient::forceAuthentication() [CAS.php:911]
+1E44 .|    |    => CASClient::isAuthenticated() [client.php:686]
+1E44 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+1E44 .|    |    |    |    no user found [client.php:895]
+1E44 .|    |    |    <= false
+1E44 .|    |    |    no ticket found [client.php:825]
+1E44 .|    |    <= false
+1E44 .|    |    => CASClient::redirectToCas(false) [client.php:695]
+1E44 .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+1E44 .|    |    |    |    => CASClient::getURL() [client.php:331]
+1E44 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+1E44 .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+1E44 .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+1E44 .|    |    |    exit()
+1E44 .|    |    |    -
+1E44 .|    |    -
+1E44 .|    -
+C2A9 .START ****************** [CAS.php:414]
+C2A9 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+C2A9 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+C2A9 .|    |    Session ID: ST393661MwZcTNG4rhaT4bx5tuv
+C2A9 .|    |    => CASClient::getURL() [client.php:517]
+C2A9 .|    |    <= 'http://rph.myrpi.org/login.php'
+C2A9 .|    |    ST or PT 'ST-39366-1MwZcTNG4rhaT4bx5tuv' found [client.php:594]
+C2A9 .|    <= ''
+C2A9 .<= ''
+C2A9 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+C2A9 .<= ''
+C2A9 .=> phpCAS::forceAuthentication() [login.php:36]
+C2A9 .|    => CASClient::forceAuthentication() [CAS.php:911]
+C2A9 .|    |    => CASClient::isAuthenticated() [client.php:686]
+C2A9 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+C2A9 .|    |    |    |    no user found [client.php:895]
+C2A9 .|    |    |    <= false
+C2A9 .|    |    |    PT `ST-39366-1MwZcTNG4rhaT4bx5tuv' is present [client.php:812]
+C2A9 .|    |    |    => CASClient::validatePT('', NULL, NULL) [client.php:813]
+C2A9 .|    |    |    |    => CASClient::getURL() [client.php:396]
+C2A9 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+C2A9 .|    |    |    |    => CASClient::readURL('https://login.rpi.edu:443/cas/proxyValidate?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php&ticket=ST-39366-1MwZcTNG4rhaT4bx5tuv', '', NULL, NULL, NULL) [client.php:2081]
+C2A9 .|    |    |    |    <= true
+C2A9 .|    |    |    <= true
+C2A9 .|    |    |    PT `ST-39366-1MwZcTNG4rhaT4bx5tuv' was validated [client.php:814]
+C2A9 .|    |    <= true
+C2A9 .|    |    no need to authenticate [client.php:688]
+C2A9 .|    <= true
+C2A9 .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+C2A9 .<= ''
+9407 .START ****************** [CAS.php:414]
+9407 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+9407 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+9407 .|    <= ''
+9407 .<= ''
+9407 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+9407 .<= ''
+9407 .=> phpCAS::forceAuthentication() [login.php:36]
+9407 .|    => CASClient::forceAuthentication() [CAS.php:911]
+9407 .|    |    => CASClient::isAuthenticated() [client.php:686]
+9407 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+9407 .|    |    |    |    user = `mattea' [client.php:892]
+9407 .|    |    |    <= true
+9407 .|    |    |    user was already authenticated, no need to look for tickets [client.php:794]
+9407 .|    |    <= true
+9407 .|    |    no need to authenticate [client.php:688]
+9407 .|    <= true
+9407 .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+9407 .<= ''
+9407 .=> phpCAS::logout() [login.php:51]
+9407 .|    => CASClient::logout(array ()) [CAS.php:1135]
+9407 .|    |    exit()
+9407 .|    |    -
+9407 .|    -
+134B .START ****************** [CAS.php:414]
+134B .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+134B .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+134B .|    <= ''
+134B .<= ''
+134B .=> phpCAS::setNoCasServerValidation() [login.php:30]
+134B .<= ''
+134B .=> phpCAS::forceAuthentication() [login.php:36]
+134B .|    => CASClient::forceAuthentication() [CAS.php:911]
+134B .|    |    => CASClient::isAuthenticated() [client.php:686]
+134B .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+134B .|    |    |    |    no user found [client.php:895]
+134B .|    |    |    <= false
+134B .|    |    |    no ticket found [client.php:825]
+134B .|    |    <= false
+134B .|    |    => CASClient::redirectToCas(false) [client.php:695]
+134B .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+134B .|    |    |    |    => CASClient::getURL() [client.php:331]
+134B .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+134B .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+134B .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+134B .|    |    |    exit()
+134B .|    |    |    -
+134B .|    |    -
+134B .|    -
+E2CC .START ****************** [CAS.php:414]
+E2CC .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+E2CC .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+E2CC .|    |    Session ID: ST39367NsDTXo8zaIpgzw0uXzQQ
+E2CC .|    |    => CASClient::getURL() [client.php:517]
+E2CC .|    |    <= 'http://rph.myrpi.org/login.php'
+E2CC .|    |    ST or PT 'ST-39367-NsDTXo8zaIpgzw0uXzQQ' found [client.php:594]
+E2CC .|    <= ''
+E2CC .<= ''
+E2CC .=> phpCAS::setNoCasServerValidation() [login.php:30]
+E2CC .<= ''
+E2CC .=> phpCAS::forceAuthentication() [login.php:36]
+E2CC .|    => CASClient::forceAuthentication() [CAS.php:911]
+E2CC .|    |    => CASClient::isAuthenticated() [client.php:686]
+E2CC .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+E2CC .|    |    |    |    no user found [client.php:895]
+E2CC .|    |    |    <= false
+E2CC .|    |    |    PT `ST-39367-NsDTXo8zaIpgzw0uXzQQ' is present [client.php:812]
+E2CC .|    |    |    => CASClient::validatePT('', NULL, NULL) [client.php:813]
+E2CC .|    |    |    |    => CASClient::getURL() [client.php:396]
+E2CC .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+E2CC .|    |    |    |    => CASClient::readURL('https://login.rpi.edu:443/cas/proxyValidate?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php&ticket=ST-39367-NsDTXo8zaIpgzw0uXzQQ', '', NULL, NULL, NULL) [client.php:2081]
+E2CC .|    |    |    |    <= true
+E2CC .|    |    |    <= true
+E2CC .|    |    |    PT `ST-39367-NsDTXo8zaIpgzw0uXzQQ' was validated [client.php:814]
+E2CC .|    |    <= true
+E2CC .|    |    no need to authenticate [client.php:688]
+E2CC .|    <= true
+E2CC .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+E2CC .<= ''
+120F .START ****************** [CAS.php:414]
+120F .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+120F .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+120F .|    <= ''
+120F .<= ''
+120F .=> phpCAS::setNoCasServerValidation() [login.php:30]
+120F .<= ''
+120F .=> phpCAS::forceAuthentication() [login.php:36]
+120F .|    => CASClient::forceAuthentication() [CAS.php:911]
+120F .|    |    => CASClient::isAuthenticated() [client.php:686]
+120F .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+120F .|    |    |    |    user = `mattea' [client.php:892]
+120F .|    |    |    <= true
+120F .|    |    |    user was already authenticated, no need to look for tickets [client.php:794]
+120F .|    |    <= true
+120F .|    |    no need to authenticate [client.php:688]
+120F .|    <= true
+120F .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+120F .<= ''
+120F .=> phpCAS::logout() [login.php:51]
+120F .|    => CASClient::logout(array ()) [CAS.php:1135]
+120F .|    |    exit()
+120F .|    |    -
+120F .|    -
+F2C1 .START ****************** [CAS.php:414]
+F2C1 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+F2C1 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+F2C1 .|    <= ''
+F2C1 .<= ''
+F2C1 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+F2C1 .<= ''
+F2C1 .=> phpCAS::forceAuthentication() [login.php:36]
+F2C1 .|    => CASClient::forceAuthentication() [CAS.php:911]
+F2C1 .|    |    => CASClient::isAuthenticated() [client.php:686]
+F2C1 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+F2C1 .|    |    |    |    no user found [client.php:895]
+F2C1 .|    |    |    <= false
+F2C1 .|    |    |    no ticket found [client.php:825]
+F2C1 .|    |    <= false
+F2C1 .|    |    => CASClient::redirectToCas(false) [client.php:695]
+F2C1 .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+F2C1 .|    |    |    |    => CASClient::getURL() [client.php:331]
+F2C1 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+F2C1 .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+F2C1 .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+F2C1 .|    |    |    exit()
+F2C1 .|    |    |    -
+F2C1 .|    |    -
+F2C1 .|    -
+05E1 .START ****************** [CAS.php:414]
+05E1 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+05E1 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+05E1 .|    |    Session ID: ST39368LTFhzumDk3TYblsELs7z
+05E1 .|    |    => CASClient::getURL() [client.php:517]
+05E1 .|    |    <= 'http://rph.myrpi.org/login.php'
+05E1 .|    |    ST or PT 'ST-39368-LTFhzumDk3TYblsELs7z' found [client.php:594]
+05E1 .|    <= ''
+05E1 .<= ''
+05E1 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+05E1 .<= ''
+05E1 .=> phpCAS::forceAuthentication() [login.php:36]
+05E1 .|    => CASClient::forceAuthentication() [CAS.php:911]
+05E1 .|    |    => CASClient::isAuthenticated() [client.php:686]
+05E1 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+05E1 .|    |    |    |    no user found [client.php:895]
+05E1 .|    |    |    <= false
+05E1 .|    |    |    PT `ST-39368-LTFhzumDk3TYblsELs7z' is present [client.php:812]
+05E1 .|    |    |    => CASClient::validatePT('', NULL, NULL) [client.php:813]
+05E1 .|    |    |    |    => CASClient::getURL() [client.php:396]
+05E1 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+05E1 .|    |    |    |    => CASClient::readURL('https://login.rpi.edu:443/cas/proxyValidate?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php&ticket=ST-39368-LTFhzumDk3TYblsELs7z', '', NULL, NULL, NULL) [client.php:2081]
+05E1 .|    |    |    |    <= true
+05E1 .|    |    |    <= true
+05E1 .|    |    |    PT `ST-39368-LTFhzumDk3TYblsELs7z' was validated [client.php:814]
+05E1 .|    |    <= true
+05E1 .|    |    no need to authenticate [client.php:688]
+05E1 .|    <= true
+05E1 .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+05E1 .<= ''
+1D73 .START ****************** [CAS.php:414]
+1D73 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+1D73 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+1D73 .|    <= ''
+1D73 .<= ''
+1D73 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+1D73 .<= ''
+1D73 .=> phpCAS::forceAuthentication() [login.php:36]
+1D73 .|    => CASClient::forceAuthentication() [CAS.php:911]
+1D73 .|    |    => CASClient::isAuthenticated() [client.php:686]
+1D73 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+1D73 .|    |    |    |    user = `mattea' [client.php:892]
+1D73 .|    |    |    <= true
+1D73 .|    |    |    user was already authenticated, no need to look for tickets [client.php:794]
+1D73 .|    |    <= true
+1D73 .|    |    no need to authenticate [client.php:688]
+1D73 .|    <= true
+1D73 .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+1D73 .<= ''
+1D73 .=> phpCAS::logout() [login.php:51]
+1D73 .|    => CASClient::logout(array ()) [CAS.php:1135]
+1D73 .|    |    exit()
+1D73 .|    |    -
+1D73 .|    -
+0B28 .START ****************** [CAS.php:414]
+0B28 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+0B28 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+0B28 .|    <= ''
+0B28 .<= ''
+0B28 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+0B28 .<= ''
+0B28 .=> phpCAS::forceAuthentication() [login.php:36]
+0B28 .|    => CASClient::forceAuthentication() [CAS.php:911]
+0B28 .|    |    => CASClient::isAuthenticated() [client.php:686]
+0B28 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+0B28 .|    |    |    |    no user found [client.php:895]
+0B28 .|    |    |    <= false
+0B28 .|    |    |    no ticket found [client.php:825]
+0B28 .|    |    <= false
+0B28 .|    |    => CASClient::redirectToCas(false) [client.php:695]
+0B28 .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+0B28 .|    |    |    |    => CASClient::getURL() [client.php:331]
+0B28 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+0B28 .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+0B28 .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+0B28 .|    |    |    exit()
+0B28 .|    |    |    -
+0B28 .|    |    -
+0B28 .|    -
+B960 .START ****************** [CAS.php:414]
+B960 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+B960 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+B960 .|    <= ''
+B960 .<= ''
+B960 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+B960 .<= ''
+B960 .=> phpCAS::forceAuthentication() [login.php:36]
+B960 .|    => CASClient::forceAuthentication() [CAS.php:911]
+B960 .|    |    => CASClient::isAuthenticated() [client.php:686]
+B960 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+B960 .|    |    |    |    no user found [client.php:895]
+B960 .|    |    |    <= false
+B960 .|    |    |    no ticket found [client.php:825]
+B960 .|    |    <= false
+B960 .|    |    => CASClient::redirectToCas(false) [client.php:695]
+B960 .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+B960 .|    |    |    |    => CASClient::getURL() [client.php:331]
+B960 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+B960 .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+B960 .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+B960 .|    |    |    exit()
+B960 .|    |    |    -
+B960 .|    |    -
+B960 .|    -
+860A .START ****************** [CAS.php:414]
+860A .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+860A .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+860A .|    |    Session ID: ST39369Qx5Opus3ME7Mrp8jyLoB
+860A .|    |    => CASClient::getURL() [client.php:517]
+860A .|    |    <= 'http://rph.myrpi.org/login.php'
+860A .|    |    ST or PT 'ST-39369-Qx5Opus3ME7Mrp8jyLoB' found [client.php:594]
+860A .|    <= ''
+860A .<= ''
+860A .=> phpCAS::setNoCasServerValidation() [login.php:30]
+860A .<= ''
+860A .=> phpCAS::forceAuthentication() [login.php:36]
+860A .|    => CASClient::forceAuthentication() [CAS.php:911]
+860A .|    |    => CASClient::isAuthenticated() [client.php:686]
+860A .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+860A .|    |    |    |    no user found [client.php:895]
+860A .|    |    |    <= false
+860A .|    |    |    PT `ST-39369-Qx5Opus3ME7Mrp8jyLoB' is present [client.php:812]
+860A .|    |    |    => CASClient::validatePT('', NULL, NULL) [client.php:813]
+860A .|    |    |    |    => CASClient::getURL() [client.php:396]
+860A .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+860A .|    |    |    |    => CASClient::readURL('https://login.rpi.edu:443/cas/proxyValidate?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php&ticket=ST-39369-Qx5Opus3ME7Mrp8jyLoB', '', NULL, NULL, NULL) [client.php:2081]
+860A .|    |    |    |    <= true
+860A .|    |    |    <= true
+860A .|    |    |    PT `ST-39369-Qx5Opus3ME7Mrp8jyLoB' was validated [client.php:814]
+860A .|    |    <= true
+860A .|    |    no need to authenticate [client.php:688]
+860A .|    <= true
+860A .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+860A .<= ''
+EDB8 .START ****************** [CAS.php:414]
+EDB8 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:24]
+EDB8 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+EDB8 .|    <= ''
+EDB8 .<= ''
+EDB8 .=> phpCAS::setNoCasServerValidation() [login.php:30]
+EDB8 .<= ''
+EDB8 .=> phpCAS::forceAuthentication() [login.php:36]
+EDB8 .|    => CASClient::forceAuthentication() [CAS.php:911]
+EDB8 .|    |    => CASClient::isAuthenticated() [client.php:686]
+EDB8 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+EDB8 .|    |    |    |    user = `mattea' [client.php:892]
+EDB8 .|    |    |    <= true
+EDB8 .|    |    |    user was already authenticated, no need to look for tickets [client.php:794]
+EDB8 .|    |    <= true
+EDB8 .|    |    no need to authenticate [client.php:688]
+EDB8 .|    <= true
+EDB8 .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+EDB8 .<= ''
+EDB8 .=> phpCAS::logout() [login.php:51]
+EDB8 .|    => CASClient::logout(array ()) [CAS.php:1135]
+EDB8 .|    |    exit()
+EDB8 .|    |    -
+EDB8 .|    -
+3607 .START ****************** [CAS.php:414]
+3607 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:25]
+3607 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+3607 .|    <= ''
+3607 .<= ''
+3607 .=> phpCAS::setNoCasServerValidation() [login.php:31]
+3607 .<= ''
+3607 .=> phpCAS::forceAuthentication() [login.php:37]
+3607 .|    => CASClient::forceAuthentication() [CAS.php:911]
+3607 .|    |    => CASClient::isAuthenticated() [client.php:686]
+3607 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+3607 .|    |    |    |    no user found [client.php:895]
+3607 .|    |    |    <= false
+3607 .|    |    |    no ticket found [client.php:825]
+3607 .|    |    <= false
+3607 .|    |    => CASClient::redirectToCas(false) [client.php:695]
+3607 .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+3607 .|    |    |    |    => CASClient::getURL() [client.php:331]
+3607 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+3607 .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+3607 .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+3607 .|    |    |    exit()
+3607 .|    |    |    -
+3607 .|    |    -
+3607 .|    -
+14C5 .START ****************** [CAS.php:414]
+14C5 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:25]
+14C5 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+14C5 .|    |    Session ID: ST39371ka5vmUQvEd39WPIZsoY8
+14C5 .|    |    => CASClient::getURL() [client.php:517]
+14C5 .|    |    <= 'http://rph.myrpi.org/login.php'
+14C5 .|    |    ST or PT 'ST-39371-ka5vmUQvEd39WPIZsoY8' found [client.php:594]
+14C5 .|    <= ''
+14C5 .<= ''
+14C5 .=> phpCAS::setNoCasServerValidation() [login.php:31]
+14C5 .<= ''
+14C5 .=> phpCAS::forceAuthentication() [login.php:37]
+14C5 .|    => CASClient::forceAuthentication() [CAS.php:911]
+14C5 .|    |    => CASClient::isAuthenticated() [client.php:686]
+14C5 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+14C5 .|    |    |    |    no user found [client.php:895]
+14C5 .|    |    |    <= false
+14C5 .|    |    |    PT `ST-39371-ka5vmUQvEd39WPIZsoY8' is present [client.php:812]
+14C5 .|    |    |    => CASClient::validatePT('', NULL, NULL) [client.php:813]
+14C5 .|    |    |    |    => CASClient::getURL() [client.php:396]
+14C5 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+14C5 .|    |    |    |    => CASClient::readURL('https://login.rpi.edu:443/cas/proxyValidate?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php&ticket=ST-39371-ka5vmUQvEd39WPIZsoY8', '', NULL, NULL, NULL) [client.php:2081]
+14C5 .|    |    |    |    <= true
+14C5 .|    |    |    <= true
+14C5 .|    |    |    PT `ST-39371-ka5vmUQvEd39WPIZsoY8' was validated [client.php:814]
+14C5 .|    |    <= true
+14C5 .|    |    no need to authenticate [client.php:688]
+14C5 .|    <= true
+14C5 .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+14C5 .<= ''
+F5F2 .START ****************** [CAS.php:414]
+F5F2 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:25]
+F5F2 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+F5F2 .|    <= ''
+F5F2 .<= ''
+F5F2 .=> phpCAS::setNoCasServerValidation() [login.php:31]
+F5F2 .<= ''
+F5F2 .=> phpCAS::forceAuthentication() [login.php:37]
+F5F2 .|    => CASClient::forceAuthentication() [CAS.php:911]
+F5F2 .|    |    => CASClient::isAuthenticated() [client.php:686]
+F5F2 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+F5F2 .|    |    |    |    user = `mattea' [client.php:892]
+F5F2 .|    |    |    <= true
+F5F2 .|    |    |    user was already authenticated, no need to look for tickets [client.php:794]
+F5F2 .|    |    <= true
+F5F2 .|    |    no need to authenticate [client.php:688]
+F5F2 .|    <= true
+F5F2 .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+F5F2 .<= ''
+F5F2 .=> phpCAS::logout() [login.php:52]
+F5F2 .|    => CASClient::logout(array ()) [CAS.php:1135]
+F5F2 .|    |    exit()
+F5F2 .|    |    -
+F5F2 .|    -
+1855 .START ****************** [CAS.php:414]
+1855 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:25]
+1855 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+1855 .|    <= ''
+1855 .<= ''
+1855 .=> phpCAS::setNoCasServerValidation() [login.php:31]
+1855 .<= ''
+1855 .=> phpCAS::forceAuthentication() [login.php:37]
+1855 .|    => CASClient::forceAuthentication() [CAS.php:911]
+1855 .|    |    => CASClient::isAuthenticated() [client.php:686]
+1855 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+1855 .|    |    |    |    no user found [client.php:895]
+1855 .|    |    |    <= false
+1855 .|    |    |    no ticket found [client.php:825]
+1855 .|    |    <= false
+1855 .|    |    => CASClient::redirectToCas(false) [client.php:695]
+1855 .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+1855 .|    |    |    |    => CASClient::getURL() [client.php:331]
+1855 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+1855 .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+1855 .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+1855 .|    |    |    exit()
+1855 .|    |    |    -
+1855 .|    |    -
+1855 .|    -
+4B8D .START ****************** [CAS.php:414]
+4B8D .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:25]
+4B8D .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+4B8D .|    |    Session ID: ST39372UlhseAoloqkCiHA2Pa7T
+4B8D .|    |    => CASClient::getURL() [client.php:517]
+4B8D .|    |    <= 'http://rph.myrpi.org/login.php'
+4B8D .|    |    ST or PT 'ST-39372-UlhseAoloqkCiHA2Pa7T' found [client.php:594]
+4B8D .|    <= ''
+4B8D .<= ''
+4B8D .=> phpCAS::setNoCasServerValidation() [login.php:31]
+4B8D .<= ''
+4B8D .=> phpCAS::forceAuthentication() [login.php:37]
+4B8D .|    => CASClient::forceAuthentication() [CAS.php:911]
+4B8D .|    |    => CASClient::isAuthenticated() [client.php:686]
+4B8D .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+4B8D .|    |    |    |    no user found [client.php:895]
+4B8D .|    |    |    <= false
+4B8D .|    |    |    PT `ST-39372-UlhseAoloqkCiHA2Pa7T' is present [client.php:812]
+4B8D .|    |    |    => CASClient::validatePT('', NULL, NULL) [client.php:813]
+4B8D .|    |    |    |    => CASClient::getURL() [client.php:396]
+4B8D .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+4B8D .|    |    |    |    => CASClient::readURL('https://login.rpi.edu:443/cas/proxyValidate?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php&ticket=ST-39372-UlhseAoloqkCiHA2Pa7T', '', NULL, NULL, NULL) [client.php:2081]
+4B8D .|    |    |    |    <= true
+4B8D .|    |    |    <= true
+4B8D .|    |    |    PT `ST-39372-UlhseAoloqkCiHA2Pa7T' was validated [client.php:814]
+4B8D .|    |    <= true
+4B8D .|    |    no need to authenticate [client.php:688]
+4B8D .|    <= true
+4B8D .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+4B8D .<= ''
+936A .START ****************** [CAS.php:414]
+936A .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:25]
+936A .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+936A .|    <= ''
+936A .<= ''
+936A .=> phpCAS::setNoCasServerValidation() [login.php:31]
+936A .<= ''
+936A .=> phpCAS::forceAuthentication() [login.php:37]
+936A .|    => CASClient::forceAuthentication() [CAS.php:911]
+936A .|    |    => CASClient::isAuthenticated() [client.php:686]
+936A .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+936A .|    |    |    |    user = `mattea' [client.php:892]
+936A .|    |    |    <= true
+936A .|    |    |    user was already authenticated, no need to look for tickets [client.php:794]
+936A .|    |    <= true
+936A .|    |    no need to authenticate [client.php:688]
+936A .|    <= true
+936A .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+936A .<= ''
+936A .=> phpCAS::logout() [login.php:52]
+936A .|    => CASClient::logout(array ()) [CAS.php:1135]
+936A .|    |    exit()
+936A .|    |    -
+936A .|    -
+18F0 .START ****************** [CAS.php:414]
+18F0 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:25]
+18F0 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+18F0 .|    <= ''
+18F0 .<= ''
+18F0 .=> phpCAS::setNoCasServerValidation() [login.php:31]
+18F0 .<= ''
+18F0 .=> phpCAS::forceAuthentication() [login.php:37]
+18F0 .|    => CASClient::forceAuthentication() [CAS.php:911]
+18F0 .|    |    => CASClient::isAuthenticated() [client.php:686]
+18F0 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+18F0 .|    |    |    |    no user found [client.php:895]
+18F0 .|    |    |    <= false
+18F0 .|    |    |    no ticket found [client.php:825]
+18F0 .|    |    <= false
+18F0 .|    |    => CASClient::redirectToCas(false) [client.php:695]
+18F0 .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+18F0 .|    |    |    |    => CASClient::getURL() [client.php:331]
+18F0 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+18F0 .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php'
+18F0 .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php
+18F0 .|    |    |    exit()
+18F0 .|    |    |    -
+18F0 .|    |    -
+18F0 .|    -
+9422 .START ****************** [CAS.php:414]
+9422 .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:25]
+9422 .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+9422 .|    |    Session ID: ST3937307PgEtNSemocYBC76Awp
+9422 .|    |    => CASClient::getURL() [client.php:517]
+9422 .|    |    <= 'http://rph.myrpi.org/login.php'
+9422 .|    |    ST or PT 'ST-39373-07PgEtNSemocYBC76Awp' found [client.php:594]
+9422 .|    <= ''
+9422 .<= ''
+9422 .=> phpCAS::setNoCasServerValidation() [login.php:31]
+9422 .<= ''
+9422 .=> phpCAS::forceAuthentication() [login.php:37]
+9422 .|    => CASClient::forceAuthentication() [CAS.php:911]
+9422 .|    |    => CASClient::isAuthenticated() [client.php:686]
+9422 .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+9422 .|    |    |    |    no user found [client.php:895]
+9422 .|    |    |    <= false
+9422 .|    |    |    PT `ST-39373-07PgEtNSemocYBC76Awp' is present [client.php:812]
+9422 .|    |    |    => CASClient::validatePT('', NULL, NULL) [client.php:813]
+9422 .|    |    |    |    => CASClient::getURL() [client.php:396]
+9422 .|    |    |    |    <= 'http://rph.myrpi.org/login.php'
+9422 .|    |    |    |    => CASClient::readURL('https://login.rpi.edu:443/cas/proxyValidate?service=http%3A%2F%2Frph.myrpi.org%2Flogin.php&ticket=ST-39373-07PgEtNSemocYBC76Awp', '', NULL, NULL, NULL) [client.php:2081]
+9422 .|    |    |    |    <= true
+9422 .|    |    |    <= true
+9422 .|    |    |    PT `ST-39373-07PgEtNSemocYBC76Awp' was validated [client.php:814]
+9422 .|    |    <= true
+9422 .|    |    no need to authenticate [client.php:688]
+9422 .|    <= true
+9422 .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
+9422 .<= ''
