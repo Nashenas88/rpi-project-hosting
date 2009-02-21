@@ -4,6 +4,7 @@
 
 = Details =
 
+CREATE DATABASE `RPH` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 Create 4 table:
 
