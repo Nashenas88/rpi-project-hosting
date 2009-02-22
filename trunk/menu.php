@@ -19,6 +19,7 @@ function loggedIn ()
 if (loggedIn () != 0)
 {
   echo "\"login.php?logout\">Logout";
+  echo "</a></td><td align=\"center\"><a href=\"logout.php\">LogoutAlternate";
   echo "</a></td><td align=\"center\"><a href=\"upload.php\">Upload";
   echo "</a></td><td align=\"center\"><a href=\"projects.php\">Projects";
   echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
@@ -27,6 +28,7 @@ if (loggedIn () != 0)
 else
 {
   echo "\"login.php\">Login";
+  echo "</a></td><td align=\"center\"><a href=\"loginAlternate.php\">LoginAlernate";
 }
 ?>
 </a>
