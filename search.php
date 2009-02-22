@@ -2,6 +2,11 @@
 session_start ();
 
 /***
+for clickable sort by headers
+***/
+echo "<script src=\"sorttable.js\"></script>";
+
+/***
 use this session for testing logged in user
 assume login use admin account (for rating)
 ***/
@@ -31,12 +36,48 @@ require ("search_form.php");
 /***
 Execute query and display results
 ***/
-if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType']))
+if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQUEST['orderedBy']))
 {
 	$search_request=$_REQUEST['searchInput'];
 	$search_type=$_REQUEST['searchType'];
-
-	$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY downloads";
+	$sort=$_REQUEST['orderedBy'];
+		
+	if ($sort=='asceTitle')
+	{
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY title, downloads DESC";
+	}
+	else if ($sort=='descTitle')
+	{
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY title DESC, downloads DESC";
+	}
+	else if ($sort=='asceDate')
+	{
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY date, title";
+	}
+	else if ($sort=='descDate')
+	{
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY date DESC, title";
+	}
+	else if ($sort=='asceSize')
+	{
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY size, title";
+	}
+	else if ($sort=='descSize')
+	{
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY size DESC, title";
+	}
+	else if ($sort=='asceClass')
+	{
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY class, title";
+	}
+	else if ($sort=='descClass')
+	{
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY class DESC, title";
+	}
+	else		
+	{
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY downloads DESC, title";
+	}
 	
 	$project_res=mysql_query($project_query);
 
@@ -49,16 +90,16 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType']))
 	// find out how many records we got
 	$project_num = mysql_numrows($project_res);
 
-	echo "<h3>Your Search Resturns ".$project_num." Results</h3>\n";
+	echo "<h3>Your Search Resturned ".$project_num." Results</h3>\n";
 
 	if($project_num>0)
 	{
 ?>
-		<table border=1>
+		<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">
 		<tr>
 			<th>Project</th>
 			<th>Description</th>
-		    <th>Uploader</th>
+		   <th>Uploader</th>
 			<th>Downloads</th>
 			<th>Size</th>
 			<th>Project Location</th>
@@ -107,9 +148,16 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType']))
 		{
 			$sum=$sum+mysql_result($rating_res,$j,'rate');
 		}
-				
-		$current_rate=$sum/$rating_num;
-		echo "  <td>".$rating_num." users rate this project: " . $current_rate. "</td>\n";
+		
+		if($rating_num==0)
+		{
+			$current_rate=$rating_num;
+		}
+		else
+		{
+			$current_rate=$sum/$rating_num;
+		}
+		echo "<td>". $current_rate."</td>\n";
 		echo "<td><form name='rate' method='POST' action='rate.php'><input type='text' name='rate' size=2/><input type='hidden' name='project_id' value='".mysql_result($project_res,$i,'id')."'/><input type='submit' value='Rate' /></form></td>";
 		echo "</tr>\n";
 	}

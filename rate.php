@@ -7,7 +7,7 @@ $rate=$_REQUEST['rate'];
 $user=$_SESSION['usrname'];
 $project=$_REQUEST['project_id'];
 
-//query database to see if this user already rate this project
+//query database to see if this user already rated this project
 $query_rate="SELECT * FROM ratings WHERE user_id='".mysql_real_escape_string($user)."' AND project_id=".$project;
 $query_rate_res=mysql_query($query_rate);
 
@@ -24,11 +24,11 @@ if rated already, redirect to search.php, display message
 ***/
 if($num_of_rate>0)
 {
-	$_SESSION['message']="<p>You already rate this project!</p>";
+	$_SESSION['message']="<p>You already rated this project!</p>";
 	header ("location:search.php");
 }
 /***
-not rate yet, rate the project
+not rated yet, rate the project
 ***/
 else
 {
@@ -42,7 +42,7 @@ else
 		exit;
 	}
 	
-	$_SESSION['message']= "<p>You rate it successfully! </p>";
+	$_SESSION['message']= "<p>You rated it successfully! </p>";
 	header ("location:search.php");
 
 }
