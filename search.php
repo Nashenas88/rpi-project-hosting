@@ -115,7 +115,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	for ($i=0;$i<$project_num;$i++) 
 	{
 		echo "<tr>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'title') . "</td>\n";
+		echo "  <td><a href='show_project.php?show_project_id=".mysql_result($project_res,$i,'id')."'>" . mysql_result($project_res,$i,'title') . "</a></td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'description') . "</td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'uploader') . "</td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'downloads'). "</td>\n";

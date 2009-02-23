@@ -1,8 +1,12 @@
 <?php
 session_start ();
 
-
 require("connect_db.php");
+
+
+if(isset($_REQUEST['rate'])&&isset($_REQUEST['project_id']))
+{
+
 $rate=$_REQUEST['rate'];
 $user=$_SESSION['usrname'];
 $project=$_REQUEST['project_id'];
@@ -30,21 +34,22 @@ if($num_of_rate>0)
 /***
 not rated yet, rate the project
 ***/
-else
+
+$insert_rate="INSERT INTO ratings VALUES ('".mysql_real_escape_string($user)."',".mysql_real_escape_string($rate).",".mysql_real_escape_string($project).")";
+
+$insert_rate_res=mysql_query($insert_rate);
+
+if (!$insert_rate_res) 
 {
-	$insert_rate="INSERT INTO ratings VALUES ('".mysql_real_escape_string($user)."',".mysql_real_escape_string($rate).",".mysql_real_escape_string($project).")";
-	
-	$insert_rate_res=mysql_query($insert_rate);
-	
-	if (!$insert_rate_res) 
-	{
-		echo mysql_error();
-		exit;
-	}
-	
-	$_SESSION['message']= "<p>You rated it successfully! </p>";
-	header ("location:search.php");
+	echo mysql_error();
+	exit;
+}
+
+$_SESSION['message']= "<p>You rated it successfully! </p>";
+header ("location:search.php");
 
 }
 
+$_SESSION['message']= "<p>Your rate fails! </p>";
+header ("location:search.php");
 ?>
