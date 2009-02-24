@@ -10,9 +10,7 @@ echo "<script src=\"sorttable.js\"></script>";
 use this session for testing logged in user
 assume login use admin account (for rating)
 ***/
-$_SESSION['usrname']="admin";
-
-
+$_SESSION["usrname"]='admin';
 
 require("connect_db.php");
 require ("upper_header.php");
@@ -41,42 +39,51 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	$search_request=$_REQUEST['searchInput'];
 	$search_type=$_REQUEST['searchType'];
 	$sort=$_REQUEST['orderedBy'];
+	
+	if($search_type=="date")
+	{
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type).">'".mysql_real_escape_string($search_request)."'";
+	}
+	else
+	{
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."'";
+	}
 		
 	if ($sort=='asceTitle')
 	{
-		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY title, downloads DESC";
+		$project_query.=" ORDER BY title, downloads DESC";
 	}
 	else if ($sort=='descTitle')
 	{
-		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY title DESC, downloads DESC";
+		$project_query.=" ORDER BY title DESC, downloads DESC";
 	}
 	else if ($sort=='asceDate')
 	{
-		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY date, title";
+		$project_query.=" ORDER BY date, title";
 	}
 	else if ($sort=='descDate')
 	{
-		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY date DESC, title";
+		$project_query.=" ORDER BY date DESC, title";
 	}
 	else if ($sort=='asceSize')
 	{
-		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY size, title";
+		$project_query.=" ORDER BY size, title";
 	}
 	else if ($sort=='descSize')
 	{
-		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY size DESC, title";
+		$project_query.=" ORDER BY size DESC, title";
 	}
 	else if ($sort=='asceClass')
 	{
-		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY class, title";
+		$project_query.=" ORDER BY class, title";
 	}
 	else if ($sort=='descClass')
 	{
-		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY class DESC, title";
+		$project_query.=" ORDER BY class DESC, title";
 	}
 	else		
 	{
-		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."' ORDER BY downloads DESC, title";
+		$project_query.=" ORDER BY downloads DESC, title";
 	}
 	
 	$project_res=mysql_query($project_query);

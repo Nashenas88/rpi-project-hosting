@@ -1,4 +1,7 @@
 <?php
+session_start ();
+require("connect_db.php");
+
 $usr = "";
 $pass = "";
 $loggedIn = 0;
@@ -9,7 +12,18 @@ $pass = $_POST["pass"];
 $usrname = stripslashes ($usrname);
 $pass = stripslashes ($pass);
 
-if ($usrname=="asdasd" && $pass=="qweqwe")
+$authentication="SELECT 1 FROM users WHERE rcsid='".mysql_real_escape_string($usrname)."' AND password='".mysql_real_escape_string($pass)."'";
+$authentication_res=mysql_query($authentication);
+
+if (!$authentication_res) 
+{
+	echo mysql_error();
+	exit;
+}
+
+$authentication_num=mysql_numrows($authentication_res);
+
+if ($authentication_num>0)
 {
 $loggedIn = 1;
 

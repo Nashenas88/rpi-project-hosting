@@ -72,7 +72,10 @@ if(isset($_REQUEST['show_project_id']))
 	for ($k=0;$k<$comment_num;$k++)
 	{
 		echo "<h3>Comment By: ".mysql_result($query_comment_res,$k,'user_id')."</h3>";
-		echo "<form name='comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Comment' /></form>";
+		
+		echo "<table><tr><td><form name='rm_comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
+		echo "<td><form name='flag_comment' method='POST' action='flag_comment.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Flag Comment' /></form></td>";
+		echo "<td><form name='rm_flag' method='POST' action='rm_flag.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td></tr></table>";
 		echo "<p>".mysql_result($query_comment_res,$k,'comment')."</p>";	
 	}
 	echo "<h2>Add Comments:</h2>";

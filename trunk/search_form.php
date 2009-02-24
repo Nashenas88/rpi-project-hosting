@@ -21,6 +21,7 @@
 <option value="class">Class</option>
 <option value="school">School</option>
 <option value="major">Major</option>
+<option value="date">Date</option>
 </select>
 Ordered By:&nbsp;&nbsp;&nbsp;&nbsp;<select name="orderedBy">
 <option value="descDownloads">Downloads Descending</option>
