@@ -55,8 +55,6 @@ if (isset($_REQUEST['logout'])) {
 
 
 
-// for this test, simply print that the authentication was successfull
-
 $username = phpCAS::getUser ();
 $loggedIn = 1;
 
