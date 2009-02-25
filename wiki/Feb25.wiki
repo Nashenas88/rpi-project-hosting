@@ -1,0 +1,20 @@
+#summary Discussion summary of Feb25
+#labels Phase-Requirements,Phase-Design,Phase-Implementation
+
+= Details =
+
+Elaboration:
+Checked System Sequence Diagram.
+Checked Deployment Diagram.
+Checked Detailed Schedule.
+UseCase already done.
+Domain Model Diagram.
+Class Diagram
+
+
+Next Week:
+Dan: ModerateProject,AdminChangePrivilege,Domain Model
+Alex: Put Elaboration 
+Jin: put User info to databsase, database diagram
+Paul: Upload, download.
+
