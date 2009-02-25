@@ -1,3 +1,4 @@
+
 <table width="500" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
 <tr><td>
 <form name="upload" method="post" action="uploadFiles.php">
@@ -27,9 +28,9 @@
 </tr>
 
 <tr>
-<td>Project Authors</td>
+<td>Project Author(s)</td>
 <td>:</td>
-<td><input type=text name="projectAuthors" size=20 /></td>
+<td><input type=text name="projectAuthor" size=20 /></td>
 </tr>
 
 <tr>
@@ -41,8 +42,20 @@
 <tr>
 <td>Was this project created for a class?</td>
 <td>:</td>
-<td><input type=radio name="projectForClass" value=yes /> yes
-    <input type=radio name="projectForClass" value=no /> no </td>
+<td><input type=radio name="projectIsForClass" value=yes checked/> yes
+    <input type=radio name="projectIsForClass" value=no /> no </td>
+</tr>
+
+<tr>
+<td>Class Name</td>
+<td>:</td>
+<td><input type=text name="projectClass" size=20 /></td>
+</tr>
+
+<tr>
+<td>Related Major</td>
+<td>:</td>
+<td><input type=text name="projectMajor" size=20 /></td>
 </tr>
 
 <tr>
