@@ -7,13 +7,13 @@ This is the code to be placed inside of a sequence diagram in UMLet.
 == Login ==
 
 {{{
-_<<actor>>:user~id1_|_LoginSystem~id2_
-id1->>id2:id1,id2::requestLogin()
-id2->id2:id1,id2::contactCASServer()
-id2.>id1:id1,id2::displayLoginForm()
-id1->>id2:id1,id2::sendLoginInfo()
-id2->id2:id1,id2::authenticate()
-id2.>id1:id1,id2::login()
+_<<actor>>:user~id1_|_LoginSystem~id2_|_CAS Server~id3_
+id1->>id2:id1,id2,id3::requestLogin()
+id2.>id3:id1,id2,id3::contactCASServer()
+id3.>id1:id1,id3::displayLoginForm()
+id1->>id3:id1,id3::sendLoginInfo()
+id3.>id2:id1,id2,id3::authenticate()
+id2.>id1:id1,id2,id3::login()
 }}}
 
 == Upload ==
@@ -24,9 +24,7 @@ id1->>id2:id1,id2:requestUpload()
 id2.>id1:id1,id2::displayUploadForm()
 id1->>id2:id1,id2::sendInfo()
 id1.>id2:id1,id2::uploadFiles()
-id2->id2:id1,id2::storeFiles()
 id2.>id1:id1,id2::displayConfirmation()
-iframe}
 }}}
 
 == Search ==
@@ -36,10 +34,9 @@ _<<actor>>:user~id1_|_SearchSystem~id2_
 id1->>id2:id1,id2::requestSearch()
 id2.>id1:id1,id2::displaySearchForm()
 id1->>id2:id1,id2::sendQuery()
-id2->id2:id1,id2::parseDatabase()
-id2.>id1:id1,id2::displayResults()
+id2.>id1:id1,id2::parseAndDisplay()
 iframe{:interaction frame
 id1->>id2:id1,id2::chooseSort()
-id2->id2:id1,id2::sortList()
-id2.>id1:id1,id2::displayResults()
+id2.>id1:id1,id2::sortAndDisplay()
+iframe}
 }}}
