@@ -10,7 +10,6 @@ echo "<script src=\"sorttable.js\"></script>";
 use this session for testing logged in user
 assume login use admin account (for rating)
 ***/
-$_SESSION["usrname"]='admin';
 
 require("connect_db.php");
 require ("upper_header.php");
