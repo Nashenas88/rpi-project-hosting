@@ -30,6 +30,6 @@ function isModerator ()
   else
   {
   	 return false;
-  } 
+  }
 }
 ?>
