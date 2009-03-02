@@ -65,6 +65,7 @@
   # click "upload"
     * if filesize greater than 10MB then throw error
     * if file is corrupt then throw error
+    * can't login if banned
 
 *Postconditions*
   * display "gatekeeper will review content or 24h"
