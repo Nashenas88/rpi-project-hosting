@@ -1,3 +1,0 @@
-#SVN commands
-
-http://www.linuxfromscratch.org/blfs/edguide/chapter03.html
