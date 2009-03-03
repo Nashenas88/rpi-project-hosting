@@ -1,7 +1,0 @@
-#This page includes a link to the definition of FURPS+ and MoSCoW
-
-
-We need to use the following model to make a list of requirements and assign a priority to each requirement.
-
-http://en.wikipedia.org/wiki/Furps <br/>
-http://en.wikipedia.org/wiki/MoSCoW
