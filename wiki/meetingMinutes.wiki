@@ -133,9 +133,18 @@ Jin: Design database, upload schedule
 WebSys? Link: http://cgi2.cs.rpi.edu/~hollingd/websys/websys.php
 
 
+====Database====
+User: RCSID, Password, Priviledge
+
+Project: Title, Description, Size, Date, Project location (link, files), Downloads, Class, uploader, major, school.
+
+Comment: User, Comment, Project, Date, Flag
+
+Rating: User, Rate, Project
 
 
-=2/4/09=
+
+=2/1/09=
 
 This is a list of work expected to finish by Wed Fed 04
 
