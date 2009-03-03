@@ -21,6 +21,25 @@ Paul: Upload, download.
 
 
 
+=2/4/09 MeetingResult=
+
+Review everyone's work assigned, Project Inception: vision statement, UseCases, Glossary, Project Schedule, Project Budget.
+
+New Assignment:
+
+Paul: Design basic UI
+
+Alex: Think about use cases. Learn more php, mysql, see WebSys? link.
+
+Dan: Revise vision statement. Learn more php, mysql, see WebSys? link.
+
+Jin: Design database, upload schedule
+
+WebSys? Link: http://cgi2.cs.rpi.edu/~hollingd/websys/websys.php
+
+
+
+
 =2/4/09=
 
 This is a list of work expected to finish by Wed Fed 04
@@ -33,4 +52,4 @@ Alex: Design use cases
 
 Dan: Vision Statement
 
-All: Install and configure Apache, Mysql, php. Get to know Google code usage. 
+All: Install and configure Apache, Mysql, php. Get to know Google code usage.
