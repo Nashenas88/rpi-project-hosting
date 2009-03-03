@@ -1,4 +1,4 @@
-#summary This is the glossary defining all vocabulary pertaining to this project.
+#summary Inception: glossary defining all vocabulary pertaining to this project.
 
 =Glossary=
 
