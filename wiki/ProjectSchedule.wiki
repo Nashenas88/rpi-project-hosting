@@ -1,4 +1,4 @@
-#summary This is a tentative schedule for this project, details of work will be discussed during each meeting
+#summary Inception: tentative schedule for this project
 #labels Phase-Implementation
 
 = Details =
