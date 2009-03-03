@@ -1,0 +1,254 @@
+#Any code that needs to be copied
+
+=System Sequence Diagrams=
+
+This is the code to be placed inside of a sequence diagram in UMLet.
+
+== Login ==
+
+{{{
+_<<actor>>:user~id1_|_LoginSystem~id2_|_CAS Server~id3_
+id1->>id2:id1,id2,id3::requestLogin()
+id2.>id3:id1,id2,id3::contactCASServer()
+id3.>id1:id1,id3::displayLoginForm()
+id1->>id3:id1,id3::sendLoginInfo()
+id3.>id2:id1,id2,id3::authenticate()
+id2.>id1:id1,id2,id3::login()
+}}}
+
+== Upload ==
+
+{{{
+_<<actor>>:user~id1_|_UploadSystem~id2_|
+id1->>id2:id1,id2:requestUpload()
+id2.>id1:id1,id2::displayUploadForm()
+id1->>id2:id1,id2::sendInfo()
+id1.>id2:id1,id2::uploadFiles()
+id2.>id1:id1,id2::displayConfirmation()
+}}}
+
+== Search ==
+
+{{{
+_<<actor>>:user~id1_|_SearchSystem~id2_
+id1->>id2:id1,id2::requestSearch()
+id2.>id1:id1,id2::displaySearchForm()
+id1->>id2:id1,id2::sendQuery()
+id2.>id1:id1,id2::parseAndDisplay()
+iframe{:interaction frame
+id1->>id2:id1,id2::chooseSort()
+id2.>id1:id1,id2::sortAndDisplay()
+iframe}
+}}}
+
+
+=Login Alternate=
+
+{{{
+<?php
+$usr = "";
+$pass = "";
+$loggedIn = 0;
+
+$usrname = $_POST["usrname"];
+$pass = $_POST["pass"];
+
+$usrname = stripslashes ($usrname);
+$pass = stripslashes ($pass);
+
+if ($usrname=="asdasd" && $pass=="qweqwe")
+{
+$loggedIn = 1;
+
+session_register ("usrname");
+session_register ("pass");
+session_register ("loggedIn");
+header ("location:loginSuccess.php");
+}
+else
+{
+require ("upper_header.php");
+echo "Login Failed";
+require ("lower_header.php");
+require ("menu.php");
+echo "<br /><center>Username and/or password were incorrect click ";
+echo "<a href=\"login.php\">here</a> to login again.";
+require ("footer.php");
+}
+?>
+}}}
+
+=Create Database=
+
+{{{
+CREATE DATABASE `RPH` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+}}}
+
+=Create tables=
+
+{{{
+CREATE TABLE users (
+
+         rcsid VARCHAR(24) NOT NULL,
+
+         password VARCHAR(24) NOT NULL,
+
+		 priviledge INT NOT NULL,
+		 
+		 Primary Key (rcsid)
+
+       );
+	   
+CREATE TABLE projects (
+
+		 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+
+		 title VARCHAR(100) NOT NULL,
+
+		 description TEXT NOT NULL, 
+
+		 uploader VARCHAR(24) NOT NULL,
+
+		 downloads INT DEFAULT 0,
+
+		 size DOUBLE, 
+
+		 project_location VARCHAR(255) NOT NULL, 
+
+                 authors VARCHAR(100),
+
+		 class VARCHAR(100),  
+
+		 major VARCHAR(20), 
+
+		 school VARCHAR(20),
+
+		 date TIMESTAMP DEFAULT NOW(),
+		 
+		 Foreign Key (uploader) references users(rcsid)
+
+		);
+
+CREATE TABLE comments(
+
+		 user_id VARCHAR(24) NOT NULL,
+
+		 comment TEXT NOT NULL, 
+
+		 project_id INT NOT NULL, 
+
+		 flag BOOL,
+
+		 date TIMESTAMP DEFAULT NOW(),
+		 
+		 Primary Key (user_id, project_id),
+
+		 Foreign Key (user_id) references users(rcsid),
+
+		 Foreign Key (project_id) references projects(id)
+
+		);
+		
+CREATE TABLE ratings(
+
+		 user_id VARCHAR(24) NOT NULL,
+
+		 rate INT NOT NULL,
+
+		 project_id INT NOT NULL,
+		 
+		 Primary Key (user_id, project_id),
+
+		 Foreign Key (user_id) references users(rcsid),
+
+		 Foreign Key (project_id) references projects(id)
+
+        );
+
+
+CREATE TABLE moderateusers(
+
+                 user_id VARCHAR(24) NOT NULL,
+
+                 date TIMESTAMP DEFAULT NOW(),
+
+                 Primary Key (user_id,date),
+
+                 Foreign Key (user_id) references users(rcsid)
+
+        );
+}}}
+
+=drop tables=
+In order to drop users, other tables has to be dropped, since they reference users.
+
+{{{
+DROP TABLE ratings;
+DROP TABLE comments;
+DROP TABLE projects;
+DROP TABLE moderateusers;
+}}}
+DROP TABLE users;
+
+=Test Data for Tables=
+
+{{{
+#create users
+
+
+INSERT INTO users VALUES ('admin', '012345678', 0);
+
+INSERT INTO users VALUES ('moderator', '12345678', 1);
+
+INSERT INTO users VALUES ('user', '2345678', 2);
+
+INSERT INTO users VALUES ('user2', '34567890', 2);
+
+INSERT INTO users VALUES ('banuser', 'b34567890', 2);
+
+INSERT INTO users VALUES ('banuser2', 'b345678902', 2);
+
+
+#create projects
+
+
+INSERT INTO projects( id, title, description, uploader, downloads, size, project_location, class, major, school )VALUES (1,'project1','Testing project 1','user',0,'100.0','http://code.google.com','CSCI-1100','CSCI','Science');
+
+
+INSERT INTO projects( id, title, description, uploader, downloads, size, project_location, class, major, school )VALUES (2,'project2','Testing project 2','user2',0,'200.0','http://code.google.com','CSCI-1200','CSCI','Science');
+
+
+INSERT INTO projects( id, title, description, uploader, downloads, size, project_location, class, major, school )VALUES(3,'project3','Testing project 3','admin',0,'110.0','http://code.google.com','MATH-4400','MATH','Science');
+
+
+INSERT INTO projects( id, title, description, uploader, downloads, size, project_location, class, major, school )VALUES (4,'project1','Testing project 1','moderator',0,'120.0','http://code.google.com','COMM-4300','EMAC','H&SS');
+
+#create comments
+
+
+INSERT INTO comments(user_id,comment,project_id,flag) VALUES ('admin','Testing Comment 1 for project 1 from admin',1,1);
+
+INSERT INTO comments(user_id,comment,project_id,flag) VALUES ('moderator','Testing Comment 2 for project 2 from moderator',2,1);
+
+INSERT INTO comments(user_id,comment,project_id,flag) VALUES ('user','Testing Comment 3 for project 3 from user',3,1);
+
+INSERT INTO comments(user_id,comment,project_id,flag)
+VALUES ('user','Testing Comment 3 for project 3 from user',1,1);
+
+#create ratings
+
+
+INSERT INTO ratings VALUES ('admin',5,1);
+
+INSERT INTO ratings VALUES ('moderator',4,2);
+
+INSERT INTO ratings VALUES ('user2',3,3);
+
+INSERT INTO ratings VALUES ('user',4,1);
+
+#create moderateusers
+
+INSERT INTO moderateusers(user_id) VALUES ('banuser');
+
+INSERT INTO moderateusers(user_id) VALUES ('banuser2');
+}}}
