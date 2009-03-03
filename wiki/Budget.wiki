@@ -1,4 +1,4 @@
-#summary "Estimated" Budget had this been a real world project in a paid environment
+#summary Inception: Budget
 
 || *Type* || *Amount* ||
 ||Hourly Rate per Person||$65/h||
