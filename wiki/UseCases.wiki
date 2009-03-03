@@ -51,9 +51,11 @@
 
 *Actors*
   * RPI User
+  * Is logged in
 
 *Preconditions*
   * Browsed to upload screen
+  * Is logged in
 
 *Event Flows*
   # click browse
@@ -122,6 +124,7 @@
 
 *Preconditions*
   * Browsed to project page
+  * Is logged in.
 
 *Event Flow*
   # Add comment text to box
@@ -228,7 +231,7 @@
   * RPI User
 
 *Preconditions*
-  * Moderator log in
+  * Moderator logged in
   * browse to user page
 
 *Events Flow*
@@ -249,6 +252,7 @@
 
 *Preconditions*
   * Browsed to admin page
+  * Admin logged in
 
 *Events Flow*
   # Choose user
@@ -294,6 +298,7 @@
 
 *Preconditions*
   * Comment might have been flagged (not necesarry)
+  * logged in
 
 *Events Flow*
   # Click Remove Comment Button
@@ -317,6 +322,7 @@
 
 *Preconditions*
   * Has not rated previously
+  * logged in
 
 *Events Flow*
   # Click number of stars
