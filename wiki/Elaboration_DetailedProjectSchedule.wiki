@@ -1,8 +1,7 @@
-#summary A detailed project schedule
+#summary Elaboration: detailed project schedule
 #labels Schedule,Phase-Support,Phase-Implementation,Phase-Requirements
 
-
-= Details =
+=Schedule=
 
 || Meeting Date || Discussion || Important Due Date ||
 ||02/11||Go over previous assigned work: Basic Database Design and Basic model/interface Design. Assign works of Elaboration:detailed schedule, model domain diagram,system sequence diagram,deployment diagram. New Implementation Work: login/logout,search,rate,design test data || 02/12 Iteration 1 ends Inception Deliverables ||
