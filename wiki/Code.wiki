@@ -1,4 +1,4 @@
-#summary Any code that needs to be copied
+#summary code to copy
 
 =System Sequence Diagrams=
 
