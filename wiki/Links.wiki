@@ -1,0 +1,14 @@
+#Helpful Links
+
+
+=PHPmyadmin=
+
+http://www.phpmyadmin.net/home_page/index.php
+
+installation windows:
+
+http://www.wikihow.com/Install-phpMyAdmin-on-Your-Windows-PC
+
+installation linux:
+
+http://www.mysql-apache-php.com/
