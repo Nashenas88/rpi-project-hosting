@@ -1,4 +1,4 @@
-#summary Inception: Budget
+#summary Inception: budget
 
 || *Type* || *Amount* ||
 ||Hourly Rate per Person||$65/h||
