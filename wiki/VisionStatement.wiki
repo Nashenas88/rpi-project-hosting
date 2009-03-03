@@ -1,4 +1,4 @@
-#summary A brief explanation of project.
+#summary Inception: A brief explanation of project.
 
 =Vision Statement=
 
