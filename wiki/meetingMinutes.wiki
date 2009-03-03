@@ -90,7 +90,29 @@ Features to Implement by next week
 
     * login/logout - Alex & Paul
     * some of search feature + rate, create some data for developing test- Jin
-    * Dan learn php, mysql, do ModerateBan?? 
+    * Dan learn php, mysql, do ModerateBan??
+
+====BestPractice====
+Best Practice needed!!
+Introduction
+
+In the syllabus, I just found we need 2 more items for the best practice: we have:
+
+    project management sites, (google code) 
+
+    code repository, (google code) 
+
+    Documented coding standard. 
+
+We need 2 more from following
+
+    Build Tools , 
+
+    Unit Test Tools , 
+
+    Bug Tracking System , 
+
+    Design Patterns , 
 
 
 
