@@ -1,4 +1,4 @@
-#summary The syllabus written by the instructors
+#summary Instructors: syllabus
 
 =Software Design and Documentation=
 
