@@ -1,4 +1,4 @@
-#summary The class schedule from WebCT, written by instructors
+#summary Instructors: class schedule from WebCT
 
 =Software Design and Documentation=
 
