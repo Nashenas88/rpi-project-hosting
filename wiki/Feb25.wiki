@@ -18,3 +18,19 @@ Alex: Put Elaboration
 Jin: put User info to databsase, database diagram
 Paul: Upload, download.
 
+
+
+
+=2/4/09=
+
+This is a list of work expected to finish by Wed Fed 04
+
+Jin: Finish the project schedule.
+
+Paul: Develop project budget.
+
+Alex: Design use cases
+
+Dan: Vision Statement
+
+All: Install and configure Apache, Mysql, php. Get to know Google code usage. 
