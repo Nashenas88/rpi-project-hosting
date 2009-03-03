@@ -1,0 +1,128 @@
+#summary of meetings and assignments of tasks
+
+=2/25/08=
+
+Elaboration:
+Checked System Sequence Diagram.
+Checked Deployment Diagram.
+Checked Detailed Schedule.
+UseCase already done.
+Domain Model Diagram.
+Class Diagram
+
+
+Next Week:
+Dan: ModerateProject,AdminChangePrivilege,Domain Model
+Alex: Put Elaboration 
+Jin: put User info to databsase, database diagram
+Paul: Upload, download.
+
+
+
+=2/18/08=
+
+1.make classes:
+
+    classes: 
+
+    * all_user:
+
+          variables: RCSID functions: mainPage, download, comment, rate, flag, login, logout, search. 
+
+    Base on priority make classes: 
+
+    * Moderator:
+
+          functions: banUser, unBanUser, removeCommand,removeProject 
+
+    * Admin:
+
+          functions: change privilege level 
+
+    * non-rpi-user:
+
+          download,search,mainPage 
+
+    * Project:
+
+          variables: Title, Description, Size, Date, Project location (link, files), Downloads, Class, uploader, major, school functions: find_comment,cal_rate 
+
+2. Elaboration:
+
+    Ask Prof. for opinion about Depolyment diagram, domain model diagram 
+
+3. Implementation:
+
+    Jin: Search function: date rating is finished. 
+
+    Database: add author for project, create database for moderate user and test data. 
+
+    project's detail page UserComment?,FlagComment?,RemoveComment?. classes. 
+
+    Alex: sort,ModeratorBan?,ModeratorUnBan? 
+
+    Paul: UserUp?,UserDown? 
+
+    Dan: ModerateProject?,AdminChangePrivilege?,finish upload. 
+
+4.Best practice
+
+    check out unit test to see which one is best, discuss tmr. (upload to myrpi.org) Bug Tracking System-- google one, discuss tmr. 
+
+
+
+=2/11/08=
+
+Discuss Inception Deliverable Elaboration Features to Implement by next week
+Details
+
+Inception Deliverable Everybody agree it is done.
+
+Elaboration Jin: update schedule
+
+Dan: Model domain diagram
+
+Paul: System Sequence diagram
+
+Alex: Deployment diagram
+
+Features to Implement by next week
+
+    * login/logout - Alex & Paul
+    * some of search feature + rate, create some data for developing test- Jin
+    * Dan learn php, mysql, do ModerateBan?? 
+
+
+
+=2/4/09 MeetingResult=
+
+Review everyone's work assigned, Project Inception: vision statement, UseCases, Glossary, Project Schedule, Project Budget.
+
+New Assignment:
+
+Paul: Design basic UI
+
+Alex: Think about use cases. Learn more php, mysql, see WebSys? link.
+
+Dan: Revise vision statement. Learn more php, mysql, see WebSys? link.
+
+Jin: Design database, upload schedule
+
+WebSys? Link: http://cgi2.cs.rpi.edu/~hollingd/websys/websys.php
+
+
+
+
+=2/4/09=
+
+This is a list of work expected to finish by Wed Fed 04
+
+Jin: Finish the project schedule.
+
+Paul: Develop project budget.
+
+Alex: Design use cases
+
+Dan: Vision Statement
+
+All: Install and configure Apache, Mysql, php. Get to know Google code usage.
