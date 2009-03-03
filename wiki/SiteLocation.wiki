@@ -1,5 +1,0 @@
-#summary Live Site.
-
-= Site =
-
-The site is currently up at http://fariap.myrpi.org/index.php .
