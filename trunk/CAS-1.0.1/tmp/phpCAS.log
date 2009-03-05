@@ -772,3 +772,28 @@ F5F2 .|    -
 9422 .|    <= true
 9422 .|    no need to authenticate (user `mattea' is already authenticated) [CAS.php:925]
 9422 .<= ''
+319F .START ****************** [CAS.php:414]
+319F .=> phpCAS::client('2.0', 'login.rpi.edu', 443, '/cas') [login.php:25]
+319F .|    => CASClient::CASClient('2.0', false, 'login.rpi.edu', 443, '/cas', true) [CAS.php:315]
+319F .|    <= ''
+319F .<= ''
+319F .=> phpCAS::setNoCasServerValidation() [login.php:31]
+319F .<= ''
+319F .=> phpCAS::forceAuthentication() [login.php:37]
+319F .|    => CASClient::forceAuthentication() [CAS.php:911]
+319F .|    |    => CASClient::isAuthenticated() [client.php:686]
+319F .|    |    |    => CASClient::wasPreviouslyAuthenticated() [client.php:791]
+319F .|    |    |    |    no user found [client.php:895]
+319F .|    |    |    <= false
+319F .|    |    |    no ticket found [client.php:825]
+319F .|    |    <= false
+319F .|    |    => CASClient::redirectToCas(false) [client.php:695]
+319F .|    |    |    => CASClient::getServerLoginURL(false, false) [client.php:912]
+319F .|    |    |    |    => CASClient::getURL() [client.php:331]
+319F .|    |    |    |    <= 'http://localhost/rph/login.php'
+319F .|    |    |    <= 'https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Flocalhost%2Frph%2Flogin.php'
+319F .|    |    |    Redirect to : https://login.rpi.edu:443/cas/login?service=http%3A%2F%2Flocalhost%2Frph%2Flogin.php
+319F .|    |    |    exit()
+319F .|    |    |    -
+319F .|    |    -
+319F .|    -
