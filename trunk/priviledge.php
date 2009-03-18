@@ -18,20 +18,22 @@ It should return true if user has moderator priveleges and false otherwise.
 function isModerator ()
 {
   require("connect_db.php");
-  $username=$_SESSION['usrname'];
+  $username=$_SESSION['username'];
 
-  $priviledge_query= mysql_query("SELECT priviledge FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
-    if (!$priviledge_query)
+  $query = sprintf ("SELECT priviledge FROM users WHERE rcsid='%s'", mysql_real_escape_string($username));
+  $result = mysql_query ($query);
+    
+    if (!$result)
     {
         echo mysql_error ();
         exit;
     }
-    if (mysql_numrows ($priviledge_query) > 0)
+    if (mysql_numrows ($result) > 0)
     {
         #$result = mysql_fetch_array($priviledge_query);
         #mysql_result($priviledge_query, 0, 'priviledge')
         
-        if(mysql_result($priviledge_query, 0, 'priviledge') < 2)
+        if(mysql_result($result, 0, 'priviledge') < 2)
         {
     	    return true;
         }
@@ -42,7 +44,7 @@ function isModerator ()
     }
     else
     {
-  	    echo "No users... somethings not right";
+  	    echo "No Users... wtf";
     }
 }
 ?>
