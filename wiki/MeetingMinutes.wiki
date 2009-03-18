@@ -1,6 +1,36 @@
 #summary Aces: summary of meetings and assignments of tasks
 
-=2/25/08=
+=3/18/09=
+Features:
+
+*Download -- not done
+*change priviledge -- not done
+*remove project -- not done
+*database query with mysql_reql_escape -- not done
+
+*login  -- not done
+
+*upload -- done
+*logout -- done
+*search -- done
+*comment -- done
+*moderate ban user -- done
+*moderate unban user -- done
+*flag comment -- done
+*remove flag -- done
+*remove comment -- done
+*rate -- done
+
+
+Interface:
+worry later
+
+project construction:
+1.Comment codes
+
+
+
+=2/25/09=
 
 Elaboration:
 Checked System Sequence Diagram.
@@ -19,7 +49,7 @@ Paul: Upload, download.
 
 
 
-=2/18/08=
+=2/18/09=
 
 1.make classes:
 
