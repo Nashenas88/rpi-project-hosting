@@ -3,42 +3,42 @@
 =3/18/09=
 Features:
 
-*Download -- not done
-*change priviledge -- not done
-*remove project -- not done
-*database query with mysql_reql_escape -- not done
-*form entries sanitized with htmlspecialchars() and strip_tags() -- not done
-*rate 1-5 -- not done
-*minimum 1 admin -- not done
-*terms of service page -- not done
-*about page -- not done
-*login  -- not done
-*catch errors and display error messages -- not done
-*max 500 in comments -- not done
-*max 500 in description -- not done
-*max 50 for title -- not done
-*be able to update remotely -- not done
-*unit tests -- not done
-*comment code -- not done
+  * Download -- not done
+  * change priviledge -- not done
+  * remove project -- not done
+  * database query with mysql_reql_escape -- not done
+  * form entries sanitized with htmlspecialchars() and strip_tags() -- not done
+  * rate 1-5 -- not done
+  * minimum 1 admin -- not done
+  * terms of service page -- not done
+  * about page -- not done
+  * login  -- not done
+  * catch errors and display error messages -- not done
+  * max 500 in comments -- not done
+  * max 500 in description -- not done
+  * max 50 for title -- not done
+  * be able to update remotely -- not done
+  * unit tests -- not done
+  * comment code -- not done
 
 
-*Apache2 and MYSQL5.0 database -- done
-*use same PHP file for every part of interface -- done
-*max upload size -- done
-*normalize database -- done
-*upload -- done
-*logout -- done
-*search -- done
-*comment -- done
-*moderate ban user -- done
-*moderate unban user -- done
-*flag comment -- done
-*remove flag -- done
-*remove comment -- done
-*rate -- done
-*one rate per user per project -- done
-*use PHP sessions -- done
-*use CAS for login -- done
+  * Apache2 and MYSQL5.0 database -- done
+  * use same PHP file for every part of interface -- done
+  * max upload size -- done
+  * normalize database -- done
+  * upload -- done
+  * logout -- done
+  * search -- done
+  * comment -- done
+  * moderate ban user -- done
+  * moderate unban user -- done
+  * flag comment -- done
+  * remove flag -- done
+  * remove comment -- done
+  * rate -- done
+  * one rate per user per project -- done
+  * use PHP sessions -- done
+  * use CAS for login -- done
 
 
 
