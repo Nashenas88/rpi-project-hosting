@@ -14,9 +14,25 @@ function getSchool ($major)
 	return "Science";
 }
 
-$query = sprintf ("SELECT id FROM projects WHERE upload = %s AND title = %s", mysql_real_escape_string ($username),
+// Check to make sure that current user has not already created a project with the same name
+$query = sprintf ("SELECT id FROM projects WHERE uploader='%s' AND title='%s'", mysql_real_escape_string ($username),
                    mysql_real_escape_string ($_POST["projectName"]));
-if (!mysql_query ($query))
+
+$result = mysql_query ($query);
+
+if (!$result)
+{
+    echo mysql_error ();
+    exit;
+}
+
+$matches = mysql_numrows ($result);
+
+if ($matches > 0)
+{
+	$output = "Upload Failed: You already have a project with the same name";
+}
+else
 {
 	if ($file != none)
    	{
@@ -84,10 +100,6 @@ if (!mysql_query ($query))
 	{
 		$output = "Upload failed: File was empty";
 	}
-}
-else
-{
-	$output = "Upload Failed: You already have a project with the same name";
 }
 
 require ("upper_header.php");
