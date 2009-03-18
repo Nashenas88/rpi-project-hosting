@@ -1,10 +1,10 @@
 <?php
 
-$username=""; /* Your MySQL username/password goes here! */
-$password="";
+$user=""; /* Your MySQL username/password goes here! */
+$pass="";
 $database="RPH";
 
-mysql_connect(localhost,$username,$password);
+mysql_connect(localhost,$user,$pass);
 mysql_select_db($database) or die( "Unable to select database, change username, password, database in connect_db.php");
 
 ?>

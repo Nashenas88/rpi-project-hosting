@@ -60,6 +60,28 @@ $loggedIn = 1;
 
 session_register ("username");
 session_register ("loggedIn");
+
+require ("connect_db.php");
+
+$query = sprintf ("SELECT 1 FROM users WHERE rcsid='%s'", mysql_real_escape_string ($username));
+$result = mysql_query ($query);
+if (!$result)
+{
+    echo mysql_error ();
+    exit;
+}
+
+$matches = mysql_numrows ($result);
+if ($matches == 0)
+{
+    $query = sprintf ("INSERT INTO users VALUES('%s', 'crap', 2)", mysql_real_escape_string ($username));
+    if (!mysql_query ($query))
+    {
+        echo mysql_error ();
+        exit;
+    }
+}
+
 header ("location:index.php");
 ?>
 
