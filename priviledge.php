@@ -21,15 +21,28 @@ function isModerator ()
   $username=$_SESSION['usrname'];
 
   $priviledge_query= mysql_query("SELECT priviledge FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
-  $result = mysql_fetch_array($priviledge_query);
-
-  if($result[0] < 2)
-  {
-  	 return true;
-  }
-  else
-  {
-  	 return false;
-  }
+    if (!$priviledge_query)
+    {
+        echo mysql_error ();
+        exit;
+    }
+    if (mysql_numrows ($priviledge_query) > 0)
+    {
+        #$result = mysql_fetch_array($priviledge_query);
+        #mysql_result($priviledge_query, 0, 'priviledge')
+        
+        if(mysql_result($priviledge_query, 0, 'priviledge') < 2)
+        {
+    	    return true;
+        }
+        else
+        {
+         return false;
+        }
+    }
+    else
+    {
+  	    echo "No users... somethings not right";
+    }
 }
 ?>
