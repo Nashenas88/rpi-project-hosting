@@ -20,6 +20,10 @@ if (isModerator () == true)
 	{
 		$username=$_REQUEST['username'];
 		$ban_unban=$_REQUEST['ban_unban'];
+		
+		//sanitize form input
+		$username=strip_tags($username);
+		$username=htmlspecialchars($username);
 
 		//check to make sure user exists
 		$user_exists= mysql_query("SELECT rcsid FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
@@ -59,7 +63,7 @@ if (isModerator () == true)
 		}
 		else
 		{
-			echo "User does not exist";
+			echo "User ".$username." does not exist";
 		}
 	}
 	
