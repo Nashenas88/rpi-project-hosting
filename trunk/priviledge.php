@@ -17,6 +17,7 @@ It should return true if user has moderator priveleges and false otherwise.
 ***/
 function isModerator ()
 {
+  // connect to database
   require("connect_db.php");
   $username=$_SESSION['username'];
 

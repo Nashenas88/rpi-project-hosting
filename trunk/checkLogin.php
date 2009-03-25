@@ -3,17 +3,17 @@ $usr = "";
 $pass = "";
 $loggedIn = 0;
 
-$usrname = $_POST["usrname"];
+$username = $_POST["username"];
 $pass = $_POST["pass"];
 
-$usrname = stripslashes ($usrname);
+$username = stripslashes ($username);
 $pass = stripslashes ($pass);
 
-if ($usrname=="asdasd" && $pass=="qweqwe")
+if ($username=="asdasd" && $pass=="qweqwe")
 {
 $loggedIn = 1;
 
-session_register ("usrname");
+session_register ("username");
 session_register ("pass");
 session_register ("loggedIn");
 header ("location:loginSuccess.php");

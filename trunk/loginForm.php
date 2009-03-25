@@ -7,7 +7,7 @@
 <tr>
 <td>Username</td>
 <td>:</td>
-<td><input name="usrname" type="text" id="usrname" /></td>
+<td><input name="username" type="text" id="username" /></td>
 </tr>
 <tr>
 <td>Password</td>
