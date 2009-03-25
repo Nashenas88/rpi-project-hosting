@@ -8,7 +8,7 @@ Features:
   * Dan: remove project -- not done
   * All: database query with mysql_reql_escape -- not done
   * All: form entries sanitized with htmlspecialchars() and strip_tags() -- not done
-  * Jin: rate 1-5 -- not done
+  
   * minimum 1 admin -- not done
   * terms of service page -- not done
   * about page -- not done
@@ -22,6 +22,7 @@ Features:
   * All: comment code -- not done
 
 
+  * Jin: rate 1-5 -- done
   * Apache2 and MYSQL5.0 database -- done
   * use same PHP file for every part of interface -- done
   * max upload size -- done
