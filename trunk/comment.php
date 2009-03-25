@@ -25,6 +25,11 @@ if(isset($_REQUEST['project_id'])&&isset($_REQUEST['commenting']))
 		exit;
 	}
 
+	if( $comment.strlen() > 500 )
+	{
+		$_SESSION['message']="Your comment may not exceed 500 characters.<br />";
+	}		
+
 	$num_of_comment = mysql_numrows($query_comment_res);
 
 	if($num_of_comment>0)
