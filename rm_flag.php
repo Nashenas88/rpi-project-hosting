@@ -11,27 +11,34 @@ if(isset($_REQUEST['project_id'])&&isset($_REQUEST['user_id']))
 	$project_id=$_REQUEST['project_id'];
 	$user=$_REQUEST['user_id'];
 
-	
-	$query_comment="SELECT 1 FROM comments WHERE user_id='".mysql_real_escape_string($user)."' AND project_id=".$project_id;
+	/*
+	*check if comment need to remove flag exist
+	*/
+	$query_comment="SELECT 1 FROM comments WHERE user_id='".mysql_real_escape_string($user)."' AND project_id=".mysql_real_escape_string($project_id);
 	$query_comment_res=mysql_query($query_comment);
 
 	
 	if (!$query_comment_res) 
 	{
-		echo mysql_error();
+		//echo mysql_error();
+		echo "Sorry, we can't query your request";
 		exit;
 	}
 	
 	$num_of_comment = mysql_numrows($query_comment_res);
 	
+	/*
+	*if there is such a comment, update flag attribute
+	*/
 	if($num_of_comment>0)
 	{
-		$flag_comment="UPDATE comments SET flag=0 WHERE user_id='".mysql_real_escape_string($user)."' AND project_id=".$project_id;
+		$flag_comment="UPDATE comments SET flag=0 WHERE user_id='".mysql_real_escape_string($user)."' AND project_id=".mysql_real_escape_string($project_id);
 		$flag_comment_res=mysql_query($flag_comment);
 		
 		if (!$flag_comment_res) 
 		{
-			echo mysql_error();
+			//echo mysql_error();
+			echo "Sorry, we can't query your request";
 			exit;
 		}
 		
