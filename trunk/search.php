@@ -38,7 +38,9 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	$search_request=$_REQUEST['searchInput'];
 	$search_type=$_REQUEST['searchType'];
 	$sort=$_REQUEST['orderedBy'];
-	
+	/*
+	*generate queries
+	*/
 	if($search_type=="date")
 	{
 		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type).">'".mysql_real_escape_string($search_request)."'";
@@ -89,7 +91,8 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 
 	if (!$project_res) 
 	{
-		echo mysql_error();
+		echo "Sorry, we can't query your request";
+		//echo mysql_error();
 		exit;
 	}
 
@@ -118,6 +121,9 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 		</tr>
 <?php
 	}
+	/*
+	*display project info
+	*/
 	for ($i=0;$i<$project_num;$i++) 
 	{
 		echo "<tr>\n";
@@ -143,7 +149,8 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 
 		if (!$rating_res) 
 		{
-			echo mysql_error();
+			echo "Sorry, we can't query your request";
+			//echo mysql_error();
 			exit;
 		}
 		

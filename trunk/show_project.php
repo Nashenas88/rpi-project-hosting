@@ -9,14 +9,23 @@ echo "Search";
 require ("lower_header.php");
 require ("menu.php");
 
+/*
+* display any message generated
+*/
 if(isset($_SESSION['message']))
 {
 	echo $_SESSION['message'];
 	unset ($_SESSION['message']);
 }
+
 if(isset($_REQUEST['show_project_id']))
 {
 	$id=$_REQUEST['show_project_id'];
+	$username=$_SESSION['username'];
+	
+	/*
+	*query all neccessary information: rate, comment, project, and current user
+	*/
 	$query_rate="SELECT rate FROM ratings WHERE project_id=".mysql_real_escape_string($id);
 	$query_rate_res=mysql_query($query_rate);
 
@@ -26,18 +35,28 @@ if(isset($_REQUEST['show_project_id']))
 	$query_project="SELECT * FROM projects WHERE id=".mysql_real_escape_string($id);
 	$query_project_res=mysql_query($query_project);
 
-	if (!$query_rate_res||!$query_project_res||!$query_comment_res) 
+	$query_user="SELECT * FROM users WHERE rcsid='".mysql_real_escape_string("asdasd")."'";
+	$query_user_res=mysql_query($query_user);
+	
+	if (!$query_rate_res||!$query_project_res||!$query_comment_res||!$query_user_res) 
 	{
-		echo mysql_error();
+		//echo mysql_error();
+		echo "Sorry, we can't query your request";
 		exit;
 	}
 	
+	/*
+	* number of project, coment, rating
+	*/
 	$rating_num=mysql_numrows($query_rate_res);
 	$project_num=mysql_numrows($query_project_res);
 	$comment_num=mysql_numrows($query_comment_res);
 	
 	$sum=0;
 	
+	/*
+	* calculate rate
+	*/
 	for($j=0;$j<$rating_num;$j++)
 	{
 		$sum=$sum+mysql_result($query_rate_res,$j,'rate');
@@ -46,7 +65,9 @@ if(isset($_REQUEST['show_project_id']))
 	$current_rate=$sum/$rating_num;
 
 	
-	
+	/*
+	*display project information
+	*/
 	echo "<h2>Project Details</h2><table>\n";
 	for ($i=0;$i<$project_num;$i++) 
 	{
@@ -68,14 +89,28 @@ if(isset($_REQUEST['show_project_id']))
 	
 	echo "</table>\n";
 	
+	/*
+	*display comments
+	*/
 	echo "<h2>Comments</h2>";
 	for ($k=0;$k<$comment_num;$k++)
 	{
 		echo "<h3>Comment By: ".mysql_result($query_comment_res,$k,'user_id')."</h3>";
+
+		echo "<table><tr><td><form name='flag_comment' method='POST' action='flag_comment.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Flag Comment' /></form></td>";
+
+		/*
+		*if current user is moderator or admin, display remove comment and remove flag option
+		*/
+		if(mysql_result($query_user_res,0,'priviledge')<2)
+		{		
+		echo "<td><form name='rm_comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
+			
+		echo "<td><form name='rm_flag' method='POST' action='rm_flag.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";		
+		}
 		
-		echo "<table><tr><td><form name='rm_comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
-		echo "<td><form name='flag_comment' method='POST' action='flag_comment.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Flag Comment' /></form></td>";
-		echo "<td><form name='rm_flag' method='POST' action='rm_flag.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td></tr></table>";
+		echo "</tr></table>";
+		
 		echo "<p>".mysql_result($query_comment_res,$k,'comment')."</p>";	
 	}
 	echo "<h2>Add Comments:</h2>";
