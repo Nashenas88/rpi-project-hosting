@@ -12,6 +12,12 @@ if(isset($_REQUEST['project_id'])&&isset($_REQUEST['commenting']))
 	$project_id=$_REQUEST['project_id'];
 	$user=$_SESSION['username'];
 
+
+	if( strlen($comment) > 500 )
+	{
+		$_SESSION['message']="Your comment may not exceed 500 characters.<br />";
+	}
+	else{
 	/*
 	*check if user already comments this project
 	*/
@@ -25,10 +31,7 @@ if(isset($_REQUEST['project_id'])&&isset($_REQUEST['commenting']))
 		exit;
 	}
 
-	if( $comment.strlen() > 500 )
-	{
-		$_SESSION['message']="Your comment may not exceed 500 characters.<br />";
-	}		
+		
 
 	$num_of_comment = mysql_numrows($query_comment_res);
 
@@ -38,6 +41,7 @@ if(isset($_REQUEST['project_id'])&&isset($_REQUEST['commenting']))
 	}
 	else
 	{
+
 		/*
 		*if not comment on this project yet, insert comment
 		*/
@@ -53,6 +57,7 @@ if(isset($_REQUEST['project_id'])&&isset($_REQUEST['commenting']))
 	
 		$_SESSION['message']= "<p>Your comment added successfully! </p>";
 	}
+}
 	
 }
 else
