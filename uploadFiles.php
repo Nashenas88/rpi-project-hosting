@@ -2,7 +2,7 @@
 session_start ();
 
 require ("connect_db.php");
-$username = $_SESSION['usrname'];
+$username = $_SESSION['username'];
 $MAX_FILE_SIZE = "100000";
 $output = "";
 
