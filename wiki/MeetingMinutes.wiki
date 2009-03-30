@@ -31,7 +31,7 @@ Features:
   * logout -- done
   * search -- done
   * comment -- done
-  * moderate ban user -- done
+  * moderate ban user -- done (ALEX: MAKE SURE THAT THEY CAN NOT BAN THEMSELVES AND THAT THEY CAN NOT BAN ANYONE WITH A PRIVILEDGE >= TO THEM!, thanks)
   * moderate unban user -- done
   * flag comment -- done
   * remove flag -- done
