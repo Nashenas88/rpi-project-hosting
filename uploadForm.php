@@ -1,3 +1,4 @@
+
 <table width="500" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
 <tr><td>
 <form name="upload" method="post" action="uploadFiles.php" enctype="multipart/form-data">
@@ -16,11 +17,11 @@
 </tr>
 
 <!-- Name -->
-<tr>
+<!--<tr>
 <td>Project Author(s)</td>
 <td>:</td>
 <td><input type=text name="projectAuthor" size=20 /></td>
-</tr>
+</tr>!-->
 
 <!-- Description -->
 <tr>
@@ -59,11 +60,11 @@
 </tr>
 
 <!-- Upload Picture -->
-<tr>
+<!--<tr>
 <td>Choose a picture to upload</td>
 <td>:</td>
 <td><input name="uploadedPic" type="file" /></td>
-</tr>
+</tr>!-->
 
 <!-- Submit -->
 <tr>
