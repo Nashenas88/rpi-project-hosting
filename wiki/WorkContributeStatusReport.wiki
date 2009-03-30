@@ -33,43 +33,6 @@ Status Report:
 We finished implementing 90% of features, and 85% of our use cases.
 We are working on getting support from a local group on campus to acquire a sufficient server.
 
-    * Paul: Download -- not done
-    * Dan: change priviledge -- not done
-    * Dan: remove project -- not done
-    * All: database query with mysql_reql_escape -- not done
-    * All: form entries sanitized with htmlspecialchars() -- not done
-    * minimum 1 admin -- not done
-    * Dan:terms of service page -- not done
-    * Alex: about page -- not done
-    * Paul: login -- not done
-    * All: catch errors and display error messages -- not done
-    * Dan: max 500 in comments -- not done
-    * Dan: max 500 in description -- not done
-    * Dan: max 50 for title -- not done
-    * be able to update remotely -- not done
-    * All: unit tests use www.PHPUNIT.de (make test for your own files) -- not done
-    * All: comment code -- not done
-    * All after class on Monday: class diagram, sequence diagrams -- not done 
-
-    * Jin: rate 1-5 -- done
-    * Apache2 and MYSQL5.0 database -- done
-    * use same PHP file for every part of interface -- done
-    * max upload size -- done
-    * normalize database -- done
-    * upload -- done
-    * logout -- done
-    * search -- done
-    * comment -- done
-    * moderate ban user -- done
-    * moderate unban user -- done
-    * flag comment -- done
-    * remove flag -- done
-    * remove comment -- done
-    * rate -- done
-    * one rate per user per project -- done
-    * use PHP sessions -- done
-    * use CAS for login -- done 
-
 We need to determine if unit tests are right for us or else choose another test pattern.
 
 Risk:
