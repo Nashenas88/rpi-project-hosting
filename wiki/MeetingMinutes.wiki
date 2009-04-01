@@ -13,13 +13,12 @@ Features:
   * Alex: about page -- not done
   * Paul: login  -- not done
   * All: catch errors and display error messages -- not done
-  * Dan: max 500 in comments -- not done
   * Dan: max 500 in description -- not done
   * Dan: max 50 for title -- not done
   * be able to update remotely -- not done
   * All: unit tests use www.PHPUNIT.de (make test for your own files) -- not done
   * All: comment code -- not done
-  * All after class on Monday: class diagram, sequence diagrams -- not done
+  * All: class diagram, sequence diagrams -- ask instructor to look over
 
 
   * Jin: rate 1-5 -- done
@@ -31,7 +30,7 @@ Features:
   * logout -- done
   * search -- done
   * comment -- done
-  * moderate ban user -- done (ALEX: MAKE SURE THAT THEY CAN NOT BAN THEMSELVES AND THAT THEY CAN NOT BAN ANYONE WITH A PRIVILEDGE >= TO THEM!, thanks)
+  * moderate ban user -- done
   * moderate unban user -- done
   * flag comment -- done
   * remove flag -- done
