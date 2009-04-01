@@ -30,7 +30,7 @@ Alex Mattern
 <br>
 Jin G Z
 <br>
-Dan 
+Dan Meretzky
 <br>
 Paul Faria";
 require ("footer.php");
