@@ -1,7 +1,18 @@
 ==moderator page==
-  *-can only be seen and used by moderators and admins
   *-cannot ban/unban a user who does not exist
   *-cannot ban/unban a user who is already banned/unbanned
   *-cannot ban/unban yourself
   *-cannot ban a user with a higher privilege level than yourself
   *-can ban/unban a user with lower or equal priviledges
+
+==about page==
+  *-Describes project
+
+==Login==
+  *-input RPI ID and pass and get login affirmation or rejection
+  *-adds user to database if not already in it
+  *-moderator button for level of priviledge 1 or 0
+  *-priviledge change button for level of priviledge 0
+
+==Logout==
+  *-buttons are removed
