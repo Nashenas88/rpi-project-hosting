@@ -1,0 +1,7 @@
+==moderator page==
+-can only be seen and used by moderators and admins
+-cannot ban/unban a user who does not exist
+-cannot ban/unban a user who is already banned/unbanned
+-cannot ban/unban yourself
+-cannot ban a user with a higher privilege level than yourself
+-can ban/unban a user with lower or equal priviledges
