@@ -19,6 +19,8 @@ Features:
   * All: unit tests use www.PHPUNIT.de (make test for your own files) -- not done
   * All: comment code -- not done
   * All: class diagram, sequence diagrams -- ask instructor to look over
+  * Installation Manual -- not done
+  * 
 
 
   * Jin: rate 1-5 -- done
