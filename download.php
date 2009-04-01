@@ -4,42 +4,46 @@ session_start ();
 require ("connect_db.php");
 $id = mysql_real_escape_string ($_GET["id"]);
 
-$query = sprintf ("SELECT title, description, uploader, downloads,"
-		  . " size, project_location, authors, class, "
-		  . " major, school, date FROM projects WHERE id='%s';", $id);
-$result = mysql_query ($query);
+$query = sprintf ("SELECT title, uploader, downloads FROM projects WHERE id='%s';", $id);
 
-session_start ();
-#require ("upper_header.php");
+$result = mysql_query ($query);
 
 if ($result)
 {
   if (mysql_numrows ($result) > 0)
   {
     $row = mysql_fetch_assoc ($result);
-    #echo $row['title'];
-    #require ("lower_header.php");
-    #require ("menu.php");
     
-    #echo "<br/><center><h1>" . htmlspecialchars ($row['title']) . "</h1></center><br />\n";
-    
-    $username = htmlspecialchars ($_SESSION['username']);
+    $username = $row['uploader'];
     $path = $username . "/" . $row['title'];
     
     require ("pclzip.lib.php");
     
-    $zipfile = new PclZip ($row['title'] . "zip");
+    $zipname = $row['title'] . ".zip";
+    $zipfile = new PclZip ($zipname);
     
-    $v_list = $zipfile->create ($path);
-    
-    if ($v_list == 0)
+    foreach (scandir ($path) as $file)
     {
-	die ("Error: " . $zipfile->errorInfo (true));
+        if ($file != '.')
+	{
+	    $v_list = $zipfile->add("$path/$file", PCL_OPT_REMOVE_ALL_PATH);
+	    if ($v_list == 0)
+            {
+		require ("upper_header.php");
+            	echo "Error";
+            	require ("lower_header.php");
+      	        require ("menu.php");
+		
+		die ("<br/><center>Error: " . $zipfile->errorInfo (true) . "</center>");
+       	    }
+	}
     }
     
     header ("Content-type: application/octet-stream");
-    header ("Content-disposition: attachment; filename=" . $row['title'] . ".zip");
-    readfile ($row['title'] . ".zip");
+    header ("Content-disposition: attachment; filename=$zipname");
+    readfile ($zipname);
+    
+    unlink ($zipname);
     
   }
   else
@@ -54,13 +58,11 @@ if ($result)
 }
 else
 {
+  require ("upper_header.php");
   echo "Error";
   require ("lower_header.php");
   require ("menu.php");
   
   echo mysql_error($result);
 }
-
-
-
 ?>
