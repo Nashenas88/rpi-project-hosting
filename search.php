@@ -35,9 +35,9 @@ Execute query and display results
 ***/
 if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQUEST['orderedBy']))
 {
-	$search_request=$_REQUEST['searchInput'];
-	$search_type=$_REQUEST['searchType'];
-	$sort=$_REQUEST['orderedBy'];
+	$search_request=htmlspecialchars($_REQUEST['searchInput']);
+	$search_type=htmlspecialchars($_REQUEST['searchType']);
+	$sort=htmlspecialchars($_REQUEST['orderedBy']);
 	/*
 	*generate queries
 	*/
