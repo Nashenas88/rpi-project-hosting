@@ -11,7 +11,6 @@ Features:
   * minimum 1 admin -- not done
   * Dan:terms of service page -- not done
   * Alex: about page -- not done
-  * Paul: login  -- not done
   * All: catch errors and display error messages -- not done
   * Dan: max 500 in description -- not done
   * Dan: max 50 for title -- not done
@@ -26,7 +25,7 @@ Features:
   * Dan: upload, download
   * Paul: remove project, change priviledge, security, about page, terms of service
 
-
+  * Paul: login  -- done
   * Jin: rate 1-5 -- done
   * Apache2 and MYSQL5.0 database -- done
   * use same PHP file for every part of interface -- done
