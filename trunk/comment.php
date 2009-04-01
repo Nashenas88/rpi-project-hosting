@@ -8,9 +8,9 @@ require("connect_db.php");
 if(isset($_REQUEST['project_id'])&&isset($_REQUEST['commenting']))
 {
 
-	$comment=$_REQUEST['commenting'];
-	$project_id=$_REQUEST['project_id'];
-	$user=$_SESSION['username'];
+	$comment=htmlspecialchars($_REQUEST['commenting']);
+	$project_id=htmlspecialchars($_REQUEST['project_id']);
+	$user=htmlspecialchars($_SESSION['username']);
 
 
 	if( strlen($comment) > 500 )

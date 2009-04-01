@@ -20,8 +20,8 @@ if(isset($_SESSION['message']))
 
 if(isset($_REQUEST['show_project_id']))
 {
-	$id=$_REQUEST['show_project_id'];
-	$username=$_SESSION['username'];
+	$id=htmlspecialchars($_REQUEST['show_project_id']);
+	$username=htmlspecialchars($_SESSION['username']);
 	
 	/*
 	*query all neccessary information: rate, comment, project, and current user

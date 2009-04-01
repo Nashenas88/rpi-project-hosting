@@ -7,9 +7,9 @@ require("connect_db.php");
 if(isset($_REQUEST['rate'])&&isset($_REQUEST['project_id']))
 {
 
-$rate=$_REQUEST['rate'];
-$user=$_SESSION['username'];
-$project=$_REQUEST['project_id'];
+$rate=htmlspecialchars($_REQUEST['rate']);
+$user=htmlspecialchars($_SESSION['username']);
+$project=htmlspecialchars($_REQUEST['project_id']);
 
 
 if($rate>5 || $rate < 1 )

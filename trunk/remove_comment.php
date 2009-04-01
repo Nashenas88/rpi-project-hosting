@@ -8,8 +8,8 @@ require("connect_db.php");
 if(isset($_REQUEST['project_id'])&&isset($_REQUEST['user_id']))
 {
 
-	$project_id=$_REQUEST['project_id'];
-	$user=$_REQUEST['user_id'];
+	$project_id=htmlspecialchars($_REQUEST['project_id']);
+	$user=htmlspecialchars($_REQUEST['user_id']);
 
 	/*
 	*check if comment need to be removed exist
