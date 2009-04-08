@@ -16,3 +16,90 @@
 
 ==Logout==
   *-buttons are removed
+
+==Comment:==
+
+TC1: Comment project [successful commenting a project]
+Preconditions: User logged in and did not comment on this project.
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information, comments with flag option and a comment form.
+Enter comment for the project. (no more than 500 characters)
+Brower should show comment successful message and display project information with this new comment.
+
+TC2: Comment project [Fails: already comment on the project]
+Preconditions: User logged in and had comment on this project
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information, comments with flag option and a comment form.
+Enter comment on the textbox. (no more than 500 characters)
+Brower should show comment fail message: already comment on the project, and display project information.
+
+TC3: Comment project [Fails: comment exceeds 500 characters]
+Preconditions: User logged in and had comment on this project
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information, comments with flag option and a comment form.
+Enter comment on the textbox. (more than 500 characters)
+Brower should show comment fail message: comment exceed 500 characters, and display project information.
+
+==Flag_comment:==
+
+TC4: Flag a comment [successfully flag a comment]
+Preconditions: There is at least one comment displayed for a project
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information, comments with flag option and comment form.
+Select flag option on a particular comment.
+Browser should display flag successful message: comment flag and display project information.
+
+
+==Remove_comment:==
+
+TC5: Remove a comment [successfully remove a comment]
+Preconditions: Logged in as moderator or admin and at least one comment displayed for a project.
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information, comments with remove comment option and comment form.
+Select remove comment option of a particular comment.
+Browser should display remove comment successful message: remove comment successfully, and display project information.
+
+==Rate project:==
+
+TC6: Rate project [rate a project successfully]
+Preconditions: Logged in and at least one project in the system and never rate this project before.
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information with rating option.
+Enter 1-5 as rate for the project.
+Browser should display rate successful message: rated it successfully, and display project information.
+
+TC7: Rate project [rate fails: not in 1-5]
+Preconditions: Logged in and at least one project in the system.
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information with rating option.
+Enter -9 as rate for the project.
+Brower should display rate fail message: Must be 1-5, and display project information.
+
+
+TC8: Rate project [rate fails: already rate project]
+Preconditions: Logged in and at least one project in the system and rated this project before.
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information with rating option.
+Enter 1-5 as rate for the project.
+Brower should display rate fail message: already rate this project, and display project information.
+
+==Remove flag:==
+
+TC9: Remove flag [remove flag of a comment successfully]
+Preconditions: Logged in as moderator or admin and at least one comment of a project is flag.
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information, comments with remove flag option and comment form.
+Select remove flag option of a particular comment.
+Browser should display flag removed successful message: remove flag successfully, and display project information.
+
+
+
