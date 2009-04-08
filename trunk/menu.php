@@ -18,11 +18,14 @@ if (loggedIn () != 0)
   echo "</a></td><td align=\"center\"><a href=\"logout.php\">LogoutAlternate";
   echo "</a></td><td align=\"center\"><a href=\"upload.php\">Upload";
   echo "</a></td><td align=\"center\"><a href=\"projects.php\">Projects";
-  echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
 }
-  echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
+else
+{
+  echo "\"search.php\">Search";
+}
 if (loggedIn () != 0)
 {
+  echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
   echo "</a></td><td align=\"center\"><a href=\"settings.php\">Settings";
   
   if (isModerator () == true)
