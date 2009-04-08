@@ -8,10 +8,10 @@
 </td>
 <td align="center">
 <a href=
+
 <?php
 //the functions used to determine priviledge
 require("priviledge.php");
-
 if (loggedIn () != 0)
 {
   echo "\"login.php?logout\">Logout";
@@ -19,6 +19,10 @@ if (loggedIn () != 0)
   echo "</a></td><td align=\"center\"><a href=\"upload.php\">Upload";
   echo "</a></td><td align=\"center\"><a href=\"projects.php\">Projects";
   echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
+}
+  echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
+if (loggedIn () != 0)
+{
   echo "</a></td><td align=\"center\"><a href=\"settings.php\">Settings";
   
   if (isModerator () == true)
