@@ -18,13 +18,6 @@ if (loggedIn () != 0)
   echo "</a></td><td align=\"center\"><a href=\"logout.php\">LogoutAlternate";
   echo "</a></td><td align=\"center\"><a href=\"upload.php\">Upload";
   echo "</a></td><td align=\"center\"><a href=\"projects.php\">Projects";
-}
-else
-{
-  echo "\"search.php\">Search";
-}
-if (loggedIn () != 0)
-{
   echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
   echo "</a></td><td align=\"center\"><a href=\"settings.php\">Settings";
   
@@ -36,8 +29,9 @@ if (loggedIn () != 0)
 }
 else
 {
-  echo "</a></td><td align=\"center\"><a href=\"login.php\">Login";
+  echo "\"login.php\">Login";
   echo "</a></td><td align=\"center\"><a href=\"loginAlternate.php\">LoginAlernate";
+  echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
 }
 ?>
 </a>
