@@ -36,7 +36,7 @@ if (loggedIn () != 0)
 }
 else
 {
-  echo "\"login.php\">Login";
+  echo "</a></td><td align=\"center\"><a href=\"login.php\">Login";
   echo "</a></td><td align=\"center\"><a href=\"loginAlternate.php\">LoginAlernate";
 }
 ?>
