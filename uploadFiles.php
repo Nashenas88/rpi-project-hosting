@@ -28,7 +28,20 @@ if (!$result)
 
 $matches = mysql_numrows ($result);
 
-if ($matches > 0)
+if( strlen($_POST["projectName"]) > 50 || strlen($_POST["projectDescription"]) > 500 )
+{
+	if( strlen($_POST["projectName"]) > 50 ) 
+	{
+		$output = "Project name is too long. <br/>";
+		$output = $output . "Project name cannot exceed 50 characters.<br/>";
+	}
+	if( strlen($_POST["projectDescription"]) > 500 )
+	{
+		$output = $output . "Project description is too long. <br/>";
+		$output = $output . "Project description cannot exceed 500 characters.<br/>";
+	} 
+}	
+else if ($matches > 0)
 {
 	$output = "Upload Failed: You already have a project with the same name";
 }
