@@ -70,7 +70,8 @@ if (!$result)
 $matches = mysql_numrows ($result);
 if ($matches > 0)
 {
-  echo "You are currently banned and may not log in.";
+  require ("feater.php");
+  make_page ("Error", "<br />\n<center>\nYou are currently banned and may not log in.\n</center>\n<br />");
   exit;
 }
 
@@ -83,8 +84,9 @@ $query = sprintf ("SELECT 1 FROM users WHERE rcsid='%s'", mysql_real_escape_stri
 $result = mysql_query ($query);
 if (!$result)
 {
-    echo mysql_error ();
-    exit;
+  require ("feater.php");
+  make_page ("Error", mysql_error ());
+  exit;
 }
 
 $matches = mysql_numrows ($result);
@@ -93,7 +95,8 @@ if ($matches == 0)
     $query = sprintf ("INSERT INTO users VALUES('%s', 'crap', 2)", mysql_real_escape_string ($username));
     if (!mysql_query ($query))
     {
-        echo mysql_error ();
+        require ("feater.php");
+	make_page ("Error", mysql_error ());
         exit;
     }
 }
