@@ -2,6 +2,12 @@
 session_start ();
 require ("feater.php");
 
+if ($_SESSION['username']== null)
+{
+  make_page ("Error", "<br />\n<center>\nYou must be logged in to access this page!\n</center>\n<br />");
+  exit ();
+}
+
 $output = "<table width=\"500\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#FFFFFF\">\n";
 $output .= "<tr><td>\n";
 $output .= "<form name=\"upload\" method=\"post\" action=\"uploadFiles.php\" enctype=\"multipart/form-data\">\n";

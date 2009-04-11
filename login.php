@@ -56,6 +56,22 @@ if (isset($_REQUEST['logout'])) {
 
 
 $username = phpCAS::getUser ();
+
+$query = sprintf ("SELECT 1 FROM moderateusers WHERE user_id='%s'", mysql_real_escape_string ($username));
+$result = mysql_query ($query);
+if (!$result)
+{
+  echo mysql_error ();
+  exit;
+}
+
+$matches = mysql_numrows ($result);
+if ($matches > 0)
+{
+  echo "You are currently banned and may not log in.";
+  exit;
+}
+
 $loggedIn = 1;
 
 session_register ("username");
