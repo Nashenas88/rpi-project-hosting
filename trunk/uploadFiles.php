@@ -3,7 +3,7 @@ session_start ();
 
 require ("connect_db.php");
 $username = $_SESSION['username'];
-$MAX_FILE_SIZE = "100000";
+$MAX_FILE_SIZE = "100000000";
 $output = "";
 
 $path = $username . "/" . $_POST["projectName"];
@@ -115,10 +115,7 @@ else
 	}
 }
 
-require ("upper_header.php");
-echo "Uploading...";
-require ("lower_header.php");
-require ("menu.php");
-echo $output;
-require ("footer.php");
+require ("feater.php");
+
+make_page ("Uploading...", $output);
 ?>
