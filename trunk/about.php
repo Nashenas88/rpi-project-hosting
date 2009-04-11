@@ -27,7 +27,7 @@ Jin Guang Zheng
 <br>
 Dan Meretzky
 <br>
-Paul Faria";
+Paul Faria
 
 <?php
 require ("footer.php");
