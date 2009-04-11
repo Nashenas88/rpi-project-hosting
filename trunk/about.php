@@ -4,14 +4,9 @@ require ("upper_header.php");
 echo "About";
 require ("lower_header.php");
 require ("menu.php");
-echo "<br />\n
-RPH<br>
-Pro<br>
-Ios<br>
- jt<br>
- ei<br>
- cn<br>
- tg<br>
+echo "<br />\n";
+?>
+<img src="images/RPH.png" width='10%' height='10%'>
 <br>
 <br>
 RPH is a project hosting site for RPI students. Students are able to log in to the website using their RCS IDs and Passwords.
@@ -28,10 +23,12 @@ Admins and Contributors:
 <br>
 Alex Mattern
 <br>
-Jin G Z
+Jin Guang Zheng
 <br>
 Dan Meretzky
 <br>
 Paul Faria";
+
+<?php
 require ("footer.php");
 ?>
