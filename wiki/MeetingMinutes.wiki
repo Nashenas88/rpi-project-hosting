@@ -3,28 +3,28 @@
 =4/1/09=
 Features:
 
-  * Paul: Download -- not done
-  * Dan: change priviledge -- not done
-  * Dan: remove project -- not done
+  * Jin and Paul: remove project -- not done
   * All: database query with mysql_reql_escape -- not done
   * All: form entries sanitized with htmlspecialchars() -- not done
-  * minimum 1 admin -- not done
-  * Dan:terms of service page -- not done
-  * Alex: about page -- not done
   * All: catch errors and display error messages -- not done
-  * Dan: max 500 in description -- not done
-  * Dan: max 50 for title -- not done
   * be able to update remotely -- not done
-  * All: unit tests use www.PHPUNIT.de (make test for your own files) -- not done
+  * All: automated unit tests use www.PHPUNIT.de (make test for your own files) -- not done
   * All: comment code -- not done
-  * All: class diagram, sequence diagrams -- ask instructor to look over
-  * Installation Manual -- not done
+  * All: class diagram, sequence diagrams -- not done
   * ==Test Case Specification -- not done==
   * Jin: flag_comment, rate, remove_comment, remove_flag, comment
   * Alex: search, login, logout
   * Dan: upload, download
   * Paul: remove project, change priviledge, security, about page, terms of service
 
+
+  * Dan: terms of service page -- done
+  * Paul: Download -- done
+  * Jin: change priviledge -- done
+  * minimum 1 admin -- done
+  * Alex: about page -- done
+  * Dan: max 500 in description -- done
+  * Dan: max 50 for title -- done
   * Paul: login  -- done
   * Jin: rate 1-5 -- done
   * Apache2 and MYSQL5.0 database -- done
