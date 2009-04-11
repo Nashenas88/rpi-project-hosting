@@ -18,7 +18,7 @@ function make_page ($title, $body)
   echo '</title>';
   echo '</head>';
   echo '';
-  echo '<body>';
+  echo '<body background="river.jpg">';
   
   require ("menu.php");
   
