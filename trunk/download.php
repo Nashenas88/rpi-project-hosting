@@ -2,8 +2,12 @@
 session_start ();
 
 require ("connect_db.php");
+require ("feater.php");
+
+// get project id
 $id = mysql_real_escape_string ($_GET["id"]);
 
+// use project id to get data from database
 $query = sprintf ("SELECT title, uploader, downloads FROM projects WHERE id='%s';", $id);
 
 $result = mysql_query ($query);
@@ -17,52 +21,54 @@ if ($result)
     $username = $row['uploader'];
     $path = $username . "/" . $row['title'];
     
-    require ("pclzip.lib.php");
+    // create new zip archive
+    $za = new ZipArchive ();
+    $zipfile = $row['title'] . ".zip";
     
-    $zipname = $row['title'] . ".zip";
-    $zipfile = new PclZip ($zipname);
-    
-    foreach (scandir ($path) as $file)
+    if ($za->open ($zipfile, ZIPARCHIVE::OVERWRITE) !== TRUE)
     {
-        if ($file != '.')
-	{
-	    $v_list = $zipfile->add("$path/$file", PCL_OPT_REMOVE_ALL_PATH);
-	    if ($v_list == 0)
-            {
-		require ("upper_header.php");
-            	echo "Error";
-            	require ("lower_header.php");
-      	        require ("menu.php");
-		
-		die ("<br/><center>Error: " . $zipfile->errorInfo (true) . "</center>");
-       	    }
-	}
+	make_page ("Error", "<br/>\n<center>\nCannot open <$zipfile>!\n</center>\n<br/>");
+	exit ("");
     }
     
+    // add contents of project to zip archive
+    foreach (scandir ($path) as $file)
+    {
+      if ($file[0] != "." && $file != $zipfile)
+      {
+	$za->addFile ("$path/$file", "$file");
+      }
+    }
+    
+    $za->close ();
+    
+    // send header information
     header ("Content-type: application/octet-stream");
-    header ("Content-disposition: attachment; filename=$zipname");
-    readfile ($zipname);
+    header("Cache-Control: no-cache, must-revalidate");
+    header ("Content-disposition: attachment; filename=\"$zipfile\"");
+    readfile ($zipfile);
+
+    unlink ($zipfile);
     
-    unlink ($zipname);
+    // increase download count
+    $downloads = $row['downloads'];
     
+    $downloads += 1;
+    
+    $query = sprintf ("UPDATE projects SET downloads=%d WHERE id='%s'", $downloads, $id);
+    
+    if (!mysql_query ($query))
+    {
+      make_page ("Error", mysql_error ($result));
+    }
   }
   else
   {
-    require ("upper_header.php");
-    echo "Error";
-    require ("lower_header.php");
-    require ("menu.php");
-    
-    echo "<br/><center>Project not found</center>";
+    make_page ("Error", "<br/><center>Project not found</center>");
   }
 }
 else
 {
-  require ("upper_header.php");
-  echo "Error";
-  require ("lower_header.php");
-  require ("menu.php");
-  
-  echo mysql_error($result);
+  make_page ("Error", mysql_error ($result));
 }
 ?>
