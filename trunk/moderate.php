@@ -17,11 +17,14 @@ if (isModerator () == true)
 	echo "Ban an user: <br>";
 	require ("ban_form.php");
 	echo "<br>";
+	
+	
 	echo "Change user's priviledge: <br>";
 	require("changePriviledge.php");
 	echo "<br>";
-	//make sure the form was filled in
 	
+	
+	//make sure the form was filled in
 	if(isset($_REQUEST['username'])&&isset($_REQUEST['ban_unban']))
 	{
 		$username=$_REQUEST['username'];
@@ -91,6 +94,11 @@ if (isModerator () == true)
 		}
 	}
 	
+	
+
+	/*
+	If there is flag comment, list them and options of remove flag, remove comment, and the project this comment is commenting on
+	*/
 	$query_flag_comments="SELECT * FROM comments where flag=1";
 	$query_flag_comments_res=mysql_query($query_flag_comments);
 	if (!$query_flag_comments_res) 
@@ -100,6 +108,8 @@ if (isModerator () == true)
 		exit;
 	}
 	$query_flag_comments_num=mysql_numrows($query_flag_comments_res);
+	
+	
 	echo "<table>";
 	for($i=0;$i<$query_flag_comments_num;$i++)
 	{
