@@ -4,12 +4,18 @@ changePriviedge.php
 allows moderators and admin to change the priviledge level of a user
 ***/
 
-session_start ();
-
-
 if (getPriviledge () == 0 )
 {
-	require ("changePriviledgeForm.php");
+	$output = "<form name='changePriviledge' method='POST' action='changePriviledge.php'>";
+	$output .= "Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>";
+	$output .= "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='priviledge'>";
+	$output .= "<option value="3">Non-RPI User</option>";
+	$output .= "<option value="2">RPI User</option>";
+	$output .= "<option value="1">Moderator</option>";
+	$output .= "<option value="0">Admin</option>";
+	$output .= "</select>";
+	$output .= "&nbsp;&nbsp;<input type='submit' value='Update'\>";
+	$output .= "</form>";
 	
 	//make sure the form was filled in
 	if(isset($_REQUEST['username'])&&isset($_REQUEST['priviledge']))
@@ -27,7 +33,7 @@ if (getPriviledge () == 0 )
 		
 		if (!$user_exists)
 		{
-			echo "User ".$username." does not exist";		
+			$output .= "User ".$username." does not exist";		
 		}
 		else if(mysql_result($user_exists,0,'rcsid') == $username)
 		{
@@ -43,19 +49,19 @@ if (getPriviledge () == 0 )
 				
 				if(!$update_privildge_res)
 				{
-					echo "update error";
+					$output .= "update error";
 					exit;
 				}
 				else
 				{
-					echo "User " . $username . " has had privilege changed from " . mysql_result($user_exists,0,'priviledge') . " to " . $priviledge;
+					$output .= "User " . $username . " has had privilege changed from " . mysql_result($user_exists,0,'priviledge') . " to " . $priviledge;
 				}
 				
 				
 			}
 			else
 			{
-				echo "Your can't change your own priviledge";
+				$output .= "Your can't change your own priviledge";
 			}
 			
 			
@@ -63,7 +69,7 @@ if (getPriviledge () == 0 )
 		}
 		else
 		{
-			echo "Unknown Error";
+			$output .= "Unknown Error";
 		}
 		
 	}
@@ -71,9 +77,7 @@ if (getPriviledge () == 0 )
 }
 else
 {
-	echo "You need to be a moderator";
+	$output .= "You need to be a moderator";
 }
-
-require ("footer.php");
 
 ?>
