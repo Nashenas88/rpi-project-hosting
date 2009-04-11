@@ -11,7 +11,6 @@
 
 <?php
 //the functions used to determine priviledge
-require("priviledge.php");
 if (loggedIn () != 0)
 {
   	echo "\"login.php?logout\">Logout";
