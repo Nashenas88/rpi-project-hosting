@@ -81,12 +81,17 @@ if(isset($_REQUEST['show_project_id']))
 		echo "  <tr><td>Major: </td><td>" . mysql_result($query_project_res,$i,'major'). "</td></tr>\n";
 		echo "  <tr><td>School: </td><td>" . mysql_result($query_project_res,$i,'school'). "</td></tr>\n";
 		echo "  <tr><td>Date uploaded: </td><td>" . mysql_result($query_project_res,$i,'date'). "</td></tr>\n";
-		echo "  <tr><td>Curretn rate: </td><td>".$rating_num." users rate this project: " . $current_rate. "</td></tr>\n";
+		echo "  <tr><td>Current rating: </td><td>".$rating_num." users rating this project: " . $current_rate. "</td></tr>\n";
 		if(isset($_SESSION['username']))
 		{
 		echo "<tr><td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='1'>1</option><option value=1>1</option>";
 		echo "<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";
 		echo "<input type='hidden' name='project_id' value='".mysql_result($query_project_res,$i,'id')."'/><input type='submit' value='Rate' /></form></td></tr>";
+		}
+		if(getPriviledge ()<2)
+		{
+		echo "<tr><td><form name='remove_project' method='POST' action='rm_project.php'>";
+		echo "<input type='hidden' name='project_id' value='".mysql_result($query_project_res,$i,'id')."'/><input type='submit' value='Remove' /></form></td></tr>";
 		}
 	}
 	

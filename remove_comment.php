@@ -3,9 +3,11 @@
 session_start ();
 
 require("connect_db.php");
-
-
-if(isset($_REQUEST['project_id'])&&isset($_REQUEST['user_id']))
+require("priviledge.php");
+/*
+if neccessary information: project id, user id and priviledge of the user doing action are satisfied
+*/
+if(isset($_REQUEST['project_id'])&&isset($_REQUEST['user_id'])&&getPriviledge()<2)
 {
 
 	$project_id=htmlspecialchars($_REQUEST['project_id']);
