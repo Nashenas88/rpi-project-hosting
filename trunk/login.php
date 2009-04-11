@@ -57,6 +57,8 @@ if (isset($_REQUEST['logout'])) {
 
 $username = phpCAS::getUser ();
 
+require ("connect_db.php");
+
 $query = sprintf ("SELECT 1 FROM moderateusers WHERE user_id='%s'", mysql_real_escape_string ($username));
 $result = mysql_query ($query);
 if (!$result)
@@ -76,8 +78,6 @@ $loggedIn = 1;
 
 session_register ("username");
 session_register ("loggedIn");
-
-require ("connect_db.php");
 
 $query = sprintf ("SELECT 1 FROM users WHERE rcsid='%s'", mysql_real_escape_string ($username));
 $result = mysql_query ($query);
