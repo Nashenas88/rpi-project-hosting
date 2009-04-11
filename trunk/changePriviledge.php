@@ -5,55 +5,67 @@ allows moderators and admin to change the priviledge level of a user
 ***/
 
 session_start ();
-require ("upper_header.php");
-echo "Change Privilege";
-require ("lower_header.php");
-require ("menu.php");
 
-if (isModerator () == true )
+
+if (getPriviledge () == 0 )
 {
-	echo "You are a moderator";
 	require ("changePriviledgeForm.php");
 	
 	//make sure the form was filled in
 	if(isset($_REQUEST['username'])&&isset($_REQUEST['priviledge']))
 	{
 		$username=$_REQUEST['username'];
-		$priviledge=$_REQUEST['priviledge'];
+		$priviledge=htmlspecialchars($_REQUEST['priviledge']);
 		
 		//sanitize form input
 		$username=htmlspecialchars($username);
 
 		//check to make sure user exists
 		$self=$_SESSION['username'];
-		$user_exists= mysql_query("SELECT rcsid FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
-		$user_exists= mysql_fetch_array($user_exists);
-		if($user_exists[0] == $username)
+		$user_exists= mysql_query("SELECT * FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
+
+		
+		if (!$user_exists)
+		{
+			echo "User ".$username." does not exist";		
+		}
+		else if(mysql_result($user_exists,0,'rcsid') == $username)
 		{
 			//you cannot change your own priviledge
+			
 			if($self != $username)
 			{
-				//you cannot change priviledge of a user with higher priviledge than you
-				if(getPriviledge($self) >= getPriviledge($username))
+				
+				
+				$update_priviledge="UPDATE users SET priviledge=".mysql_real_escape_string($priviledge)." WHERE rcsid='".$username."'";
+				
+				$update_privildge_res=mysql_query($update_priviledge);
+				
+				if(!$update_privildge_res)
 				{
-					
-					mysql_query("INSERT INTO priviledgeusers(user_id) VALUES ('".mysql_real_escape_string($username)."')");
-					echo "User " . $username . " has had privilege changed from " . getPriviledge($username) . " to " . $privildge;
+					echo "update error";
+					exit;
 				}
 				else
 				{
-					echo "hah".$username." dominates you";
+					echo "User " . $username . " has had privilege changed from " . mysql_result($user_exists,0,'priviledge') . " to " . $priviledge;
 				}
+				
+				
 			}
 			else
 			{
-				echo "Your attempted suicide was aborted";
+				echo "Your can't change your own priviledge";
 			}
+			
+			
+			
 		}
 		else
 		{
-			echo "User ".$username." does not exist";
+			echo "Unknown Error";
 		}
+		
 	}
 	
 }

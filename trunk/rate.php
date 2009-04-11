@@ -38,7 +38,7 @@ if rated already, redirect to search.php, display message
 if($num_of_rate>0)
 {
 	$_SESSION['message']="<p>You already rated this project!</p>";
-	header ("location:search.php");
+	header ("location:search.php?searchInput=".$_REQUEST['searchInput']."&searchType=".$_REQUEST['searchType']."&orderedBy=".$_REQUEST['orderedBy']);
 }
 /***
 not rated yet, rate the project
@@ -50,13 +50,13 @@ $insert_rate_res=mysql_query($insert_rate);
 if (!$insert_rate_res) 
 {
 	//echo mysql_error();
+	echo $insert_rate;
 	echo "Sorry, we can't query your request3";
 	exit;
 }
 
 $_SESSION['message']= "<p>You rated it successfully! </p>";
-header ("location:search.php");
+header ("location:search.php?searchInput=".$_REQUEST['searchInput']."&searchType=".$_REQUEST['searchType']."&orderedBy=".$_REQUEST['orderedBy']);
 
 }
-
 ?>
