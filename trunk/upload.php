@@ -86,7 +86,7 @@ $output .= "\n";
 $output .= "<!-- Terms of Service -->\n";
 $output .= "<tr>\n";
 $output .= "<td colspan=\"3\">\n";
-$output .= "<p style=\"font-size:12px\">By uploading files you certify that you have the right to distribute these files and that it does not violate the <a href=\"termsOfService.html\">Terms of Service</a>.</p>\n";
+$output .= "<p style=\"font-size:12px\">By uploading files you certify that you have the right to distribute these files and that it does not violate the <a href=\"termsOfService.php\">Terms of Service</a>.</p>\n";
 $output .= "</td>\n";
 $output .= "</tr>\n";
 $output .= "\n";
