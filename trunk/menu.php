@@ -20,7 +20,7 @@ if (loggedIn () != 0)
   	echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
   	echo "</a></td><td align=\"center\"><a href=\"settings.php\">Settings";
   
-  	if (getPriviledge <= 1)
+  	if (getPriviledge() <= 1)
   	{
   		 echo "</a></td><td align=\"center\"><a href=\"moderate.php\">Moderate";
   	}  
