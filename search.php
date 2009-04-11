@@ -11,6 +11,7 @@ use this session for testing logged in user
 assume login use admin account (for rating)
 ***/
 
+
 require("connect_db.php");
 require ("upper_header.php");
 echo "Search";
@@ -117,7 +118,10 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 			<th>School</th>
 			<th>Date Uploaded</th>
 			<th>Current Rate</th>
-			<th>Rate This Project</th>
+			<?php
+			if(isset($_SESSION['username']))
+			echo "<th>Rate This Project</th>"
+			?>
 		</tr>
 <?php
 	}
@@ -171,7 +175,14 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 			$current_rate=$sum/$rating_num;
 		}
 		echo "<td>". $current_rate."</td>\n";
-		echo "<td><form name='rate' method='POST' action='rate.php'><input type='text' name='rate' size=2/><input type='hidden' name='project_id' value='".mysql_result($project_res,$i,'id')."'/><input type='submit' value='Rate' /></form></td>";
+		
+		//if logged in, show rate option
+		if(isset($_SESSION['username']))
+		{
+		echo "<td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='1'>1</option><option value=1>1</option>";
+		echo "<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";
+		echo "<input type='hidden' name='project_id' value='".mysql_result($project_res,$i,'id')."'/><input type='hidden' name='searchInput' value='".$_REQUEST['searchInput']."'/><input type='hidden' name='searchType' value='".$_REQUEST['searchType']."'/><input type='hidden' name='orderedBy' value='".$_REQUEST['orderedBy']."'/><input type='submit' value='Rate' /></form></td>";
+		}
 		echo "</tr>\n";
 	}
 	echo "</table>\n";
@@ -182,4 +193,3 @@ else
 }
 require ("footer.php");
 ?>
-

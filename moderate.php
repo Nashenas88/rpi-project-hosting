@@ -12,10 +12,16 @@ require ("menu.php");
 
 if (isModerator () == true)
 {
-	echo "You are a moderator";
-	require ("ban_form.php");
+	echo "<p>You are a moderator<br /></p>";
 	
+	echo "Ban an user: <br>";
+	require ("ban_form.php");
+	echo "<br>";
+	echo "Change user's priviledge: <br>";
+	require("changePriviledge.php");
+	echo "<br>";
 	//make sure the form was filled in
+	
 	if(isset($_REQUEST['username'])&&isset($_REQUEST['ban_unban']))
 	{
 		$username=$_REQUEST['username'];
@@ -85,6 +91,31 @@ if (isModerator () == true)
 		}
 	}
 	
+	$query_flag_comments="SELECT * FROM comments where flag=1";
+	$query_flag_comments_res=mysql_query($query_flag_comments);
+	if (!$query_flag_comments_res) 
+	{
+		//echo mysql_error();
+		echo "Sorry, we can't query your request";
+		exit;
+	}
+	$query_flag_comments_num=mysql_numrows($query_flag_comments_res);
+	echo "<table>";
+	for($i=0;$i<$query_flag_comments_num;$i++)
+	{
+		echo "<tr><td><form name='rm_comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
+			
+		echo "<td><form name='rm_flag' method='POST' action='rm_flag.php'><input type='hidden' name='project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";		
+		
+		echo "<td><form name='show_project' method='GET' action='show_project.php'><input type='hidden' name='show_project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='submit' value='show project' /></form></td></tr>";
+		
+		echo "</tr><td colspan='2'><p>".mysql_result($query_flag_comments_res,$i,'comment')."</p></td></tr>";	
+	
+	}
+	echo "</table>";
+
+
+		
 }
 else
 {

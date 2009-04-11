@@ -9,6 +9,7 @@ echo "Search";
 require ("lower_header.php");
 require ("menu.php");
 
+
 /*
 * display any message generated
 */
@@ -22,7 +23,6 @@ if(isset($_REQUEST['show_project_id']))
 {
 	$id=htmlspecialchars($_REQUEST['show_project_id']);
 	$username=htmlspecialchars($_SESSION['username']);
-	
 	/*
 	*query all neccessary information: rate, comment, project, and current user
 	*/
@@ -35,7 +35,7 @@ if(isset($_REQUEST['show_project_id']))
 	$query_project="SELECT * FROM projects WHERE id=".mysql_real_escape_string($id);
 	$query_project_res=mysql_query($query_project);
 
-	$query_user="SELECT * FROM users WHERE rcsid='".mysql_real_escape_string("asdasd")."'";
+	$query_user="SELECT * FROM users WHERE rcsid='".mysql_real_escape_string($username)."'";
 	$query_user_res=mysql_query($query_user);
 	
 	if (!$query_rate_res||!$query_project_res||!$query_comment_res||!$query_user_res) 
@@ -71,20 +71,23 @@ if(isset($_REQUEST['show_project_id']))
 	echo "<h2>Project Details</h2><table>\n";
 	for ($i=0;$i<$project_num;$i++) 
 	{
-		echo "<tr>\n";
-		echo "  <td>" . mysql_result($query_project_res,$i,'title') . "</td>\n";
-		echo "  <td>" . mysql_result($query_project_res,$i,'description') . "</td>\n";
-		echo "  <td>" . mysql_result($query_project_res,$i,'uploader') . "</td>\n";
-		echo "  <td>" . mysql_result($query_project_res,$i,'downloads'). "</td>\n";
-		echo "  <td>" . mysql_result($query_project_res,$i,'size'). "</td>\n";
-		echo "  <td><a href='" . mysql_result($query_project_res,$i,'project_location'). "'>Download Link</a></td>\n";
-		echo "  <td>" . mysql_result($query_project_res,$i,'class'). "</td>\n";
-		echo "  <td>" . mysql_result($query_project_res,$i,'major'). "</td>\n";
-		echo "  <td>" . mysql_result($query_project_res,$i,'school'). "</td>\n";
-		echo "  <td>" . mysql_result($query_project_res,$i,'date'). "</td>\n";
-		echo "  <td>".$rating_num." users rate this project: " . $current_rate. "</td>\n";
-		echo "<td><form name='rate' method='POST' action='rate.php'><input type='text' name='rate' size=2/><input type='hidden' name='project_id' value='".mysql_result($query_project_res,$i,'id')."'/><input type='submit' value='Rate' /></form></td>";
-		echo "</tr>\n";
+		echo "  <tr><td>Title: </td><td>" . mysql_result($query_project_res,$i,'title') . "</td></tr>\n";
+		echo "  <tr><td>Description: </td><td>" . mysql_result($query_project_res,$i,'description') . "</td></tr>\n";
+		echo "  <tr><td>Uploader: </td><td>" . mysql_result($query_project_res,$i,'uploader') . "</td></tr>\n";
+		echo "  <tr><td>Downloads: </td><td>" . mysql_result($query_project_res,$i,'downloads'). "</td></tr>\n";
+		echo "  <tr><td>Size: </td><td>" . mysql_result($query_project_res,$i,'size'). "</td></tr>\n";
+		echo "  <tr><td>Project_location: </td><td><a href='" . mysql_result($query_project_res,$i,'project_location'). "'>Download Link</a></td></tr>\n";
+		echo "  <tr><td>Class: </td><td>" . mysql_result($query_project_res,$i,'class'). "</td></tr>\n";
+		echo "  <tr><td>Major: </td><td>" . mysql_result($query_project_res,$i,'major'). "</td></tr>\n";
+		echo "  <tr><td>School: </td><td>" . mysql_result($query_project_res,$i,'school'). "</td></tr>\n";
+		echo "  <tr><td>Date uploaded: </td><td>" . mysql_result($query_project_res,$i,'date'). "</td></tr>\n";
+		echo "  <tr><td>Curretn rate: </td><td>".$rating_num." users rate this project: " . $current_rate. "</td></tr>\n";
+		if(isset($_SESSION['username']))
+		{
+		echo "<tr><td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='1'>1</option><option value=1>1</option>";
+		echo "<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";
+		echo "<input type='hidden' name='project_id' value='".mysql_result($query_project_res,$i,'id')."'/><input type='submit' value='Rate' /></form></td></tr>";
+		}
 	}
 	
 	echo "</table>\n";
@@ -102,11 +105,15 @@ if(isset($_REQUEST['show_project_id']))
 		/*
 		*if current user is moderator or admin, display remove comment and remove flag option
 		*/
-		if(mysql_result($query_user_res,0,'priviledge')<2)
+		$num_of_user = mysql_numrows($query_user_res);
+
+		if($num_of_user>0&&mysql_result($query_user_res,0,'priviledge')<2)
 		{		
 		echo "<td><form name='rm_comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
-			
+		
+			if(mysql_result($query_comment_res,$k,'flag')==1){
 		echo "<td><form name='rm_flag' method='POST' action='rm_flag.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";		
+		}
 		}
 		
 		echo "</tr></table>";
