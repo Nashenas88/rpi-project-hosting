@@ -5,23 +5,30 @@ implements ban and unban ability of moderator priveledged
 ***/
 
 session_start ();
-require ("upper_header.php");
-echo "Moderate";
-require ("lower_header.php");
-require ("menu.php");
+
+require ("feater.php");
+
+$output = "";
 
 if (isModerator () == true)
 {
-	echo "<p>You are a moderator<br /></p>";
+	$output .= "<p>You are a moderator<br /></p>";
 	
-	echo "Ban an user: <br>";
-	require ("ban_form.php");
-	echo "<br>";
+	$output .= "Ban an user: <br>";
+	$output .= "<form name='ban' method='POST' action='moderate.php'>";
+	$output .= "Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>";
+	$output .= "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='ban_unban'>";
+	$output .= "<option value="ban">Ban</option>";
+	$output .= "<option value="unban">Unban</option>";
+	$output .= "</select>";
+	$output .= "&nbsp;&nbsp;<input type='submit' value='Update'\>";
+	$output .= "</form>";
+	$output .= "<br>";
 	
 	
-	echo "Change user's priviledge: <br>";
+	$output .= "Change user's priviledge: <br>";
 	require("changePriviledge.php");
-	echo "<br>";
+	$output .= "<br>";
 	
 	
 	//make sure the form was filled in
@@ -53,12 +60,12 @@ if (isModerator () == true)
 						$user_banned = mysql_fetch_array($user_banned);
 						if($user_banned[0] == $username)
 						{
-							echo "User ".$username." is already banned";
+							$output .= "User ".$username." is already banned";
 						}
 						else
 						{
 							mysql_query("INSERT INTO moderateusers(user_id) VALUES ('".mysql_real_escape_string($username)."')");
-							echo "User ".$username." has been banned";
+							$output .= "User ".$username." has been banned";
 						}
 					}
 					//if want to ban user
@@ -70,27 +77,27 @@ if (isModerator () == true)
 						if($user_banned[0] == $username)
 						{
 							mysql_query("DELETE FROM moderateusers WHERE user_id='".mysql_real_escape_string($username)."'");
-							echo "User ".$username." is no longer banned";
+							$output .= "User ".$username." is no longer banned";
 						}
 						else
 						{
-							echo "User ".$username." is was not previously banned";
+							$output .= "User ".$username." is was not previously banned";
 						}
 					}
 				}
 				else
 				{
-					echo "hah".$username." dominates you";
+					$output .= "hah".$username." dominates you";
 				}
 			}
 			else
 			{
-				echo "Your attempted suicide was aborted";
+				$output .= "Your attempted suicide was aborted";
 			}
 		}
 		else
 		{
-			echo "User ".$username." does not exist";
+			$output .= "User ".$username." does not exist";
 		}
 	}
 	
@@ -104,34 +111,34 @@ if (isModerator () == true)
 	if (!$query_flag_comments_res) 
 	{
 		//echo mysql_error();
-		echo "Sorry, we can't query your request";
+		$output .= "Sorry, we can't query your request";
 		exit;
 	}
 	$query_flag_comments_num=mysql_numrows($query_flag_comments_res);
 	
 	
-	echo "<table>";
+	$output .= "<table>";
 	for($i=0;$i<$query_flag_comments_num;$i++)
 	{
-		echo "<tr><td><form name='rm_comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
+		$output .= "<tr><td><form name='rm_comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
 			
-		echo "<td><form name='rm_flag' method='POST' action='rm_flag.php'><input type='hidden' name='project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";		
+		$output .= "<td><form name='rm_flag' method='POST' action='rm_flag.php'><input type='hidden' name='project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";		
 		
-		echo "<td><form name='show_project' method='GET' action='show_project.php'><input type='hidden' name='show_project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='submit' value='show project' /></form></td></tr>";
+		$output .= "<td><form name='show_project' method='GET' action='show_project.php'><input type='hidden' name='show_project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='submit' value='show project' /></form></td></tr>";
 		
-		echo "</tr><td colspan='2'><p>".mysql_result($query_flag_comments_res,$i,'comment')."</p></td></tr>";	
+		$output .= "</tr><td colspan='2'><p>".mysql_result($query_flag_comments_res,$i,'comment')."</p></td></tr>";	
 	
 	}
-	echo "</table>";
+	$output .= "</table>";
 
 
 		
 }
 else
 {
-	echo "You need to be a moderator";
+	$output .= "You need to be a moderator";
 }
 
-require ("footer.php");
+make_page ("Moderate", $output);
 
 ?>
