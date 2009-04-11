@@ -8,29 +8,29 @@ if (loggedIn () != 1)
   exit;
 }
 
-$output = '<table width="360" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">\n';
-$output .= '<tr><td>\n';
-$output .= '<form name="settings" method="post" action="changeSettings.php">\n';
-$output .= '<fieldset>\n';
-$output .= '<legend><strong>Settings</strong></legend>\n';
-$output .= '<table width="350" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">\n';
-$output .= '<tr>\n';
-$output .= '<td>Display Name</td>\n';
-$output .= '<td>:</td>\n';
-$output .= '<td><input name="displayName" type="text" id="displayName" /></td>\n';
-$output .= '</tr>\n';
-$output .= '<tr>\n';
-$output .= '<td>Other Settings</td>\n';
-$output .= '</tr>\n';
-$output .= '<tr>\n';
-$output .= '<td>&nbsp;</td>\n';
-$output .= '<td>&nbsp;</td>\n';
-$output .= '<td><input type="submit" name="Submit" value="Submit" /></td>\n';
-$output .= '</tr></table>\n';
-$output .= '</fieldset>\n';
-$output .= '</form>\n';
-$output .= '</td></tr>\n';
-$output .= '</table>\n';
+$output = '<table width="360" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">';
+$output .= '<tr><td>';
+$output .= '<form name="settings" method="post" action="changeSettings.php">';
+$output .= '<fieldset>';
+$output .= '<legend><strong>Settings</strong></legend>';
+$output .= '<table width="350" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">';
+$output .= '<tr>';
+$output .= '<td>Display Name</td>';
+$output .= '<td>:</td>';
+$output .= '<td><input name="displayName" type="text" id="displayName" /></td>';
+$output .= '</tr>';
+$output .= '<tr>';
+$output .= '<td>Other Settings</td>';
+$output .= '</tr>';
+$output .= '<tr>';
+$output .= '<td>&nbsp;</td>';
+$output .= '<td>&nbsp;</td>';
+$output .= '<td><input type="submit" name="Submit" value="Submit" /></td>';
+$output .= '</tr></table>';
+$output .= '</fieldset>';
+$output .= '</form>';
+$output .= '</td></tr>';
+$output .= '</table>';
 
 make_page ("Settings", $output);
 ?>
