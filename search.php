@@ -41,7 +41,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 $output .= "<form name='searchByClass' method='POST' action='search.php'>";
 $output .= "Search:&nbsp;&nbsp;&nbsp;&nbsp;<input name='searchInput' id='input2' type='text' value='".$search_request."'/>";
 $output .= "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='searchType'>";
-$output .= '<option value="title">Project\'s Title</option>';
+$output .= '<option value="title">Title</option>';
 $output .= '<option value="class">Class</option>';
 $output .= '<option value="school">School</option>';
 $output .= '<option value="major">Major</option>';
