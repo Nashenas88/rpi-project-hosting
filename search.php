@@ -1,4 +1,4 @@
-a<?php
+<?php
 session_start ();
 
 /***
@@ -13,23 +13,53 @@ assume login use admin account (for rating)
 
 
 require("connect_db.php");
-require ("upper_header.php");
-echo "Search";
-require ("lower_header.php");
-require ("menu.php");
+
+require ("feater.php");
+$output = "";
 
 /***
 Display message generate by another file
 ***/
 if(isset($_SESSION['message']))
 {
-	echo $_SESSION['message'];
+	$output .= $_SESSION['message'];
 	unset ($_SESSION['message']);
 }
 
-require ("search_form.php");
+$output .= '<h2>Search projects</h2>';
+/***
+It should have your last used search text in the text field.
+***/
+$search_request='';
 
-
+if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQUEST['orderedBy']))
+{
+	$search_request=$_REQUEST['searchInput'];
+	$search_type=$_REQUEST['searchType'];
+	$sort=$_REQUEST['orderedBy'];
+}
+$output .= "<form name='searchByClass' method='POST' action='search.php'>";
+$output .= "Search:&nbsp;&nbsp;&nbsp;&nbsp;<input name='searchInput' id='input2' type='text' value='".$search_request."'/>";
+$output .= "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='searchType'>";
+$output .= '<option value="title">Project\'s Title</option>';
+$output .= '<option value="class">Class</option>';
+$output .= '<option value="school">School</option>';
+$output .= '<option value="major">Major</option>';
+$output .= '<option value="date">Date</option>';
+$output .= '</select>';
+$output .= 'Ordered By:&nbsp;&nbsp;&nbsp;&nbsp;<select name="orderedBy">';
+$output .= '<option value="descDownloads">Downloads Descending</option>';
+$output .= '<option value="asceTitle">Title Ascending</option>';
+$output .= '<option value="descTitle">Title Descending</option>';
+$output .= '<option value="asceDate">Date Ascending</option>';
+$output .= '<option value="descDate">Date Descending</option>';
+$output .= '<option value="asceSize">Size Ascending</option>';
+$output .= '<option value="descSize">Size Descending</option>';
+$output .= '<option value="asceClass">Class Ascending</option>';
+$output .= '<option value="descClass">Class Descending</option>';
+$output .= '</select>';
+$output .= "&nbsp;&nbsp;<input type='submit' value='Search' \>";
+$output .= '</form>';
 
 /***
 Execute query and display results
@@ -92,7 +122,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 
 	if (!$project_res) 
 	{
-		echo "Sorry, we can't query your request";
+		$output .= "Sorry, we can't query your request";
 		//echo mysql_error();
 		exit;
 	}
@@ -100,47 +130,43 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	// find out how many records we got
 	$project_num = mysql_numrows($project_res);
 
-	echo "<h3>Your Search Resturned ".$project_num." Results</h3>\n";
+	$output .= "<h3>Your Search Resturned ".$project_num." Results</h3>\n";
 
 	if($project_num>0)
 	{
-?>
-		<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">
-		<tr>
-			<th>Project</th>
-			<th>Description</th>
-		   <th>Uploader</th>
-			<th>Downloads</th>
-			<th>Size</th>
-			<th>Project Location</th>
-			<th>Class</th>
-			<th>Major</th>
-			<th>School</th>
-			<th>Date Uploaded</th>
-			<th>Current Rate</th>
-			<?php
-			if(isset($_SESSION['username']))
-			echo "<th>Rate This Project</th>"
-			?>
-		</tr>
-<?php
+		$output .= '<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">\n';
+		$output .= '<tr>\n';
+		$output .= '	<th>Project</th>\n';
+		$output .= '	<th>Description</th>\n';
+		$output .= '   <th>Uploader</th>\n';
+		$output .= '	<th>Downloads</th>\n';
+		$output .= '	<th>Size</th>\n';
+		$output .= '	<th>Project Location</th>\n';
+		$output .= '	<th>Class</th>\n';
+		$output .= '	<th>Major</th>\n';
+		$output .= '	<th>School</th>\n';
+		$output .= '	<th>Date Uploaded</th>\n';
+		$output .= '	<th>Current Rate</th>\n';
+		$output .= '	if(isset($_SESSION[\'username\']))\n';
+		$output .= '	<th>Rate This Project</th>\n';
+		$output .= '	</tr>\n';
 	}
 	/*
 	*display project info
 	*/
 	for ($i=0;$i<$project_num;$i++) 
 	{
-		echo "<tr>\n";
-		echo "  <td><a href='show_project.php?show_project_id=".mysql_result($project_res,$i,'id')."'>" . mysql_result($project_res,$i,'title') . "</a></td>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'description') . "</td>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'uploader') . "</td>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'downloads'). "</td>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'size'). "</td>\n";
-		echo "  <td><a href='" . mysql_result($project_res,$i,'project_location'). "'>Download Link</a></td>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'class'). "</td>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'major'). "</td>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'school'). "</td>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'date'). "</td>\n";
+		$output .= "<tr>\n";
+		$output .= "  <td><a href='show_project.php?show_project_id=".mysql_result($project_res,$i,'id')."'>" . mysql_result($project_res,$i,'title') . "</a></td>\n";
+		$output .= "  <td>" . mysql_result($project_res,$i,'description') . "</td>\n";
+		$output .= "  <td>" . mysql_result($project_res,$i,'uploader') . "</td>\n";
+		$output .= "  <td>" . mysql_result($project_res,$i,'downloads'). "</td>\n";
+		$output .= "  <td>" . mysql_result($project_res,$i,'size'). "</td>\n";
+		$output .= "  <td><a href='" . mysql_result($project_res,$i,'project_location'). "'>Download Link</a></td>\n";
+		$output .= "  <td>" . mysql_result($project_res,$i,'class'). "</td>\n";
+		$output .= "  <td>" . mysql_result($project_res,$i,'major'). "</td>\n";
+		$output .= "  <td>" . mysql_result($project_res,$i,'school'). "</td>\n";
+		$output .= "  <td>" . mysql_result($project_res,$i,'date'). "</td>\n";
 		
 		
 		/***
@@ -153,7 +179,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 
 		if (!$rating_res) 
 		{
-			echo "Sorry, we can't query your request";
+			$output .= "Sorry, we can't query your request";
 			//echo mysql_error();
 			exit;
 		}
@@ -174,22 +200,24 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 		{
 			$current_rate=$sum/$rating_num;
 		}
-		echo "<td>". $current_rate."</td>\n";
+		$output .= "<td>". $current_rate."</td>\n";
 		
 		//if logged in, show rate option
 		if(isset($_SESSION['username']))
 		{
-		echo "<td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='1'>1</option><option value=1>1</option>";
-		echo "<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";
-		echo "<input type='hidden' name='project_id' value='".mysql_result($project_res,$i,'id')."'/><input type='hidden' name='searchInput' value='".$_REQUEST['searchInput']."'/><input type='hidden' name='searchType' value='".$_REQUEST['searchType']."'/><input type='hidden' name='orderedBy' value='".$_REQUEST['orderedBy']."'/><input type='submit' value='Rate' /></form></td>";
+		$output .= "<td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='1'>1</option><option value=1>1</option>";
+		$output .= "<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";
+		$output .= "<input type='hidden' name='project_id' value='".mysql_result($project_res,$i,'id')."'/><input type='hidden' name='searchInput' value='".$_REQUEST['searchInput']."'/><input type='hidden' name='searchType' value='".$_REQUEST['searchType']."'/><input type='hidden' name='orderedBy' value='".$_REQUEST['orderedBy']."'/><input type='submit' value='Rate' /></form></td>";
 		}
-		echo "</tr>\n";
+		$output .= "</tr>\n";
 	}
-	echo "</table>\n";
+	$output .= "</table>\n";
 }
 else
 {
-	echo "<p>Enter text for search!</p>";
+	$output .= "<p>Enter text for search!</p>";
 }
-require ("footer.php");
+
+make_page ("Search", $output);
+
 ?>
