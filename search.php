@@ -78,7 +78,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	}
 	else
 	{
-		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)."='".mysql_real_escape_string($search_request)."'";
+		$project_query="SELECT * FROM projects WHERE ".mysql_real_escape_string($search_type)." REGEXP '".mysql_real_escape_string($search_request)."'";
 	}
 		
 	if ($sort=='asceTitle')
