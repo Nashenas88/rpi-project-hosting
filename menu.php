@@ -21,16 +21,10 @@ if (loggedIn () != 0)
   	echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
   	echo "</a></td><td align=\"center\"><a href=\"settings.php\">Settings";
   
-  	if (isModerator () == true)
+  	if (getPriviledge <= 1)
   	{
   		 echo "</a></td><td align=\"center\"><a href=\"moderate.php\">Moderate";
-  	}
-
-	if( isModerator() == true )
-	{
-		echo "</a></td><td align=\"center\"><a href=\"changePriviledge.php\">Change Priviledge";  
-	}
-  
+  	}  
 }
 else
 {
