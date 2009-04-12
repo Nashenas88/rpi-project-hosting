@@ -1,3 +1,6 @@
+<!-- search_result.php -->
+<!-- displays the search results in an html table -->
+
 if(isset($_REQUEST['searchInput']))
 {
 	$search_request=$_REQUEST['searchInput'];
@@ -6,14 +9,14 @@ if(isset($_REQUEST['searchInput']))
 	$query="SELECT * FROM projects WHERE title='".mysql_real_escape_string($search_request)."'";
 	$res=mysql_query($query);
 
-// make sure it worked!
+<!-- make sure it worked! -->
 if (!$res) 
 {
   echo mysql_error();
   exit;
 }
 
-// find out how many records we got
+<!-- find out how many records we got -->
 $num = mysql_numrows($res);
 
 echo "<h3>Your Search Resturns ".$num." Results</h3>\n";

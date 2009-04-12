@@ -11,6 +11,7 @@ echo "<script src=\"sorttable.js\"></script>";
 
 require("connect_db.php");
 require ("feater.php");
+head("Search");
 
 // Display message generate by another file
 if(isset($_SESSION['message']))
@@ -190,6 +191,6 @@ else
 	echo "<p>Enter text for search!</p>";
 }
 
-make_page ("Search", $output);
+foot();
 
 ?>

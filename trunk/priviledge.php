@@ -9,7 +9,6 @@ function loggedIn ()
   return $_SESSION["loggedIn"];
 }
 
-
 // returns priviledge level of specified user
 // 0=admin, 1=moderator, 2=RPIuser, 3=unknown
 
