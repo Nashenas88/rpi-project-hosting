@@ -24,7 +24,8 @@ if(isset($_SESSION['username']))
 		$output .= '<tr>';
 		$output .= '	<th>Project</th>';
 		$output .= '	<th>Description</th>';
-		$output .= '   <th>Uploader</th>';
+		$output .= '   	<th>Uploader</th>';
+		$output .= '   	<th>Authors</th>';
 		$output .= '	<th>Downloads</th>';
 		$output .= '	<th>Size</th>';
 		$output .= '	<th>Project Location</th>';
@@ -41,13 +42,19 @@ if(isset($_SESSION['username']))
 		$output .= "  <td><a href='show_project.php?show_project_id=".mysql_result($query_my_project_res,$i,'id')."'>" . mysql_result($query_my_project_res,$i,'title') . "</a></td>\n";
 		$output .= "  <td>" . mysql_result($query_my_project_res,$i,'description') . "</td>\n";
 		$output .= "  <td>" . mysql_result($query_my_project_res,$i,'uploader') . "</td>\n";
+		$output .= "  <td>" . mysql_result($query_my_project_res,$i,'authors') . "</td>\n";
 		$output .= "  <td>" . mysql_result($query_my_project_res,$i,'downloads'). "</td>\n";
 		$output .= "  <td>" . mysql_result($query_my_project_res,$i,'size'). "</td>\n";
 		$output .= "  <td><a href='" . mysql_result($query_my_project_res,$i,'project_location'). "'>Download Link</a></td>\n";
 		$output .= "  <td>" . mysql_result($query_my_project_res,$i,'class'). "</td>\n";
 		$output .= "  <td>" . mysql_result($query_my_project_res,$i,'major'). "</td>\n";
 		$output .= "  <td>" . mysql_result($query_my_project_res,$i,'school'). "</td>\n";
-		$output .= "  <td>" . mysql_result($query_my_project_res,$i,'date'). "</td>\n";
+		
+		list ($yearly, $daily) = split (' ', mysql_result ($query_my_project_res,$i,'date'));
+	     	list ($year, $month, $day) = split ('-', $yearly);
+	        list ($hour, $minute, $second) = split (':', $daily);
+                $output .= "  <td>" . date ('l, F j, Y, g:i a', mktime ($hour, $minute, $second, $month, $day, $year)) . "</td>\n";
+
 		$rating_query="SELECT rate FROM ratings WHERE project_id=".mysql_result($query_my_project_res,$i,'id');
 		
 		$rating_res=mysql_query($rating_query);
@@ -83,8 +90,8 @@ if(isset($_SESSION['username']))
 }
 
 $output.="<br/><h2>Most Recently Uploaded Projects</h2><br/>";
-$project_num=20;
-$project_query="SELECT * FROM projects ORDER BY date LIMIT 0, $project_num";
+$project_num=5;
+$project_query="SELECT * FROM projects ORDER BY date desc LIMIT 0, $project_num";
 
 $project_res=mysql_query($project_query);
 
@@ -102,7 +109,8 @@ $project_return_num=mysql_numrows($project_res);
 		$output .= '<tr>';
 		$output .= '	<th>Project</th>';
 		$output .= '	<th>Description</th>';
-		$output .= '   <th>Uploader</th>';
+		$output .= '   	<th>Uploader</th>';
+		$output .= '	<th>Authors</th>';
 		$output .= '	<th>Downloads</th>';
 		$output .= '	<th>Size</th>';
 		$output .= '	<th>Project Location</th>';
@@ -121,13 +129,19 @@ $project_return_num=mysql_numrows($project_res);
 		$output .= "  <td><a href='show_project.php?show_project_id=".mysql_result($project_res,$i,'id')."'>" . mysql_result($project_res,$i,'title') . "</a></td>\n";
 		$output .= "  <td>" . mysql_result($project_res,$i,'description') . "</td>\n";
 		$output .= "  <td>" . mysql_result($project_res,$i,'uploader') . "</td>\n";
+		$output .= "  <td>" . mysql_result($project_res,$i,'authors') . "</td>\n";
 		$output .= "  <td>" . mysql_result($project_res,$i,'downloads'). "</td>\n";
 		$output .= "  <td>" . mysql_result($project_res,$i,'size'). "</td>\n";
 		$output .= "  <td><a href='" . mysql_result($project_res,$i,'project_location'). "'>Download Link</a></td>\n";
 		$output .= "  <td>" . mysql_result($project_res,$i,'class'). "</td>\n";
 		$output .= "  <td>" . mysql_result($project_res,$i,'major'). "</td>\n";
 		$output .= "  <td>" . mysql_result($project_res,$i,'school'). "</td>\n";
-		$output .= "  <td>" . mysql_result($project_res,$i,'date'). "</td>\n";
+		
+		list ($yearly, $daily) = split (' ', mysql_result ($project_res,$i,'date'));
+		list ($year, $month, $day) = split ('-', $yearly);
+		list ($hour, $minute, $second) = split (':', $daily);
+		$output .= "  <td>" . date ('l, F j, Y, g:i a', mktime ($hour, $minute, $second, $month, $day, $year)) . "</td>\n";
+		
 		$rating_query="SELECT rate FROM ratings WHERE project_id=".mysql_result($project_res,$i,'id');
 		
 		$rating_res=mysql_query($rating_query);
