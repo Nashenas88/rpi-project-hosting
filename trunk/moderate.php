@@ -1,34 +1,33 @@
 <?php
-/*******************************************************************
+/***
 moderate.php
-Allows moderators to ban, unban, and change privileges
-********************************************************************/
+implements ban and unban ability of moderator priveledged
+***/
 
 session_start ();
 
 require ("feater.php");
+head ('Moderate');
+require ("menu.php");
 
-$output = "";
-
-if (isModerator () == true)
+//only show if user is a moderator
+if (getPriviledge() <= 1)
 {
-	$output .= "<p>You are a moderator<br /></p>";
+	echo "<p>You are a moderator<br /></p>";
+	echo "Ban an user: <br>";
+	echo "<form name='ban' method='POST' action='moderate.php'>";
+	echo "Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>";
+	echo "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='ban_unban'>";
+	echo "<option value=\"ban\">Ban</option>";
+	echo "<option value=\"unban\">Unban</option>";
+	echo "</select>";
+	echo "&nbsp;&nbsp;<input type='submit' value='Update'\>";
+	echo "</form>";
+	echo "<br>";
 	
-	$output .= "Ban an user: <br>";
-	$output .= "<form name='ban' method='POST' action='moderate.php'>";
-	$output .= "Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>";
-	$output .= "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='ban_unban'>";
-	$output .= "<option value=\"ban\">Ban</option>";
-	$output .= "<option value=\"unban\">Unban</option>";
-	$output .= "</select>";
-	$output .= "&nbsp;&nbsp;<input type='submit' value='Update'\>";
-	$output .= "</form>";
-	$output .= "<br>";
-	
-	
-	$output .= "Change user's priviledge: <br>";
+	echo "<p>Change user's priviledge:</p>";
 	require("changePriviledge.php");
-	$output .= "<br>";
+	echo "<br><br>";
 	
 	
 	//make sure the form was filled in
@@ -60,12 +59,12 @@ if (isModerator () == true)
 						$user_banned = mysql_fetch_array($user_banned);
 						if($user_banned[0] == $username)
 						{
-							$output .= "User ".$username." is already banned";
+							echo "User ".$username." is already banned";
 						}
 						else
 						{
 							mysql_query("INSERT INTO moderateusers(user_id) VALUES ('".mysql_real_escape_string($username)."')");
-							$output .= "User ".$username." has been banned";
+							echo "User ".$username." has been banned";
 						}
 					}
 					//if want to ban user
@@ -77,68 +76,68 @@ if (isModerator () == true)
 						if($user_banned[0] == $username)
 						{
 							mysql_query("DELETE FROM moderateusers WHERE user_id='".mysql_real_escape_string($username)."'");
-							$output .= "User ".$username." is no longer banned";
+							echo "User ".$username." is no longer banned";
 						}
 						else
 						{
-							$output .= "User ".$username." is was not previously banned";
+							echo "User ".$username." is was not previously banned";
 						}
 					}
 				}
 				else
 				{
-					$output .= "hah".$username." dominates you";
+					echo "hah".$username." dominates you";
 				}
 			}
 			else
 			{
-				$output .= "Your attempted suicide was aborted";
+				echo "Your attempted suicide was aborted";
 			}
 		}
 		else
 		{
-			$output .= "User ".$username." does not exist";
+			echo "User ".$username." does not exist";
 		}
 	}
 	
 	
 
 	/*
-	If there is flag comment, list them and options of remove flag, remove comment, and the project this comment is commenting on
+	If there is a flagged comment, list them and options of remove flag, remove comment, and the project this comment is commenting on
 	*/
 	$query_flag_comments="SELECT * FROM comments where flag=1";
 	$query_flag_comments_res=mysql_query($query_flag_comments);
 	if (!$query_flag_comments_res) 
 	{
 		//echo mysql_error();
-		$output .= "Sorry, we can't query your request";
+		echo "Sorry, we can't query your request";
 		exit;
 	}
 	$query_flag_comments_num=mysql_numrows($query_flag_comments_res);
 	
 	
-	$output .= "<table>";
+	echo "<table>";
 	for($i=0;$i<$query_flag_comments_num;$i++)
 	{
-		$output .= "<tr><td><form name='rm_comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
+		echo "<tr><td><form name='rm_comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
 			
-		$output .= "<td><form name='rm_flag' method='POST' action='rm_flag.php'><input type='hidden' name='project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";		
+		echo "<td><form name='rm_flag' method='POST' action='rm_flag.php'><input type='hidden' name='project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";		
 		
-		$output .= "<td><form name='show_project' method='GET' action='show_project.php'><input type='hidden' name='show_project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='submit' value='show project' /></form></td></tr>";
+		echo "<td><form name='show_project' method='GET' action='show_project.php'><input type='hidden' name='show_project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='submit' value='show project' /></form></td></tr>";
 		
-		$output .= "</tr><td colspan='2'><p>".mysql_result($query_flag_comments_res,$i,'comment')."</p></td></tr>";	
+		echo "</tr><td colspan='2'><p>".mysql_result($query_flag_comments_res,$i,'comment')."</p></td></tr>";	
 	
 	}
-	$output .= "</table>";
+	echo "</table>";
 
 
 		
 }
 else
 {
-	$output .= "You need to be a moderator";
+	"You need to be a moderator";
 }
 
-make_page ("Moderate", $output);
+foot();
 
 ?>

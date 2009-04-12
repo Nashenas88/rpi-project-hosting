@@ -6,16 +6,16 @@ Allows moderators and admin to change the priviledge level of a user
 
 if (getPriviledge () == 0 )
 {
-	$output = "<form name='changePriviledge' method='POST' action='changePriviledge.php'>";
-	$output .= "Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>";
-	$output .= "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='priviledge'>";
-	$output .= "<option value='3'>Non-RPI User</option>";
-	$output .= "<option value='2'>RPI User</option>";
-	$output .= "<option value='1'>Moderator</option>";
-	$output .= "<option value='0'>Admin</option>";
-	$output .= "</select>";
-	$output .= "&nbsp;&nbsp;<input type='submit' value='Update'\>";
-	$output .= "</form>";
+	echo "<form name='changePriviledge' method='POST' action='changePriviledge.php'>";
+	echo "Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>";
+	echo "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='priviledge'>";
+	echo "<option value='3'>Non-RPI User</option>";
+	echo "<option value='2'>RPI User</option>";
+	echo "<option value='1'>Moderator</option>";
+	echo "<option value='0'>Admin</option>";
+	echo "</select>";
+	echo "&nbsp;&nbsp;<input type='submit' value='Update'\>";
+	echo "</form>";
 	
 	//make sure the form was filled in
 	if(isset($_REQUEST['username'])&&isset($_REQUEST['priviledge']))
@@ -32,7 +32,7 @@ if (getPriviledge () == 0 )
 
 		if (!$user_exists)
 		{
-			$output .= "User ".$username." does not exist";		
+			echo "User ".$username." does not exist";		
 		}
 		else if(mysql_result($user_exists,0,'rcsid') == $username)
 		{
@@ -44,12 +44,12 @@ if (getPriviledge () == 0 )
 				
 				if(!$update_privildge_res)
 				{
-					$output .= "update error";
+					echo "update error";
 					exit;
 				}
 				else
 				{
-					$output .= "User " . $username . " has had privilege changed from " . 
+					echo "User " . $username . " has had privilege changed from " . 
 							mysql_result($user_exists,0,'priviledge') . " to " . $priviledge;
 				}
 				
@@ -57,7 +57,7 @@ if (getPriviledge () == 0 )
 			}
 			else
 			{
-				$output .= "Your can't change your own priviledge";
+				echo "Your can't change your own priviledge";
 			}
 			
 			
@@ -65,7 +65,7 @@ if (getPriviledge () == 0 )
 		}
 		else
 		{
-			$output .= "Unknown Error";
+			echo "Username does not match up";
 		}
 		
 	}
@@ -73,7 +73,7 @@ if (getPriviledge () == 0 )
 }
 else
 {
-	$output .= "You need to be a moderator";
+	echo "You need to be a moderator";
 }
 
 ?>
