@@ -62,6 +62,6 @@ else
 {
 $_SESSION['message']="<p>Your remove project fails</p>";
 }
-//header("location:search.php");
+header("location:search.php");
 
 ?>
