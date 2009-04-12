@@ -9,10 +9,10 @@ if (getPriviledge () == 0 )
 	$output = "<form name='changePriviledge' method='POST' action='changePriviledge.php'>";
 	$output .= "Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>";
 	$output .= "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='priviledge'>";
-	$output .= "<option value="3">Non-RPI User</option>";
-	$output .= "<option value="2">RPI User</option>";
-	$output .= "<option value="1">Moderator</option>";
-	$output .= "<option value="0">Admin</option>";
+	$output .= "<option value='3'>Non-RPI User</option>";
+	$output .= "<option value='2'>RPI User</option>";
+	$output .= "<option value='1'>Moderator</option>";
+	$output .= "<option value='0'>Admin</option>";
 	$output .= "</select>";
 	$output .= "&nbsp;&nbsp;<input type='submit' value='Update'\>";
 	$output .= "</form>";
