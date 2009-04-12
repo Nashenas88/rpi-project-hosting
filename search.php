@@ -37,6 +37,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	$search_request=$_REQUEST['searchInput'];
 	$search_type=$_REQUEST['searchType'];
 	$sort=$_REQUEST['orderedBy'];
+
 }
 $output .= "<form name='searchByClass' method='POST' action='search.php'>";
 $output .= "Search:&nbsp;&nbsp;&nbsp;&nbsp;<input name='searchInput' id='input2' type='text' value='".$search_request."'/>";
@@ -69,6 +70,12 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	$search_request=htmlspecialchars($_REQUEST['searchInput']);
 	$search_type=htmlspecialchars($_REQUEST['searchType']);
 	$sort=htmlspecialchars($_REQUEST['orderedBy']);
+
+	if($search_request==""||$search_type==""||$sort=="")
+	{
+		$output.="Please enter a valid search.";
+	}
+	else{
 	/*
 	*generate queries
 	*/
@@ -134,29 +141,29 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 
 	if($project_num>0)
 	{
-		$output .= '<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">\n';
-		$output .= '<tr>\n';
-		$output .= '	<th>Project</th>\n';
-		$output .= '	<th>Description</th>\n';
-		$output .= '   <th>Uploader</th>\n';
-		$output .= '	<th>Downloads</th>\n';
-		$output .= '	<th>Size</th>\n';
-		$output .= '	<th>Project Location</th>\n';
-		$output .= '	<th>Class</th>\n';
-		$output .= '	<th>Major</th>\n';
-		$output .= '	<th>School</th>\n';
-		$output .= '	<th>Date Uploaded</th>\n';
-		$output .= '	<th>Current Rate</th>\n';
-		$output .= '	if(isset($_SESSION[\'username\']))\n';
-		$output .= '	<th>Rate This Project</th>\n';
-		$output .= '	</tr>\n';
+		$output .= '<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
+		$output .= '<tr>';
+		$output .= '	<th>Project</th>';
+		$output .= '	<th>Description</th>';
+		$output .= '   <th>Uploader</th>';
+		$output .= '	<th>Downloads</th>';
+		$output .= '	<th>Size</th>';
+		$output .= '	<th>Project Location</th>';
+		$output .= '	<th>Class</th>';
+		$output .= '	<th>Major</th>';
+		$output .= '	<th>School</th>';
+		$output .= '	<th>Date Uploaded</th>';
+		$output .= '	<th>Current Rate</th>';
+		if(isset($_SESSION['username']))
+		$output .= '	<th>Rate This Project</th>';
+		$output .= '	</tr>';
 	}
 	/*
 	*display project info
 	*/
 	for ($i=0;$i<$project_num;$i++) 
 	{
-		$output .= "<tr>\n";
+		$output .= "<tr>";
 		$output .= "  <td><a href='show_project.php?show_project_id=".mysql_result($project_res,$i,'id')."'>" . mysql_result($project_res,$i,'title') . "</a></td>\n";
 		$output .= "  <td>" . mysql_result($project_res,$i,'description') . "</td>\n";
 		$output .= "  <td>" . mysql_result($project_res,$i,'uploader') . "</td>\n";
@@ -212,6 +219,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 		$output .= "</tr>\n";
 	}
 	$output .= "</table>\n";
+	}
 }
 else
 {
