@@ -16,6 +16,8 @@ Creates the menu which is displayed at the top of all pages
 ********************************************************************/
 
 //the functions used to determine priviledge
+require("priviledge.php");
+
 if (loggedIn () != 0)
 {
   	echo "\"login.php?logout\">Logout";
