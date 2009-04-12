@@ -9,16 +9,16 @@ function make_page ($title, $body)
   echo '<html>';
   echo '';
   echo '<head>';
-  echo '<meta name="author" content="Paul Faria" />';
-  echo '<meta name="author" content="Alex Mattern" />';
-  echo '<meta name="author" content="Jin Zheng" />';
+  echo '<meta name="author" content="root"/>';
+  echo '<meta name="author" content="root"/>';
+  echo '<meta name="author" content="root"/>';
   echo '<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />';
   echo '<title>RPI Project Hosting | ';
   echo $title;
   echo '</title>';
   echo '</head>';
   echo '';
-  echo '<body background="river.jpg">';
+  echo '<body background="images/background.jpg">';
   
   require ("menu.php");
   
