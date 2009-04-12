@@ -1,19 +1,21 @@
 <?php
+/*******************************************************************
+rm_project.php
+Allows moderator to remove a project from the database
+********************************************************************/
 
 session_start ();
 
 require("priviledge.php");
 require("connect_db.php");
 
+// if the user id is given and the user is a moderator
 if(isset($_REQUEST['project_id'])&&getPriviledge()<2)
 {
 	
 	$project_id=htmlspecialchars($_REQUEST['project_id']);
 
-	/*
-	*check if project need to be removed exist
-	*/
-	
+	// check if this project exists
 	$query_project="SELECT 1 FROM projects WHERE id=".mysql_real_escape_string($project_id);
 	$query_project_res=mysql_query($query_project);
 
@@ -28,9 +30,8 @@ if(isset($_REQUEST['project_id'])&&getPriviledge()<2)
 	$num_of_project = mysql_numrows($query_project_res);
 	
 	//echo $query_project;
-	/*
-	*if project exist, remove project
-	*/
+
+	// if project exists, remove project along with all related comments and ratings
 	echo $num_of_project;
 	if($num_of_project>0)
 	{
