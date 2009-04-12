@@ -1,21 +1,22 @@
 <?php
+/*******************************************************************
+remove_comment.php
+Allows moderators to remove comments from projects
+********************************************************************/
 
 session_start ();
 
 require("connect_db.php");
 require("priviledge.php");
-/*
-if neccessary information: project id, user id and priviledge of the user doing action are satisfied
-*/
+
+// if project id and user id are given and the user is a moderator
 if(isset($_REQUEST['project_id'])&&isset($_REQUEST['user_id'])&&getPriviledge()<2)
 {
-
+	// make variables string secure
 	$project_id=htmlspecialchars($_REQUEST['project_id']);
 	$user=htmlspecialchars($_REQUEST['user_id']);
 
-	/*
-	*check if comment need to be removed exist
-	*/
+	// check if the comment exists
 	$query_comment="SELECT 1 FROM comments WHERE user_id='".mysql_real_escape_string($user)."' AND project_id=".mysql_real_escape_string($project_id);
 	$query_comment_res=mysql_query($query_comment);
 
@@ -28,9 +29,7 @@ if(isset($_REQUEST['project_id'])&&isset($_REQUEST['user_id'])&&getPriviledge()<
 
 	$num_of_comment = mysql_numrows($query_comment_res);
 	
-	/*
-	*if comment exist, remove comment
-	*/
+	// if comment exists, remove comment
 	if($num_of_comment>0)
 	{
 		$delete_comment="DELETE FROM comments WHERE user_id='".mysql_real_escape_string($user)."' AND project_id=".mysql_real_escape_string($project_id);
