@@ -1,8 +1,8 @@
+<?php
 /*******************************************************************
 changePriviedge.php
 Allows moderators and admin to change the priviledge level of a user
 ********************************************************************/
-<?php
 
 if (getPriviledge () == 0 )
 {

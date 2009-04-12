@@ -1,8 +1,9 @@
+<?php
 /*******************************************************************
 download.php
 Allows user to download a project from the server
 ********************************************************************/
-<?php
+
 session_start ();
 
 require ("connect_db.php");
