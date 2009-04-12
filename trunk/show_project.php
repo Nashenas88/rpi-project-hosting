@@ -77,7 +77,7 @@ if(isset($_REQUEST['show_project_id']))
 	{
 		$output .= "  <tr><td>Title: </td><td>" . mysql_result($query_project_res,$i,'title') . "</td></tr>";
 		$output .= "  <tr><td>Description: </td><td>" . mysql_result($query_project_res,$i,'description') . "</td></tr>";
-		$output .= "  <tr><td>Uploader: </td><td>" . mysql_result($query_project_res,$i,'uploader') . "</td></tr>";
+		$output .= "  <tr><td>Authors: </td><td>" . mysql_result($query_project_res,$i,'authors') . "</td></tr>";
 		$output .= "  <tr><td>Downloads: </td><td>" . mysql_result($query_project_res,$i,'downloads'). "</td></tr>";
 		$output .= "  <tr><td>Size: </td><td>" . mysql_result($query_project_res,$i,'size'). "</td></tr>";
 		$output .= "  <tr><td>Project_location: </td><td><a href='" . mysql_result($query_project_res,$i,'project_location'). "'>Download Link</a></td></tr>";
