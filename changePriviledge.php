@@ -1,8 +1,8 @@
-<?php
-/***
+/*******************************************************************
 changePriviedge.php
-allows moderators and admin to change the priviledge level of a user
-***/
+Allows moderators and admin to change the priviledge level of a user
+********************************************************************/
+<?php
 
 if (getPriviledge () == 0 )
 {
@@ -30,7 +30,6 @@ if (getPriviledge () == 0 )
 		$self=$_SESSION['username'];
 		$user_exists= mysql_query("SELECT * FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
 
-		
 		if (!$user_exists)
 		{
 			$output .= "User ".$username." does not exist";		
@@ -38,13 +37,9 @@ if (getPriviledge () == 0 )
 		else if(mysql_result($user_exists,0,'rcsid') == $username)
 		{
 			//you cannot change your own priviledge
-			
 			if($self != $username)
 			{
-				
-				
 				$update_priviledge="UPDATE users SET priviledge=".mysql_real_escape_string($priviledge)." WHERE rcsid='".$username."'";
-				
 				$update_privildge_res=mysql_query($update_priviledge);
 				
 				if(!$update_privildge_res)
@@ -54,7 +49,8 @@ if (getPriviledge () == 0 )
 				}
 				else
 				{
-					$output .= "User " . $username . " has had privilege changed from " . mysql_result($user_exists,0,'priviledge') . " to " . $priviledge;
+					$output .= "User " . $username . " has had privilege changed from " . 
+							mysql_result($user_exists,0,'priviledge') . " to " . $priviledge;
 				}
 				
 				
