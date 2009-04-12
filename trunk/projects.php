@@ -18,7 +18,6 @@ if(isset($_SESSION['username']))
 		exit;
 	}
 	$my_project_return_num=mysql_numrows($query_my_project_res);
-	echo $my_project_return_num;
 	if($my_project_return_num>0)
 	{
 		$output .= '<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
