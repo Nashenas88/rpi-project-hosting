@@ -6,6 +6,7 @@ Creates a page called 'About' with the html provided.
 session_start (); 
 
 require ("feater.php");
+head("About");
 
 // Create a string of html 
 // This is very ugly, but it works for now...
@@ -33,5 +34,6 @@ echo "Dan Meretzky";
 echo "<br>";
 echo "Paul Faria";
 
-make_page ("About", $output);
+foot();
+
 ?>
