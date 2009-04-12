@@ -166,7 +166,7 @@ $project_return_num=mysql_numrows($project_res);
 		$output .= "<td>". $current_rate."</td>\n";
 		if(isset($_SESSION['username']))
 		{
-		$output .= "<td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='1'>1</option><option value=1>1</option>";
+		$output .= "<td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='#'>#</option><option value=1>1</option>";
 		$output .= "<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";
 		$output .= "<input type='hidden' name='project_id' value='".mysql_result($project_res,$i,'id')."'/><input type='hidden' name='searchInput' value='".$_REQUEST['searchInput']."'/><input type='hidden' name='searchType' value='".$_REQUEST['searchType']."'/><input type='hidden' name='orderedBy' value='".$_REQUEST['orderedBy']."'/><input type='submit' value='Rate' /></form></td>";
 		}
