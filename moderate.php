@@ -7,7 +7,6 @@ implements ban and unban ability of moderator priveledged
 session_start ();
 
 require ("feater.php");
-require ("priviledge.php");
 head ('Moderate');
 
 
