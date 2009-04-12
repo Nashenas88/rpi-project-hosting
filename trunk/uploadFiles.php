@@ -170,8 +170,14 @@ else
 	}
 }
 
-require ("feater.php");
 head("Uploading...");
+
+?>
+<br /><center>
+<?php echo $output?>
+</center><br />
+<?php
+
 foot();
 
 ?>
