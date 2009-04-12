@@ -1,8 +1,8 @@
 <?php
-/***
+/*******************************************************************
 moderate.php
-implements ban and unban ability of moderator priveledged
-***/
+Allows moderators to ban, unban, and change privileges
+********************************************************************/
 
 session_start ();
 

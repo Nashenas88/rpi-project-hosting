@@ -10,16 +10,21 @@
 <a href=
 
 <?php
+/*******************************************************************
+menu.php
+Creates the menu which is displayed at the top of all pages
+********************************************************************/
+
 //the functions used to determine priviledge
 if (loggedIn () != 0)
 {
   	echo "\"login.php?logout\">Logout";
   	echo "</a></td><td align=\"center\"><a href=\"logout.php\">LogoutAlternate";
   	echo "</a></td><td align=\"center\"><a href=\"upload.php\">Upload";
-  	echo "</a></td><td align=\"center\"><a href=\"projects.php\">Projects";
   	echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
   	echo "</a></td><td align=\"center\"><a href=\"settings.php\">Settings";
   
+	// if user is a moderator display the moderate option
   	if (getPriviledge() <= 1)
   	{
   		 echo "</a></td><td align=\"center\"><a href=\"moderate.php\">Moderate";
