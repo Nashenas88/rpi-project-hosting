@@ -1,5 +1,9 @@
 <?php
-
+/*******************************************************************
+feater.php
+head(string) - prints the header to the page
+foot() - prints the footer to the page
+********************************************************************/
 require ("priviledge.php");
 
 function make_page ($title, $body)
@@ -28,6 +32,7 @@ function make_page ($title, $body)
   echo '</html>';
 }
 
+// adds a header to the page
 function head ($title)
 {
 	echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"';
@@ -47,6 +52,7 @@ function head ($title)
 	echo '<body background="images/background.jpg">';
 }
 
+// adds a footer to the page
 function foot ()
 {
 	echo '</body>';
