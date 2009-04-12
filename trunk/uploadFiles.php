@@ -6,6 +6,14 @@ Allows an RPI user to upload a file to the database
 
 session_start ();
 
+require ("feater.php");
+
+if (empty ($_SESSION['username']))
+{
+    make_page ("Error", "<br/><center>You must be logged in to access this page!</center><br/>");
+    exit;
+}
+
 require ("connect_db.php");
 $username = $_SESSION['username'];
 $MAX_FILE_SIZE = "100000000";
@@ -16,7 +24,45 @@ $filepath = $path . "/" . $HTTP_POST_FILES["file"]["name"];
 
 function getSchool ($major)
 {
+    if ($major == "ASTR" || $major == "BCBP" ||
+        $major == "BIOL" || $major == "CHEM" ||
+	$major == "CSCI" || $major == "ERTH" ||
+	$major == "MATH" || $major == "MATP" ||
+	$major == "PHYS")
+    {
 	return "Science";
+    }
+    else if ($major == "ARCH" || $major == "LGHT")
+    {
+	return "Architecture";
+    }
+    else if ($major == "BMED" || $major == "CHME" ||
+    	     $major == "CIVL" || $major == "DSES" ||
+	     $major == "ECSE" || $major == "ENGR" ||
+	     $major == "ENVE" || $major == "EPOW" ||
+	     $major == "MANE" || $major == "MTLE")
+    {
+	return "Engineering";
+    }
+    else if ($major == "MGMT")
+    {
+	return  "Business";
+    }
+    else if ($major == "ITEC")
+    {
+	return "IT";
+    }
+    else if ($major == "ARTS" || $major == "COGS" ||
+    	     $major == "COMM" || $major == "IHSS" ||
+	     $major == "LITR" || $major == "PHIL" ||
+	     $major == "PSYC" || $major == "WRIT")
+    {
+	return "Humanities and Social Sciences";
+    }
+    else
+    {
+	return "";
+    }
 }
 
 // Check to make sure that current user has not already created a project with the same name
