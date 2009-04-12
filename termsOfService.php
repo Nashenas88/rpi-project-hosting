@@ -33,7 +33,7 @@ $output.= 	"<H2>1. Your Acceptance</H2>";
 $output.= 	"<OL>";
 $output.= 		"<LI><P STYLE=\"margin-bottom: 0in\">By using and/or visiting this ";
 $output.= 		"website you signify your agreement to these terms and conditions.</P>";
-$output.= 		"<LI><P>This page contains the most up-to-date Terms of Service for";
+$output.= 		"<LI><P>This page contains the most up-to-date Terms of Service for ";
 $output.= 		"RPH.  You are responsible for adhering to all changes made to this ";
 $output.= 		"document in the future.</P>";
 $output.= 	"";
