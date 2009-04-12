@@ -22,8 +22,9 @@ if(isset($_SESSION['message']))
 
 echo '<h2>Search projects</h2>';
 
-// It should have your last used search text in the text field.
+
 // add sort form to sort searched projects
+// it should have your last used search text in the text field
 $search_request='';
 
 if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQUEST['orderedBy']))
@@ -41,6 +42,7 @@ echo '<option value="class">Class</option>';
 echo '<option value="school">School</option>';
 echo '<option value="major">Major</option>';
 echo '<option value="date">Date</option>';
+echo '<option value="description">Description</option>';
 echo '</select>';
 echo 'Ordered By:&nbsp;&nbsp;&nbsp;&nbsp;<select name="orderedBy">';
 echo '<option value="descDownloads">Downloads Descending</option>';
@@ -104,7 +106,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 		exit;
 	}
 
-	// find out how many datbase records we have
+	// find out how many database records we have
 	$project_num = mysql_numrows($project_res);
 
 	echo "<h3>Your Search Resturned ".$project_num." Results</h3>\n";
