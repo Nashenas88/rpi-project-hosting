@@ -19,7 +19,7 @@ if (!$res)
 <!-- find out how many records we got -->
 $num = mysql_numrows($res);
 
-echo "<h3>Your Search Resturns ".$num." Results</h3>\n";
+echo "<h3>Your Search Returns ".$num." Results</h3>\n";
 ?>
 <table border=0>
   <tr>
