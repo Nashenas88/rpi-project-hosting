@@ -1,3 +1,7 @@
+/*******************************************************************
+download.php
+Allows user to download a project from the server
+********************************************************************/
 <?php
 session_start ();
 
@@ -25,7 +29,8 @@ if ($result)
     $za = new ZipArchive ();
     $zipfile = $row['title'] . ".zip";
     
-    if ($za->open ($zipfile, ZIPARCHIVE::OVERWRITE) !== TRUE)
+    // open a file archive
+    if ($za->open ($zipfile, ZIPARCHIVE::OVERWRITE) != TRUE)
     {
 	make_page ("Error", "<br/>\n<center>\nCannot open <$zipfile>!\n</center>\n<br/>");
 	exit ("");
@@ -64,7 +69,7 @@ if ($result)
   }
   else
   {
-    make_page ("Error", "<br/><center>Project not found</center>");
+    make_page ("Error", "<br/><center>Project not found.</center>");
   }
 }
 else
