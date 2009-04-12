@@ -23,7 +23,7 @@ function make_page ($title, $body)
 <body background="images/background.jpg">
 
 <?php
-require ("menu.php"); ?>
+require ("menu.php");
 echo $body;
 ?>
 <br /><br /><center>This page is licensed under the <a href=http://www.gnu.org/licenses/gpl.html>GNU General Public License v3</a></center><br />
