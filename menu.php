@@ -22,7 +22,7 @@ if (loggedIn () != 0)
   	echo "</a></td><td align=\"center\"><a href=\"logout.php\">LogoutAlternate";
   	echo "</a></td><td align=\"center\"><a href=\"upload.php\">Upload";
   	echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
-  	echo "</a></td><td align=\"center\"><a href=\"settings.php\">Settings";
+  	//echo "</a></td><td align=\"center\"><a href=\"settings.php\">Settings";
   
 	// if user is a moderator display the moderate option
   	if (getPriviledge() <= 1)
