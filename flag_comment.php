@@ -1,8 +1,8 @@
+<?php
 /*******************************************************************
 flag_comment.php
 Allows user to flag a comment, which sends an alert to a moderator
 ********************************************************************/
-<?php
 
 session_start ();
 

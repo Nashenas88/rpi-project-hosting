@@ -1,8 +1,9 @@
+<?php
 /*******************************************************************
 login.php
-Allows user to login using their RPI username and password
+Allows user to login with the CAS server using their RPI username 
+and password
 ********************************************************************/
-<?php
 
 // phpCAS simple client
 /*******************************************

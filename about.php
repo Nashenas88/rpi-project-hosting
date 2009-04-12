@@ -1,8 +1,8 @@
+<?php
 /****************************************************
 about.php
 Creates a page called 'About' with the html provided.
 ****************************************************/
-<?php
 session_start (); 
 
 require ("feater.php");

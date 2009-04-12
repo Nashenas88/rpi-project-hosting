@@ -1,8 +1,8 @@
+<?php
 /*******************************************************************
 connect_db.php
 Allows access to the SQL database
 ********************************************************************/
-<?php
 
 $username="php"; /* Your MySQL username/password/database goes here! */
 $password="pass";
