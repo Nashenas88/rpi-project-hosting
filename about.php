@@ -1,8 +1,16 @@
+/****************************************************
+about.php
+Creates a page called 'About' with the html provided.
+****************************************************/
 <?php
-session_start ();
+session_start (); 
 
 require ("feater.php");
 
+<!---------------------------------------------------------------
+Create a string of html that displays the about page information. 
+This is very ugly, but it works for now...
+---------------------------------------------------------------->
 $output = "<br />";
 $output .= "<img src=\"images/RPH.png\" width='10%' height='10%'>";
 $output .= "<br>";
