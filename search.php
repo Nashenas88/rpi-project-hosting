@@ -109,7 +109,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	// find out how many database records we have
 	$project_num = mysql_numrows($project_res);
 
-	echo "<h3>Your Search Resturned ".$project_num." Results</h3>\n";
+	echo "<h3>Your Search Returned ".$project_num." Results</h3>\n";
 
 	if($project_num>0)
 	{
