@@ -68,11 +68,11 @@ else
 				$major = mysql_real_escape_string ($_POST["projectMajor"]);
 			
 				//
-				$query = sprintf ("INSERT INTO projects( title, description, uploader, downloads, size, class, major, school )
-                                          VALUES ('%s', '%s', '%s', 0, %d, '%s', '%s', '%s');", mysql_real_escape_string ($_POST["projectName"]),
-					  mysql_real_escape_string ($_POST["projectDescription"]), mysql_real_escape_string ($username),
-					  mysql_real_escape_string ($filesize), mysql_real_escape_string ($_POST["projectClass"]), $major,
-					  getSchool($major));
+				$query = sprintf ("INSERT INTO projects( title, description, authors, uploader, downloads, size, class, major, school )
+                                          VALUES ('%s', '%s', '%s', '%s', 0, %d, '%s', '%s', '%s');", mysql_real_escape_string ($_POST["projectName"]),
+					  mysql_real_escape_string ($_POST["projectDescription"]), mysql_real_escape_string ($_POST["projectAuthor"]),
+					  mysql_real_escape_string ($username), mysql_real_escape_string ($filesize), mysql_real_escape_string ($_POST["projectClass"]),
+					  $major, getSchool($major));
 				
 				if (!mysql_query ($query))
 			   	{
