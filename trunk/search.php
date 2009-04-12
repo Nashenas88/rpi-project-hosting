@@ -179,7 +179,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 		//if logged in, give user the option to rate project
 		if(isset($_SESSION['username']))
 		{
-		echo "<td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='#'>#</option><option value=1>1</option>";
+		echo "<td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value=1>1</option>";
 		echo "<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";
 		echo "<input type='hidden' name='project_id' value='".mysql_result($project_res,$i,'id')."'/><input type='hidden' name='searchInput' value='".$_REQUEST['searchInput']."'/><input type='hidden' name='searchType' value='".$_REQUEST['searchType']."'/><input type='hidden' name='orderedBy' value='".$_REQUEST['orderedBy']."'/><input type='submit' value='Rate' /></form></td>";
 		}
