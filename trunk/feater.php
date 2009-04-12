@@ -50,6 +50,8 @@ function head ($title)
 	echo '</head>';
 	echo '';
 	echo '<body background="images/background.jpg">';
+
+   require ("menu.php");
 }
 
 // adds a footer to the page
