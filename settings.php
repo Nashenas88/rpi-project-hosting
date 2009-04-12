@@ -1,6 +1,13 @@
 <?php
+/************************************************
+settings.php
+Allows users to change certain features based on
+the preferences that they fill out in this form
+*************************************************/
+
 session_start ();
 require ("feater.php");
+head("Settings");
 
 if (loggedIn () != 1)
 {
@@ -8,29 +15,30 @@ if (loggedIn () != 1)
   exit;
 }
 
-$output = '<table width="360" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">';
-$output .= '<tr><td>';
-$output .= '<form name="settings" method="post" action="changeSettings.php">';
-$output .= '<fieldset>';
-$output .= '<legend><strong>Settings</strong></legend>';
-$output .= '<table width="350" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">';
-$output .= '<tr>';
-$output .= '<td>Display Name</td>';
-$output .= '<td>:</td>';
-$output .= '<td><input name="displayName" type="text" id="displayName" /></td>';
-$output .= '</tr>';
-$output .= '<tr>';
-$output .= '<td>Other Settings</td>';
-$output .= '</tr>';
-$output .= '<tr>';
-$output .= '<td>&nbsp;</td>';
-$output .= '<td>&nbsp;</td>';
-$output .= '<td><input type="submit" name="Submit" value="Submit" /></td>';
-$output .= '</tr></table>';
-$output .= '</fieldset>';
-$output .= '</form>';
-$output .= '</td></tr>';
-$output .= '</table>';
+// html for the settings form
+echo '<table width="360" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">';
+echo '<tr><td>';
+echo '<form name="settings" method="post" action="changeSettings.php">';
+echo '<fieldset>';
+echo '<legend><strong>Settings</strong></legend>';
+echo '<table width="350" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">';
+echo '<tr>';
+echo '<td>Display Name</td>';
+echo '<td>:</td>';
+echo '<td><input name="displayName" type="text" id="displayName" /></td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Other Settings</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>&nbsp;</td>';
+echo '<td>&nbsp;</td>';
+echo '<td><input type="submit" name="Submit" value="Submit" /></td>';
+echo '</tr></table>';
+echo '</fieldset>';
+echo '</form>';
+echo '</td></tr>';
+echo '</table>';
 
-make_page ("Settings", $output);
+foot();
 ?>

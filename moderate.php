@@ -8,7 +8,6 @@ session_start ();
 
 require ("feater.php");
 head ('Moderate');
-require ("menu.php");
 
 //only show if user is a moderator
 if (getPriviledge() <= 1)

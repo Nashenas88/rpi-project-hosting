@@ -1,4 +1,9 @@
 <?php
+/*******************************************************
+uploadFiles.php
+Allows an RPI user to upload a file to the database
+********************************************************/
+
 session_start ();
 
 require ("connect_db.php");
@@ -28,6 +33,8 @@ if (!$result)
 
 $matches = mysql_numrows ($result);
 
+// check to make sure the project name is less than 50 characters
+// and the project description is less than 500 characters
 if( strlen($_POST["projectName"]) > 50 || strlen($_POST["projectDescription"]) > 500 )
 {
 	if( strlen($_POST["projectName"]) > 50 ) 
@@ -40,7 +47,8 @@ if( strlen($_POST["projectName"]) > 50 || strlen($_POST["projectDescription"]) >
 		$output = $output . "Project description is too long. <br/>";
 		$output = $output . "Project description cannot exceed 500 characters.<br/>";
 	} 
-}	
+}
+// check to make sure user has not uploaded a file with the same name
 else if ($matches > 0)
 {
 	$output = "Upload Failed: You already have a project with the same name";
@@ -50,6 +58,7 @@ else
 	if ($file != none)
    	{
 		$fileSize = $HTTP_POST_FILES["file"]["size"];
+		// check to make sure the file does not exceed the maximum size
 		if ($fileSize > $MAX_FILE_SIZE)
 	   	{
 			$output = "Your file is too big.<br />";
@@ -116,6 +125,7 @@ else
 }
 
 require ("feater.php");
+head("Uploading...");
+foot();
 
-make_page ("Uploading...", $output);
 ?>

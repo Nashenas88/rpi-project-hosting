@@ -1,10 +1,10 @@
 <?php
 /*******************************************************************
-changePriviedge.php
+changePriviledge.php
 Allows moderators and admin to change the priviledge level of a user
 ********************************************************************/
 
-if (getPriviledge () == 0 )
+if ( getPriviledge() == 0 )
 {
 	echo "<form name='changePriviledge' method='POST' action='changePriviledge.php'>";
 	echo "Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>";
@@ -17,16 +17,16 @@ if (getPriviledge () == 0 )
 	echo "&nbsp;&nbsp;<input type='submit' value='Update'\>";
 	echo "</form>";
 	
-	//make sure the form was filled in
+	// make sure the form was filled in
 	if(isset($_REQUEST['username'])&&isset($_REQUEST['priviledge']))
 	{
 		$username=$_REQUEST['username'];
 		$priviledge=htmlspecialchars($_REQUEST['priviledge']);
 		
-		//sanitize form input
+		// sanitize form input
 		$username=htmlspecialchars($username);
 
-		//check to make sure user exists
+		// check to make sure user exists
 		$self=$_SESSION['username'];
 		$user_exists= mysql_query("SELECT * FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
 
@@ -52,24 +52,17 @@ if (getPriviledge () == 0 )
 					echo "User " . $username . " has had privilege changed from " . 
 							mysql_result($user_exists,0,'priviledge') . " to " . $priviledge;
 				}
-				
-				
 			}
 			else
 			{
 				echo "Your can't change your own priviledge";
 			}
-			
-			
-			
 		}
 		else
 		{
 			echo "Username does not match up";
 		}
-		
 	}
-	
 }
 else
 {
