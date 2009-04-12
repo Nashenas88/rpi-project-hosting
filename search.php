@@ -6,12 +6,6 @@ for clickable sort by headers
 ***/
 echo "<script src=\"sorttable.js\"></script>";
 
-/***
-use this session for testing logged in user
-assume login use admin account (for rating)
-***/
-
-
 require("connect_db.php");
 
 require ("feater.php");
