@@ -27,6 +27,7 @@ function make_page ($title, $body)
   require ("menu.php");
   
   echo $body;
+  echo '<br /><br /><center>This page is licensed under the <a href=http://www.gnu.org/licenses/gpl.html>GNU General Public License v3</a></center><br />';
   echo '</body>';
   echo '';
   echo '</html>';
@@ -57,6 +58,7 @@ function head ($title)
 // adds a footer to the page
 function foot ()
 {
+	echo '<br /><br /><center>This page is licensed under the <a href=http://www.gnu.org/licenses/gpl.html>GNU General Public License v3</a></center><br />';
 	echo '</body>';
 	echo '';
 	echo '</html>';
