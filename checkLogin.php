@@ -1,4 +1,6 @@
 <?php
+require("feater.php");
+
 $usr = "";
 $pass = "";
 $loggedIn = 0;
@@ -16,16 +18,14 @@ $loggedIn = 1;
 session_register ("username");
 session_register ("pass");
 session_register ("loggedIn");
-header ("location:loginSuccess.php");
+head("Login Success");
 }
 else
 {
-require ("upper_header.php");
+head("Login");
 echo "Login Failed";
-require ("lower_header.php");
-require ("menu.php");
 echo "<br /><center>Username and/or password were incorrect click ";
 echo "<a href=\"login.php\">here</a> to login again.";
-require ("footer.php");
+foot();
 }
 ?>

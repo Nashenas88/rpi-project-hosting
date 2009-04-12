@@ -4,7 +4,6 @@ feater.php
 head(string) - prints the header to the page
 foot() - prints the footer to the page
 ********************************************************************/
-require ("priviledge.php");
 
 function make_page ($title, $body)
 {
