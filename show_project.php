@@ -122,7 +122,7 @@ if(isset($_REQUEST['show_project_id']))
 }
 else
 {
-	echo "Project does not exist.</br>"
+	echo "Project does not exist.</br>";
 }
 
 foot();
