@@ -43,7 +43,7 @@ function changePriviledge()
 		{
 			echo "User ".$username." does not exist";		
 		}
-		else if(mysql_result($user_exists,0,'rcsid') == $username)
+		else if( mysql_numrows ($user_exists) > 0 && mysql_result($user_exists,0,'rcsid') == $username)
 		{
 			//you cannot change your own priviledge
 			if($self != $username)
