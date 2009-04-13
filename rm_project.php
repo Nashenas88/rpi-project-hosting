@@ -9,6 +9,8 @@ session_start ();
 require ("priviledge.php");
 require ("connect_db.php");
 
+$_SESSION['message'] = "";
+
 // if the user id is given and the user is a moderator
 if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 {
@@ -23,7 +25,7 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 	if (!$query_project_res) 
 	{
 		//echo mysql_error ();
-		echo "Sorry, we can't query your request";
+		$_SESSION['message'] .= "Sorry, we can't query your request";
 		exit;
 	}
 
@@ -32,7 +34,7 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 	//echo $query_project;
 
 	// if project exists, remove project along with all related comments and ratings
-	echo $num_of_project;
+	//echo $num_of_project;
 	if ($num_of_project > 0)
 	{
 		$get_info = sprintf ("SELECT title, uploader FROM projects WHERE id='%s';", mysql_real_escape_string ($project_id));
@@ -63,7 +65,7 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 		}
 		else
 		{
-			echo mysql_error ();
+			$_SESSION['message'] = mysql_error ();
 			exit;
 		}
 		
@@ -80,15 +82,15 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 		if (!$delete_project_res || !$delete_project_res || !$delete_project_res) 
 		{
 			//echo mysql_error ();
-			echo "Sorry, we can't query your request";
+			$_SESSION['message'] .= "Sorry, we can't query your request";
 			exit;
 		}
 		
-		$_SESSION['message'] = "<p>project Deleted</p>";
+		$_SESSION['message'] .= "<p>project Deleted</p>";
 	}
 	else
 	{
-		$_SESSION['message']= "<p>No such project</p>";
+		$_SESSION['message'] .= "<p>No such project</p>";
 	}
 	
 }
