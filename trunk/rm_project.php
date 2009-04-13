@@ -48,7 +48,10 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 				
 				foreach (scandir ($path) as $file)
 				{
-					unlink ($file);
+				    if ($file != "." || $file != "..")
+				    {
+				        unlink ("$path/$file");
+				    }
 				}
 				rmdir ($path);
 			}
