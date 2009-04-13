@@ -32,7 +32,7 @@ function getPriviledge ()
     }
     else
     {
-  	    echo "No Users... wtf";
+  	    echo "<br/><center>User " . $_SESSION['username'] . " does not exist</center><br/>";
   	    return 3;
     }
 }
