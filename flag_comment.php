@@ -8,6 +8,7 @@ session_start ();
 
 require("connect_db.php");
 
+$_SESSION['comment'] = "";
 // test if project id and user id exist
 if(isset($_REQUEST['project_id'])&&isset($_REQUEST['user_id']))
 {
@@ -39,15 +40,15 @@ if(isset($_REQUEST['project_id'])&&isset($_REQUEST['user_id']))
 		if (!$flag_comment_res) 
 		{
 			//echo mysql_error();
-			echo "Sorry, we can't query your request";
+			$_SESSION['message'] .= "Sorry, we can't query your request";
 			exit;
 		}
 		
-		$_SESSION['message']="<p>Comment Flag</p>";
+		$_SESSION['message'] .= "<p>The comment was flagged</p>";
 	}
 	else
 	{
-		$_SESSION['message']= "<p>No such comment</p>";
+		$_SESSION['message'] .= "<p>Cannot flag a comment that doesn't exist</p>";
 	}
 }
 else

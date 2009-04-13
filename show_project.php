@@ -77,7 +77,7 @@ if(isset($_REQUEST['show_project_id']))
 		echo "  <tr><td>Major: </td><td>" . mysql_result($query_project_res,$i,'major'). "</td></tr>";
 		echo "  <tr><td>School: </td><td>" . mysql_result($query_project_res,$i,'school'). "</td></tr>";
 		echo "  <tr><td>Date uploaded: </td><td>" . mysql_result($query_project_res,$i,'date'). "</td></tr>";
-		echo "  <tr><td>Current rating: </td><td>".$rating_num." users rating this project: " . $current_rate. "</td></tr>";
+		echo "  <tr><td>Current rating: </td><td>" . $current_rate . " number of rates: " . $rating_num . "</td></tr>";
 		if(isset($_SESSION['username']))
 		{
 		echo "<tr><td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='1'>1</option><option value=1>1</option>";
@@ -97,7 +97,7 @@ if(isset($_REQUEST['show_project_id']))
 	echo "<h2>Comments</h2>";
 	for ($k=0;$k<$comment_num;$k++)
 	{
-		echo "<h3>Comment By: ".mysql_result($query_comment_res,$k,'user_id')."</h3>";
+		echo "<h3>Comment By: " . mysql_result($query_comment_res,$k,'user_id') . "</h3>";
 
 		echo "<table><tr><td><form name='flag_comment' method='POST' action='flag_comment.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Flag Comment' /></form></td>";
 
