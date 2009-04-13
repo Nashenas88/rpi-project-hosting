@@ -27,13 +27,11 @@ function changePriviledge()
 	echo "</form>";
 	
 	// make sure the form was filled in
-	if(isset($_REQUEST['username'])&&isset($_REQUEST['priviledge']))
+	if (isset ($_REQUEST['username']) && $_REQUEST['username'] != "" && isset ($_REQUEST['priviledge']))
 	{
-		$username=$_REQUEST['username'];
-		$priviledge=htmlspecialchars($_REQUEST['priviledge']);
-		
 		// sanitize form input
-		$username=htmlspecialchars($username);
+		$username=htmlspecialchars ($_REQUEST['username']);
+		$priviledge=htmlspecialchars($_REQUEST['priviledge']);
 
 		// check to make sure user exists
 		$self=$_SESSION['username'];
@@ -69,7 +67,7 @@ function changePriviledge()
 		}
 		else
 		{
-			echo "Username does not match up";
+			echo "Username does not exist";
 		}
 	}
 }
