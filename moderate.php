@@ -20,8 +20,7 @@ function changePriviledge()
 
 <form name='changePriviledge' method='POST' action='moderate.php'>
 Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>
-By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='priviledge'>
-<option value='3'>Non-RPI User</option>
+&nbsp;&nbsp;Action:&nbsp;&nbsp;&nbsp;&nbsp;<select name='priviledge'>
 <option value='2'>RPI User</option>
 <option value='1'>Moderator</option>
 <option value='0'>Admin</option>
@@ -40,11 +39,11 @@ By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='priviledge'>
 
 		// check to make sure user exists
 		$self=$_SESSION['username'];
-		$user_exists= mysql_query("SELECT * FROM users WHERE rcsid='" . mysql_real_escape_string ($username) . "'");
+		$user_exists = mysql_query("SELECT * FROM users WHERE rcsid='" . mysql_real_escape_string ($username) . "'");
 
 		if (!$user_exists)
 		{
-			echo "User " . $username . " does not exist";		
+			echo mysql_error ();
 		}
 		else if (mysql_numrows ($user_exists) > 0 && mysql_result($user_exists,0,'rcsid') == $username)
 		{
@@ -56,23 +55,23 @@ By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='priviledge'>
 				
 				if(!$update_privildge_res)
 				{
-					echo "update error";
+					echo mysql_error ();
 					exit;
 				}
 				else
 				{
-					echo "User " . $username . " has had privilege changed from " . 
+					echo "User '" . $username . "' has had his privilege level changed from " . 
 							mysql_result ($user_exists, 0, 'priviledge') . " to " . $priviledge;
 				}
 			}
 			else
 			{
-				echo "Your can't change your own priviledge";
+				echo "You can't change your own privilege";
 			}
 		}
 		else
 		{
-			echo "Username '" . $username . "' does not exist";
+			echo "User '" . $username . "' does not exist";
 		}
 	}
 }
@@ -81,22 +80,29 @@ By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='priviledge'>
 if (getPriviledge() <= 1)
 {
 
+    if (getPriviledge() == 1)
+    {
+      ?><p>You are a moderator<br /></p><?php
+    }
+    else
+    {
+      ?><p>You are an Admin<br /></p><?php
+    }
 ?>
-<p>You are a moderator<br /></p>
 Ban an user: <br />
 <form name='ban' method='POST' action='moderate.php'>
-Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>
-By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='ban_unban'>
-<option value=\"ban\">Ban</option>
-<option value=\"unban\">Unban</option>
+Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text' />
+&nbsp;&nbsp;Action:&nbsp;&nbsp;&nbsp;&nbsp;<select name='ban_unban'>
+<option value="ban">Ban</option>
+<option value="unban">Unban</option>
 </select>
-&nbsp;&nbsp;<input type='submit' value='Update'\>
+&nbsp;&nbsp;<input type='submit' value='Update' />
 </form>
 <br/>
 
 <p>Change user's priviledge:</p>
 <?php changePriviledge(); ?>
-<br/><br/>	
+<br/><br/>
 <?php
 	//make sure the form was filled in
 	if (isset ($_REQUEST['username']) && isset ($_REQUEST['ban_unban']))
@@ -117,7 +123,7 @@ By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='ban_unban'>
 				//you cannot ban a user with higher priviledge than you
 				if (getPriviledge ($self) >= getPriviledge ($username))
 				{
-					//if want to unban user
+					//if want to ban user
 					if($_REQUEST['ban_unban'] == ban)
 					{
 						//check to make sure user is not already banned
@@ -130,10 +136,10 @@ By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='ban_unban'>
 						else
 						{
 							mysql_query ("INSERT INTO moderateusers(user_id) VALUES ('" . mysql_real_escape_string ($username) . "')");
-							echo "User " . $username . " has been banned";
+							echo "User '" . $username . "' has been banned";
 						}
 					}
-					//if want to ban user
+					//if want to unban user
 					else
 					{
 						//check to make sure user is already banned
@@ -142,11 +148,11 @@ By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='ban_unban'>
 						if ($user_banned[0] == $username)
 						{
 							mysql_query ("DELETE FROM moderateusers WHERE user_id='" . mysql_real_escape_string ($username) . "'");
-							echo "User " . $username . " is no longer banned";
+							echo "User '" . $username . "' is no longer banned";
 						}
 						else
 						{
-							echo "User " . $username . " is was not previously banned";
+							echo "User '" . $username . "' was not previously banned";
 						}
 					}
 				}
