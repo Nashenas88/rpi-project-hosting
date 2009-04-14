@@ -15,12 +15,10 @@ require("priviledge.php");
 */
 if(isset($_REQUEST['project_id'])&&isset($_REQUEST['commenting']))
 {
-	echo "comment";
 	comment();
 }
 else if(isset($_REQUEST['rm_flag_project_id'])&&isset($_REQUEST['user_id']))
 {
-	echo "rm flag";
 	if(getPriviledge()<2)
 	{
 		rm_flag();
@@ -32,13 +30,11 @@ else if(isset($_REQUEST['rm_flag_project_id'])&&isset($_REQUEST['user_id']))
 }
 else if(isset($_REQUEST['flag_comment_project_id'])&&isset($_REQUEST['user_id']))
 {
-	echo "flag comment";
 	flag_comment();
 	
 }
 else if(isset($_REQUEST['rm_comment_project_id'])&&isset($_REQUEST['user_id']))
 {
-	echo "remove comment";
 	if(getPriviledge()<2)
 	{
 		remove_comment();
