@@ -73,19 +73,19 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 		$delete_related_comment_res = mysql_query ($delete_related_comment);
 		
 		$delete_related_rating = "DELETE FROM ratings WHERE project_id=" . mysql_real_escape_string ($project_id);
-		$delete_related_comment_res = mysql_query ($delete_related_rating);
+		$delete_related_rating_res = mysql_query ($delete_related_rating);
 		
 		$delete_project = "DELETE FROM projects WHERE id=" . mysql_real_escape_string ($project_id);
 		$delete_project_res = mysql_query ($delete_project);
 		
-		if (!$delete_project_res || !$delete_project_res || !$delete_project_res) 
+		if (!$delete_project_res || !$delete_related_comment_res || !$delete_related_rating_res) 
 		{
 			//echo mysql_error ();
-			$_SESSION['message'] .= "Sorry, we can't query your request";
+			$_SESSION['message'] .= mysql_error (); //"Sorry, we can't query your request";
 			exit;
 		}
 		
-		$_SESSION['message'] .= "<p>project Deleted</p>";
+		$_SESSION['message'] .= "<p>Project Deleted</p>";
 	}
 	else
 	{
