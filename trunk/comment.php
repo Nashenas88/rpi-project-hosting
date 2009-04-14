@@ -168,7 +168,6 @@ function flag_comment()
 	// make variable text secure
 	$project_id=htmlspecialchars($_REQUEST['flag_comment_project_id']);
 	$user=htmlspecialchars($_REQUEST['user_id']);
-	echo $project_id.$user;
 	
 	// check if the comment exists
 	$query_comment="SELECT 1 FROM comments WHERE user_id='".mysql_real_escape_string($user)."' AND project_id=".mysql_real_escape_string($project_id);
