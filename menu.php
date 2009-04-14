@@ -18,7 +18,7 @@ Creates the menu which is displayed at the top of all pages
 //the functions used to determine priviledge
 require("priviledge.php");
 
-if (loggedIn () != 0)
+if (isset ($_SESSION['username']))
 {
   	echo "\"login.php?logout\">Logout";
   	echo "</a></td><td align=\"center\"><a href=\"logout.php\">LogoutAlternate";
