@@ -14,7 +14,7 @@ Features:
   * Jin: flag_comment, rate, remove_comment, remove_flag, comment
   * Alex: search, login, logout
   * Dan: upload, download
-  * Paul: remove project, change priviledge, security, about page, terms of service
+  * Paul: remove project, moderate, security, about page, terms of service
 
 
   * Jin and Paul: remove project -- done
