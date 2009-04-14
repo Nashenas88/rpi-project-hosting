@@ -21,7 +21,6 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 	$query_project = "SELECT 1 FROM projects WHERE id = ".mysql_real_escape_string($project_id);
 	$query_project_res = mysql_query ($query_project);
 
-
 	if (!$query_project_res) 
 	{
 		//echo mysql_error ();
@@ -59,7 +58,7 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 			}
 			else
 			{
-				echo "Sorry, a project with id = " . $project_id . " does not exist";
+				$_SESSION['message'] .= "Sorry, a project with id = " . $project_id . " does not exist";
 				exit;
 			}
 		}

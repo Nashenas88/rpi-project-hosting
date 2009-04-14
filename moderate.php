@@ -1,8 +1,9 @@
 <?php
-/***
+/****************************************************
 moderate.php
-implements ban and unban ability of moderator priveledged
-***/
+Allows moderator to ban and unban a user, and also to
+change the priviledge of a user
+*****************************************************/
 
 session_start ();
 
@@ -15,16 +16,20 @@ Allows moderators and admin to change the priviledge level of a user
 ********************************************************************/
 function changePriviledge()
 {
-	echo "<form name='changePriviledge' method='POST' action='moderate.php'>";
-	echo "Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>";
-	echo "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='priviledge'>";
-	echo "<option value='3'>Non-RPI User</option>";
-	echo "<option value='2'>RPI User</option>";
-	echo "<option value='1'>Moderator</option>";
-	echo "<option value='0'>Admin</option>";
-	echo "</select>";
-	echo "&nbsp;&nbsp;<input type='submit' value='Update'\>";
-	echo "</form>";
+?>
+
+<form name='changePriviledge' method='POST' action='moderate.php'>
+Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>
+By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='priviledge'>
+<option value='3'>Non-RPI User</option>
+<option value='2'>RPI User</option>
+<option value='1'>Moderator</option>
+<option value='0'>Admin</option>
+</select>
+&nbsp;&nbsp;<input type='submit' value='Update'\>
+</form>
+
+<?php
 	
 	// make sure the form was filled in
 	if (isset ($_REQUEST['username']) && $_REQUEST['username'] != "" && isset ($_REQUEST['priviledge']))
@@ -35,19 +40,19 @@ function changePriviledge()
 
 		// check to make sure user exists
 		$self=$_SESSION['username'];
-		$user_exists= mysql_query("SELECT * FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
+		$user_exists= mysql_query("SELECT * FROM users WHERE rcsid='" . mysql_real_escape_string ($username) . "'");
 
 		if (!$user_exists)
 		{
-			echo "User ".$username." does not exist";		
+			echo "User " . $username . " does not exist";		
 		}
-		else if( mysql_numrows ($user_exists) > 0 && mysql_result($user_exists,0,'rcsid') == $username)
+		else if (mysql_numrows ($user_exists) > 0 && mysql_result($user_exists,0,'rcsid') == $username)
 		{
 			//you cannot change your own priviledge
 			if($self != $username)
 			{
-				$update_priviledge="UPDATE users SET priviledge=".mysql_real_escape_string($priviledge)." WHERE rcsid='".$username."'";
-				$update_privildge_res=mysql_query($update_priviledge);
+				$update_priviledge = "UPDATE users SET priviledge=" . mysql_real_escape_string ($priviledge) . " WHERE rcsid='" . $username . "'";
+				$update_privildge_res = mysql_query ($update_priviledge);
 				
 				if(!$update_privildge_res)
 				{
@@ -57,7 +62,7 @@ function changePriviledge()
 				else
 				{
 					echo "User " . $username . " has had privilege changed from " . 
-							mysql_result($user_exists,0,'priviledge') . " to " . $priviledge;
+							mysql_result ($user_exists, 0, 'priviledge') . " to " . $priviledge;
 				}
 			}
 			else
@@ -67,88 +72,87 @@ function changePriviledge()
 		}
 		else
 		{
-			echo "Username does not exist";
+			echo "Username '" . $username . "' does not exist";
 		}
 	}
 }
 
-//only show if user is a moderator
+//only show if user is a moderator or admin
 if (getPriviledge() <= 1)
 {
-	echo "<p>You are a moderator<br /></p>";
-	echo "Ban an user: <br>";
-	echo "<form name='ban' method='POST' action='moderate.php'>";
-	echo "Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>";
-	echo "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='ban_unban'>";
-	echo "<option value=\"ban\">Ban</option>";
-	echo "<option value=\"unban\">Unban</option>";
-	echo "</select>";
-	echo "&nbsp;&nbsp;<input type='submit' value='Update'\>";
-	echo "</form>";
-	echo "<br>";
-	
-	echo "<p>Change user's priviledge:</p>";
-	changePriviledge();
-	echo "<br><br>";
-	
-	
+
+?>
+<p>You are a moderator<br /></p>
+Ban an user: <br />
+<form name='ban' method='POST' action='moderate.php'>
+Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>
+By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='ban_unban'>
+<option value=\"ban\">Ban</option>
+<option value=\"unban\">Unban</option>
+</select>
+&nbsp;&nbsp;<input type='submit' value='Update'\>
+</form>
+<br/>
+
+<p>Change user's priviledge:</p>
+<?php changePriviledge(); ?>
+<br/><br/>	
+<?php
 	//make sure the form was filled in
-	if(isset($_REQUEST['username'])&&isset($_REQUEST['ban_unban']))
+	if (isset ($_REQUEST['username']) && isset ($_REQUEST['ban_unban']))
 	{
-		$username=$_REQUEST['username'];
-		$ban_unban=$_REQUEST['ban_unban'];
-		
-		//sanitize form input
-		$username=htmlspecialchars($username);
+		// sanitize from input
+		$username = htmlspecialchars ($_REQUEST['username']);
+		$ban_unban = $_REQUEST['ban_unban'];
 
 		//check to make sure user exists
-		$self=$_SESSION['username'];
-		$user_exists= mysql_query("SELECT rcsid FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
-		$user_exists= mysql_fetch_array($user_exists);
-		if($user_exists[0] == $username)
+		$self = $_SESSION['username'];
+		$user_exists = mysql_query ("SELECT rcsid FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
+		$user_exists = mysql_fetch_array ($user_exists);
+		if ($user_exists[0] == $username)
 		{
 			//you cannot ban yourself
-			if($self != $username)
+			if ($self != $username)
 			{
 				//you cannot ban a user with higher priviledge than you
-				if(getPriviledge($self) >= getPriviledge($username))
+				if (getPriviledge ($self) >= getPriviledge ($username))
 				{
 					//if want to unban user
 					if($_REQUEST['ban_unban'] == ban)
 					{
 						//check to make sure user is not already banned
-						$user_banned= mysql_query("SELECT user_id FROM moderateusers WHERE user_id='".mysql_real_escape_string($username)."'");
-						$user_banned = mysql_fetch_array($user_banned);
-						if($user_banned[0] == $username)
+						$user_banned= mysql_query ("SELECT user_id FROM moderateusers WHERE user_id='" . mysql_real_escape_string ($username) . "'");
+						$user_banned = mysql_fetch_array ($user_banned);
+						if ($user_banned[0] == $username)
 						{
-							echo "User ".$username." is already banned";
+							echo "User '" . $username . "' is already banned";
 						}
 						else
 						{
-							mysql_query("INSERT INTO moderateusers(user_id) VALUES ('".mysql_real_escape_string($username)."')");
-							echo "User ".$username." has been banned";
+							mysql_query ("INSERT INTO moderateusers(user_id) VALUES ('" . mysql_real_escape_string ($username) . "')");
+							echo "User " . $username . " has been banned";
 						}
 					}
 					//if want to ban user
 					else
 					{
 						//check to make sure user is already banned
-						$user_banned= mysql_query("SELECT user_id FROM moderateusers WHERE user_id='".mysql_real_escape_string($username)."'");
-						$user_banned= mysql_fetch_array($user_banned);
-						if($user_banned[0] == $username)
+						$user_banned = mysql_query ("SELECT user_id FROM moderateusers WHERE user_id='" . mysql_real_escape_string ($username) . "'");
+						$user_banned = mysql_fetch_array ($user_banned);
+						if ($user_banned[0] == $username)
 						{
-							mysql_query("DELETE FROM moderateusers WHERE user_id='".mysql_real_escape_string($username)."'");
-							echo "User ".$username." is no longer banned";
+							mysql_query ("DELETE FROM moderateusers WHERE user_id='" . mysql_real_escape_string ($username) . "'");
+							echo "User " . $username . " is no longer banned";
 						}
 						else
 						{
-							echo "User ".$username." is was not previously banned";
+							echo "User " . $username . " is was not previously banned";
 						}
 					}
 				}
 				else
 				{
-					echo "hah".$username." dominates you";
+					echo "hah '" . $username . "' dominates you";
 				}
 			}
 			else
@@ -158,7 +162,7 @@ if (getPriviledge() <= 1)
 		}
 		else
 		{
-			echo "User ".$username." does not exist";
+			echo "User '" . $username . "' does not exist";
 		}
 	}
 	
@@ -167,19 +171,19 @@ if (getPriviledge() <= 1)
 	/*
 	If there is a flagged comment, list them and options of remove flag, remove comment, and the project this comment is commenting on
 	*/
-	$query_flag_comments="SELECT * FROM comments where flag=1";
-	$query_flag_comments_res=mysql_query($query_flag_comments);
+	$query_flag_comments = "SELECT * FROM comments where flag=1";
+	$query_flag_comments_res = mysql_query($query_flag_comments);
 	if (!$query_flag_comments_res) 
 	{
 		//echo mysql_error();
 		echo "Sorry, we can't query your request";
 		exit;
 	}
-	$query_flag_comments_num=mysql_numrows($query_flag_comments_res);
+	$query_flag_comments_num = mysql_numrows ($query_flag_comments_res);
 	
 	
 	echo "<table>";
-	for($i=0;$i<$query_flag_comments_num;$i++)
+	for ($i = 0; $i < $query_flag_comments_num; $i++)
 	{
 		echo "<tr><td><form name='rm_comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
 			
@@ -192,12 +196,10 @@ if (getPriviledge() <= 1)
 	}
 	echo "</table>";
 
-
-		
 }
 else
 {
-	"You need to be a moderator";
+	echo "You need to be a moderator";
 }
 
 foot();
