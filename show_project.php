@@ -99,17 +99,17 @@ if(isset($_REQUEST['show_project_id']))
 	{
 		echo "<h3>Comment By: " . mysql_result($query_comment_res,$k,'user_id') . "</h3>";
 
-		echo "<table><tr><td><form name='flag_comment' method='POST' action='flag_comment.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Flag Comment' /></form></td>";
+		echo "<table><tr><td><form name='flag_comment' method='POST' action='comment.php'><input type='hidden' name='flag_comment_project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Flag Comment' /></form></td>";
 
 		// if current user is moderator or admin, display remove comment and remove flag option
 		$num_of_user = mysql_numrows($query_user_res);
 
 		if($num_of_user>0&&mysql_result($query_user_res,0,'priviledge')<2)
 		{		
-		echo "<td><form name='rm_comment' method='POST' action='remove_comment.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
+		echo "<td><form name='rm_comment' method='POST' action='comment.php'><input type='hidden' name='rm_comment_project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
 		
 			if(mysql_result($query_comment_res,$k,'flag')==1){
-		echo "<td><form name='rm_flag' method='POST' action='rm_flag.php'><input type='hidden' name='project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";		
+		echo "<td><form name='rm_flag' method='POST' action='comment.php'><input type='hidden' name='rm_flag_project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";		
 		}
 		}
 		
