@@ -67,7 +67,7 @@ if(isset($_REQUEST['show_project_id']))
 	if($project_num > 0 )
 	{
 	echo "<h2>Project Details</h2><table>";
-	for ($i=0;$i<$project_num;$i++) 
+	for ($i = 0; $i < $project_num; $i++) 
 	{
 		echo "  <tr><td>Title: </td><td>" . mysql_result($query_project_res,$i,'title') . "</td></tr>";
 		echo "  <tr><td>Description: </td><td>" . mysql_result($query_project_res,$i,'description') . "</td></tr>";
@@ -78,7 +78,14 @@ if(isset($_REQUEST['show_project_id']))
 		echo "  <tr><td>Class: </td><td>" . mysql_result($query_project_res,$i,'class'). "</td></tr>";
 		echo "  <tr><td>Major: </td><td>" . mysql_result($query_project_res,$i,'major'). "</td></tr>";
 		echo "  <tr><td>School: </td><td>" . mysql_result($query_project_res,$i,'school'). "</td></tr>";
-		echo "  <tr><td>Date uploaded: </td><td>" . mysql_result($query_project_res,$i,'date'). "</td></tr>";
+		echo "  <tr><td>Date uploaded: </td><td>";
+		
+		list ($yearly, $daily) = split (' ', mysql_result ($query_my_project_res,$i,'date'));
+      	        list ($year, $month, $day) = split ('-', $yearly);
+                list ($hour, $minute, $second) = split (':', $daily);
+                echo date ('l, F j, Y, g:i a', mktime ($hour, $minute, $second, $month, $day, $year)), "</td></tr>";
+		
+		
 		echo "  <tr><td>Current rating: </td><td>" . $current_rate . " number of rates: " . $rating_num . "</td></tr>";
 		if(isset($_SESSION['username']))
 		{

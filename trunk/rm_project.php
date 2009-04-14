@@ -95,7 +95,7 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 }
 else
 {
-	$_SESSION['message'] = "<p>Your remove project fails</p>";
+	$_SESSION['message'] = "<p>Could not remove project</p>";
 }
 header ("location:search.php");
 

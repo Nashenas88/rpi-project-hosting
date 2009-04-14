@@ -9,8 +9,8 @@ session_start ();
 // for clickable sort by headers
 echo "<script src=\"sorttable.js\"></script>";
 
-require("connect_db.php");
 require ("feater.php");
+require ("connect_db.php");
 head("Search");
 
 // Display message generate by another file
