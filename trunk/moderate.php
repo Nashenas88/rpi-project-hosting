@@ -210,9 +210,9 @@ if ($priviledgeLevel == 0)
         echo "<table>";
         for ($i = 0; $i < $query_flag_comments_num; $i++)
         {
-                echo "<tr><td><form name='rm_comment' method='POST' action='comment.php'><input type='hidden' name='rm_flag_project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
+                echo "<tr><td><form name='rm_comment' method='POST' action='comment.php'><input type='hidden' name='rm_comment_project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
                        
-                echo "<td><form name='rm_flag' method='POST' action='comment.php'><input type='hidden' name='rm_comment_project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";          
+                echo "<td><form name='rm_flag' method='POST' action='comment.php'><input type='hidden' name='rm_flag_project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='hidden' name='user_id' value='".mysql_result($query_flag_comments_res,$i,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";          
                
                 echo "<td><form name='show_project' method='GET' action='show_project.php'><input type='hidden' name='show_project_id' value='".mysql_result($query_flag_comments_res,$i,'project_id')."' /><input type='submit' value='show project' /></form></td></tr>";
                
