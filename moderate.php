@@ -22,6 +22,10 @@ Allows moderators and admin to change the priviledge level of a user
 ********************************************************************/
 function changePriviledge()
 {
+   if(getPriviledge() != 0)
+   {
+      return;
+   }
 ?>
 
 <form name='changePriviledge' method='POST' action='moderate.php'>
@@ -83,16 +87,21 @@ Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text'\>
 }
 
 //only show if user is a moderator or admin
-if (getPriviledge() <= 1)
-{
+$priviledgeLevel = getPriviledge();
 
-    if (getPriviledge() == 1)
+if (priviledgeLevel <= 1)
+{
+    if (priviledgeLevel == 1)
     {
       ?><p>You are a moderator<br /></p><?php
     }
-    else
+    else if (priviledgeLevel == 0)
     {
       ?><p>You are an Admin<br /></p><?php
+    }
+    else
+    {
+      ?><p>You are Superman<br /></p><?php
     }
 ?>
 Ban an user: <br />
