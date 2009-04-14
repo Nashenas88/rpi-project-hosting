@@ -3,7 +3,6 @@
 =4/1/09=
 Features:
 
-  * Jin and Paul: remove project -- not done
   * All: database query with mysql_reql_escape -- not done
   * All: form entries sanitized with htmlspecialchars() -- not done
   * All: catch errors and display error messages -- not done
@@ -18,6 +17,7 @@ Features:
   * Paul: remove project, change priviledge, security, about page, terms of service
 
 
+  * Jin and Paul: remove project -- done
   * Dan: terms of service page -- done
   * Paul: Download -- done
   * Jin: change priviledge -- done
