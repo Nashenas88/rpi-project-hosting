@@ -67,6 +67,7 @@ if (empty ($_SESSION['username']))
 <td>:</td>
 <td><!--<input type=text name="projectMajor" size="20" />-->
 <select name="projectMajor">
+  <option value="">--Select Major--</option>
   <option value="ADMN">ADMN</option>
   <option value="ARCH">ARCH</option>
   <option value="ARTS">ARTS</option>
