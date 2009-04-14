@@ -78,6 +78,7 @@ if (!$result)
 }
 
 $matches = mysql_numrows ($result);
+$output = "";
 
 // check to make sure the project name is less than 50 characters
 // and the project description is less than 500 characters
@@ -85,13 +86,13 @@ if( strlen($_POST["projectName"]) > 50 || strlen($_POST["projectDescription"]) >
 {
 	if( strlen($_POST["projectName"]) > 50 ) 
 	{
-		$output = "Project name is too long. <br/>";
-		$output = $output . "Project name cannot exceed 50 characters.<br/>";
+		$output .= "Project name is too long. <br/>";
+		$output .= "Project name cannot exceed 50 characters.<br/>";
 	}
 	if( strlen($_POST["projectDescription"]) > 500 )
 	{
-		$output = $output . "Project description is too long. <br/>";
-		$output = $output . "Project description cannot exceed 500 characters.<br/>";
+		$output .= "Project description is too long. <br/>";
+		$output .= "Project description cannot exceed 500 characters.<br/>";
 	} 
 }
 // check to make sure user has not uploaded a file with the same name
@@ -131,7 +132,7 @@ else
 				
 				if (!mysql_query ($query))
 			   	{
-					$output = "Upload Half Complete: File created, not entered into database: " . mysql_error ();
+					$output .= "Upload Half Complete: File created, not entered into database: " . mysql_error ();
 				}
 				else
 				{
@@ -145,28 +146,28 @@ else
 					       	 	   	   mysql_real_escape_string ("download.php?id=". $row["id"]), $row["id"]);
 						if (!mysql_query ($query))
 					   	{
-							$output = "Upload Half Complete: No download link was created";
+							$output .= "Upload Half Complete: No download link was created";
 						}
 						else
 						{
-							$output = "Upload Complete!";
+							$output .= "Upload Complete!";
 						}
 					}
 					else
 					{
-						$output = "Upload Half Complete: Could not locate project after it was inserted into the database" . mysql_error ();
+						$output .= "Upload Half Complete: Could not locate project after it was inserted into the database" . mysql_error ();
 					}
 				}
 			}
 			else
 			{
-				$output = "Upload failed: Copy - " . $path . " - " . $filesize;
+				$output .= "Upload failed: Copy - " . $path . " - " . $filesize;
 			}
 		}
 	}
 	else
 	{
-		$output = "Upload failed: File was empty";
+		$output .= "Upload failed: File was empty";
 	}
 }
 
