@@ -34,7 +34,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	$sort=$_REQUEST['orderedBy'];
 
 }
-echo "<form name='searchByClass' method='POST' action='search.php'>";
+echo "<form name='searchByClass' method='GET' action='search.php'>";
 echo "Search:&nbsp;&nbsp;&nbsp;&nbsp;<input name='searchInput' id='input2' type='text' value='".$search_request."'/>";
 echo "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='searchType'>";
 echo '<option value="title">Title</option>';
@@ -192,7 +192,7 @@ else
 {
 	echo "<p>Enter text for search!</p>";
 }
-
+$_SESSION['back'] = $_SERVER['REQUEST_URI'];
 foot();
 
 ?>

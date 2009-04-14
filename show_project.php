@@ -64,6 +64,8 @@ if(isset($_REQUEST['show_project_id']))
 	}
 
 	// display project information
+	if($project_num > 0 )
+	{
 	echo "<h2>Project Details</h2><table>";
 	for ($i=0;$i<$project_num;$i++) 
 	{
@@ -119,12 +121,17 @@ if(isset($_REQUEST['show_project_id']))
 	}
 	echo "<h2>Add Comments:</h2>";
 	echo "<form name='comment' method='POST' action='comment.php'><textarea name='commenting' rows=10 cols=40 ></textarea><br /><input type='hidden' name='project_id' value='$id' /><input type='submit' value='Add Comment' /></form>";
+	}
+	else
+	{
+		echo "<h2>Project is not found</h2>";
+	}
 }
 else
 {
 	echo "Project does not exist.</br>";
 }
-
+$_SESSION['back'] = $_SERVER['REQUEST_URI'];
 foot();
 
 ?>
