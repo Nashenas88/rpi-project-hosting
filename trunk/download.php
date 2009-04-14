@@ -34,7 +34,7 @@ if ($result)
     if ($za->open ($zipfile, ZIPARCHIVE::OVERWRITE) != TRUE)
     {
 	make_page ("Error", "<br/>\n<center>\nCannot open <$zipfile>!\n</center>\n<br/>");
-	exit ("");
+	exit;
     }
     
     // add contents of project to zip archive
@@ -66,15 +66,18 @@ if ($result)
     if (!mysql_query ($query))
     {
       make_page ("Error", mysql_error ($result));
+      exit;
     }
   }
   else
   {
     make_page ("Error", "<br/><center>Project not found.</center>");
+    exit;
   }
 }
 else
 {
   make_page ("Error", mysql_error ($result));
+  exit;
 }
 ?>
