@@ -42,10 +42,11 @@ $num_of_rate = mysql_numrows($query_rate_res);
 if($num_of_rate>0)
 {
 	$_SESSION['message']="<p>You already rated this project!</p>";
-	header ("location:search.php?searchInput=".$_REQUEST['searchInput']."&searchType=".$_REQUEST['searchType']."&orderedBy=".$_REQUEST['orderedBy']);
+	header("location:".$_SESSION['back']);
+	//header ("location:search.php?searchInput=".$_REQUEST['searchInput']."&searchType=".$_REQUEST['searchType']."&orderedBy=".$_REQUEST['orderedBy']);
 }
 
-$insert_rate="INSERT INTO ratings VALUES ('".mysql_real_escape_string($user)."',".mysql_real_escape_string($rate).",".mysql_real_escape_string($project).")";
+$insert_rate="INSERT INTO ratings(user_id,rate,project_id) VALUES ('".mysql_real_escape_string($user)."',".mysql_real_escape_string($rate).",".mysql_real_escape_string($project).")";
 
 $insert_rate_res=mysql_query($insert_rate);
 
@@ -58,7 +59,9 @@ if (!$insert_rate_res)
 }
 
 $_SESSION['message']= "<p>You rated it successfully! </p>";
-header ("location:search.php?searchInput=".$_REQUEST['searchInput']."&searchType=".$_REQUEST['searchType']."&orderedBy=".$_REQUEST['orderedBy']);
+header("location:".$_SESSION['back']);
+//header($_SESSION['back']);
+//header ("location:search.php?searchInput=".$_REQUEST['searchInput']."&searchType=".$_REQUEST['searchType']."&orderedBy=".$_REQUEST['orderedBy']);
 
 }
 ?>
