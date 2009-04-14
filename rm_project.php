@@ -16,15 +16,15 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 {
 	
 	$project_id = htmlspecialchars ($_REQUEST['project_id']);
-
+	
 	// check if this project exists
 	$query_project = "SELECT 1 FROM projects WHERE id = ".mysql_real_escape_string($project_id);
 	$query_project_res = mysql_query ($query_project);
-
+	
 	if (!$query_project_res) 
 	{
 		//echo mysql_error ();
-		$_SESSION['message'] .= "Sorry, we can't query your request";
+		$_SESSION['message'] .= mysql_error (); //"Sorry, we can't query your request";
 		exit;
 	}
 
