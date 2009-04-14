@@ -89,13 +89,13 @@ Username:    <input name='username' id='input' type='text'\>
 //only show if user is a moderator or admin
 $priviledgeLevel = getPriviledge();
 
-if (priviledgeLevel <= 1)
+if ($priviledgeLevel <= 1)
 {
-    if (priviledgeLevel == 1)
+    if ($priviledgeLevel == 1)
     {
       ?><p>You are a moderator<br /></p><?php
     }
-    else if (priviledgeLevel == 0)
+    else if ($priviledgeLevel == 0)
     {
       ?><p>You are an Admin<br /></p><?php
     }
@@ -114,9 +114,13 @@ Username:    <input name='username' id='input' type='text' />
   <input type='submit' value='Update' />
 </form>
 <br/>
-
-<p>Change user's priviledge:</p>
-<?php changePriviledge(); ?>
+<?php 
+if ($priviledgeLevel == 0) 
+{
+	echo "<p>Change user's priviledge:</p>";
+	changePriviledge(); 
+}
+?>
 <br/><br/>
 <?php
         //make sure the form was filled in
