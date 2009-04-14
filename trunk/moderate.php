@@ -10,6 +10,12 @@ session_start ();
 require ("feater.php");
 head ('Moderate');
 
+if (empty ($_SESSION['username']))
+{
+	?><br /><center>You must be loggin in to view this page!</center><br /><?php
+	foot ();
+	exit;
+}
 
 /*******************************************************************
 Allows moderators and admin to change the priviledge level of a user
@@ -181,8 +187,8 @@ Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text' /
 	$query_flag_comments_res = mysql_query($query_flag_comments);
 	if (!$query_flag_comments_res) 
 	{
-		//echo mysql_error();
-		echo "Sorry, we can't query your request";
+		echo mysql_error();
+		//echo "Sorry, we can't query your request";
 		exit;
 	}
 	$query_flag_comments_num = mysql_numrows ($query_flag_comments_res);
@@ -205,7 +211,7 @@ Username:&nbsp;&nbsp;&nbsp;&nbsp;<input name='username' id='input' type='text' /
 }
 else
 {
-	echo "You need to be a moderator";
+	echo "You need to be a moderator or an admin in order to view this page";
 }
 
 foot();
