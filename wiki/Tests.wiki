@@ -19,13 +19,13 @@
 
 ==Comment:==
 
-TC1: Comment project [successful commenting a project]
-Preconditions: User logged in and did not comment on this project.
-Sequence of Actions:
-Select a particular project.
-Browser displays project’s information, comments with flag option and a comment form.
-Enter comment for the project. (no more than 500 characters)
-Brower should show comment successful message and display project information with this new comment.
+TC1: Comment project [successful commenting a project]<br/>
+Preconditions: User logged in and did not comment on this project.<br/>
+Sequence of Actions:<br/>
+Select a particular project.<br/>
+Browser displays project’s information, comments with flag option and a comment form.<br/>
+Enter comment for the project. (no more than 500 characters)<br/>
+Brower should show comment successful message and display project information with this new comment.<br/>
 
 TC2: Comment project [Fails: already comment on the project]
 Preconditions: User logged in and had comment on this project
@@ -101,5 +101,28 @@ Browser displays project’s information, comments with remove flag option and c
 Select remove flag option of a particular comment.
 Browser should display flag removed successful message: remove flag successfully, and display project information.
 
+==Change Priviledge:==
 
+TC10: Change priviledge of a user that exists<br/>
+Preconditions: Logged in as an admin<br/>
+Sequence of Actions:<br/>
+Enter in name of user into Username field<br/>
+Select Priviledge level<br/>
+Press "Update"<br/>
+Receive Message: "User '<username>' has had his privilege level changed from <original> to <new>" where <username> is the user's name, <original> is the original privilege level and <new> is the new privilege level.
 
+TC11: Change your own privilege<br/>
+Preconditions: Logged in as an admin<br/>
+Sequence of Actions:<br/>
+Enter in your own username into the Username field<br/>
+Select Priviledge level<br/>
+Press "Update"<br/>
+Receive Message: "You can't change your own privilege"
+
+TC12: Change privilege of username that does not exist in the database<br/>
+Preconditions: Logged in as an admin<br/>
+Sequence of Actions:<br/>
+Enter in name of user into Username field<br/>
+Select Priviledge level<br/>
+Press "Update"<br/>
+Receive Message: "User '<username>' does not exist" where <username> is a username that does not exist
