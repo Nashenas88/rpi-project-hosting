@@ -1,7 +1,17 @@
-<table width="100%" border = "0" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+<style type="text/css">
+table.sample {
+	border-width: thick thick thick thick;
+	border-spacing: 2px;
+	border-style: dotted;
+	border-color: black;
+	border-collapse: separate;
+	background-color: rgb(230, 230, 255);
+}
+</style>
+<table class="sample" width="100%">
 <tr>
 <td>
-<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="rgb(230, 230, 255)">
 <tr>
 <td align="center">
 <a href="index.php">Home</a>
