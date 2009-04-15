@@ -148,13 +148,7 @@ else
 {
 	if ($_FILES["file"] != none)
    	{
-		$filesize = $_FILES["file"]['size'];
-		
-		$logfile = fopen ("file_log.txt", "w");
-		fwrite ($logfile, "filename: " . $_FILES["file"]['name'] . " .\n");
-		fwrite ($logfile, "filesize: " . $_FILES["file"]['size'] . ".\n");
-		fwrite ($logfile, "filesize: " . $filesize . ".\n");
-		fclose ($logfile);
+		$filesize = $_FILES["file"]["size"];
 		
 		// check to make sure the file does not exceed the maximum size
 		if ($fileSize > $MAX_FILE_SIZE)
@@ -173,8 +167,7 @@ else
 			{
 				$id = 0;
 				$major = mysql_real_escape_string ($_POST["projectMajor"]);
-			
-				//
+				
 				$query = sprintf ("INSERT INTO projects( title, description, authors, uploader, downloads, size, class, major, school )
                                           VALUES ('%s', '%s', '%s', '%s', 0, %d, '%s', '%s', '%s');", mysql_real_escape_string ($_POST["projectName"]),
 					  mysql_real_escape_string ($_POST["projectDescription"]), mysql_real_escape_string ($_POST["projectAuthor"]),

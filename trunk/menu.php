@@ -24,7 +24,7 @@ require("priviledge.php");
 if (isset ($_SESSION['username']))
 {
   	echo "\"login.php?logout\">Logout";
-  	//echo "</a></td><td align=\"center\"><a href=\"logout.php\">LogoutAlternate";
+  	echo "</a></td><td align=\"center\"><a href=\"logout.php\">LogoutAlternate";
   	echo "</a></td><td align=\"center\"><a href=\"upload.php\">Upload";
   	echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
   	//echo "</a></td><td align=\"center\"><a href=\"settings.php\">Settings";
@@ -38,7 +38,7 @@ if (isset ($_SESSION['username']))
 else
 {
   echo "\"login.php\">Login";
-  //echo "</a></td><td align=\"center\"><a href=\"loginAlternate.php\">LoginAlernate";
+  echo "</a></td><td align=\"center\"><a href=\"loginAlternate.php\">LoginAlernate";
   echo "</a></td><td align=\"center\"><a href=\"search.php\">Search";
 }
 ?>
