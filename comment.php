@@ -13,42 +13,65 @@ require("priviledge.php");
 /*
 * Base on the request parameter received, process different command
 */
-if(isset($_REQUEST['project_id'])&&isset($_REQUEST['commenting']))
+//request that required user login
+if(isset($_SESSION['username']))
 {
-	comment();
-	header("location:".$_SESSION['back']);
-}
-else if(isset($_REQUEST['rm_flag_project_id'])&&isset($_REQUEST['user_id']))
-{
-	if(getPriviledge()<2)
+	//process comment request
+	if(isset($_REQUEST['project_id'])&&isset($_REQUEST['commenting']))
 	{
-		rm_flag();
+		comment();
 		header("location:".$_SESSION['back']);
 	}
-	else
+	//process remove flag request
+	else if(isset($_REQUEST['rm_flag_project_id'])&&isset($_REQUEST['user_id']))
 	{
-		echo "<p>You need to be a moderator to process this command</p>";
+		if(getPriviledge()<2)
+		{
+			rm_flag();
+			header("location:".$_SESSION['back']);
+		}
+		else
+		{
+			echo "<p>You need to be a moderator to process this command</p>";
+		}
 	}
-}
-else if(isset($_REQUEST['flag_comment_project_id'])&&isset($_REQUEST['user_id']))
-{
-	flag_comment();
-	header("location:".$_SESSION['back']);
-}
-else if(isset($_REQUEST['rm_comment_project_id'])&&isset($_REQUEST['user_id']))
-{
-	if(getPriviledge()<2)
+	//process flag comment request
+	else if(isset($_REQUEST['flag_comment_project_id'])&&isset($_REQUEST['user_id']))
 	{
-		remove_comment();
+		flag_comment();
 		header("location:".$_SESSION['back']);
 	}
-	else
+	//process remove comment request
+	else if(isset($_REQUEST['rm_comment_project_id'])&&isset($_REQUEST['user_id']))
 	{
-		echo "<p>You need to be a moderator to process this command</p>";
-	}	
+		if(getPriviledge()<2)
+		{
+			remove_comment();
+			header("location:".$_SESSION['back']);
+		}
+		else
+		{
+			echo "<p>You need to be a moderator to process this command</p>";
+		}	
+	}
+	//can't understand user's request, handle arbitrary or unexpect request
+	else{
+		$_SESSION['message']="<p>Can't process your request</p>";
+	}
 }
+//request doesn't require login
 else{
-	$_SESSION['message']="<p>Can't process your request</p>";
+	//process flag comment request
+	if(isset($_REQUEST['flag_comment_project_id'])&&isset($_REQUEST['user_id']))
+	{
+		flag_comment();
+		header("location:".$_SESSION['back']);
+	}
+	else
+	{
+		$_SESSION['message']="<p>You must login</p>";
+		header("location:".$_SESSION['back']);
+	}
 }
 /*
 * function process the user comment request
