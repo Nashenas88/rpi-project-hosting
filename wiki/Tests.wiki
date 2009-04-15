@@ -109,7 +109,7 @@ Sequence of Actions:<br/>
 Enter in name of user into Username field<br/>
 Select Priviledge level<br/>
 Press "Update"<br/>
-Receive Message: "User '&lt;username&gt;' has had his privilege level changed from <original> to <new>" where <username> is the user's name, <original> is the original privilege level and <new> is the new privilege level.
+Receive Message: "User '`<username>`' has had his privilege level changed from `<original>` to `<new>`" where `<username>` is the user's name, `<original>` is the original privilege level and `<new>` is the new privilege level.
 
 TC11: Change your own privilege<br/>
 Preconditions: Logged in as an admin<br/>
@@ -125,4 +125,4 @@ Sequence of Actions:<br/>
 Enter in name of user into Username field<br/>
 Select Priviledge level<br/>
 Press "Update"<br/>
-Receive Message: "User '<username>' does not exist" where <username> is a username that does not exist
+Receive Message: "User '`<username>`' does not exist" where `<username>` is a username that does not exist
