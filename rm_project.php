@@ -58,7 +58,7 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 			}
 			else
 			{
-				$_SESSION['message'] .= "Sorry, a project with id = " . $project_id . " does not exist";
+				$_SESSION['message'] .= "Sorry, a project with id = '" . $project_id . "' does not exist";
 				exit;
 			}
 		}

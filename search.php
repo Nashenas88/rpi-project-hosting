@@ -143,8 +143,11 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 		echo "  <td>" . mysql_result($project_res,$i,'class'). "</td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'major'). "</td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'school'). "</td>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'date'). "</td>\n";
-		
+
+		list ($yearly, $daily) = split (' ', mysql_result ($project_res,$i,'date'));
+                list ($year, $month, $day) = split ('-', $yearly);
+                list ($hour, $minute, $second) = split (':', $daily);
+                echo "  <td>" . date ('l, F j, Y, g:i a', mktime ($hour, $minute, $second, $month, $day, $year)), "</td>\n";
 		
 		// Display current rate and a form to rate such file
 		$rating_query="SELECT rate FROM ratings WHERE project_id=".mysql_result($project_res,$i,'id');
