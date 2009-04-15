@@ -14,9 +14,41 @@ if (empty ($_SESSION['username']))
     exit;
 }
 
+if (empty ($_POST['projectName']))
+{
+	make_page ("Error", "<br/><center>You must have a name for your project!</center><br/>");
+	exit;
+}
+if (empty ($_POST['projectAuthor']))
+{
+        make_page ("Error", "<br/><center>You must write in at least one author for your project!</center><br/>");
+	exit;
+}
+if (empty ($_POST['projectIsForClass']))
+{
+        make_page ("Error", "<br/><center>You must select whether or not the project is for a class</center><br/>");
+	exit;
+}
+if ($_POST['projectIsForClass'] == "yes" && empty ($_POST['projectClass']))
+{
+        make_page ("Error", "<br/><center>If your project is for a class, you must enter in a class name!</center><br/>");
+        exit;
+}
+if ($_POST['projectIsForClass'] == "yes" && empty ($_POST['projectMajor']))
+{
+        make_page ("Error", "<br/><center>If your project is for a class you must select the major for the class. For example,
+		  	   		 select CSCI if the class is CSCI-1200</center><br/>");
+        exit;
+}
+if (empty ($HTTP_POST_FILES["file"]["name"]))
+{
+        make_page ("Error", "<br/><center>You must select a file to upload for your project!</center><br/>");
+	exit;
+}
+
 require ("connect_db.php");
 $username = $_SESSION['username'];
-$MAX_FILE_SIZE = "100000000";
+$MAX_FILE_SIZE = "1000000000"; // 1MB
 $output = "";
 
 $path = $username . "/" . $_POST["projectName"];
