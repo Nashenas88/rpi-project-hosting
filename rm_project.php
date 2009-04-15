@@ -45,7 +45,7 @@ if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
 			{
 				$row = mysql_fetch_assoc ($get_info_res);
 				$username = $row['uploader'];
-				$path = $username . "/" . $row['title'];
+				$path = "uploads/" . $username . "/" . $row['title'];
 				
 				foreach (scandir ($path) as $file)
 				{

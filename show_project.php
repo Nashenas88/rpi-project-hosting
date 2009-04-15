@@ -10,6 +10,20 @@ require("connect_db.php");
 require ("feater.php");
 head("Project");
 
+function print_filesize ($filesize)
+{
+    $decr = 1024;
+    $step = 0;
+    $prefix = array ('B', 'KB', 'MB', 'GB', 'TB', 'PB');
+    
+    while (($filesize / $decr) > 0.9) {
+    	  $filesize /= $decr;
+	  ++$step;
+    }
+    
+    return round ($filesize, 2) . ' ' . $prefix[$step];
+}
+
 // display error and success message
 if(isset($_SESSION['message']))
 {
@@ -73,7 +87,7 @@ if(isset($_REQUEST['show_project_id']))
 			echo "  <tr><td>Description: </td><td>" . mysql_result($query_project_res,$i,'description') . "</td></tr>";
 			echo "  <tr><td>Authors: </td><td>" . mysql_result($query_project_res,$i,'authors') . "</td></tr>";
 			echo "  <tr><td>Downloads: </td><td>" . mysql_result($query_project_res,$i,'downloads'). "</td></tr>";
-			echo "  <tr><td>Size: </td><td>" . mysql_result($query_project_res,$i,'size'). "</td></tr>";
+			echo "  <tr><td>Size: </td><td>" . print_filesize (mysql_result($query_project_res,$i,'size')) . "</td></tr>";
 			echo "  <tr><td>Project_location: </td><td><a href='" . mysql_result($query_project_res,$i,'project_location'). "'>Download Link</a></td></tr>";
 			echo "  <tr><td>Class: </td><td>" . mysql_result($query_project_res,$i,'class'). "</td></tr>";
 			echo "  <tr><td>Major: </td><td>" . mysql_result($query_project_res,$i,'major'). "</td></tr>";
