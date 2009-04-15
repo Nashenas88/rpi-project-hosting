@@ -48,7 +48,7 @@ if (empty ($HTTP_POST_FILES["file"]["name"]))
 
 require ("connect_db.php");
 $username = $_SESSION['username'];
-$MAX_FILE_SIZE = "1000000000"; // 1MB
+$MAX_FILE_SIZE = "1048576"; // 1MB
 $output = "";
 
 $path = $username . "/" . $_POST["projectName"];
@@ -87,7 +87,8 @@ function getSchool ($major)
     else if ($major == "ARTS" || $major == "COGS" ||
     	     $major == "COMM" || $major == "IHSS" ||
 	     $major == "LITR" || $major == "PHIL" ||
-	     $major == "PSYC" || $major == "WRIT")
+	     $major == "PSYC" || $major == "WRIT" ||
+	     $major == "ECON")
     {
 	return "Humanities and Social Sciences";
     }
@@ -114,7 +115,8 @@ $output = "";
 
 // check to make sure the project name is less than 50 characters
 // and the project description is less than 500 characters
-if( strlen($_POST["projectName"]) > 50 || strlen($_POST["projectDescription"]) > 500 )
+if( strlen($_POST["projectName"]) > 50 || strlen($_POST["projectDescription"]) > 500 ||
+	strlen($_POST["projectAuthor"]) > 300 || strlen($_POST["projectClass"]) > 200)
 {
 	if( strlen($_POST["projectName"]) > 50 ) 
 	{
@@ -125,7 +127,17 @@ if( strlen($_POST["projectName"]) > 50 || strlen($_POST["projectDescription"]) >
 	{
 		$output .= "Project description is too long. <br/>";
 		$output .= "Project description cannot exceed 500 characters.<br/>";
-	} 
+	}
+	if( strlen($_POST["projectAuthor"]) > 300 )
+	{
+		$output .= "Project Creator is too long. <br/>";
+		$output .= "Project Creator cannot exceed 300 characters.<br/>";
+	}
+	if( strlen($_POST["projectClass"]) > 200 )
+	{
+		$output .= "Project Class is too long. <br/>";
+		$output .= "Project Class cannot exceed 200 characters.<br/>";
+	}
 }
 // check to make sure user has not uploaded a file with the same name
 else if ($matches > 0)
@@ -142,7 +154,7 @@ else
 	   	{
 			$output = "Your file is too big.<br />";
 			$output = $output . "Your file size is " . $filesize . "<br />";
-			$output = $output . "Max file size is " . $MAX_FILE_SIZE . "<br />";
+			$output = $output . "Max file size is " . $MAX_FILE_SIZE . "bytes.<br />";
 		}
 		else
 		{
