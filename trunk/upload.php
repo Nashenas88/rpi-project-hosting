@@ -49,7 +49,7 @@ if (empty ($_SESSION['username']))
 <tr>
 <td>Was this project created for a class?</td>
 <td>:</td>
-<td><input type=radio name="projectIsForClass" value="yes" checked/> yes
+<td><input type=radio name="projectIsForClass" value="yes" checked="checked"/> yes
     <input type=radio name="projectIsForClass" value="no" /> no </td>
 </tr>
 
