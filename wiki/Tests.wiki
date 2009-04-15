@@ -126,3 +126,11 @@ Enter in name of user into Username field<br/>
 Select Priviledge level<br/>
 Press "Update"<br/>
 Receive Message: "User '`<username>`' does not exist" where `<username>` is a username that does not exist
+
+==Remove Project:==
+
+TC13: You should see `[Remove]` button as moderator or admin<br/>
+Preconditions: Logged in as a moderator or as an admin<br/>
+Sequence of Actions:<br/>
+From index.php, click on any project's title<br/>
+Verify that there is a `[Remove]` button on the page<br/>
