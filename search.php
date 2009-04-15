@@ -6,12 +6,12 @@ Allows user to search for a project based on a projects attributes
 
 session_start ();
 
-// for clickable sort by headers
-echo "<script src=\"sorttable.js\"></script>";
-
 require ("feater.php");
 require ("connect_db.php");
 head("Search");
+
+// for clickable sort by headers
+echo "<script src=\"sorttable.js\"></script>";
 
 // Display message generate by another file
 if(isset($_SESSION['message']))
