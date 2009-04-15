@@ -40,7 +40,7 @@ if ($_POST['projectIsForClass'] == "yes" && empty ($_POST['projectMajor']))
 		  	   		 select CSCI if the class is CSCI-1200</center><br/>");
         exit;
 }
-if (empty ($HTTP_POST_FILES["file"]["name"]))
+if (empty ($_FILES["file"]["name"]))
 {
         make_page ("Error", "<br/><center>You must select a file to upload for your project!</center><br/>");
 	exit;
@@ -51,8 +51,8 @@ $username = $_SESSION['username'];
 $MAX_FILE_SIZE = "1048576"; // 1MB
 $output = "";
 
-$path = $username . "/" . $_POST["projectName"];
-$filepath = $path . "/" . $HTTP_POST_FILES["file"]["name"];
+$path = "uploads/" . $username . "/" . $_POST["projectName"];
+$filepath = $path . "/" . $_FILES["file"]["name"];
 
 function getSchool ($major)
 {
@@ -106,7 +106,7 @@ $result = mysql_query ($query);
 
 if (!$result)
 {
-    echo mysql_error ();
+    $output .= mysql_error ();
     exit;
 }
 
@@ -146,9 +146,16 @@ else if ($matches > 0)
 }
 else
 {
-	if ($file != none)
+	if ($_FILES["file"] != none)
    	{
-		$fileSize = $HTTP_POST_FILES["file"]["size"];
+		$filesize = $_FILES["file"]['size'];
+		
+		$logfile = fopen ("file_log.txt", "w");
+		fwrite ($logfile, "filename: " . $_FILES["file"]['name'] . " .\n");
+		fwrite ($logfile, "filesize: " . $_FILES["file"]['size'] . ".\n");
+		fwrite ($logfile, "filesize: " . $filesize . ".\n");
+		fclose ($logfile);
+		
 		// check to make sure the file does not exceed the maximum size
 		if ($fileSize > $MAX_FILE_SIZE)
 	   	{
@@ -162,7 +169,7 @@ else
 		   	{
 				mkdir ($path, 0770, true);
 			}
-			if (copy ($HTTP_POST_FILES["file"]["tmp_name"], $filepath))
+			if (copy ($_FILES["file"]["tmp_name"], $filepath))
 			{
 				$id = 0;
 				$major = mysql_real_escape_string ($_POST["projectMajor"]);
