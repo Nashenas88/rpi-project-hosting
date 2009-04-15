@@ -33,7 +33,7 @@ if (empty ($_SESSION['username']))
 
 <!-- Name -->
 <tr>
-<td>Project Author(s)</td>
+<td>Project Creator(s)</td>
 <td>:</td>
 <td><input type=text name="projectAuthor" size="20" /></td>
 </tr>
