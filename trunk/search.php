@@ -27,11 +27,11 @@ echo '<h2>Search projects</h2>';
 // it should have your last used search text in the text field
 $search_request='';
 
-if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQUEST['orderedBy']))
+if (isset ($_REQUEST['searchInput']) && isset ($_REQUEST['searchType']) && isset ($_REQUEST['orderedBy']))
 {
-	$search_request=$_REQUEST['searchInput'];
-	$search_type=$_REQUEST['searchType'];
-	$sort=$_REQUEST['orderedBy'];
+	$search_request = $_REQUEST['searchInput'];
+	$search_type = $_REQUEST['searchType'];
+	$sort = $_REQUEST['orderedBy'];
 
 }
 echo "<form name='searchByClass' method='GET' action='search.php'>";
