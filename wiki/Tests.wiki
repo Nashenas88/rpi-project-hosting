@@ -135,7 +135,7 @@ Sequence of Actions:<br/>
 From index.php, click on any project's title<br/>
 Verify that there is a `[Remove]` button on the page<br/>
 
-For the next two Test cases, use the following code, save as tc14_15.html:
+For the next three test cases, use the following code, save as tc14_15.html:
 
 {{{
 <html>
