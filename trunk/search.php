@@ -29,13 +29,14 @@ $search_request='';
 
 if (isset ($_REQUEST['searchInput']) && isset ($_REQUEST['searchType']) && isset ($_REQUEST['orderedBy']))
 {
-	$search_request = $_REQUEST['searchInput'];
-	$search_type = $_REQUEST['searchType'];
-	$sort = $_REQUEST['orderedBy'];
+	$search_request = htmlentities($_REQUEST['searchInput']);
+	$search_type = htmlentities($_REQUEST['searchType']);
+	$sort = htmlentities($_REQUEST['orderedBy']);
 
 }
 echo "<form name='searchByClass' method='GET' action='search.php'>";
-echo "Search:&nbsp;&nbsp;&nbsp;&nbsp;<input name='searchInput' id='input2' type='text' value='".$search_request."'/>";
+//echo "Search:&nbsp;&nbsp;&nbsp;&nbsp;<input name='searchInput' id='input2' type='text' value='".addslashes($search_request)."'/>";
+echo "Search:&nbsp;&nbsp;&nbsp;&nbsp;<input name='searchInput' id='input2' type='text' value=\"".$search_request."\"/>";
 echo "By:&nbsp;&nbsp;&nbsp;&nbsp;<select name='searchType'>";
 echo '<option value="title">Title</option>';
 echo '<option value="class">Class</option>';
