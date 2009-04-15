@@ -116,17 +116,17 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	{
 		echo '<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
 		echo '<tr>';
-		echo '	<th>Project</th>';
+		echo '	<th>Title</th>';
 		echo '	<th>Description</th>';
 		echo '   <th>Uploader</th>';
 		echo '	<th>Downloads</th>';
 		echo '	<th>Size</th>';
-		echo '	<th>Project Location</th>';
+		echo '	<th>Link</th>';
 		echo '	<th>Class</th>';
 		echo '	<th>Major</th>';
 		echo '	<th>School</th>';
 		echo '	<th>Date Uploaded</th>';
-		echo '	<th>Current Rate</th>';
+		echo '	<th>Rating</th>';
 		if(isset($_SESSION['username']))
 		echo '	<th>Rate This Project</th>';
 		echo '	</tr>';
@@ -136,7 +136,14 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	{
 		echo "<tr>";
 		echo "  <td><a href='show_project.php?show_project_id=".mysql_result($project_res,$i,'id')."'>" . mysql_result($project_res,$i,'title') . "</a></td>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'description') . "</td>\n";
+		// Prints the first 50 characters of the description if the description is longer than 50 characters
+		$desc = mysql_result($project_res,$i,'description');
+		if( strlen($desc) > 50 )
+		{
+			$desc = str_pad($desc, 50);
+			$desc .= "...";
+		}
+		echo "  <td>" . $desc . "</td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'uploader') . "</td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'downloads'). "</td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'size'). "</td>\n";

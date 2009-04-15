@@ -45,12 +45,13 @@ function head ($title)
 	echo '<meta name="author" content="root"/>';
 	echo '<meta name="author" content="root"/>';
 	echo '<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />';
+
 	echo '<title>RPI Project Hosting | ';
 	echo $title;
 	echo '</title>';
 	echo '</head>';
 	echo '';
-	echo '<body background="images/background.jpg">';
+	echo '<body style="background:url(images/background.jpg); background-attachment: scroll">';
 
    require ("menu.php");
 }

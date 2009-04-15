@@ -4,16 +4,20 @@
 	border-spacing: 1px;
 	border-style: solid;
 	border-color: black;
-	border-collapse: separate;
+	border-collapse: collapse;
 	background-color: rgb(230, 230, 255);
 }
 
 #table0
 {
 	border-width: 3px;
-	border-spacing: 2px;
 	border-style: solid;
-	border-color: black; //rgb(238, 58, 59);
+	border-color: black;
 	border-collapse: collapse;
 	background-color: rgb(230, 230, 255);
+}
+
+#table0 td
+{
+	padding: 10px 5px;
 }
