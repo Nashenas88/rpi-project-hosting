@@ -66,68 +66,73 @@ if(isset($_REQUEST['show_project_id']))
 	// display project information
 	if($project_num > 0 )
 	{
-	echo "<h2>Project Details</h2><table>";
-	for ($i = 0; $i < $project_num; $i++) 
-	{
-		echo "  <tr><td>Title: </td><td>" . mysql_result($query_project_res,$i,'title') . "</td></tr>";
-		echo "  <tr><td>Description: </td><td>" . mysql_result($query_project_res,$i,'description') . "</td></tr>";
-		echo "  <tr><td>Authors: </td><td>" . mysql_result($query_project_res,$i,'authors') . "</td></tr>";
-		echo "  <tr><td>Downloads: </td><td>" . mysql_result($query_project_res,$i,'downloads'). "</td></tr>";
-		echo "  <tr><td>Size: </td><td>" . mysql_result($query_project_res,$i,'size'). "</td></tr>";
-		echo "  <tr><td>Project_location: </td><td><a href='" . mysql_result($query_project_res,$i,'project_location'). "'>Download Link</a></td></tr>";
-		echo "  <tr><td>Class: </td><td>" . mysql_result($query_project_res,$i,'class'). "</td></tr>";
-		echo "  <tr><td>Major: </td><td>" . mysql_result($query_project_res,$i,'major'). "</td></tr>";
-		echo "  <tr><td>School: </td><td>" . mysql_result($query_project_res,$i,'school'). "</td></tr>";
-		echo "  <tr><td>Date uploaded: </td><td>";
-		
-		list ($yearly, $daily) = split (' ', mysql_result ($query_my_project_res,$i,'date'));
-      	        list ($year, $month, $day) = split ('-', $yearly);
-                list ($hour, $minute, $second) = split (':', $daily);
-                echo date ('l, F j, Y, g:i a', mktime ($hour, $minute, $second, $month, $day, $year)), "</td></tr>";
-		
-		
-		echo "  <tr><td>Current rating: </td><td>" . $current_rate . " number of rates: " . $rating_num . "</td></tr>";
-		if(isset($_SESSION['username']))
+		echo "<h2>Project Details</h2><table>";
+		for ($i = 0; $i < $project_num; $i++) 
 		{
-		echo "<tr><td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='1'>1</option><option value=1>1</option>";
-		echo "<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";
-		echo "<input type='hidden' name='project_id' value='".mysql_result($query_project_res,$i,'id')."'/><input type='submit' value='Rate' /></form></td></tr>";
+			echo "  <tr><td>Title: </td><td>" . mysql_result($query_project_res,$i,'title') . "</td></tr>";
+			echo "  <tr><td>Description: </td><td>" . mysql_result($query_project_res,$i,'description') . "</td></tr>";
+			echo "  <tr><td>Authors: </td><td>" . mysql_result($query_project_res,$i,'authors') . "</td></tr>";
+			echo "  <tr><td>Downloads: </td><td>" . mysql_result($query_project_res,$i,'downloads'). "</td></tr>";
+			echo "  <tr><td>Size: </td><td>" . mysql_result($query_project_res,$i,'size'). "</td></tr>";
+			echo "  <tr><td>Project_location: </td><td><a href='" . mysql_result($query_project_res,$i,'project_location'). "'>Download Link</a></td></tr>";
+			echo "  <tr><td>Class: </td><td>" . mysql_result($query_project_res,$i,'class'). "</td></tr>";
+			echo "  <tr><td>Major: </td><td>" . mysql_result($query_project_res,$i,'major'). "</td></tr>";
+			echo "  <tr><td>School: </td><td>" . mysql_result($query_project_res,$i,'school'). "</td></tr>";
+			echo "  <tr><td>Date uploaded: </td><td>";
+			
+			list ($yearly, $daily) = split (' ', mysql_result ($query_project_res,$i,'date'));
+      	        	list ($year, $month, $day) = split ('-', $yearly);
+                	list ($hour, $minute, $second) = split (':', $daily);
+                	echo date ('l, F j, Y, g:i a', mktime ($hour, $minute, $second, $month, $day, $year)), "</td></tr>";
+			
+			
+			echo "  <tr><td>Current rating: </td><td>" . $current_rate . " number of rates: " . $rating_num . "</td></tr>";
+			if(isset($_SESSION['username']))
+			{
+				echo "<tr><td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='1'>1</option><option value=1>1</option>";
+				echo "<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";
+				echo "<input type='hidden' name='project_id' value='".mysql_result($query_project_res,$i,'id')."'/><input type='submit' value='Rate' /></form></td></tr>";
+			}
+			if(getPriviledge ()<2)
+			{
+				echo "<tr><td><form name='remove_project' method='POST' action='rm_project.php'>";
+				echo "<input type='hidden' name='project_id' value='".mysql_result($query_project_res,$i,'id')."'/><input type='submit' value='Remove' /></form></td></tr>";
+			}
 		}
-		if(getPriviledge ()<2)
+	
+		echo "</table>\n";
+	
+		// display comments
+		echo "<h2>Comments</h2>";
+		for ($k=0;$k<$comment_num;$k++)
 		{
-		echo "<tr><td><form name='remove_project' method='POST' action='rm_project.php'>";
-		echo "<input type='hidden' name='project_id' value='".mysql_result($query_project_res,$i,'id')."'/><input type='submit' value='Remove' /></form></td></tr>";
+			echo "<h3>Comment By: " . mysql_result($query_comment_res,$k,'user_id') . "</h3>";
+
+			echo "<table><tr><td><form name='flag_comment' method='POST' action='comment.php'><input type='hidden' name='flag_comment_project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Flag Comment' /></form></td>";
+
+			// if current user is moderator or admin, display remove comment and remove flag option
+			$num_of_user = mysql_numrows($query_user_res);
+
+			if($num_of_user>0&&mysql_result($query_user_res,0,'priviledge')<2)
+			{		
+				echo "<td><form name='rm_comment' method='POST' action='comment.php'><input type='hidden' name='rm_comment_project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
+		
+				if(mysql_result($query_comment_res,$k,'flag')==1)
+				{
+					echo "<td><form name='rm_flag' method='POST' action='comment.php'><input type='hidden' name='rm_flag_project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";		
+				}
+			}
+		
+			echo "</tr></table>";
+		
+			echo "<p>".mysql_result($query_comment_res,$k,'comment')."</p>";	
 		}
-	}
 	
-	echo "</table>\n";
-	
-	// display comments
-	echo "<h2>Comments</h2>";
-	for ($k=0;$k<$comment_num;$k++)
-	{
-		echo "<h3>Comment By: " . mysql_result($query_comment_res,$k,'user_id') . "</h3>";
-
-		echo "<table><tr><td><form name='flag_comment' method='POST' action='comment.php'><input type='hidden' name='flag_comment_project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Flag Comment' /></form></td>";
-
-		// if current user is moderator or admin, display remove comment and remove flag option
-		$num_of_user = mysql_numrows($query_user_res);
-
-		if($num_of_user>0&&mysql_result($query_user_res,0,'priviledge')<2)
-		{		
-		echo "<td><form name='rm_comment' method='POST' action='comment.php'><input type='hidden' name='rm_comment_project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Comment' /></form></td>";
-		
-			if(mysql_result($query_comment_res,$k,'flag')==1){
-		echo "<td><form name='rm_flag' method='POST' action='comment.php'><input type='hidden' name='rm_flag_project_id' value='$id' /><input type='hidden' name='user_id' value='".mysql_result($query_comment_res,$k,'user_id')."' /><input type='submit' value='Remove Flag' /></form></td>";		
+		if (isset ($_SESSION['username']))
+		{
+			echo "<h2>Add Comments:</h2>";
+			echo "<form name='comment' method='POST' action='comment.php'><textarea name='commenting' rows=10 cols=40 ></textarea><br /><input type='hidden' name='project_id' value='$id' /><input type='submit' value='Add Comment' /></form>";
 		}
-		}
-		
-		echo "</tr></table>";
-		
-		echo "<p>".mysql_result($query_comment_res,$k,'comment')."</p>";	
-	}
-	echo "<h2>Add Comments:</h2>";
-	echo "<form name='comment' method='POST' action='comment.php'><textarea name='commenting' rows=10 cols=40 ></textarea><br /><input type='hidden' name='project_id' value='$id' /><input type='submit' value='Add Comment' /></form>";
 	}
 	else
 	{
