@@ -12,14 +12,14 @@ head ('Moderate');
 
 if (empty ($_SESSION['username']))
 {
-	?><br /><center>You must be loggin in to view this page!</center><br /><?php
+	?><br /><center>You must be logged in to view this page!</center><br /><?php
 	foot ();
 	exit;
 }
 
 
 /*******************************************************************
-Allows moderators and admin to change the priviledge level of a user
+Allows admins to change the priviledge level of a user
 ********************************************************************/
 function changePriviledge()
 {
@@ -72,7 +72,7 @@ Action:    <select name='priviledge'>
         }
         else
         {
-          echo "User '" . $username . "' has had his privilege level changed from " .
+          echo "User '" . $username . "' had his privilege level changed from " .
 			 mysql_result ($user_exists, 0, 'priviledge') . " to " . $priviledge;
         }
       }
@@ -86,10 +86,14 @@ Action:    <select name='priviledge'>
       echo "User '" . $username . "' does not exist";
 	 }
   }
+  else
+  {
+    return;
+  }
 }
 
 /************************************************************************
-For banning and Unbanning users
+Allows banning and Unbanning of users by moderators or admins
 *************************************************************************/
 function banUnban()
 {
@@ -110,73 +114,78 @@ Action:    <select name='ban_unban'>
 </form>
 
 <?php
-  //make sure the form was filled in
-  if (isset ($_REQUEST['username']) && isset ($_REQUEST['ban_unban']))
-  {
-          // sanitize from input
-          $username = htmlspecialchars ($_REQUEST['username']);
-          $ban_unban = $_REQUEST['ban_unban'];
 
-          //check to make sure user exists
-          $self = $_SESSION['username'];
-          $user_exists = mysql_query ("SELECT rcsid FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
-          $user_exists = mysql_fetch_array ($user_exists);
-          if ($user_exists[0] == $username)
-          {
-                  //you cannot ban yourself
-                  if ($self != $username)
+//make sure the form was filled in
+	if (isset ($_REQUEST['username']) && isset ($_REQUEST['ban_unban']) && "" != ($_REQUEST['username']))
+	{
+   	//sanitize from input
+   	$username = htmlspecialchars ($_REQUEST['username']);
+   	$ban_unban = $_REQUEST['ban_unban'];
+
+   	//check to make sure user exists
+   	$self = $_SESSION['username'];
+   	$user_exists = mysql_query ("SELECT rcsid FROM users WHERE rcsid='".mysql_real_escape_string($username)."'");
+   	$user_exists = mysql_fetch_array ($user_exists);
+   	if ($user_exists[0] == $username)
+   	{
+      	//you cannot ban yourself
+         if ($self != $username)
+         {
+         	//you cannot ban a user with higher priviledge than you
+         	if (getPriviledge () <= getSpecifiedPriviledge ($username))
+            {
+            	//if want to ban user
+               if($_REQUEST['ban_unban'] == ban)
+               {
+               	//check to make sure user is not already banned
+                  $user_banned= mysql_query ("SELECT user_id FROM moderateusers WHERE user_id='" . mysql_real_escape_string ($username) . "'");
+                  $user_banned = mysql_fetch_array ($user_banned);
+                  if ($user_banned[0] == $username)
                   {
-                          //you cannot ban a user with higher priviledge than you
-                          if (getPriviledge ($self) >= getPriviledge ($username))
-                          {
-                                  //if want to ban user
-                                  if($_REQUEST['ban_unban'] == ban)
-                                  {
-                                          //check to make sure user is not already banned
-                                          $user_banned= mysql_query ("SELECT user_id FROM moderateusers WHERE user_id='" . mysql_real_escape_string ($username) . "'");
-                                          $user_banned = mysql_fetch_array ($user_banned);
-                                          if ($user_banned[0] == $username)
-                                          {
-                                                  echo "User '" . $username . "' is already banned";
-                                          }
-                                          else
-                                          {
-                                                  mysql_query ("INSERT INTO moderateusers(user_id) VALUES ('" . mysql_real_escape_string ($username) . "')");
-                                                  echo "User '" . $username . "' has been banned";
-                                          }
-                                  }
-                                  //if want to unban user
-                                  else
-                                  {
-                                          //check to make sure user is already banned
-                                          $user_banned = mysql_query ("SELECT user_id FROM moderateusers WHERE user_id='" . mysql_real_escape_string ($username) . "'");
-                                          $user_banned = mysql_fetch_array ($user_banned);
-                                          if ($user_banned[0] == $username)
-                                          {
-                                                  mysql_query ("DELETE FROM moderateusers WHERE user_id='" . mysql_real_escape_string ($username) . "'");
-                                                  echo "User '" . $username . "' is no longer banned";
-                                          }
-                                          else
-                                          {
-                                                  echo "User '" . $username . "' was not previously banned";
-                                          }
-                                  }
-                          }
-                          else
-                          {
-                                  echo "hah '" . $username . "' dominates you";
-                          }
+                  	echo "User '" . $username . "' is already banned";
                   }
                   else
                   {
-                          echo "Your attempted suicide was aborted";
+                     mysql_query ("INSERT INTO moderateusers(user_id) VALUES ('" . mysql_real_escape_string ($username) . "')");
+                     echo "User '" . $username . "' has been banned";
                   }
-          }
-          else
-          {
-                  echo "User '" . $username . "' does not exist";
-          }
-  }
+               }
+          		//if want to unban user
+          		else
+          		{
+               	//check to make sure user is already banned
+                  $user_banned = mysql_query ("SELECT user_id FROM moderateusers WHERE user_id='" . mysql_real_escape_string ($username) . "'");
+                  $user_banned = mysql_fetch_array ($user_banned);
+                  if ($user_banned[0] == $username)
+                  {
+                  	mysql_query ("DELETE FROM moderateusers WHERE user_id='" . mysql_real_escape_string ($username) . "'");
+                     echo "User '" . $username . "' is no longer banned";
+                  }
+                  else
+                  {
+                     echo "User '" . $username . "' was not previously banned";
+                  }
+          		}
+            }
+            else
+            {
+            	echo "Hah! '" . $username . "' dominates you!";
+            }
+         }
+         else
+         {
+         	echo "Your attempted suicide was aborted.";
+         }
+   	}
+   	else
+   	{
+         echo "User '" . $username . "' does not exist.";
+   	}
+	}
+	else
+	{
+		return;
+	}
 }
 
 
