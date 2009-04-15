@@ -153,8 +153,8 @@ else
 		if ($fileSize > $MAX_FILE_SIZE)
 	   	{
 			$output = "Your file is too big.<br />";
-			$output = $output . "Your file size is " . $filesize . "<br />";
-			$output = $output . "Max file size is " . $MAX_FILE_SIZE . "bytes.<br />";
+			//$output = $output . "Your file size is " . $filesize . "<br />";
+			$output = $output . "Max file size is " . $MAX_FILE_SIZE . " bytes.<br />";
 		}
 		else
 		{
