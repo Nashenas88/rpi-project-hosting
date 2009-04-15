@@ -191,7 +191,7 @@ function flag_comment()
 			exit;
 		}
 		
-		$_SESSION['message']="<p>Comment Flag</p>";
+		$_SESSION['message']="<p>Comment Flagged</p>";
 	}
 	else
 	{
