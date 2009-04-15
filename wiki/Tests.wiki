@@ -175,3 +175,28 @@ copy the number after `show_project_id=` in the URL<br/>
 paste this number into the field in the tc14_15.php page<br/>
 press the submit button<br/>
 You should receive the following message: "Could not remove project"
+
+==Security:==
+
+For the XSS tests, use the following script:
+
+{{{
+<script type="text/javascript">document.write("oh noes, you been h4c|<3D!!1!!~~ Your screen resolution is " + screen.width + "x" + screen.height);</script>
+}}}
+
+TC17: XSS upload test<br/>
+Preconditions: must be logged in<br/>
+Sequence of Actions:<br/>
+Go to the upload page<br/>
+Enter in the above script into every field<br/>
+Go to Home<br/>
+Verify that every single entry in your top-most project field displays the code above in its entirety and that it does not say "oh noes, you been h4c|<3D!!1!!~~ Your screen resolution is `<screen_width>`x`<screen_hieght>`" where `<screen_width>` is your screen's width and `<screen_height>` is your screen's height
+
+TC18: XSS Comment test<br/>
+Preconditions: must be logged in<br/>
+Sequence of Actions:<br/>
+Go to the home page<br/>
+Click on any project's title<br/>
+enter in the above script into the comment section of the page<br/>
+press the submit button<br/>
+verify that you can the see code above in its entirety and that it does not say "oh noes, you been h4c|<3D!!1!!~~ Your screen resolution is `<screen_width>`x`<screen_hieght>`" where `<screen_width>` is your screen's width and `<screen_height>` is your screen's height
