@@ -1,7 +1,7 @@
-table {
+#outerMenu {
 	border-width: thick thick thick thick;
 	border-spacing: 2px;
-	border-style: dotted;
+	border-style: dashed;
 	border-color: black;
 	border-collapse: separate;
 	background-color: rgb(230, 230, 255);
