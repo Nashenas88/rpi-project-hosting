@@ -24,7 +24,7 @@ if ($result)
     $row = mysql_fetch_assoc ($result);
     
     $username = $row['uploader'];
-    $path = $username . "/" . $row['title'];
+    $path = "uploads/" . $username . "/" . $row['title'];
     
     // create new zip archive
     $za = new ZipArchive ();
