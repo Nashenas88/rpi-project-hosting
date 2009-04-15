@@ -43,7 +43,6 @@ if($num_of_rate>0)
 {
 	$_SESSION['message']="<p>You already rated this project!</p>";
 	header("location:".$_SESSION['back']);
-	//header ("location:search.php?searchInput=".$_REQUEST['searchInput']."&searchType=".$_REQUEST['searchType']."&orderedBy=".$_REQUEST['orderedBy']);
 }
 
 $insert_rate="INSERT INTO ratings(user_id,rate,project_id) VALUES ('".mysql_real_escape_string($user)."',".mysql_real_escape_string($rate).",".mysql_real_escape_string($project).")";
@@ -53,15 +52,12 @@ $insert_rate_res=mysql_query($insert_rate);
 if (!$insert_rate_res) 
 {
 	//echo mysql_error();
-	echo $insert_rate;
 	echo "Sorry, we can't query your request.";
 	exit;
 }
 
 $_SESSION['message']= "<p>You rated it successfully! </p>";
 header("location:".$_SESSION['back']);
-//header($_SESSION['back']);
-//header ("location:search.php?searchInput=".$_REQUEST['searchInput']."&searchType=".$_REQUEST['searchType']."&orderedBy=".$_REQUEST['orderedBy']);
 
 }
 ?>

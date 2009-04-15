@@ -221,32 +221,34 @@ $priviledgeLevel = getPriviledge();
 
 if ($priviledgeLevel <= 1)
 {
+	//if user is moderate show ban user option and flagged comments 
     if ($priviledgeLevel == 1)
     {
-      ?><p>You are a moderator<br /></p><?php
+      echo "<p>You are a moderator<br /></p>";
       banUnban();
-      ?><br /><br /><?php
+      echo "<br /><br />";
       flags();
     }
+	//if user is an admin show change user priviledge option too
     else if ($priviledgeLevel == 0)
     {
-      ?><p>You are an Admin<br /></p><?php
+      echo "<p>You are an Admin<br /></p>";
       banUnban();
-      ?><br /><br /><?php
+      echo "<br /><br />";
       changePriviledge();
-      ?><br /><br /><br /><?php
+      echo "<br /><br /><br />";
       flags();
     }
     else
     {
-      ?><p>You are Superman eating Kryptonite<br /></p><?php
+      echo "<p>You are Superman eating Kryptonite<br /></p>";
     }
 }
 else
 {
-    ?><p>You need to be a moderator or an admin in order to view this page<br /></p><?php;
+    echo "<p>You need to be a moderator or an admin in order to view this page<br /></p>";
 }
-
+$_SESSION['back'] = $_SERVER['REQUEST_URI'];
 foot();
 
 ?>

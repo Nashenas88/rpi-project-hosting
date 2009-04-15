@@ -16,12 +16,14 @@ require("priviledge.php");
 if(isset($_REQUEST['project_id'])&&isset($_REQUEST['commenting']))
 {
 	comment();
+	header("location:".$_SESSION['back']);
 }
 else if(isset($_REQUEST['rm_flag_project_id'])&&isset($_REQUEST['user_id']))
 {
 	if(getPriviledge()<2)
 	{
 		rm_flag();
+		header("location:".$_SESSION['back']);
 	}
 	else
 	{
@@ -31,13 +33,14 @@ else if(isset($_REQUEST['rm_flag_project_id'])&&isset($_REQUEST['user_id']))
 else if(isset($_REQUEST['flag_comment_project_id'])&&isset($_REQUEST['user_id']))
 {
 	flag_comment();
-	
+	header("location:".$_SESSION['back']);
 }
 else if(isset($_REQUEST['rm_comment_project_id'])&&isset($_REQUEST['user_id']))
 {
 	if(getPriviledge()<2)
 	{
 		remove_comment();
+		header("location:".$_SESSION['back']);
 	}
 	else
 	{
@@ -102,8 +105,6 @@ function comment()
 	}
 }
 
-header("location:show_project.php?show_project_id=".$_REQUEST['project_id']);
-
 }
 /*
 * function process the request of removing flag from a comment 
@@ -151,8 +152,6 @@ function rm_flag()
 	{
 		$_SESSION['message']= "<p>No such comment</p>";
 	}
-	
-header("location:show_project.php?show_project_id=".$_REQUEST['rm_flag_project_id']);
 
 }
 
@@ -199,8 +198,6 @@ function flag_comment()
 		$_SESSION['message']= "<p>No such comment</p>";
 	}
 
-
-header("location:show_project.php?show_project_id=".$_REQUEST['flag_comment_project_id']);
 
 }
 
@@ -249,7 +246,6 @@ function remove_comment()
 		$_SESSION['message']= "<p>No such comment</p>";
 	}
 
-header("location:show_project.php?show_project_id=".$_REQUEST['rm_comment_project_id']);
 }
 
 
