@@ -134,3 +134,44 @@ Preconditions: Logged in as a moderator or as an admin<br/>
 Sequence of Actions:<br/>
 From index.php, click on any project's title<br/>
 Verify that there is a `[Remove]` button on the page<br/>
+
+For the next two Test cases, use the following code, save as tc14_15.html:
+
+{{{
+<html>
+<head><title>For Test Cases 14 and 15</title></head>
+<body>
+<form action="http://rph.myrpi.org/rm_project.php" method="post">
+Project id: <input type="text" name="project_id" />
+<input type="submit" />
+</body>
+</html>
+}}}
+
+TC14: Remove a project that has a negative project_od<br/>
+Preconditions: Logged in as a moderator or as an admin<br/>
+Sequence of Actions:<br/>
+load the tc14_15.html file into your web browser in a seperate window or tab<br/>
+type in "-1" (without the quotes) into the field<br/>
+press the submit button<br/>
+You should receive the following message: "No such project"
+
+TC15: Remove a project that has a project_id that does not exist<br/>
+Preconditions: Logged in as a moderator or as an admin<br/>
+Sequence of Actions:<br/>
+load the tc14_15.html file into your browser in a seperate window or tab<br/>
+in the original webpage, remove a project using TC13, but before pressing the `[Remove]` button, copy the number after `show_project_id=` in the URL<br/>
+in the tc14_15.html file, paste this number into the field<br/>
+press the submit button<br/>
+You Should receive the following message: "Could not remove project"
+
+TC16: Remove project as a regular user, or not logged in<br/>
+Preconditions: not logged in or logged in as a regular user<br/>
+Sequence of Actions:<br/>
+load the tc14_15.html file into your browser in a seperate window or tab<br/>
+you may decide to log in as a regular user at this point in the main rph page<br/>
+clock on a project's title from the index.php page<br/>
+copy the number after `show_project_id=` in the URL<br/>
+paste this number into the field in the tc14_15.php page<br/>
+press the submit button<br/>
+You should receive the following message: "Could not remove project"
