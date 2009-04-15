@@ -119,8 +119,8 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 		echo '	<th>Title</th>';
 		echo '	<th>Description</th>';
 		echo '   <th>Uploader</th>';
+		echo '	<th>Creator(s)</th>';
 		echo '	<th>Downloads</th>';
-		echo '	<th>Size</th>';
 		echo '	<th>Link</th>';
 		echo '	<th>Class</th>';
 		echo '	<th>Major</th>';
@@ -145,8 +145,8 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 		}
 		echo "  <td>" . $desc . "</td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'uploader') . "</td>\n";
+		echo "  <td>" . mysql_result($project_res,$i,'authors') . "</td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'downloads'). "</td>\n";
-		echo "  <td>" . mysql_result($project_res,$i,'size'). "</td>\n";
 		echo "  <td><a href='" . mysql_result($project_res,$i,'project_location'). "'>Download Link</a></td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'class'). "</td>\n";
 		echo "  <td>" . mysql_result($project_res,$i,'major'). "</td>\n";
