@@ -1,3 +1,4 @@
+<link rel="icon" type="image/jpg" href="images/rph.jpg" />
 <link rel="stylesheet" type="text/css" href="table.css" />
 
 <table id="outerMenu" width="100%">
