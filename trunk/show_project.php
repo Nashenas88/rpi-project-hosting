@@ -111,6 +111,7 @@ if(isset($_REQUEST['show_project_id']))
 					echo "<tr><td><form name='remove_project' method='POST' action='rm_project.php'>";
 					echo "<input type='hidden' name='project_id' value='".mysql_result($query_project_res,$i,'id')."'/><input type='submit' value='Remove' /></form></td></tr>";
 				}
+				else {echo $_SESSION['username'] . " <- you and uploader -> " . mysql_result($query_project_res,$i,'uploader');}
 			}
 		}
 	
