@@ -145,13 +145,45 @@ else if ($matches > 0)
 }
 else
 {
-	$id = 0;
+	$size = 0;
+	
+	if (!file_exists($path))
+        {
+                mkdir ($path, 0770, true);
+        }
+	
+	for ($i = 1; $i < 5; ++$i)
+	{
+		if ($_FILES["file$i"] != none && !empty ($_FILES["file$i"]["name"]))
+   		{
+			$filesize = $_FILES["file$i"]["size"];
+		
+			// check to make sure the file does not exceed the maximum size
+			if ($fileSize > $MAX_FILE_SIZE)
+	   		{
+				$output .= $_FILES["file$i"]["name"] . " is too big.<br />";
+				$output .= "Max file size is " . $MAX_FILE_SIZE . " bytes.<br />";
+			}
+			else
+			{
+				$size += $filesize;
+				$filepath = $path . "/" . $_FILES["file$i"]["name"];
+				
+				if (!copy ($_FILES["file$i"]["tmp_name"], $filepath))
+				{
+					$output .= "Upload failed: Copy - " . $path . " - " . $filesize . "<br/>";
+				}
+			}
+		}
+	}
+    
+    $id = 0;
 	$major = mysql_real_escape_string ($_POST["projectMajor"]);
 	
 	$query = sprintf ("INSERT INTO projects( title, description, authors, uploader, downloads, size, class, major, school )
                            VALUES ('%s', '%s', '%s', '%s', 0, %d, '%s', '%s', '%s');", mysql_real_escape_string ($_POST["projectName"]),
                            mysql_real_escape_string ($_POST["projectDescription"]), mysql_real_escape_string ($_POST["projectAuthor"]),
-                           mysql_real_escape_string ($username), mysql_real_escape_string ($filesize),
+                           mysql_real_escape_string ($username), $size,
                            mysql_real_escape_string ($_POST["projectClass"]), $major, getSchool($major));
 			   
 	if (!mysql_query ($query))
@@ -182,35 +214,6 @@ else
                         $output .= "Upload Failed: Could not locate project after it was inserted into the database" . mysql_error () . "<br/>";
                 }
         }
-	
-	if (!file_exists($path))
-        {
-                mkdir ($path, 0770, true);
-        }
-	
-	for ($i = 1; $i < 5; ++$i)
-	{
-		if ($_FILES["file$i"] != none && !empty ($_FILES["file$i"]["name"]))
-   		{
-			$filesize = $_FILES["file$i"]["size"];
-		
-			// check to make sure the file does not exceed the maximum size
-			if ($fileSize > $MAX_FILE_SIZE)
-	   		{
-				$output .= $_FILES["file$i"]["name"] . " is too big.<br />";
-				$output .= "Max file size is " . $MAX_FILE_SIZE . " bytes.<br />";
-			}
-			else
-			{
-				$filepath = $path . "/" . $_FILES["file$i"]["name"];
-				
-				if (!copy ($_FILES["file$i"]["tmp_name"], $filepath))
-				{
-					$output .= "Upload failed: Copy - " . $path . " - " . $filesize . "<br/>";
-				}
-			}
-		}
-	}
 }
 
 head("Uploading...");
