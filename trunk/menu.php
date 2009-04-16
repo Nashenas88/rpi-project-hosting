@@ -1,4 +1,11 @@
 <link rel="icon" type="image/jpg" href="images/rph.jpg" />
+
+<STYLE>
+<!--
+BODY {background-attachment: fixed;}
+//-->
+</STYLE>
+
 <link rel="stylesheet" type="text/css" href="table.css" />
 
 <table id="outerMenu" width="100%">

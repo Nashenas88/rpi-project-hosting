@@ -20,7 +20,7 @@ function make_page ($title, $body)
 <title>RPI Project Hosting | <?php echo $title;?></title>
 </head>
 
-<body background="images/background.jpg">
+<body id="background" BGPROPERTIES=FIXED >
 
 <?php
 require ("menu.php");

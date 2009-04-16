@@ -111,11 +111,32 @@ if (empty ($_SESSION['username']))
 </td>
 </tr>
 
-<!-- Upload File -->
+<!-- Upload File 1 -->
 <tr>
 <td>Choose a file to upload</td>
 <td>:</td>
-<td><input name="file" type="file" /></td>
+<td><input name="file1" type="file" /></td>
+</tr>
+
+<!-- Upload File 2 -->
+<tr>
+<td>Choose a file to upload</td>
+<td>:</td>
+<td><input name="file2" type="file" /></td>
+</tr>
+
+<!-- Upload File 3 -->
+<tr>
+<td>Choose a file to upload</td>
+<td>:</td>
+<td><input name="file3" type="file" /></td>
+</tr>
+
+<!-- Upload File 4 -->
+<tr>
+<td>Choose a file to upload</td>
+<td>:</td>
+<td><input name="file4" type="file" /></td>
 </tr>
 
 <!-- Upload Picture -->

@@ -1,3 +1,10 @@
+#background
+{
+        background-image: url(images/background.jpg);
+        background-attachment: fixed;
+	background-repeat: no-repeat
+}
+
 #outerMenu
 {
 	border-width: small;
