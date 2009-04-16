@@ -35,10 +35,10 @@ if (isset($_REQUEST['logout'])) {
    phpCAS::logout();
 }
 
-// get the username 
-$username = phpCAS::getUser ();
-
 require ("connect_db.php");
+
+// get the username
+$username = phpCAS::getUser ();
 
 $query = sprintf ("SELECT 1 FROM moderateusers WHERE user_id='%s'", mysql_real_escape_string ($username));
 $result = mysql_query ($query);
