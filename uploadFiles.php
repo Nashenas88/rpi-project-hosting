@@ -40,7 +40,8 @@ if ($_POST['projectIsForClass'] == "yes" && empty ($_POST['projectMajor']))
 		  	   		 select CSCI if the class is CSCI-1200</center><br/>");
         exit;
 }
-if (empty ($_FILES["file"]["name"]))
+if (empty ($_FILES["file1"]["name"]) && emtpy ($_FILES["file2"]["name"]) &&
+    empty ($_FILES["file3"]["name"]) && emtpy ($_FILES["file4"]["name"]))
 {
         make_page ("Error", "<br/><center>You must select a file to upload for your project!</center><br/>");
 	exit;
@@ -50,9 +51,7 @@ require ("connect_db.php");
 $username = $_SESSION['username'];
 $MAX_FILE_SIZE = "1048576"; // 1MB
 $output = "";
-
 $path = "uploads/" . $username . "/" . $_POST["projectName"];
-$filepath = $path . "/" . $_FILES["file"]["name"];
 
 function getSchool ($major)
 {
@@ -146,82 +145,77 @@ else if ($matches > 0)
 }
 else
 {
-	if ($_FILES["file"] != none)
-   	{
-		$filesize = $_FILES["file"]["size"];
-		
-		// check to make sure the file does not exceed the maximum size
-		if ($fileSize > $MAX_FILE_SIZE)
-	   	{
-			$output = "Your file is too big.<br />";
-			//$output = $output . "Your file size is " . $filesize . "<br />";
-			$output = $output . "Max file size is " . $MAX_FILE_SIZE . " bytes.<br />";
-		}
+	$id = 0;
+	$major = mysql_real_escape_string ($_POST["projectMajor"]);
+	
+	$query = sprintf ("INSERT INTO projects( title, description, authors, uploader, downloads, size, class, major, school )
+                           VALUES ('%s', '%s', '%s', '%s', 0, %d, '%s', '%s', '%s');", mysql_real_escape_string ($_POST["projectName"]),
+                           mysql_real_escape_string ($_POST["projectDescription"]), mysql_real_escape_string ($_POST["projectAuthor"]),
+                           mysql_real_escape_string ($username), mysql_real_escape_string ($filesize),
+                           mysql_real_escape_string ($_POST["projectClass"]), $major, getSchool($major));
+			   
+	if (!mysql_query ($query))
+        {
+		$output .= "Upload Failed: could not enter data into the database: " . mysql_error () . "<br/>";
+        }
+        else
+        {
+                $query = sprintf ("SELECT id FROM projects WHERE title='%s' AND uploader='%s'",
+                                  mysql_real_escape_string ($_POST["projectName"]), mysql_real_escape_string ($username));
+                $result = mysql_query ($query);
+                if ($result)
+                {
+                        $row = mysql_fetch_assoc ($result);
+                        $query = sprintf ("UPDATE projects SET project_location='%s' WHERE id=%d",
+                                          mysql_real_escape_string ("download.php?id=". $row["id"]), $row["id"]);
+                        if (!mysql_query ($query))
+                        {
+                                $output .= "Upload Failed: No download link was created<br/>";
+                        }
+                        else
+                        {
+                                $output .= "Upload Complete!<br/>";
+                        }
+                }
 		else
-		{
-			if (!file_exists($path))
-		   	{
-				mkdir ($path, 0770, true);
-			}
-			if (copy ($_FILES["file"]["tmp_name"], $filepath))
-			{
-				$id = 0;
-				$major = mysql_real_escape_string ($_POST["projectMajor"]);
-				
-				$query = sprintf ("INSERT INTO projects( title, description, authors, uploader, downloads, size, class, major, school )
-                                          VALUES ('%s', '%s', '%s', '%s', 0, %d, '%s', '%s', '%s');", mysql_real_escape_string ($_POST["projectName"]),
-					  mysql_real_escape_string ($_POST["projectDescription"]), mysql_real_escape_string ($_POST["projectAuthor"]),
-					  mysql_real_escape_string ($username), mysql_real_escape_string ($filesize), mysql_real_escape_string ($_POST["projectClass"]),
-					  $major, getSchool($major));
-				
-				if (!mysql_query ($query))
-			   	{
-					$output .= "Upload Half Complete: File created, not entered into database: " . mysql_error ();
-				}
-				else
-				{
-					$query = sprintf ("SELECT id FROM projects WHERE title='%s' AND uploader='%s'",
-					       	 	   mysql_real_escape_string ($_POST["projectName"]), mysql_real_escape_string ($username));
-					$result = mysql_query ($query);
-					if ($result)
-					{
-						$row = mysql_fetch_assoc ($result);
-					       	$query = sprintf ("UPDATE projects SET project_location='%s' WHERE id=%d",
-					       	 	   	   mysql_real_escape_string ("download.php?id=". $row["id"]), $row["id"]);
-						if (!mysql_query ($query))
-					   	{
-							$output .= "Upload Half Complete: No download link was created";
-						}
-						else
-						{
-							$output .= "Upload Complete!";
-						}
-					}
-					else
-					{
-						$output .= "Upload Half Complete: Could not locate project after it was inserted into the database" . mysql_error ();
-					}
-				}
+                {
+                        $output .= "Upload Failed: Could not locate project after it was inserted into the database" . mysql_error () . "<br/>";
+                }
+        }
+	
+	if (!file_exists($path))
+        {
+                mkdir ($path, 0770, true);
+        }
+	
+	for ($i = 1; $i < 5; ++$i)
+	{
+		if ($_FILES["file$i"] != none && !empty ($_FILES["file$i"]["name"]))
+   		{
+			$filesize = $_FILES["file$i"]["size"];
+		
+			// check to make sure the file does not exceed the maximum size
+			if ($fileSize > $MAX_FILE_SIZE)
+	   		{
+				$output .= $_FILES["file$i"]["name"] . " is too big.<br />";
+				$output .= "Max file size is " . $MAX_FILE_SIZE . " bytes.<br />";
 			}
 			else
 			{
-				$output .= "Upload failed: Copy - " . $path . " - " . $filesize;
+				$filepath = $path . "/" . $_FILES["file$i"]["name"];
+				
+				if (!copy ($_FILES["file$i"]["tmp_name"], $filepath))
+				{
+					$output .= "Upload failed: Copy - " . $path . " - " . $filesize . "<br/>";
+				}
 			}
 		}
-	}
-	else
-	{
-		$output .= "Upload failed: File was empty";
 	}
 }
 
 head("Uploading...");
 
-?>
-<br /><center>
-<?php echo $output?>
-</center><br />
-<?php
+echo "<br/><center>$output</center><br/>";
 
 foot();
 
