@@ -4,6 +4,9 @@ require ("feater.php");
 require("connect_db.php");
 head(Home);
 echo "<table><tr><td>";
+//for clickable sort by headers
+echo "<script src=\"sorttable.js\"></script>";
+
 if(isset($_SESSION['username']))
 {
 
@@ -23,16 +26,16 @@ if(isset($_SESSION['username']))
 	{
 		echo '<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
 		echo '<tr>';
-		echo '	<th>Project</th>';
+		echo '	<th>Title</th>';
 		echo '	<th>Description</th>';
-		echo '   	<th>Authors</th>';
+		echo '   <th>Creator(s)</th>';
 		echo '	<th>Downloads</th>';
-		echo '	<th>Project Location</th>';
+		echo '	<th>Link</th>';
 		echo '	<th>Class</th>';
 		echo '	<th>Major</th>';
 		echo '	<th>School</th>';
 		echo '	<th>Date Uploaded</th>';
-		echo '	<th>Current Rate</th>';
+		echo '	<th>Current Rating</th>';
 		echo '	</tr>';
 	
 	for ($i=0;$i<$my_project_return_num;$i++) 

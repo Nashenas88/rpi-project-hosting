@@ -5,6 +5,10 @@ head(string) - prints the header to the page
 foot() - prints the footer to the page
 ********************************************************************/
 
+/**********************************************
+Usually use head() and foot() instead of this function.
+takes arguments of two strings: title of page and body of page
+***********************************************/
 function make_page ($title, $body)
 {
 ?>
@@ -21,7 +25,7 @@ function make_page ($title, $body)
 <title>RPI Project Hosting | <?php echo $title;?></title>
 </head>
 
-<body background="images/background.jpg">
+<body>
 <div id="header">
 	<div id="logo">
 		<h1>RPH Project Hosting</h1>

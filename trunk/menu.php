@@ -1,4 +1,4 @@
-<link rel="icon" type="image/jpg" href="images/rph.jpg" />
+<link rel="icon" type="image/ico" href="images/favicon.ico" />
 <link rel="stylesheet" type="text/css" href="table.css" />
 
 
