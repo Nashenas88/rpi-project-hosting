@@ -87,7 +87,7 @@ function head ($title)
 	require ("menu.php");
 	echo "</div>";
 	echo "</div>";
-	echo "<center><div id=\"page\">";
+	echo "<div id=\"page\">";
 	echo "<div id='content'>";
 	echo "<div id='latest-post' class='post'>";
 }
@@ -103,12 +103,12 @@ function foot ()
 		<div style="clear: both;">&nbsp;</div>
 	</div>
 	
-	<div id="footer-bg">
+	<div id="footer-bg" align="center">
 	<div id="footer">
 	<p>Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates	</a><br />This page is licensed under the <a href=http://www.gnu.org/licenses/gpl.html>GNU General Public License v3</a></p>
 	</div>
 	</div>
-	</center>
+	
 <?php
 	echo '</body>';
 	echo '';
