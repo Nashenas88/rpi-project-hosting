@@ -1,0 +1,238 @@
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF url(images/img01.jpg) repeat-x left top;
+	text-align: justify;
+	font-size: 12px;
+	
+	color: #666666;
+}
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+input, textarea, select {
+}
+
+
+h1, h2, h3 {
+	font-weight: normal;
+	color: #23AEBB;
+}
+
+h1 {
+	letter-spacing: -1px;
+	font-size: 2.2em;
+}
+
+h2 {
+	font-size: 1.4em;
+}
+
+h3 {
+	font-size: 1.2em;
+}
+
+p, ul, ol {
+}
+
+p {
+}
+
+.blockbg {
+	background: #D9D785;
+}
+
+blockquote {
+	background: url(images/img08.jpg) no-repeat left top;
+	font-style: italic;
+	margin: 0 0 0 15px;
+	padding: 0px 20px 0px 30px;
+	font-size: 18px;
+	color: #3D3D3D;
+}
+
+ul {
+}
+
+ol {
+}
+
+a {
+	color: #23AEBB;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+small {
+}
+
+hr {
+	display: none;
+}
+
+img {
+	border: none;
+}
+
+img.left {
+	float: left;
+	margin: 0 15px 0 0;
+	border: #D9D785 1px dashed;
+}
+
+img.right {
+	float: right;
+	margin: 0 0 0 15px;
+	border: #D9D785 1px dashed;
+}
+
+.text1 {
+
+}
+
+/* Header */
+
+#header {
+	width: 950px;
+	height: 109px;
+	margin: 0 auto;
+}
+
+/* Logo */
+
+#logo {
+	float: left;
+	margin-top: 40px;
+}
+
+#logo h1, #logo h2, #logo p {
+	float: left;
+	margin: 0;
+}
+
+#logo h1 {
+	padding-left: 10px;
+	text-align: center;
+	font-size: 3.2em;
+	color: #FFFFFF;
+}
+
+#logo h1 a {
+	color: #FFFFFF;
+}
+
+#logo p {
+	padding-top: 20px;
+	font-size: 13px;
+	font-style: italic;
+	color: #FFFFFF;
+}
+
+#logo h2 a, #logo p a {
+	letter-spacing: normal;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+
+#logo a {
+	text-decoration: none;
+}
+
+/* Menu */
+
+#menu {
+	float: right;
+	margin-top: 50px;
+}
+
+#menu ul {
+	margin: 0;
+	list-style: none;
+}
+
+#menu li {
+	display: inline;
+}
+
+#menu a {
+	display: block;
+	float: left;
+	background: #0D859C;
+	margin-right: 10px;
+	padding: 5px 15px;
+	text-align: center;
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 13px;
+	color: #FFFFFF;
+}
+
+#menu a:hover {
+}
+
+#menu .current_page_item a {
+}
+
+/* Page*/
+
+#page {
+	margin: 0 auto;
+	padding-top: 50px;
+}
+
+#latest-post {
+	float: left;
+	width: 1170px;
+	padding: 0px 20px 0px 50px;
+	line-height: 25px;
+	font-size: 16px;
+}
+
+
+
+/* Footer */
+
+#footer-bg {
+	background: #95C512;
+}
+
+#footer {
+
+	margin: 0 auto;
+	font-size: 15px;
+	color: #FFFFFF;
+}
+
+#footer p {
+	margin: 0;
+	padding: 25px 20px 15px 20px;
+}
+
+#footer a {
+	color: #FFFFFF;
+}
+
+#legal {
+	float: left;
+}
+
+#links {
+	float: right;
+}

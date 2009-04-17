@@ -5,11 +5,11 @@ Allows user to search for a project based on a projects attributes
 ********************************************************************/
 
 session_start ();
-
+$_SESSION['username']='asdasd';
 require ("feater.php");
 require ("connect_db.php");
 head("Search");
-
+echo "<table><tr><td>";
 // for clickable sort by headers
 echo "<script src=\"sorttable.js\"></script>";
 
@@ -204,6 +204,7 @@ else
 	echo "<p>Enter text for search!</p>";
 }
 $_SESSION['back'] = $_SERVER['REQUEST_URI'];
+echo "</td></tr></table>";
 foot();
 
 ?>
