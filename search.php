@@ -5,7 +5,6 @@ Allows user to search for a project based on a projects attributes
 ********************************************************************/
 
 session_start ();
-$_SESSION['username']='asdasd';
 require ("feater.php");
 require ("connect_db.php");
 head("Search");
