@@ -85,6 +85,7 @@ if(isset($_REQUEST['show_project_id']))
 		{
 			echo "  <tr><td>Title: </td><td>" . mysql_result($query_project_res,$i,'title') . "</td></tr>";
 			echo "  <tr><td>Description: </td><td>" . mysql_result($query_project_res,$i,'description') . "</td></tr>";
+			echo "  <tr><td>Uploader: </td><td>" . mysql_result($query_project_res,$i,'uploader') . "</td></tr>";
 			echo "  <tr><td>Authors: </td><td>" . mysql_result($query_project_res,$i,'authors') . "</td></tr>";
 			echo "  <tr><td>Downloads: </td><td>" . mysql_result($query_project_res,$i,'downloads'). "</td></tr>";
 			echo "  <tr><td>Size: </td><td>" . print_filesize (mysql_result($query_project_res,$i,'size')) . "</td></tr>";
@@ -100,7 +101,7 @@ if(isset($_REQUEST['show_project_id']))
                 	echo date ('l, F j, Y, g:i a', mktime ($hour, $minute, $second, $month, $day, $year)), "</td></tr>";
 			
 			
-			echo "  <tr><td>Current rating: </td><td>" . $current_rate . " number of rates: " . $rating_num . "</td></tr>";
+			echo "  <tr><td>Current rating: </td><td>" . $current_rate . " number of ratings: " . $rating_num . "</td></tr>";
 			if(isset($_SESSION['username']))
 			{
 				echo "<tr><td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='1'>1</option><option value=1>1</option>";
