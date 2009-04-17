@@ -3,10 +3,11 @@ session_start ();
 require ("feater.php");
 require("connect_db.php");
 head(Home);
-
+echo "<table><tr><td>";
 if(isset($_SESSION['username']))
 {
 
+	
 	echo "<h2>My Uploaded Projects</h2><br/>";
 	$user=htmlspecialchars($_SESSION['username']);
 	$query_my_project="SELECT * FROM projects WHERE uploader='".mysql_real_escape_string($user)."'";
@@ -280,7 +281,7 @@ $project_return_num=mysql_numrows($project_res);
 	}
 	echo "</table>\n";
 	}
-	
+echo "</td></tr></table>";
 foot();
 	
 ?>

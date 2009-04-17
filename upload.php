@@ -20,7 +20,7 @@ if (empty ($_SESSION['username']))
 <tr><td>
 <form name="upload" method="post" action="uploadFiles.php" enctype="multipart/form-data">
 <fieldset>
-<legend><strong>Upload</strong></legend>
+<legend><h2>Upload</h2></legend>
 <table width="490" border="0" cellpadding="3" cellspacing="1">
 
 <!-- Project Name -->

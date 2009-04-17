@@ -9,7 +9,7 @@ require ("feater.php");
 head("About");
 
 ?>
-
+<table><tr><td>
 <br />
 <img src="images/RPH.png" width='10%' height='10%'>
 <br>
@@ -33,6 +33,7 @@ Jin Guang Zheng
 Dan Meretzky
 <br>
 Paul Faria
+</td></tr></table>
 <?php
 
 foot();

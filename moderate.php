@@ -231,9 +231,10 @@ $priviledgeLevel = getPriviledge();
 if ($priviledgeLevel <= 1)
 {
 	//if user is moderate show ban user option and flagged comments 
+	echo "<table><tr><td>";
     if ($priviledgeLevel == 1)
     {
-      echo "<p>You are a moderator<br /></p>";
+      echo "<h>You are a moderator</h>";
       banUnban();
       echo "<br /><br />";
       flags();
@@ -241,7 +242,7 @@ if ($priviledgeLevel <= 1)
 	//if user is an admin show change user priviledge option too
     else if ($priviledgeLevel == 0)
     {
-      echo "<p>You are an Admin<br /></p>";
+      echo "<h2>You are an Admin</h2>";
       banUnban();
       echo "<br /><br />";
       changePriviledge();
@@ -252,6 +253,7 @@ if ($priviledgeLevel <= 1)
     {
       echo "<p>You are Superman eating Kryptonite<br /></p>";
     }
+	echo "</td></tr></table>";
 }
 else
 {
