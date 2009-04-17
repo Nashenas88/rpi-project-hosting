@@ -107,7 +107,7 @@ function comment()
 
 	if($num_of_comment>0)
 	{
-		$_SESSION['message']="<p>You already comment this project!</p>";
+		$_SESSION['message']="<p>You already commented this project!</p>";
 	}
 	else
 	{

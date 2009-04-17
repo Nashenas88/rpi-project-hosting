@@ -23,6 +23,7 @@ Allows admins to change the priviledge level of a user
 ********************************************************************/
 function changePriviledge()
 {
+	//feature for admins only
    if(getPriviledge() != 0)
    {
       return;
@@ -97,6 +98,7 @@ Allows banning and Unbanning of users by moderators or admins
 *************************************************************************/
 function banUnban()
 {
+	//feature for admins and moderators only
    if(getPriviledge() > 1)
    {
       return;
@@ -195,6 +197,7 @@ remove comment, and the project this comment is commenting on
 ********************************************************************************/
 function flags()
 {
+	//feature for admins and moderators only
    if(getPriviledge() > 1)
    {
       return;
@@ -230,7 +233,7 @@ $priviledgeLevel = getPriviledge();
 
 if ($priviledgeLevel <= 1)
 {
-	//if user is moderate show ban user option and flagged comments 
+	//if user is a moderater show ban user option and flagged comments 
 	echo "<table><tr><td>";
     if ($priviledgeLevel == 1)
     {
@@ -257,7 +260,7 @@ if ($priviledgeLevel <= 1)
 }
 else
 {
-    echo "<p>You need to be a moderator or an admin in order to view this page<br /></p>";
+    echo "<p>You need to be a moderator or an admin in order to view this page.<br /></p>";
 }
 $_SESSION['back'] = $_SERVER['REQUEST_URI'];
 foot();
