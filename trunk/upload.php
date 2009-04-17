@@ -6,7 +6,6 @@ Displays the upload form for uploading projects
 
 session_start ();
 require ("feater.php");
-head("Upload");
 
 if (empty ($_SESSION['username']))
 {
@@ -14,6 +13,7 @@ if (empty ($_SESSION['username']))
   exit ();
 }
 
+head ("Upload");
 ?>
 
 <table width="500" border="0" cellpadding="0" cellspacing="0">
