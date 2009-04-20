@@ -178,13 +178,15 @@ else
 	}
     
         $id = 0;
-	$major = mysql_real_escape_string (htmlentities ($_POST["projectMajor"]));
+	$major = mysql_real_escape_string (htmlentities (stripslashes ($_POST["projectMajor"]), ENT_QUOTES));
 	
 	$query = sprintf ("INSERT INTO projects( title, description, authors, uploader, downloads, size, class, major, school )
-                           VALUES ('%s', '%s', '%s', '%s', 0, %d, '%s', '%s', '%s');", mysql_real_escape_string (htmlentities ($_POST["projectName"])),
-                           mysql_real_escape_string (htmlentities ($_POST["projectDescription"])), mysql_real_escape_string (htmlentities ($_POST["projectAuthor"])),
+                           VALUES ('%s', '%s', '%s', '%s', 0, %d, '%s', '%s', '%s');",
+			   mysql_real_escape_string (htmlentities (stripslashes ($_POST["projectName"]), ENT_QUOTES)),
+			   mysql_real_escape_string (htmlentities (stripslashes ($_POST["projectDescription"]), ENT_QUOTES)),
+			   mysql_real_escape_string (htmlentities (stripslashes ($_POST["projectAuthor"]), ENT_QUOTES)),
                            mysql_real_escape_string ($username), $size,
-                           mysql_real_escape_string (htmlentities ($_POST["projectClass"])), $major, getSchool($major));
+                           mysql_real_escape_string (htmlentities (stripslashes ($_POST["projectClass"]), ENT_QUOTES)), $major, getSchool($major));
 			   
 	if (!mysql_query ($query))
         {
@@ -216,10 +218,14 @@ else
         }
 }
 
+
 head("Uploading...");
 
 echo "<br/><center>$output</center><br/>";
 
 foot();
+
+$_SESSION['message'] = $output;
+
 
 ?>
