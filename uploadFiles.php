@@ -177,14 +177,14 @@ else
 		}
 	}
     
-    $id = 0;
-	$major = mysql_real_escape_string ($_POST["projectMajor"]);
+        $id = 0;
+	$major = mysql_real_escape_string (htmlentities ($_POST["projectMajor"]));
 	
 	$query = sprintf ("INSERT INTO projects( title, description, authors, uploader, downloads, size, class, major, school )
-                           VALUES ('%s', '%s', '%s', '%s', 0, %d, '%s', '%s', '%s');", mysql_real_escape_string ($_POST["projectName"]),
-                           mysql_real_escape_string ($_POST["projectDescription"]), mysql_real_escape_string ($_POST["projectAuthor"]),
+                           VALUES ('%s', '%s', '%s', '%s', 0, %d, '%s', '%s', '%s');", mysql_real_escape_string (htmlentities ($_POST["projectName"])),
+                           mysql_real_escape_string (htmlentities ($_POST["projectDescription"])), mysql_real_escape_string (htmlentities ($_POST["projectAuthor"])),
                            mysql_real_escape_string ($username), $size,
-                           mysql_real_escape_string ($_POST["projectClass"]), $major, getSchool($major));
+                           mysql_real_escape_string (htmlentities ($_POST["projectClass"])), $major, getSchool($major));
 			   
 	if (!mysql_query ($query))
         {
