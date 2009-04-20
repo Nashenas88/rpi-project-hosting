@@ -14,6 +14,19 @@ if (empty ($_SESSION['username']))
 }
 
 head ("Upload");
+
+if (isset ($_SESSION['message']))
+{
+	echo $_SESSION['message'];
+	unset ($_SESSION['message']);
+}
+
+$projName = "";
+$creator = "";
+$desc = "";
+$isForClass = "";
+$className = "";
+$major = "";
 ?>
 
 <table width="500" border="0" cellpadding="0" cellspacing="0">
@@ -27,7 +40,7 @@ head ("Upload");
 <tr>
 <td>Project Name</td>
 <td>:</td>
-<td><input name="projectName" type="text" id="projectName" />
+<td><input name="projectName" type="text" id="projectName" value="<?php echo isset($_SESSION["projectName"]) ? $_SESSION["projectName"] : '';?>" />
 </td>
 </tr>
 
@@ -35,22 +48,25 @@ head ("Upload");
 <tr>
 <td>Project Creator(s)</td>
 <td>:</td>
-<td><input type=text name="projectAuthor" size="20" /></td>
+<td><input type=text name="projectAuthor" size="20" value="<?php echo isset($_SESSION["projectAuthor"]) ? $_SESSION["projectAuthor"] : '';?>" /></td>
 </tr>
 
 <!-- Description -->
 <tr>
 <td>Project Description</td>
 <td>:</td>
-<td><textarea name="projectDescription" cols="35" rows="4" ></textarea></td>
+<td><textarea name="projectDescription" cols="35" rows="4" value="<?php echo isset($_SESSION["projectDescription"]) ? $_SESSION["projectDescription"] : '';?>" ></textarea></td>
 </tr>
 
 <!-- Is It For A Class -->
 <tr>
 <td>Was this project created for a class?</td>
 <td>:</td>
-<td><input type=radio name="projectIsForClass" value="yes" checked="checked"/> yes
-    <input type=radio name="projectIsForClass" value="no" /> no </td>
+<td><input type=radio name="projectIsForClass" value="yes" <?php echo isset ($_SESSION["isForClass"]) ?
+	   	      			       		   ($_SESSION["isForClass"] == "yes" ? 'checked="checked"' : '') :
+							   'checked="checked"'; ?> /> yes
+    <input type=radio name="projectIsForClass" value="no" <?php echo isset ($_SESSION["isForClass"]) && $_SESSION["isForClass"] == "no" ?
+    	   	      			       		  'checked="checked"' : '';?> /> no </td>
 </tr>
 
 
@@ -58,7 +74,7 @@ head ("Upload");
 <tr>
 <td>Class Name</td>
 <td>:</td>
-<td><input type=text name="projectClass" size="20" /></td>
+<td><input type=text name="projectClass" size="20" value="<?php echo isset($_SESSION["projectClass"]) ? $_SESSION["projectClass"] : '';?>" /></td>
 </tr>
 
 <!-- Major -->
@@ -66,47 +82,47 @@ head ("Upload");
 <td>Related Major</td>
 <td>:</td>
 <td><!--<input type=text name="projectMajor" size="20" />-->
-<select name="projectMajor">
+<select name="projectMajor" >
   <option value="">--Select Major--</option>
-  <option value="ADMN">ADMN</option>
-  <option value="ARCH">ARCH</option>
-  <option value="ARTS">ARTS</option>
-  <option value="ASTR">ASTR</option>
-  <option value="BCBP">BCBP</option>
-  <option value="BIOL">BIOL</option>
-  <option value="BMED">BMED</option>
-  <option value="CHEM">CHEM</option>
-  <option value="CHME">CHME</option>
-  <option value="CIVL">CIVL</option>
-  <option value="COGS">COGS</option>
-  <option value="COMM">COMM</option>
-  <option value="CSCI">CSCI</option>
-  <option value="DSES">DSES</option>
-  <option value="ECON">ECON</option>
-  <option value="ECSE">ECSE</option>
-  <option value="ENGR">ENGR</option>
-  <option value="ENVE">ENVE</option>
-  <option value="EPOW">EPOW</option>
-  <option value="ERTH">ERTH</option>
-  <option value="IHSS">IHSS</option>
-  <option value="ISCI">ISCI</option>
-  <option value="ITEC">ITEC</option>
-  <option value="LGHT">LGHT</option>
-  <option value="LITR">LITR</option>
-  <option value="MANE">MANE</option>
-  <option value="MATH">MATH</option>
-  <option value="MATP">MATP</option>
-  <option value="MGMT">MGMT</option>
-  <option value="MTLE">MTLE</option>
-  <option value="PHIL">PHIL</option>
-  <option value="PHYS">PHYS</option>
-  <option value="PSYC">PSYC</option>
-  <option value="STSH">STSH</option>
-  <option value="STSS">STSS</option>
-  <option value="USAF">USAF</option>
-  <option value="USAR">USAR</option>
-  <option value="USNA">USNA</option>
-  <option value="WRIT">WRIT</option>
+  <option value="ADMN" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "ADMN" ? 'selected="selected"' : '';?>>ADMN</option>
+  <option value="ARCH" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "ARCH" ? 'selected="selected"' : '';?>>ARCH</option>
+  <option value="ARTS" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "ARTS" ? 'selected="selected"' : '';?>>ARTS</option>
+  <option value="ASTR" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "ASTR" ? 'selected="selected"' : '';?>>ASTR</option>
+  <option value="BCBP" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "BCBP" ? 'selected="selected"' : '';?>>BCBP</option>
+  <option value="BIOL" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "BIOL" ? 'selected="selected"' : '';?>>BIOL</option>
+  <option value="BMED" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "BMED" ? 'selected="selected"' : '';?>>BMED</option>
+  <option value="CHEM" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "CHEM" ? 'selected="selected"' : '';?>>CHEM</option>
+  <option value="CHME" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "CHME" ? 'selected="selected"' : '';?>>CHME</option>
+  <option value="CIVL" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "CIVL" ? 'selected="selected"' : '';?>>CIVL</option>
+  <option value="COGS" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "COGS" ? 'selected="selected"' : '';?>>COGS</option>
+  <option value="COMM" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "COMM" ? 'selected="selected"' : '';?>>COMM</option>
+  <option value="CSCI" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "CSCI" ? 'selected="selected"' : '';?>>CSCI</option>
+  <option value="DSES" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "DSES" ? 'selected="selected"' : '';?>>DSES</option>
+  <option value="ECON" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "ECON" ? 'selected="selected"' : '';?>>ECON</option>
+  <option value="ECSE" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "ECSE" ? 'selected="selected"' : '';?>>ECSE</option>
+  <option value="ENGR" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "ENGR" ? 'selected="selected"' : '';?>>ENGR</option>
+  <option value="ENVE" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "ENVE" ? 'selected="selected"' : '';?>>ENVE</option>
+  <option value="EPOW" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "EPOW" ? 'selected="selected"' : '';?>>EPOW</option>
+  <option value="ERTH" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "ERTH" ? 'selected="selected"' : '';?>>ERTH</option>
+  <option value="IHSS" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "IHSS" ? 'selected="selected"' : '';?>>IHSS</option>
+  <option value="ISCI" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "ISCI" ? 'selected="selected"' : '';?>>ISCI</option>
+  <option value="ITEC" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "ITEC" ? 'selected="selected"' : '';?>>ITEC</option>
+  <option value="LGHT" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "LGHT" ? 'selected="selected"' : '';?>>LGHT</option>
+  <option value="LITR" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "LITR" ? 'selected="selected"' : '';?>>LITR</option>
+  <option value="MANE" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "MANE" ? 'selected="selected"' : '';?>>MANE</option>
+  <option value="MATH" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "MATH" ? 'selected="selected"' : '';?>>MATH</option>
+  <option value="MATP" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "MATP" ? 'selected="selected"' : '';?>>MATP</option>
+  <option value="MGMT" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "MGMT" ? 'selected="selected"' : '';?>>MGMT</option>
+  <option value="MTLE" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "MTLE" ? 'selected="selected"' : '';?>>MTLE</option>
+  <option value="PHIL" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "PHIL" ? 'selected="selected"' : '';?>>PHIL</option>
+  <option value="PHYS" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "PHYS" ? 'selected="selected"' : '';?>>PHYS</option>
+  <option value="PSYC" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "PSYC" ? 'selected="selected"' : '';?>>PSYC</option>
+  <option value="STSH" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "STSH" ? 'selected="selected"' : '';?>>STSH</option>
+  <option value="STSS" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "STSS" ? 'selected="selected"' : '';?>>STSS</option>
+  <option value="USAF" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "USAF" ? 'selected="selected"' : '';?>>USAF</option>
+  <option value="USAR" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "USAR" ? 'selected="selected"' : '';?>>USAR</option>
+  <option value="USNA" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "USNA" ? 'selected="selected"' : '';?>>USNA</option>
+  <option value="WRIT" <?php echo isset ($_SESSION["projectMajor"]) && $_SESSION["projectMajor"] == "WRIT" ? 'selected="selected"' : '';?>>WRIT</option>
 </select>
 </td>
 </tr>

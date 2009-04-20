@@ -8,6 +8,10 @@ session_start ();
 
 require ("feater.php");
 
+$_SESSION['message'] = '';
+
+$reload = false;
+
 if (empty ($_SESSION['username']))
 {
     make_page ("Error", "<br/><center>You must be logged in to access this page!</center><br/>");
@@ -16,35 +20,65 @@ if (empty ($_SESSION['username']))
 
 if (empty ($_POST['projectName']))
 {
-	make_page ("Error", "<br/><center>You must have a name for your project!</center><br/>");
-	exit;
+	$_SESSION['message'] .= "<br/><center>You must have a name for your project!</center><br/>";
+	$reload = true;
 }
+else
+{
+	$_SESSION['projectName'] = $_POST['projectName'];
+}
+
 if (empty ($_POST['projectAuthor']))
 {
-        make_page ("Error", "<br/><center>You must write in at least one author for your project!</center><br/>");
-	exit;
+        $_SESSION['message'] .= "<br/><center>You must write in at least one author for your project!</center><br/>";
+	$reload = true;
 }
+else
+{
+        $_SESSION['projectAuthor'] = $_POST['projectAuthor'];
+}
+
 if (empty ($_POST['projectIsForClass']))
 {
-        make_page ("Error", "<br/><center>You must select whether or not the project is for a class</center><br/>");
-	exit;
+        $_SESSION['message'] .= "<br/><center>You must select whether or not the project is for a class</center><br/>";
+	$reload = true;
 }
+else
+{
+        $_SESSION['isForClass'] = $_POST['projectIsForClass'];
+}
+
 if ($_POST['projectIsForClass'] == "yes" && empty ($_POST['projectClass']))
 {
-        make_page ("Error", "<br/><center>If your project is for a class, you must enter in a class name!</center><br/>");
-        exit;
+        $_SESSION['message'] .= "<br/><center>If your project is for a class, you must enter in a class name!</center><br/>";
+        $reload = true;
 }
+else
+{
+        $_SESSION['projectClass'] = $_POST['projectClass'];
+}
+
 if ($_POST['projectIsForClass'] == "yes" && empty ($_POST['projectMajor']))
 {
-        make_page ("Error", "<br/><center>If your project is for a class you must select the major for the class. For example,
-		  	   		 select CSCI if the class is CSCI-1200</center><br/>");
-        exit;
+        $_SESSION['message'] .= "<br/><center>If your project is for a class you must select the major for the class. For example,
+		  	   		 select CSCI if the class is CSCI-1200</center><br/>";
+        $reload = true;
 }
+else
+{
+        $_SESSION['projectMajor'] = $_POST['projectMajor'];
+}
+
 if (empty ($_FILES["file1"]["name"]) && emtpy ($_FILES["file2"]["name"]) &&
     empty ($_FILES["file3"]["name"]) && emtpy ($_FILES["file4"]["name"]))
 {
-        make_page ("Error", "<br/><center>You must select a file to upload for your project!</center><br/>");
-	exit;
+        $_SESSION['message'] .= "<br/><center>You must select a file to upload for your project!</center><br/>";
+	$reload = true;
+}
+
+if ($reload)
+{
+	header ("Location: upload.php");
 }
 
 require ("connect_db.php");
