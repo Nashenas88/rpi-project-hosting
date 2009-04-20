@@ -38,6 +38,11 @@ else
         $_SESSION['projectAuthor'] = $_POST['projectAuthor'];
 }
 
+if (isset ($_POST['projectDescription']))
+{
+	$_SESSION['projectDescription'] = $_POST['projectDescription'];
+}
+
 if (empty ($_POST['projectIsForClass']))
 {
         $_SESSION['message'] .= "<br/><center>You must select whether or not the project is for a class</center><br/>";
@@ -69,17 +74,20 @@ else
         $_SESSION['projectMajor'] = $_POST['projectMajor'];
 }
 
-if (empty ($_FILES["file1"]["name"]) && emtpy ($_FILES["file2"]["name"]) &&
-    empty ($_FILES["file3"]["name"]) && emtpy ($_FILES["file4"]["name"]))
+if (empty ($_FILES["file1"]["name"]) && empty ($_FILES["file2"]["name"]) &&
+    empty ($_FILES["file3"]["name"]) && empty ($_FILES["file4"]["name"]))
 {
-        $_SESSION['message'] .= "<br/><center>You must select a file to upload for your project!</center><br/>";
+        $_SESSION['message'] .= "<br/><center>You must select at least one file to upload for your project!</center><br/>";
 	$reload = true;
 }
 
 if ($reload)
 {
 	header ("Location: upload.php");
+	exit;
 }
+
+
 
 require ("connect_db.php");
 $username = $_SESSION['username'];
@@ -142,6 +150,13 @@ if (!$result)
     $output .= mysql_error ();
     exit;
 }
+
+unset ($_SESSION['projectName']);
+unset ($_SESSION['projectAuthor']);
+unset ($_SESSION['projectDescription']);
+unset ($_SESSION['isForClass']);
+unset ($_SESSION['projectClass']);
+unset ($_SESSION['projectMajor']);
 
 $matches = mysql_numrows ($result);
 $output = "";
@@ -252,14 +267,16 @@ else
         }
 }
 
-
+/*
 head("Uploading...");
 
 echo "<br/><center>$output</center><br/>";
 
 foot();
+*/
 
 $_SESSION['message'] = $output;
 
+header ("Location: index.php");
 
 ?>

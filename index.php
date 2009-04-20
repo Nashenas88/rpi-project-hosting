@@ -7,13 +7,19 @@ echo "<table><tr><td>";
 //for clickable sort by headers
 echo "<script src=\"sorttable.js\"></script>";
 
-if(isset($_SESSION['username']))
+if (isset ($_SESSION['message']))
+{
+	echo $_SESSION['message'];
+	unset ($_SESSION['message']);
+}
+
+if (isset ($_SESSION['username']))
 {
 
 	
 	echo "<h2>My Uploaded Projects</h2><br/>";
 	$user=htmlspecialchars($_SESSION['username']);
-	$query_my_project="SELECT * FROM projects WHERE uploader='".mysql_real_escape_string($user)."'";
+	$query_my_project="SELECT * FROM projects WHERE uploader='".mysql_real_escape_string($user)."' ORDER BY date desc";
 	$query_my_project_res=mysql_query($query_my_project);
 	if(!$query_my_project_res)
 	{
