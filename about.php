@@ -27,7 +27,6 @@ RPH was started as a project for the Software Design and Documentation class.
 Admins and Contributors:
 <br>
 Alex Mattern
-<a href="mailto:mattea@rpi.edu">mattea@rpi.edu</a>
 <br>
 Jin Guang Zheng
 <a href="mailto:zhengj3@rpi.edu">zhengj3@rpi.edu</a>
