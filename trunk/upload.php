@@ -20,13 +20,6 @@ if (isset ($_SESSION['message']))
 	echo $_SESSION['message'];
 	unset ($_SESSION['message']);
 }
-
-$projName = "";
-$creator = "";
-$desc = "";
-$isForClass = "";
-$className = "";
-$major = "";
 ?>
 
 <table width="500" border="0" cellpadding="0" cellspacing="0">
@@ -55,7 +48,7 @@ $major = "";
 <tr>
 <td>Project Description</td>
 <td>:</td>
-<td><textarea name="projectDescription" cols="35" rows="4" value="<?php echo isset($_SESSION["projectDescription"]) ? $_SESSION["projectDescription"] : '';?>" ></textarea></td>
+<td><textarea name="projectDescription" cols="35" rows="4"><?php echo isset($_SESSION["projectDescription"]) ? $_SESSION["projectDescription"] : '';?></textarea></td>
 </tr>
 
 <!-- Is It For A Class -->
