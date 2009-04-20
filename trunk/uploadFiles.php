@@ -267,14 +267,6 @@ else
         }
 }
 
-/*
-head("Uploading...");
-
-echo "<br/><center>$output</center><br/>";
-
-foot();
-*/
-
 $_SESSION['message'] = $output;
 
 header ("Location: index.php");
