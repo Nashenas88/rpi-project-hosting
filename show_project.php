@@ -33,22 +33,22 @@ if(isset($_SESSION['message']))
 
 if(isset($_REQUEST['show_project_id']))
 {
-        $id=htmlspecialchars($_REQUEST['show_project_id']);
-        $username=htmlspecialchars($_SESSION['username']);
+        $id = htmlspecialchars($_REQUEST['show_project_id']);
+        $username = htmlspecialchars($_SESSION['username']);
         // query all neccessary information: rate, comment, project, and current user
-        $query_rate="SELECT rate FROM ratings WHERE project_id=".mysql_real_escape_string($id);
-        $query_rate_res=mysql_query($query_rate);
+        $query_rate = "SELECT rate FROM ratings WHERE project_id='" . mysql_real_escape_string($id) . "';";
+        $query_rate_res = mysql_query($query_rate);
 
-        $query_comment="SELECT * FROM comments WHERE project_id=".mysql_real_escape_string($id);
-        $query_comment_res=mysql_query($query_comment);
+        $query_comment = "SELECT * FROM comments WHERE project_id='" . mysql_real_escape_string($id) . "';";
+        $query_comment_res = mysql_query($query_comment);
 
-        $query_project="SELECT * FROM projects WHERE id=".mysql_real_escape_string($id);
-        $query_project_res=mysql_query($query_project);
+        $query_project = "SELECT * FROM projects WHERE id='" . mysql_real_escape_string($id) . "';";
+        $query_project_res = mysql_query($query_project);
 
-        $query_user="SELECT * FROM users WHERE rcsid='".mysql_real_escape_string($username)."'";
-        $query_user_res=mysql_query($query_user);
+        $query_user = "SELECT * FROM users WHERE rcsid='" . mysql_real_escape_string($username) . "'";
+        $query_user_res = mysql_query($query_user);
        
-        if (!$query_rate_res||!$query_project_res||!$query_comment_res||!$query_user_res)
+        if (!$query_rate_res || !$query_project_res || !$query_comment_res || !$query_user_res)
         {
                 //echo mysql_error();
                 echo "Sorry, we can't query your request";

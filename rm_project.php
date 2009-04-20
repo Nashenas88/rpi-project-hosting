@@ -11,23 +11,21 @@ require ("connect_db.php");
 
 $_SESSION['message'] = "";
 
-// if the user id is given and the user is a moderator
-if (isset ($_REQUEST['project_id']) && getPriviledge () < 2)
+if (empty ($_SESSION['username']))
 {
-	
-	$project_id = htmlspecialchars ($_REQUEST['project_id']);
-	
-	// check if this project exists
-	$query_project = "SELECT 1 FROM projects WHERE id = ".mysql_real_escape_string($project_id);
-	$query_project_res = mysql_query ($query_project);
-	
-	if (!$query_project_res) 
-	{
-		//echo mysql_error ();
-		$_SESSION['message'] .= mysql_error (); //"Sorry, we can't query your request";
-		exit;
-	}
+	$_SESSION['message'] = "You cannoy access that feature unless you are logged in";
+	header ("Location: search.php");
+	exit;
+}
 
+$project_id = htmlentities ($_REQUEST['project_id']);
+$query_project = "SELECT * FROM projects WHERE id='" . mysql_real_escape_string ($project_id) . "';";
+$query_project_res = mysql_query ($query_project);
+
+// if the user id is given and the user is a moderator
+if ($query_project_res && ((isset ($_REQUEST['project_id']) && getPriviledge () < 2) ||
+   $_SESSION['username'] == mysql_result ($query_project_res, 0, 'uploader')))
+{
 	$num_of_project = mysql_numrows ($query_project_res);
 	
 	//echo $query_project;
