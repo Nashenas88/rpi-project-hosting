@@ -18,7 +18,7 @@ RPH is a project hosting site for RPI students. Students are able to log in to t
 <br>
 Once logged in, students will be able to post their completed projects for everyone to see.
 <br>
-Projects may include anything from a CS1 class homework to a video game to a photograph.
+Projects may include anything from a CS1 class homework to a video game or even a photograph.
 <br>
 <br>
 RPH was started as a project for the Software Design and Documentation class.
@@ -27,12 +27,16 @@ RPH was started as a project for the Software Design and Documentation class.
 Admins and Contributors:
 <br>
 Alex Mattern
+<a href="mailto:mattea@rpi.edu">mattea@rpi.edu</a>
 <br>
 Jin Guang Zheng
+<a href="mailto:zhengj3@rpi.edu">zhengj3@rpi.edu</a>
 <br>
 Dan Meretzky
+<a href="mailto:meretd@rpi.edu">meretd@rpi.edu</a>
 <br>
 Paul Faria
+<a href="mailto:fariap@rpi.edu">fariap@rpi.edu</a>
 </td></tr></table>
 <?php
 
