@@ -206,12 +206,14 @@ else
 		if ($_FILES["file$i"] != none && !empty ($_FILES["file$i"]["name"]))
    		{
 			$filesize = $_FILES["file$i"]["size"];
-		
+			$output .= "filesize: " . $filesize . "<br/>Max filesize: " . $MAX_FILE_SIZE . "<br/>";
 			// check to make sure the file does not exceed the maximum size
 			if ($fileSize > $MAX_FILE_SIZE)
 	   		{
 				$output .= $_FILES["file$i"]["name"] . " is too big.<br />";
 				$output .= "Max file size is " . $MAX_FILE_SIZE . " bytes.<br />";
+				$_SESSION['message'] = $output;
+				header ("Location: upload.php");
 			}
 			else
 			{
