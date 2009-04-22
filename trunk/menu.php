@@ -38,4 +38,5 @@ else
 }
 ?>
 <li><a href="about.php">About</a></li>
+<li><a href="helpQuestions.php">FAQ</a></li>
 </ul>
