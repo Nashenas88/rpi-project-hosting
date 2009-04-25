@@ -22,17 +22,20 @@ head("FAQ");
 <a href="#copyright">Do I retain the copyright to my uploads?</a><br />
 <a href="#otherCopyright">May I upload another person's project?</a><br />
 <?php
-if( getPriviledge() <= 1 )
+if (isset ($_SESSION['username']))
 {
+        if( getPriviledge() <= 1 )
+        {
 ?>
-	<a href="#ban"> How do I ban a user?</a><br />
+	        <a href="#ban"> How do I ban a user?</a><br />
 <?php
-	if( getPriviledge() == 0 )
-	{
+	        if( getPriviledge() == 0 )
+	        {
 ?>
-		<a href="#changePriviledge"> How do I change a user's privilege level?</a><br />
+		        <a href="#changePriviledge"> How do I change a user's privilege level?</a><br />
 <?php
-	}
+	        }
+        }
 }
 ?>
 
@@ -76,23 +79,26 @@ if( getPriviledge() <= 1 )
 
 
 <?php
-if( getPriviledge() <= 1 )
+if (isset ($_SESSION['username']))
 {
+        if( getPriviledge() <= 1 )
+        {
 ?>
-	<a name="ban"></a>
-	<p><b>Q:</b> How do I ban a user?</p>
-	<p><b>A:</b> To ban a user, click the "Moderate" button on the top menu.  Then enter the username of the user you wish to ban in the ban form.  Make sure the action is set to ban, and click "Update".</p>
-	<p>---------------------------------------</p>
+	        <a name="ban"></a>
+	        <p><b>Q:</b> How do I ban a user?</p>
+	        <p><b>A:</b> To ban a user, click the "Moderate" button on the top menu.  Then enter the username of the user you wish to ban in the ban form.  Make sure the action is set to ban, and click "Update".</p>
+	        <p>---------------------------------------</p>
 <?php
-	if( getPriviledge() == 0 )
-	{
+	        if( getPriviledge() == 0 )
+	        {
 ?>
-		<a name="changePriviledge"></a>
-		<p><b>Q:</b> How do I change a user's privilege level?</p>
-		<p><b>A:</b> To change a user's privilege, click the "Moderate" button on the top menu.  Then enter the username of the user you wish to change in the privilege form.  Make sure the action is set to the desired privilege level, and click "Update".</p>
-		<p>---------------------------------------</p>
+		        <a name="changePriviledge"></a>
+		        <p><b>Q:</b> How do I change a user's privilege level?</p>
+		        <p><b>A:</b> To change a user's privilege, click the "Moderate" button on the top menu.  Then enter the username of the user you wish to change in the privilege form.  Make sure the action is set to the desired privilege level, and click "Update".</p>
+		        <p>---------------------------------------</p>
 <?php
-	}
+	        }
+        }
 }
 
 foot();
