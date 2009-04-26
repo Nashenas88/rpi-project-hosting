@@ -5,8 +5,8 @@ Allows user to search for a project based on a projects attributes
 ********************************************************************/
 
 session_start ();
-require ("feater.php");
-require ("connect_db.php");
+require_once ("feater.php");
+require_once ("connect_db.php");
 head("Search");
 
 function search ()

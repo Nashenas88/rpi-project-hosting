@@ -6,8 +6,8 @@ Allows user to download a project from the server
 
 session_start ();
 
-require ("connect_db.php");
-require ("feater.php");
+require_once ("connect_db.php");
+require_once ("feater.php");
 
 function download ()
 {
@@ -36,7 +36,7 @@ if ($result)
     if ($za->open ($zipfile, ZIPARCHIVE::OVERWRITE) != TRUE)
     {
 	make_page ("Error", "<br/>\n<center>\nCannot open <$zipfile>!\n</center>\n<br/>");
-	exit;
+	//exit;
     }
     
     // add contents of project to zip archive
@@ -70,7 +70,7 @@ if ($result)
       head ("Error");
       echo mysql_error ($result);
       foot ();
-      exit;
+      //exit;
     }
   }
   else
@@ -79,13 +79,13 @@ if ($result)
     $_SESSION['test'] = "<br/><center>Project not found.</center>";
     echo $_SESSION['test'];
     foot ();
-    exit;
+    //exit;
   }
 }
 else
 {
   make_page ("Error", mysql_error ($result));
-  exit;
+  //exit;
 }
 }
 download ();

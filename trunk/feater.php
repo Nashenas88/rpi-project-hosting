@@ -32,7 +32,7 @@ function make_page ($title, $body)
 	</div>
 	<div id="menu">
 <?php
-require ("menu.php");
+require_once ("menu.php");
 ?>
 </div>
 </div>
@@ -86,7 +86,7 @@ function head ($title)
 	echo "<h1>RPI Project Hosting</h1>";
 	echo "</div>";
 	echo "<div id=\"menu\">";
-	require ("menu.php");
+	require_once ("menu.php");
 	echo "</div>";
 	echo "</div>";
 	echo "<div id=\"page\">";
