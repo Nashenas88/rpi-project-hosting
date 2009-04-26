@@ -8,6 +8,9 @@ session_start ();
 require ("feater.php");
 require ("connect_db.php");
 head("Search");
+
+function search ()
+{
 echo "<table><tr><td>";
 // for clickable sort by headers
 echo "<script src=\"sorttable.js\"></script>";
@@ -58,10 +61,6 @@ echo '</form>';
 // execute query and display results
 if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQUEST['orderedBy']))
 {
-//	$search_request = stripslashes ($_REQUEST['searchInput']);
-//	$search_type = stripslashes ($_REQUEST['searchType']);
-//	$sort = stripslashes ($_REQUEST['orderedBy']);
-//
 	if ($search_request == "" || $search_type == "" || $sort == "")
 	{
 		$output .= "Please enter a valid search.";
@@ -111,7 +110,8 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	        // find out how many database records we have
 	        $project_num = mysql_numrows($project_res);
                 
-	        echo "<h3>Your Search Returned ".$project_num." Results</h3>\n";
+	        $_SESSION['searchProjectsFound'] =  "<h3>Your Search Returned ".$project_num." Results</h3>\n";
+		echo $_SESSION['searchProjectsFound'];
                 
 	        if($project_num>0)
         	{
@@ -208,6 +208,9 @@ else
 }
 $_SESSION['back'] = $_SERVER['REQUEST_URI'];
 echo "</td></tr></table>";
+}
+
+search ();
 foot();
 
 ?>
