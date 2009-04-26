@@ -93,7 +93,7 @@ if(isset($_REQUEST['show_project_id']))
                         echo "  <tr><td>Class: </td><td>" . mysql_result($query_project_res,$i,'class'). "</td></tr>";
                         echo "  <tr><td>Major: </td><td>" . mysql_result($query_project_res,$i,'major'). "</td></tr>";
                         echo "  <tr><td>School: </td><td>" . mysql_result($query_project_res,$i,'school'). "</td></tr>";
-                        echo "  <tr><td>Date uploaded: </td><td>";
+                        echo "  <tr><td>Date Uploaded: </td><td>";
                        
                         list ($yearly, $daily) = split (' ', mysql_result ($query_project_res,$i,'date'));
                         list ($year, $month, $day) = split ('-', $yearly);
@@ -101,7 +101,9 @@ if(isset($_REQUEST['show_project_id']))
                         echo date ('l, F j, Y, g:i a', mktime ($hour, $minute, $second, $month, $day, $year)), "</td></tr>";
                        
                        
-                        echo "  <tr><td>Current rating: </td><td>" . $current_rate . " number of ratings: " . $rating_num . "</td></tr>";
+                        echo "  <tr><td>Current Rating: </td><td>" . $current_rate . "</td></tr>";
+								echo "  <tr><td>Number of Ratings: </td><td>" . $rating_num . "</td></tr>";
+
                         if(isset($_SESSION['username']))
                         {
                                 echo "<tr><td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value='1'>1</option><option value=1>1</option>";
