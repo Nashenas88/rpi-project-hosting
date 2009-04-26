@@ -1,4 +1,15 @@
 #summary Aces: summary of meetings and assignments of tasks
+=4/22/09=
+Paul Jin: Unit Test for all test cases
+Alex Dan: User Documentation
+
+=4/15/09=
+Interaction Diagrams
+Static Class Diagram
+
+=4/8/09=
+Meet Sat. to finish Code
+All: Finish Test Cases
 
 =4/1/09=
 Features:
