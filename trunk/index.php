@@ -31,6 +31,7 @@ if (isset ($_SESSION['username']))
 	$my_project_return_num=mysql_numrows($query_my_project_res);
 	if($my_project_return_num>0)
 	{
+		//echo '<table ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
 		echo '<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
 		echo '<tr>';
 		echo '	<th>Title</th>';
@@ -112,7 +113,7 @@ if (!$project_res)
 $project_return_num=mysql_numrows($project_res);
 	if($project_return_num>0)
 	{
-		echo '<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
+		echo '<table ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
 		echo '<tr>';
 		echo '	<th>Title</th>';
 		echo '	<th>Description</th>';
@@ -210,7 +211,7 @@ if (!$project_res)
 $project_return_num=mysql_numrows($project_res);
 	if($project_return_num>0)
 	{
-		echo '<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
+		echo '<table ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
 		echo '<tr>';
 		echo '	<th>Title</th>';
 		echo '	<th>Description</th>';
