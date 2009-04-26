@@ -1,5 +1,6 @@
 <?php
 session_start ();
+$_SESSION['back'] = $_SERVER['REQUEST_URI'];
 require ("feater.php");
 require("connect_db.php");
 head(Home);
