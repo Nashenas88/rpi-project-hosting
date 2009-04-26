@@ -9,6 +9,8 @@ session_start ();
 require ("connect_db.php");
 require ("feater.php");
 
+function download ()
+{
 // get project id
 $id = mysql_real_escape_string ($_GET["id"]);
 
@@ -80,4 +82,6 @@ else
   make_page ("Error", mysql_error ($result));
   exit;
 }
+}
+download ();
 ?>
