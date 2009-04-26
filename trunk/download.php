@@ -52,7 +52,7 @@ if ($result)
     
     // send header information
     header ("Content-type: application/octet-stream");
-    header("Cache-Control: no-cache, must-revalidate");
+    header ("Cache-Control: no-cache, must-revalidate");
     header ("Content-disposition: attachment; filename=\"$zipfile\"");
     readfile ($zipfile);
 
@@ -67,13 +67,18 @@ if ($result)
     
     if (!mysql_query ($query))
     {
-      make_page ("Error", mysql_error ($result));
+      head ("Error");
+      echo mysql_error ($result);
+      foot ();
       exit;
     }
   }
   else
   {
-    make_page ("Error", "<br/><center>Project not found.</center>");
+    head ("Error");
+    $_SESSION['test'] = "<br/><center>Project not found.</center>";
+    echo $_SESSION['test'];
+    foot ();
     exit;
   }
 }

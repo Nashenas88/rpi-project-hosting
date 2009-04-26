@@ -33,7 +33,6 @@ function make_page ($title, $body)
 	<div id="menu">
 <?php
 require ("menu.php");
-//echo $body;
 ?>
 </div>
 </div>
@@ -44,7 +43,6 @@ require ("menu.php");
 		<div id="latest-post" class="post">
 			<h1 class="title">Welcome to Our Website!</h1>
 <?php
-//require ("menu.php");
 echo $body;
 ?>
 		</div>
@@ -118,7 +116,4 @@ function foot ()
 	echo '';
 	echo '</html>';
 }
-
-
-
 ?>
