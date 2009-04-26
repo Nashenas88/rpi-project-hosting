@@ -63,7 +63,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 {
 	if ($search_request == "" || $search_type == "" || $sort == "")
 	{
-		$output .= "Please enter a valid search.";
+		echo "Please enter a valid search.";
 	}
 	else
 	{
@@ -115,19 +115,19 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
                 
 	        if($project_num>0)
         	{
-		        echo '<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
+		      echo '<table CLASS="sortable" ID="table0" BORDER=5 BGCOLOR="#99CCFF">';
 	        	echo '<tr>';
-        		echo '	<th>Title</th>';
-		        echo '	<th>Description</th>';
-	        	echo '   <th>Uploader</th>';
-        		echo '	<th>Creator(s)</th>';
-		        echo '	<th>Downloads</th>';
-	        	echo '	<th>Link</th>';
-        		echo '	<th>Class</th>';
-		        echo '	<th>Major</th>';
-	        	echo '	<th>School</th>';
-        		echo '	<th>Date Uploaded</th>';
-		        echo '	<th>Rating</th>';
+        		echo '<th>Title</th>';
+		      echo '<th>Description</th>';
+	        	echo '<th>Uploader</th>';
+        		echo '<th>Creator(s)</th>';
+		      echo '<th>Downloads</th>';
+	        	echo '<th>Link</th>';
+        		echo '<th>Class</th>';
+		      echo '<th>Major</th>';
+	        	echo '<th>School</th>';
+        		echo '<th>Date Uploaded</th>';
+		      echo '<th>Rating</th>';
 	        	if (isset ($_SESSION['username']))
 			{
 				echo '  <th>Rate This Project</th>';
@@ -146,37 +146,37 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 	        		$desc = str_pad ($desc, 50);
         			$desc .= "...";
 		        }
-	        	echo "  <td>" . $desc . "</td>\n";
-        		echo "  <td>" . mysql_result ($project_res, $i, 'uploader') . "</td>\n";
-		        echo "  <td>" . mysql_result ($project_res, $i, 'authors') . "</td>\n";
-	        	echo "  <td>" . mysql_result ($project_res, $i, 'downloads'). "</td>\n";
-        		echo "  <td><a href='" . mysql_result ($project_res, $i, 'project_location'). "'>Download Link</a></td>\n";
-		        echo "  <td>" . mysql_result ($project_res, $i, 'class'). "</td>\n";
-	        	echo "  <td>" . mysql_result ($project_res, $i, 'major'). "</td>\n";
-        		echo "  <td>" . mysql_result ($project_res, $i, 'school'). "</td>\n";
+	        	echo "<td>" . $desc . "</td>\n";
+        		echo "<td>" . mysql_result ($project_res, $i, 'uploader') . "</td>\n";
+		      echo "<td>" . mysql_result ($project_res, $i, 'authors') . "</td>\n";
+	        	echo "<td>" . mysql_result ($project_res, $i, 'downloads'). "</td>\n";
+        		echo "<td> <a href='" . mysql_result ($project_res, $i, 'project_location'). "'>Download Link</a></td>\n";
+		      echo "<td>" . mysql_result ($project_res, $i, 'class'). "</td>\n";
+	        	echo "<td>" . mysql_result ($project_res, $i, 'major'). "</td>\n";
+        		echo "<td>" . mysql_result ($project_res, $i, 'school'). "</td>\n";
                         
-		        list ($yearly, $daily) = split (' ', mysql_result ($project_res, $i, 'date'));
-                        list ($year, $month, $day) = split ('-', $yearly);
-                        list ($hour, $minute, $second) = split (':', $daily);
-                        echo "  <td>" . date ('l, F j, Y, g:i a', mktime ($hour, $minute, $second, $month, $day, $year)), "</td>\n";
+		      list ($yearly, $daily) = split (' ', mysql_result ($project_res, $i, 'date'));
+            list ($year, $month, $day) = split ('-', $yearly);
+            list ($hour, $minute, $second) = split (':', $daily);
+            echo "  <td>" . date ('l, F j, Y, g:i a', mktime ($hour, $minute, $second, $month, $day, $year)), "</td>\n";
 	        	
         		// Display current rate and a form to rate such file
-		        $rating_query = "SELECT rate FROM ratings WHERE project_id=" . mysql_result ($project_res, $i, 'id');
+		      $rating_query = "SELECT rate FROM ratings WHERE project_id=" . mysql_result ($project_res, $i, 'id');
 	        	
         		$rating_res = mysql_query ($rating_query);
                         
-		        if (!$rating_res) 
+		      if (!$rating_res) 
 	        	{
 		        	echo "Sorry, we can't query your request";
 	        		//echo mysql_error();
         			//exit;
-		        }
+		      }
 	        	
         		$rating_num = mysql_numrows($rating_res);
-		        $sum = 0;
+		      $sum = 0;
 	        	
         		for ($j = 0; $j < $rating_num; $j++)
-		        {
+		      {
 	        		$sum = $sum + mysql_result ($rating_res, $j, 'rate');
         		}
 		        
@@ -185,7 +185,7 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 		        	$current_rate = $rating_num;
 	        	}
         		else
-		        {
+		      {
 	        		$current_rate=$sum/$rating_num;
         		}
 		        echo "<td>". $current_rate."</td>\n";
@@ -193,12 +193,12 @@ if(isset($_REQUEST['searchInput'])&&isset($_REQUEST['searchType'])&&isset($_REQU
 		        //if logged in, give user the option to rate project
 	        	if (isset ($_SESSION['username']))
         		{
-		                echo "<td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value=1>1</option>";
-	        	        echo "<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";
-        		        echo "<input type='hidden' name='project_id' value='".mysql_result($project_res,$i,'id')."'/><input type='hidden' name='searchInput' value='".$_REQUEST['searchInput']."'/><input type='hidden' name='searchType' value='".$_REQUEST['searchType']."'/><input type='hidden' name='orderedBy' value='".$_REQUEST['orderedBy']."'/><input type='submit' value='Rate' /></form></td>";
-		        }
-		        echo "</tr>\n";
-	        }
+					echo "<td><form name='rate' method='POST' action='rate.php'><select name='rate'><option value=1>1</option>";					echo "<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";
+					echo "<input type='hidden' name='project_id' value='".mysql_result($project_res,$i,'id')."'/><input type='hidden' name='searchInput' value='".$_REQUEST['searchInput']."'/><input type='hidden' name='searchType' value='".$_REQUEST['searchType']."'/><input type='hidden' name='orderedBy' value='".$_REQUEST['orderedBy']."'/><input type='submit' value='Rate' /></form></td>";
+		      }
+		      
+		      echo "</tr>\n";
+	      }
 	echo "</table>\n";
 	}
 }
