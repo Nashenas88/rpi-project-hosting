@@ -1,0 +1,28 @@
+# FURPS and MoSCoW #
+
+http://en.wikipedia.org/wiki/Furps
+http://en.wikipedia.org/wiki/MoSCoW
+
+# PHP unit test #
+
+http://www.opensourcetesting.org/unit_php.php
+
+# SVN commands #
+
+http://www.linuxfromscratch.org/blfs/edguide/chapter03.html
+
+# WebProgramTutorial #
+
+http://cgi2.cs.rpi.edu/~hollingd/websys/websys.php
+
+# PHPmyadmin #
+
+http://www.phpmyadmin.net/home_page/index.php
+
+installation windows:
+
+http://www.wikihow.com/Install-phpMyAdmin-on-Your-Windows-PC
+
+installation linux:
+
+http://www.mysql-apache-php.com/

@@ -1,0 +1,1 @@
+This project is a website for hosting projects that RPI students have made either on their own or in a class to help, entertain, or inspire other RPI students.

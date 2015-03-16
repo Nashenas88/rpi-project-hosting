@@ -1,0 +1,36 @@
+# Introduction #
+
+Add your content here.
+
+
+# Details #
+
+**March 04**
+
+Work Contribute:
+Elaboration:
+We did Elaboration together in multiple meetings.
+
+Status Report:
+We finished implementing 80%-85% of features, and 80%-85% of our use cases.
+We set up a server for developing the project.
+We finished elaboration.
+We will talk about the rest of use cases and features next week and start working on User Interface design.
+
+Risk:
+The only risk is we need to check to see if our code is secure, in order to prevent cross site script attack, etc.  This is a risk because we have to examine all code carefully.
+
+**March 30**
+
+Work Contribute:
+Construction:
+We're continuing construction.  Finishing Iteration 3 on Wednesday.
+
+Status Report:
+We finished implementing 90% of features, and 85% of our use cases.
+We are working on getting support from a local group on campus to acquire a sufficient server.
+
+We need to determine if unit tests are right for us or else choose another test pattern.
+
+Risk:
+The only risk is we need to check to see if our code is secure, in order to prevent cross site script attack, etc.  This is a risk because we have to examine all code carefully.

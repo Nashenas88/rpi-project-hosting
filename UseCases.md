@@ -1,0 +1,385 @@
+# Login #
+
+**Description**
+  * Login gives submitting/moderating/administrative priveledges
+
+**Actors**
+  * Admin
+  * Moderator
+  * RPI User
+
+**Preconditions**
+  * Browsed to website
+
+**Event Flow**
+  1. Input RPI RCS ID and password
+  1. click "login"
+
+**Postconditions**
+  * If User- Brought to home page with uploading enabled and comment updates
+  * If Mod- Brought to home page with uploading and gatekeeper enabled
+  * If Admin- Brought to Admin page
+  * If not recognized- Brought back to home page with error
+
+---
+
+
+# LogOut #
+
+**Description**
+  * Logout
+
+**Actors**
+  * Admin
+  * Moderator
+  * RPI User
+
+**Preconditions**
+  * Is logged in
+
+**Event Flow**
+  * click "logout"
+
+**Postconditions**
+  * display "logged out successfully"
+
+---
+
+
+# UserUp #
+
+**Description**
+  * Upload a finished project with a description
+
+**Actors**
+  * RPI User
+  * Is logged in
+
+**Preconditions**
+  * Browsed to upload screen
+  * Is logged in
+
+**Event Flows**
+  1. click browse
+  1. select file
+  1. maybe select image of file for uploading
+  1. click upload
+  1. display confimation of upload
+  1. type in description of project and keywords
+  1. click "upload"
+    * if filesize greater than 10MB then throw error
+    * if file is corrupt then throw error
+    * can't login if banned
+
+**Postconditions**
+  * display "gatekeeper will review content or 24h"
+
+---
+
+
+# Search #
+
+**Description**
+  * Actor searches for user, project, etcetera
+
+**Actors**
+  * RPI user
+  * User
+  * Moderator
+
+**Preconditions**
+  * browsed to home page
+
+**Events Flow**
+  1. apply filters
+  1. click "Search"
+
+**Postconditions**
+  * Display search results sorted by number of downloads
+
+---
+
+
+# UserDown #
+
+**Description**
+  * User downloads a project
+
+**Actors**
+  * RPI User
+  * non-RPI User
+
+**Preconditions**
+  * Browsed to project page
+
+**Event Flow**
+  1. click download
+
+**Postconditions**
+  * recieve file on computer
+
+---
+
+
+# UserComment #
+
+**Description**
+  * Add comment to a hosted project
+
+**Actors**
+  * RPI user
+  * non-RPI user
+
+**Preconditions**
+  * Browsed to project page
+  * Is logged in.
+
+**Event Flow**
+  1. Add comment text to box
+  1. click "add comment"
+
+**Postcondition**
+  * Updated project page with comment
+
+---
+
+# Killed this use case #
+# 24Hours #
+
+**Description**
+  * After 24 a submission is automatically added without a gatekeeper
+
+**Actors**
+  * Time
+
+**Preconditions**
+  * 24 hours passed for submission in queue
+
+**Events Flow**
+  1. add sumission
+  1. notify submitter of status
+
+**Postconditions**
+  * Submission now appears on website
+
+---
+
+# We killed this use case #
+# Gatekeeper #
+
+**Description**
+  * Moderator accepts or rejects submission
+
+**Actors**
+  * Moderator
+  * User
+
+**Preconditions**
+  * User submitted a project
+  * Moderator logs in
+  * Moderater browses to moderator page
+
+**Events Flow**
+  1. Moderater reviews project and accepts or rejects
+    * if accepted add to database
+      * Auto-notify by email "accepted project x"
+    * if rejected then email text box for user for reasons of rejection
+      * type rejection
+      * click "send"
+
+**Postconditions**
+  * Show confimation screen that submit and notice successful
+
+---
+
+
+# ModeraterRemoveProject #
+
+**Description**
+  * Moderator removes offending project in database
+
+**Actors**
+  * Moderator
+
+**Preconditions**
+  * Offending project found
+  * Moderator logged in
+  * browsed to project page
+
+**Events Flow**
+  1. click Delete
+  1. Auto-Notify User that they have violated rules
+
+**Postconditions**
+  * Display Success for deletion and notice
+
+---
+
+
+# ModeratorBan #
+
+**Description**
+  * Ban an offending user
+
+**Actors**
+  * Moderator
+  * RPI User
+
+**Preconditions**
+  * Moderator logged in
+  * browsed to user's page
+
+**Events Flow**
+  1. Click "ban"
+  1. Auto-Notify user of ban
+
+**Postconditions**
+  * Display success of ban and notice
+
+---
+
+
+# ModeratorUnBan #
+
+**Description**
+  * Moderator wants to remove ban from a RPI user
+
+**Actors**
+  * Moderator
+  * RPI User
+
+**Preconditions**
+  * Moderator logged in
+  * browse to user page
+
+**Events Flow**
+  1. click "Unban"
+  1. Auto-notify user of unban
+
+**Postconditions**
+  * Display success of unban and notice
+
+---
+
+
+# AdminChangePriveledge #
+
+**Description**
+  * Add moderator
+
+**Actors**
+  * Admin
+
+**Preconditions**
+  * Browsed to admin page
+  * Admin logged in
+
+**Events Flow**
+  1. Choose user
+  1. Choose pirveledge level
+  1. click "update"
+
+**Postconditions**
+  * Display user added as moderator succesfully
+
+---
+
+
+
+# FlagComment #
+
+**Description**
+  * Flags a comment as inappropriate and sends an email to some moderator
+
+**Actors**
+  * user
+
+**Preconditions**
+  * logged in
+
+**Events Flow**
+  1. Click Flag Comment
+  1. Type Reason
+  1. Click Button
+  1. Sends Email
+
+**Postconditions**
+  * Some Moderators Receive email
+
+
+---
+
+
+
+# Remove Comment #
+
+**Description**
+  * Removes a comment
+
+**Actors**
+  * Moderator
+  * Administrator
+
+**Preconditions**
+  * Comment might have been flagged (not necesarry)
+  * logged in
+
+**Events Flow**
+  1. Click Remove Comment Button
+  1. Click "Approve"
+  1. Comment is Deleted
+
+**Postconditions**
+  * Comment no longer exists
+
+
+---
+
+
+# Rate #
+
+**Description**
+  * Rates the current project
+
+**Actors**
+  * User
+  * Moderator
+  * Administrator
+
+**Preconditions**
+  * Has not rated previously
+  * logged in
+
+**Events Flow**
+  1. Click number of stars
+  1. number of rates increased
+  1. new average calculated
+  1. new rating displayed with stars
+
+**Postconditions**
+  * updated number of rates
+  * updated rating
+
+
+---
+
+
+# Title #
+
+**Description**
+  * 
+
+**Actors**
+  * 
+
+**Preconditions**
+  * 
+
+**Events Flow**
+  1. 
+  1. 
+
+**Postconditions**
+  * 
+
+---

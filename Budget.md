@@ -1,0 +1,16 @@
+| **Type** | **Amount** |
+|:---------|:-----------|
+|Hourly Rate per Person|$65/h|
+|Estimated Hours per Week|10h|
+|Estimated Number of Weeks|13w|
+|Cost For Laptops and Software per person|$2100|
+|Cost for office space (including utilities) per person|$1000|
+|Office furnishings per person|$300|
+|Laptop peripherals per person|$500|
+
+
+|Cost per Person|$12,350|
+|:--------------|:------|
+|Number of Workers|4p|
+|  |  |
+| **Total Cost** |$49,400|

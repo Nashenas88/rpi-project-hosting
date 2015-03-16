@@ -1,0 +1,77 @@
+# Glossary #
+
+## Admin ##
+
+The highest level of user. Adds and removes moderators. Can edit database.
+
+## Class ##
+
+A project detail, given by the user, defining the RPI course during which the project was created.  Used as a search parameter.
+
+## Comment ##
+
+User generated feedback referencing specific projects.
+
+## Date ##
+
+A timestamp given to all projects and comments describing when each project and comment was first added to the server.
+
+## Description ##
+
+A summary, given by the user, detailing and marketing the project.  Used as a search parameter.
+
+## Download ##
+
+The act of a user looking at or copying a project to their computer.
+
+## Flag ##
+
+A switch marked by the user to signal offensive projects and comments to the moderators.
+
+## Login ##
+
+The act of entering into the program with an RCSID and password. Allows the ability to upload.
+
+## Major ##
+
+A project detail, given by the user, defining what field of study the project related to.  Used as a search parameter.
+
+## Moderator ##
+
+The middle level priveledge.  Regulates projects and comments.
+
+## Projects ##
+
+All files written and created by RPI students, hosted on RPH.
+
+## Rating ##
+
+A number score between 0 and 5 grading specific projects representing an average of the community's scoring choices.
+
+## RCS ID ##
+
+This is an identification given to all members of the RPI community.
+
+## RPH ##
+
+RPI Project Hosting - project name
+
+## RPI User ##
+
+A person logged in with a RCS ID and password, with uploading priveleges.
+
+## Size ##
+
+A number representing the amount of space the project takes up.  Used as a search parameter.
+
+## Title ##
+
+A name, given by the user, for each project.  Used as a search parameter.
+
+## Upload ##
+
+The act of an RPI user adding a project to the server.
+
+## User ##
+
+Any person directly acting with the program.

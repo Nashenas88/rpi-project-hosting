@@ -1,0 +1,224 @@
+## moderator page ##
+  * cannot ban/unban a user who does not exist
+  * cannot ban/unban a user who is already banned/unbanned
+  * cannot ban/unban yourself
+  * cannot ban a user with a higher privilege level than yourself
+  * can ban/unban a user with lower or equal priviledges
+
+## about page ##
+  * Describes project
+
+## Login ##
+  * input RPI ID and pass and get login affirmation or rejection
+  * adds user to database if not already in it
+  * moderator button for level of priviledge 1 or 0
+  * priviledge change button for level of priviledge 0
+
+## Logout ##
+  * buttons are removed
+
+## Comment: ##
+
+TC1: Comment project [commenting a project](successful.md)<br />
+Preconditions: User logged in and did not comment on this project.<br />
+Sequence of Actions:<br />
+Select a particular project.<br />
+Browser displays project’s information, comments with flag option and a comment form.<br />
+Enter comment for the project. (no more than 500 characters)<br />
+Brower should show comment successful message and display project information with this new comment.<br />
+
+TC2: Comment project [Fails: already comment on the project]
+Preconditions: User logged in and had comment on this project
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information, comments with flag option and a comment form.
+Enter comment on the textbox. (no more than 500 characters)
+Brower should show comment fail message: already comment on the project, and display project information.
+
+TC3: Comment project [Fails: comment exceeds 500 characters]
+Preconditions: User logged in and had comment on this project
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information, comments with flag option and a comment form.
+Enter comment on the textbox. (more than 500 characters)
+Brower should show comment fail message: comment exceed 500 characters, and display project information.
+
+## Flag\_comment: ##
+
+TC4: Flag a comment [flag a comment](successfully.md)
+Preconditions: There is at least one comment displayed for a project
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information, comments with flag option and comment form.
+Select flag option on a particular comment.
+Browser should display flag successful message: comment flag and display project information.
+
+
+## Remove\_comment: ##
+
+TC5: Remove a comment [remove a comment](successfully.md)
+Preconditions: Logged in as moderator or admin and at least one comment displayed for a project.
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information, comments with remove comment option and comment form.
+Select remove comment option of a particular comment.
+Browser should display remove comment successful message: remove comment successfully, and display project information.
+
+## Rate project: ##
+
+TC6: Rate project [a project successfully](rate.md)
+Preconditions: Logged in and at least one project in the system and never rate this project before.
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information with rating option.
+Enter 1-5 as rate for the project.
+Browser should display rate successful message: rated it successfully, and display project information.
+
+TC7: Rate project [fails: not in 1-5](rate.md)
+Preconditions: Logged in and at least one project in the system.
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information with rating option.
+Enter -9 as rate for the project.
+Brower should display rate fail message: Must be 1-5, and display project information.
+
+
+TC8: Rate project [fails: already rate project](rate.md)
+Preconditions: Logged in and at least one project in the system and rated this project before.
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information with rating option.
+Enter 1-5 as rate for the project.
+Brower should display rate fail message: already rate this project, and display project information.
+
+## Remove flag: ##
+
+TC9: Remove flag [flag of a comment successfully](remove.md)
+Preconditions: Logged in as moderator or admin and at least one comment of a project is flag.
+Sequence of Actions:
+Select a particular project.
+Browser displays project’s information, comments with remove flag option and comment form.
+Select remove flag option of a particular comment.
+Browser should display flag removed successful message: remove flag successfully, and display project information.
+
+## Change Priviledge: ##
+
+TC10: Change priviledge of a user that exists<br />
+Preconditions: Logged in as an admin<br />
+Sequence of Actions:<br />
+Enter in name of user into Username field<br />
+Select Priviledge level<br />
+Press "Update"<br />
+Receive Message: "User '`<username>`' has had his privilege level changed from `<original>` to `<new>`" where `<username>` is the user's name, `<original>` is the original privilege level and `<new>` is the new privilege level.
+
+TC11: Change your own privilege<br />
+Preconditions: Logged in as an admin<br />
+Sequence of Actions:<br />
+Enter in your own username into the Username field<br />
+Select Priviledge level<br />
+Press "Update"<br />
+Receive Message: "You can't change your own privilege"
+
+TC12: Change privilege of username that does not exist in the database<br />
+Preconditions: Logged in as an admin<br />
+Sequence of Actions:<br />
+Enter in name of user into Username field<br />
+Select Priviledge level<br />
+Press "Update"<br />
+Receive Message: "User '`<username>`' does not exist" where `<username>` is a username that does not exist
+
+## Remove Project: ##
+
+TC13: You should see `[Remove]` button as moderator or admin<br />
+Preconditions: Logged in as a moderator or as an admin<br />
+Sequence of Actions:<br />
+From index.php, click on any project's title<br />
+Verify that there is a `[Remove]` button on the page<br />
+
+For the next three test cases, use the following code, save as tc14\_15.html:
+
+```
+<html>
+<head><title>For Test Cases 14 and 15</title></head>
+<body>
+<form action="http://rph.myrpi.org/rm_project.php" method="post">
+Project id: <input type="text" name="project_id" />
+<input type="submit" />
+</body>
+</html>
+```
+
+TC14: Remove a project that has a negative project\_od<br />
+Preconditions: Logged in as a moderator or as an admin<br />
+Sequence of Actions:<br />
+load the tc14\_15.html file into your web browser in a seperate window or tab<br />
+type in "-1" (without the quotes) into the field<br />
+press the submit button<br />
+You should receive the following message: "No such project"
+
+TC15: Remove a project that has a project\_id that does not exist<br />
+Preconditions: Logged in as a moderator or as an admin<br />
+Sequence of Actions:<br />
+load the tc14\_15.html file into your browser in a seperate window or tab<br />
+in the original webpage, remove a project using TC13, but before pressing the `[Remove]` button, copy the number after `show_project_id=` in the URL<br />
+in the tc14\_15.html file, paste this number into the field<br />
+press the submit button<br />
+You Should receive the following message: "Could not remove project"
+
+TC16: Remove project as a regular user, or not logged in<br />
+Preconditions: not logged in or logged in as a regular user<br />
+Sequence of Actions:<br />
+load the tc14\_15.html file into your browser in a seperate window or tab<br />
+you may decide to log in as a regular user at this point in the main rph page<br />
+clock on a project's title from the index.php page<br />
+copy the number after `show_project_id=` in the URL<br />
+paste this number into the field in the tc14\_15.php page<br />
+press the submit button<br />
+You should receive the following message: "Could not remove project"
+
+## Security: ##
+
+For the XSS tests, use the following script:
+
+```
+<script type="text/javascript">document.write("oh noes, you been h4c|<3D!!1!! Your screen resolution is " + screen.width + "x" + screen.height);</script>
+```
+
+TC17: Upload XSS test<br />
+Preconditions: must be logged in<br />
+Sequence of Actions:<br />
+Go to the upload page<br />
+Enter in the above script into every field<br />
+Go to Home<br />
+Verify that every single entry in your top-most project field displays the code above in its entirety and that it does not say "oh noes, you been h4c|<3D!!1!! Your screen resolution is `<screen_width>`x`<screen_hieght>`" where `<screen_width>` is your screen's width and `<screen_height>` is your screen's height
+
+TC18: Comment XSS test<br />
+Preconditions: must be logged in<br />
+Sequence of Actions:<br />
+Go to the home page<br />
+Click on any project's title<br />
+enter in the above script into the comment section of the page<br />
+press the submit button<br />
+verify that you can the see code above in its entirety and that it does not say "oh noes, you been h4c|<3D!!1!! Your screen resolution is `<screen_width>`x`<screen_hieght>`" where `<screen_width>` is your screen's width and `<screen_height>` is your screen's height
+
+For the SQL Injection tests, use the following data:
+
+```
+'OR''='';UPDATE users SET priviledge=0 WHERE rcsid='<username>
+```
+
+TC19: Upload SQL Injection test<br />
+Preconditions: logged in as a normal user<br />
+Sequence of Actions:<br />
+Go to the upload page<br />
+Enter in the above text into every field on the upload page<br />
+press the submit button<br />
+verify that there is no Moderate link in the menu
+
+TC20: Comments SQL Injection test<br />
+Preconditions: logged in as a normal user<br />
+Sequence of Actions:<br />
+Click on any project's title from index.php<br />
+Enter in the above text into the comment area<br />
+press the submit button<br />
+verify that there is not Moderate link in the menu
